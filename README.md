@@ -15,6 +15,7 @@
 	$ make run
 * Rule "run" execute following command
 	* ./assembler "input.s" | ./mips_pipeline_simulator
+	
 #### For custom File
 	$ make run INPUT_FILE="custom.s"
 <br/><br/><br/>
