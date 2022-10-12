@@ -20,7 +20,10 @@ INCS_DIR	= ./incs
 SRCS_DIR	= ./srcs
 OBJS_DIR	= ./objs
 
-SRCS =	main.cpp
+SRCS =	main.cpp \
+		camera/camera.cpp \
+		camera/manipulate_camera.cpp \
+		window/draw_window.cpp
 		
 SRCS := ${addprefix ${SRCS_DIR}/, ${SRCS}}
 OBJS = ${SRCS:${SRCS_DIR}/%.cpp=${OBJS_DIR}/%.o}
@@ -33,6 +36,8 @@ all: ${NAME}
 ${OBJS_DIR}:
 	@echo "Build ${NAME}"
 	@mkdir -p objs
+	@mkdir -p objs/camera
+	@mkdir -p objs/window
 
 
 ${NAME}: ${OBJS}

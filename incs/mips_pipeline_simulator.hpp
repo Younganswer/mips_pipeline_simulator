@@ -3,10 +3,12 @@
 
 # include <iostream>
 # include "../raylib/src/raylib.h"
+# include "structs.hpp"
+# include "camera.hpp"
+# include "window.hpp"
 
-typedef enum _ScreenSize {
-	screenWidth		= 1920,
-	screenHeight	= 1080
-}	ScreenSize;
+#define MAX_BUILDINGS   100
+
+
 
 #endif
