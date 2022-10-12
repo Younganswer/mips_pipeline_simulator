@@ -5,7 +5,7 @@ IDX		= 0
 NAME	= mips_pipeline_simulator
 
 RAYLIB_PATH		= ./raylib
-INCLUDE_PATH	= -I. -I$(RAYLIB_PATH)/src -I$(RAYLIB_PATH)/src/external -I$(RAYLIB_PATH)/src/e    xtras
+INCLUDE_PATH	= -I. -I$(RAYLIB_PATH)/src -I$(RAYLIB_PATH)/src/external -I$(RAYLIB_PATH)/src/extras
 LDLIBS			= -lraylib -framework OpenGL -framework Cocoa -framework IOKit -framework CoreAudio -framework CoreVideo
 
 CC			= clang++
@@ -25,7 +25,9 @@ SRCS =	main.cpp \
 		camera/camera.cpp \
 		info/info.cpp \
 		shape/draw_arrow.cpp \
+		shape/draw_mux.cpp \
 		window/draw_camera_sight.cpp \
+		window/draw_content.cpp \
 		window/draw_edge.cpp \
 		window/draw_guide.cpp \
 		window/draw_window.cpp
