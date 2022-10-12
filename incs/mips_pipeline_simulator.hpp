@@ -5,8 +5,8 @@
 # include "../raylib/src/raylib.h"
 
 typedef enum _ScreenSize {
-	screenWidth		= 800,
-	screenHeight	= 600
+	screenWidth		= 1920,
+	screenHeight	= 1080
 }	ScreenSize;
 
 #endif
