@@ -26,12 +26,7 @@ int	main(int argc, char **argv) {
 
             draw_window(camera);
 			
-			if (!mouse_clicked && IsMouseButtonPressed(MOUSE_LEFT_BUTTON))
-				mouse_clicked = 120;
-			if (0 < mouse_clicked) {
-				DrawText("Mouse clicked!", screenWidth/2 - 67, screenHeight/2 - 40, 20, RED);
-				mouse_clicked--;
-			}
+			handling_mouse(mouse_clicked);
 				
             DrawText("SCREEN AREA", screenWidth - 200, 10, 20, RED);
 
