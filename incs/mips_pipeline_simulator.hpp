@@ -7,6 +7,7 @@
 # include "window.hpp"
 # include "button.hpp"
 # include "info.hpp"
+# include "shape.hpp"
 
 #define MAX_BUILDINGS   100
 

@@ -24,6 +24,7 @@ SRCS =	main.cpp \
 		button/button.cpp \
 		camera/camera.cpp \
 		info/info.cpp \
+		shape/draw_arrow.cpp \
 		window/draw_camera_sight.cpp \
 		window/draw_edge.cpp \
 		window/draw_guide.cpp \
@@ -36,6 +37,7 @@ DEPS = ${OBJS:.o=.d}
 
 all: ${NAME}
 
+
 INPUT_FILE = test.txt
 run: ${NAME}
 	./${NAME} < ${INPUT_FILE}
@@ -47,6 +49,7 @@ ${OBJS_DIR}:
 	@mkdir -p objs/button
 	@mkdir -p objs/camera
 	@mkdir -p objs/info
+	@mkdir -p objs/shape
 	@mkdir -p objs/window
 
 
@@ -84,5 +87,6 @@ re:
 
 
 .PHONY: all clean fclean re
+
 
 -include ${DEPS}
