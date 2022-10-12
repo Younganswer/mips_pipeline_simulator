@@ -6,7 +6,6 @@
 # include <vector>
 # include <string>
 # include "../raylib/src/raylib.h"
-# include "camera.hpp"
 
 using namespace std;
 
@@ -22,6 +21,21 @@ typedef enum _Status {
 	MEM	= 3,
 	WB	= 4
 }	Status;
+
+typedef enum _ButtonState {
+	NORMAL		= 0,
+	MOUSE_HOVER	= 1,
+	PRESSED		= 2
+}	ButtonState;
+
+typedef struct _Button {
+	Texture2D	button;
+	Rectangle	btnBounds;
+	Rectangle	sourceRec;
+	ButtonState	state;
+	bool		btnAction;
+	int			btnClicked;
+}	Button;
 
 class Instruction {
 public:
@@ -40,9 +54,10 @@ private:
 
 public:
 	// GUI
-	Camera2D			camera;
-	size_t				mouse_clicked;
-	
+	Camera2D	camera;
+	Button		button;
+	Vector2		mouse;
+
 	// Back
 	vector<Instruction>	pipeline;
 	vector<Instruction>	all_instructions;

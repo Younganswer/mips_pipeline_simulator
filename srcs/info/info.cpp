@@ -1,5 +1,7 @@
-#include "../../incs/info.hpp"
 #include <memory.h>
+#include "../../incs/info.hpp"
+#include "camera.hpp"
+#include "button.hpp"
 
 Instruction::Instruction(void) {
 	status			= IF;
@@ -25,7 +27,8 @@ bool	Info::read_instructions(void) {
 
 Info::Info(void) {
 	init_camera(camera);
-	mouse_clicked = 0;
+	init_button(button);
+	mouse.x = mouse.y = 0;
 	pipeline.clear();
 	read_instructions();
 	return;

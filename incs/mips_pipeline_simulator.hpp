@@ -5,7 +5,7 @@
 # include "../raylib/src/raylib.h"
 # include "camera.hpp"
 # include "window.hpp"
-# include "mouse.hpp"
+# include "button.hpp"
 # include "info.hpp"
 
 #define MAX_BUILDINGS   100
