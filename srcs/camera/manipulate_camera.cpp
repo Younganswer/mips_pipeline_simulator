@@ -4,6 +4,7 @@ bool	manipulate_camera(Camera2D &camera) {
 	// Camera position controls
     if (IsKeyDown(KEY_RIGHT)) camera.target.x += 20;
     else if (IsKeyDown(KEY_LEFT)) camera.target.x -= 20;
+	
 	if (IsKeyDown(KEY_UP)) camera.target.y -= 20;
 	else if (IsKeyDown(KEY_DOWN)) camera.target.y += 20;
     

@@ -1,9 +1,9 @@
 #ifndef MOUSE_HPP
 # define MOUSE_HPP
 
-# include "structs.hpp"
+# include "info.hpp"
 # include "../raylib/src/raylib.h"
 
-bool	handling_mouse(int &mouse_clicked);
+bool	handling_mouse(size_t &mouse_clicked);
 
 #endif

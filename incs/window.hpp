@@ -1,9 +1,9 @@
 #ifndef WINDOW_HPP
 # define WINDOW_HPP
 
-# include "structs.hpp"
+# include "info.hpp"
 # include "../raylib/src/raylib.h"
 
-bool	draw_window(Camera2D &camera);
+bool	draw_window(Info &info);
 
 #endif

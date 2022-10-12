@@ -23,6 +23,7 @@ OBJS_DIR	= ./objs
 SRCS =	main.cpp \
 		camera/camera.cpp \
 		camera/manipulate_camera.cpp \
+		info/info.cpp \
 		mouse/mouse.cpp \
 		window/draw_window.cpp
 		
@@ -38,6 +39,7 @@ ${OBJS_DIR}:
 	@echo "Build ${NAME}"
 	@mkdir -p objs
 	@mkdir -p objs/camera
+	@mkdir -p objs/info
 	@mkdir -p objs/mouse
 	@mkdir -p objs/window
 

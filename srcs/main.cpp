@@ -1,13 +1,13 @@
 #include "../incs/mips_pipeline_simulator.hpp"
 
+using namespace std;
+
 int	main(int argc, char **argv) {
 	(void) argc;
 	(void) argv;
 	// Set variables -----------------------------------------------------------------------
 	InitWindow(screenWidth, screenHeight, "mips_pipeline_simulator");
-    Camera2D	camera;
-	init_camera(camera);
-	int			mouse_clicked = 0;
+	Info	info;
 
     SetTargetFPS(60);                   // Set our game to run at 60 frames-per-second
     //--------------------------------------------------------------------------------------
@@ -16,7 +16,7 @@ int	main(int argc, char **argv) {
     while (!WindowShouldClose())        // Detect window close button or ESC key
     {
 		// Manipulate_camera
-		manipulate_camera(camera);
+		manipulate_camera(info.camera);
 
         // Draw
         //----------------------------------------------------------------------------------
@@ -24,9 +24,9 @@ int	main(int argc, char **argv) {
 			
             ClearBackground(RAYWHITE);
 
-            draw_window(camera);
+            draw_window(info);
 			
-			handling_mouse(mouse_clicked);
+			handling_mouse(info.mouse_clicked);
 				
             DrawText("SCREEN AREA", screenWidth - 200, 10, 20, RED);
 

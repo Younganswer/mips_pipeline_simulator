@@ -1,6 +1,6 @@
 #include "../../incs/mouse.hpp"
 
-bool	handling_mouse(int &mouse_clicked) {
+bool	handling_mouse(size_t &mouse_clicked) {
 	if (!mouse_clicked && IsMouseButtonPressed(MOUSE_LEFT_BUTTON))
 		mouse_clicked = 120;
 	if (0 < mouse_clicked) {
