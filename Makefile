@@ -4,12 +4,17 @@ IDX		= 0
 
 NAME	= mips_pipeline_simulator
 
+RAYLIB_PATH		= ./raylib
+INCLUDE_PATH	= -I. -I$(RAYLIB_PATH)/src -I$(RAYLIB_PATH)/src/external -I$(RAYLIB_PATH)/src/e    xtras
+LDLIBS			= -lraylib -framework OpenGL -framework Cocoa -framework IOKit -framework CoreAudio -framework CoreVideo
+
 CC			= clang++
 CXXFLAGS	= -Wall -Wextra -Werror -O2 -std=c++17
-LDFLAGS		= -fsanitize=address -g3
+LDFLAGS		= -fsanitize=address -g3 -L. -L$(RAYLIB_PATH)/src
 RM			= rm -f
 
 LIBRAYLIB	= ./raylib/src/libraylib.a
+
 
 INCS_DIR	= ./incs
 SRCS_DIR	= ./srcs
@@ -32,7 +37,7 @@ ${OBJS_DIR}:
 
 ${NAME}: ${OBJS}
 	@printf "\bdone\n"
-	@${CC} ${CXXFLAGS} ${LDFLAGS} -g -o ${NAME} ${OBJS} ${LIBRAYLIB} -I ${INCS_DIR}
+	@${CC} ${CXXFLAGS} ${LDFLAGS} ${LDLIBS} -g -o ${NAME} ${OBJS} ${LIBRAYLIB} -I ${INCS_DIR}
 	@echo "Build ${NAME}: done"
 
 
