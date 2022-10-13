@@ -10,8 +10,8 @@
 using namespace std;
 
 typedef enum _ScreenSize {
-	screenWidth		= 192*8,
-	screenHeight	= 108*8
+	screenWidth		= 192*6,
+	screenHeight	= 108*6
 }	ScreenSize;
 
 typedef enum _Status {
