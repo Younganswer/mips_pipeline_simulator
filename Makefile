@@ -25,7 +25,9 @@ SRCS =	main.cpp \
 		camera/camera.cpp \
 		info/info.cpp \
 		shape/draw_arrow.cpp \
+		shape/draw_dot.cpp \
 		shape/draw_mux.cpp \
+		shape/draw_trapezoid.cpp \
 		window/draw_camera_sight.cpp \
 		window/draw_content.cpp \
 		window/draw_edge.cpp \
