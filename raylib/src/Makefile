@@ -577,69 +577,69 @@ raylib: $(OBJS)
 ifeq ($(PLATFORM),PLATFORM_WEB)
     # Compile raylib libray for web
     #$(CC) $(OBJS) -r -o $(RAYLIB_RELEASE_PATH)/lib$(RAYLIB_LIB_NAME).bc
-	$(AR) rcs $(RAYLIB_RELEASE_PATH)/lib$(RAYLIB_LIB_NAME).a $(OBJS)
+	@$(AR) rcs $(RAYLIB_RELEASE_PATH)/lib$(RAYLIB_LIB_NAME).a $(OBJS)
 	@echo "raylib library generated (lib$(RAYLIB_LIB_NAME).a)!"
 else
     ifeq ($(RAYLIB_LIBTYPE),SHARED)
         ifeq ($(PLATFORM),PLATFORM_DESKTOP)
             ifeq ($(PLATFORM_OS),WINDOWS)
-                # NOTE: Linking with provided resource file
-				$(CC) -shared -o $(RAYLIB_RELEASE_PATH)/$(RAYLIB_LIB_NAME).dll $(OBJS) $(RAYLIB_RES_FILE) $(LDFLAGS) $(LDLIBS)
-				@echo "raylib dynamic library ($(RAYLIB_LIB_NAME).dll) and import library (lib$(RAYLIB_LIB_NAME)dll.a) generated!"
+# 				NOTE: Linking with provided resource file
+	@			$(CC) -shared -o $(RAYLIB_RELEASE_PATH)/$(RAYLIB_LIB_NAME).dll $(OBJS) $(RAYLIB_RES_FILE) $(LDFLAGS) $(LDLIBS)
+	@			echo "raylib dynamic library ($(RAYLIB_LIB_NAME).dll) and import library (lib$(RAYLIB_LIB_NAME)dll.a) generated!"
             endif
             ifeq ($(PLATFORM_OS),LINUX)
                 # Compile raylib shared library version $(RAYLIB_VERSION).
                 # WARNING: you should type "make clean" before doing this target
-				$(CC) -shared -o $(RAYLIB_RELEASE_PATH)/lib$(RAYLIB_LIB_NAME).so.$(RAYLIB_VERSION) $(OBJS) $(LDFLAGS) $(LDLIBS)
-				@echo "raylib shared library generated (lib$(RAYLIB_LIB_NAME).so.$(RAYLIB_VERSION)) in $(RAYLIB_RELEASE_PATH)!"
-				cd $(RAYLIB_RELEASE_PATH) && ln -fsv lib$(RAYLIB_LIB_NAME).so.$(RAYLIB_VERSION) lib$(RAYLIB_LIB_NAME).so.$(RAYLIB_API_VERSION)
-				cd $(RAYLIB_RELEASE_PATH) && ln -fsv lib$(RAYLIB_LIB_NAME).so.$(RAYLIB_API_VERSION) lib$(RAYLIB_LIB_NAME).so
+	@			$(CC) -shared -o $(RAYLIB_RELEASE_PATH)/lib$(RAYLIB_LIB_NAME).so.$(RAYLIB_VERSION) $(OBJS) $(LDFLAGS) $(LDLIBS)
+	@			echo "raylib shared library generated (lib$(RAYLIB_LIB_NAME).so.$(RAYLIB_VERSION)) in $(RAYLIB_RELEASE_PATH)!"
+	@			cd $(RAYLIB_RELEASE_PATH) && ln -fsv lib$(RAYLIB_LIB_NAME).so.$(RAYLIB_VERSION) lib$(RAYLIB_LIB_NAME).so.$(RAYLIB_API_VERSION)
+	@			cd $(RAYLIB_RELEASE_PATH) && ln -fsv lib$(RAYLIB_LIB_NAME).so.$(RAYLIB_API_VERSION) lib$(RAYLIB_LIB_NAME).so
             endif
             ifeq ($(PLATFORM_OS),OSX)
-				$(CC) -dynamiclib -o $(RAYLIB_RELEASE_PATH)/lib$(RAYLIB_LIB_NAME).$(RAYLIB_VERSION).dylib $(OBJS) $(LDFLAGS) $(LDLIBS)
-				install_name_tool -id "@rpath/lib$(RAYLIB_LIB_NAME).$(RAYLIB_API_VERSION).dylib" $(RAYLIB_RELEASE_PATH)/lib$(RAYLIB_LIB_NAME).$(RAYLIB_VERSION).dylib
-				@echo "raylib shared library generated (lib$(RAYLIB_LIB_NAME).$(RAYLIB_VERSION).dylib)!"
-				cd $(RAYLIB_RELEASE_PATH) && ln -fs lib$(RAYLIB_LIB_NAME).$(RAYLIB_VERSION).dylib lib$(RAYLIB_LIB_NAME).$(RAYLIB_API_VERSION).dylib
-				cd $(RAYLIB_RELEASE_PATH) && ln -fs lib$(RAYLIB_LIB_NAME).$(RAYLIB_VERSION).dylib lib$(RAYLIB_LIB_NAME).dylib
+	@			$(CC) -dynamiclib -o $(RAYLIB_RELEASE_PATH)/lib$(RAYLIB_LIB_NAME).$(RAYLIB_VERSION).dylib $(OBJS) $(LDFLAGS) $(LDLIBS)
+	@			install_name_tool -id "@rpath/lib$(RAYLIB_LIB_NAME).$(RAYLIB_API_VERSION).dylib" $(RAYLIB_RELEASE_PATH)/lib$(RAYLIB_LIB_NAME).$(RAYLIB_VERSION).dylib
+	@			echo "raylib shared library generated (lib$(RAYLIB_LIB_NAME).$(RAYLIB_VERSION).dylib)!"
+	@			cd $(RAYLIB_RELEASE_PATH) && ln -fs lib$(RAYLIB_LIB_NAME).$(RAYLIB_VERSION).dylib lib$(RAYLIB_LIB_NAME).$(RAYLIB_API_VERSION).dylib
+	@			cd $(RAYLIB_RELEASE_PATH) && ln -fs lib$(RAYLIB_LIB_NAME).$(RAYLIB_VERSION).dylib lib$(RAYLIB_LIB_NAME).dylib
             endif
             ifeq ($(PLATFORM_OS),BSD)
                 # WARNING: you should type "gmake clean" before doing this target
-				$(CC) -shared -o $(RAYLIB_RELEASE_PATH)/lib$(RAYLIB_LIB_NAME).$(RAYLIB_VERSION).so $(OBJS) $(LDFLAGS) $(LDLIBS)
-				@echo "raylib shared library generated (lib$(RAYLIB_LIB_NAME).$(RAYLIB_VERSION).so)!"
-				cd $(RAYLIB_RELEASE_PATH) && ln -fs lib$(RAYLIB_LIB_NAME).$(RAYLIB_VERSION).so lib$(RAYLIB_LIB_NAME).$(RAYLIB_API_VERSION).so
-				cd $(RAYLIB_RELEASE_PATH) && ln -fs lib$(RAYLIB_LIB_NAME).$(RAYLIB_VERSION).so lib$(RAYLIB_LIB_NAME).so
+	@			$(CC) -shared -o $(RAYLIB_RELEASE_PATH)/lib$(RAYLIB_LIB_NAME).$(RAYLIB_VERSION).so $(OBJS) $(LDFLAGS) $(LDLIBS)
+	@			echo "raylib shared library generated (lib$(RAYLIB_LIB_NAME).$(RAYLIB_VERSION).so)!"
+	@			cd $(RAYLIB_RELEASE_PATH) && ln -fs lib$(RAYLIB_LIB_NAME).$(RAYLIB_VERSION).so lib$(RAYLIB_LIB_NAME).$(RAYLIB_API_VERSION).so
+	@			cd $(RAYLIB_RELEASE_PATH) && ln -fs lib$(RAYLIB_LIB_NAME).$(RAYLIB_VERSION).so lib$(RAYLIB_LIB_NAME).so
             endif
         endif
         ifeq ($(PLATFORM),PLATFORM_RPI)
                 # Compile raylib shared library version $(RAYLIB_VERSION).
                 # WARNING: you should type "make clean" before doing this target
-				$(CC) -shared -o $(RAYLIB_RELEASE_PATH)/lib$(RAYLIB_LIB_NAME).so.$(RAYLIB_VERSION) $(OBJS) $(LDFLAGS) $(LDLIBS)
-				@echo "raylib shared library generated (lib$(RAYLIB_LIB_NAME).so.$(RAYLIB_VERSION)) in $(RAYLIB_RELEASE_PATH)!"
-				cd $(RAYLIB_RELEASE_PATH) && ln -fsv lib$(RAYLIB_LIB_NAME).so.$(RAYLIB_VERSION) lib$(RAYLIB_LIB_NAME).so.$(RAYLIB_API_VERSION)
-				cd $(RAYLIB_RELEASE_PATH) && ln -fsv lib$(RAYLIB_LIB_NAME).so.$(RAYLIB_API_VERSION) lib$(RAYLIB_LIB_NAME).so
+	@			$(CC) -shared -o $(RAYLIB_RELEASE_PATH)/lib$(RAYLIB_LIB_NAME).so.$(RAYLIB_VERSION) $(OBJS) $(LDFLAGS) $(LDLIBS)
+	@			echo "raylib shared library generated (lib$(RAYLIB_LIB_NAME).so.$(RAYLIB_VERSION)) in $(RAYLIB_RELEASE_PATH)!"
+	@			cd $(RAYLIB_RELEASE_PATH) && ln -fsv lib$(RAYLIB_LIB_NAME).so.$(RAYLIB_VERSION) lib$(RAYLIB_LIB_NAME).so.$(RAYLIB_API_VERSION)
+	@			cd $(RAYLIB_RELEASE_PATH) && ln -fsv lib$(RAYLIB_LIB_NAME).so.$(RAYLIB_API_VERSION) lib$(RAYLIB_LIB_NAME).so
         endif
         ifeq ($(PLATFORM),PLATFORM_DRM)
                 # Compile raylib shared library version $(RAYLIB_VERSION).
                 # WARNING: you should type "make clean" before doing this target
-				$(CC) -shared -o $(RAYLIB_RELEASE_PATH)/lib$(RAYLIB_LIB_NAME).so.$(RAYLIB_VERSION) $(OBJS) $(LDFLAGS) $(LDLIBS)
-				@echo "raylib shared library generated (lib$(RAYLIB_LIB_NAME).so.$(RAYLIB_VERSION)) in $(RAYLIB_RELEASE_PATH)!"
-				cd $(RAYLIB_RELEASE_PATH) && ln -fsv lib$(RAYLIB_LIB_NAME).so.$(RAYLIB_VERSION) lib$(RAYLIB_LIB_NAME).so.$(RAYLIB_API_VERSION)
-				cd $(RAYLIB_RELEASE_PATH) && ln -fsv lib$(RAYLIB_LIB_NAME).so.$(RAYLIB_API_VERSION) lib$(RAYLIB_LIB_NAME).so
+	@			$(CC) -shared -o $(RAYLIB_RELEASE_PATH)/lib$(RAYLIB_LIB_NAME).so.$(RAYLIB_VERSION) $(OBJS) $(LDFLAGS) $(LDLIBS)
+	@			echo "raylib shared library generated (lib$(RAYLIB_LIB_NAME).so.$(RAYLIB_VERSION)) in $(RAYLIB_RELEASE_PATH)!"
+	@			cd $(RAYLIB_RELEASE_PATH) && ln -fsv lib$(RAYLIB_LIB_NAME).so.$(RAYLIB_VERSION) lib$(RAYLIB_LIB_NAME).so.$(RAYLIB_API_VERSION)
+	@			cd $(RAYLIB_RELEASE_PATH) && ln -fsv lib$(RAYLIB_LIB_NAME).so.$(RAYLIB_API_VERSION) lib$(RAYLIB_LIB_NAME).so
         endif
         ifeq ($(PLATFORM),PLATFORM_ANDROID)
-			$(CC) -shared -o $(RAYLIB_RELEASE_PATH)/lib$(RAYLIB_LIB_NAME).$(RAYLIB_VERSION).so $(OBJS) $(LDFLAGS) $(LDLIBS)
-			@echo "raylib shared library generated (lib$(RAYLIB_LIB_NAME).$(RAYLIB_VERSION).so)!"
+	@		$(CC) -shared -o $(RAYLIB_RELEASE_PATH)/lib$(RAYLIB_LIB_NAME).$(RAYLIB_VERSION).so $(OBJS) $(LDFLAGS) $(LDLIBS)
+	@		echo "raylib shared library generated (lib$(RAYLIB_LIB_NAME).$(RAYLIB_VERSION).so)!"
             # WARNING: symbolic links creation on Windows should be done using mklink command, no ln available
             ifeq ($(HOST_PLATFORM_OS),LINUX)
-				cd $(RAYLIB_RELEASE_PATH) && ln -fs lib$(RAYLIB_LIB_NAME).$(RAYLIB_VERSION).so lib$(RAYLIB_LIB_NAME).$(RAYLIB_API_VERSION).so
-				cd $(RAYLIB_RELEASE_PATH) && ln -fs lib$(RAYLIB_LIB_NAME).$(RAYLIB_VERSION).so lib$(RAYLIB_LIB_NAME).so
+	@			cd $(RAYLIB_RELEASE_PATH) && ln -fs lib$(RAYLIB_LIB_NAME).$(RAYLIB_VERSION).so lib$(RAYLIB_LIB_NAME).$(RAYLIB_API_VERSION).so
+	@			cd $(RAYLIB_RELEASE_PATH) && ln -fs lib$(RAYLIB_LIB_NAME).$(RAYLIB_VERSION).so lib$(RAYLIB_LIB_NAME).so
             endif
         endif
     else
         # Compile raylib static library version $(RAYLIB_VERSION)
         # WARNING: You should type "make clean" before doing this target.
-		$(AR) rcs $(RAYLIB_RELEASE_PATH)/lib$(RAYLIB_LIB_NAME).a $(OBJS)
-		@echo "raylib static library generated (lib$(RAYLIB_LIB_NAME).a) in $(RAYLIB_RELEASE_PATH)!"
+	@	$(AR) rcs $(RAYLIB_RELEASE_PATH)/lib$(RAYLIB_LIB_NAME).a $(OBJS)
+	@	echo "raylib static library generated (lib$(RAYLIB_LIB_NAME).a) in $(RAYLIB_RELEASE_PATH)!"
     endif
 endif
 
@@ -647,40 +647,40 @@ endif
 
 # Compile core module
 rcore.o : rcore.c raylib.h rlgl.h utils.h raymath.h rcamera.h rgestures.h
-	$(CC) -c $< $(CFLAGS) $(INCLUDE_PATHS)
+	@$(CC) -c $< $(CFLAGS) $(INCLUDE_PATHS)
 
 # Compile rglfw module
 rglfw.o : rglfw.c
-	$(CC) $(GLFW_OSX) -c $< $(CFLAGS) $(INCLUDE_PATHS)
+	@$(CC) $(GLFW_OSX) -c $< $(CFLAGS) $(INCLUDE_PATHS)
 
 # Compile shapes module
 rshapes.o : rshapes.c raylib.h rlgl.h
-	$(CC) -c $< $(CFLAGS) $(INCLUDE_PATHS)
+	@$(CC) -c $< $(CFLAGS) $(INCLUDE_PATHS)
 
 # Compile textures module
 rtextures.o : rtextures.c raylib.h rlgl.h utils.h
-	$(CC) -c $< $(CFLAGS) $(INCLUDE_PATHS)
+	@$(CC) -c $< $(CFLAGS) $(INCLUDE_PATHS)
 
 # Compile text module
 rtext.o : rtext.c raylib.h utils.h
-	$(CC) -c $< $(CFLAGS) $(INCLUDE_PATHS)
+	@$(CC) -c $< $(CFLAGS) $(INCLUDE_PATHS)
 
 # Compile utils module
 utils.o : utils.c utils.h
-	$(CC) -c $< $(CFLAGS) $(INCLUDE_PATHS)
+	@$(CC) -c $< $(CFLAGS) $(INCLUDE_PATHS)
 
 # Compile models module
 rmodels.o : rmodels.c raylib.h rlgl.h raymath.h
-	$(CC) -c $< $(CFLAGS) $(INCLUDE_PATHS)
+	@$(CC) -c $< $(CFLAGS) $(INCLUDE_PATHS)
 
 # Compile audio module
 raudio.o : raudio.c raylib.h
-	$(CC) -c $< $(CFLAGS) $(INCLUDE_PATHS)
+	@$(CC) -c $< $(CFLAGS) $(INCLUDE_PATHS)
 
 # Compile raygui module
 # NOTE: raygui header should be distributed with raylib.h
 raygui.o : raygui.c
-	$(CC) -c $< $(CFLAGS) $(INCLUDE_PATHS)
+	@$(CC) -c $< $(CFLAGS) $(INCLUDE_PATHS)
 raygui.c:
 ifeq ($(PLATFORM_SHELL), cmd)
 	@echo #define RAYGUI_IMPLEMENTATION > raygui.c
@@ -693,7 +693,7 @@ endif
 # Compile physac module
 # NOTE: physac header should be distributed with raylib.h
 physac.o : physac.c
-	$(CC) -c $< $(CFLAGS) $(INCLUDE_PATHS)
+	@$(CC) -c $< $(CFLAGS) $(INCLUDE_PATHS)
 physac.c:
 ifeq ($(PLATFORM_SHELL), cmd)
 	@echo #define PHYSAC_IMPLEMENTATION > physac.c
@@ -704,7 +704,7 @@ else
 endif
 # Compile android_native_app_glue module
 android_native_app_glue.o : $(NATIVE_APP_GLUE)/android_native_app_glue.c
-	$(CC) -c $< $(CFLAGS) $(INCLUDE_PATHS)
+	@$(CC) -c $< $(CFLAGS) $(INCLUDE_PATHS)
 
 
 # Install generated and needed files to desired directories.
@@ -730,27 +730,27 @@ ifeq ($(ROOT),root)
         # Attention! You are root, writing files to $(RAYLIB_INSTALL_PATH)
         # and $(RAYLIB_H_INSTALL_PATH). Consult this Makefile for more information.
         # Prepare the environment as needed.
-		mkdir --parents --verbose $(RAYLIB_INSTALL_PATH)
-		mkdir --parents --verbose $(RAYLIB_H_INSTALL_PATH)
+	@	mkdir --parents --verbose $(RAYLIB_INSTALL_PATH)
+	@	mkdir --parents --verbose $(RAYLIB_H_INSTALL_PATH)
         ifeq ($(RAYLIB_LIBTYPE),SHARED)
             # Installing raylib to $(RAYLIB_INSTALL_PATH).
-			cp --update --verbose $(RAYLIB_RELEASE_PATH)/libraylib.so.$(RAYLIB_VERSION) $(RAYLIB_INSTALL_PATH)/lib$(RAYLIB_LIB_NAME).so.$(RAYLIB_VERSION)
-			cd $(RAYLIB_INSTALL_PATH); ln -fsv lib$(RAYLIB_LIB_NAME).so.$(RAYLIB_VERSION) lib$(RAYLIB_LIB_NAME).so.$(RAYLIB_API_VERSION)
-			cd $(RAYLIB_INSTALL_PATH); ln -fsv lib$(RAYLIB_LIB_NAME).so.$(RAYLIB_API_VERSION) lib$(RAYLIB_LIB_NAME).so
+	@		cp --update --verbose $(RAYLIB_RELEASE_PATH)/libraylib.so.$(RAYLIB_VERSION) $(RAYLIB_INSTALL_PATH)/lib$(RAYLIB_LIB_NAME).so.$(RAYLIB_VERSION)
+	@		cd $(RAYLIB_INSTALL_PATH); ln -fsv lib$(RAYLIB_LIB_NAME).so.$(RAYLIB_VERSION) lib$(RAYLIB_LIB_NAME).so.$(RAYLIB_API_VERSION)
+	@		cd $(RAYLIB_INSTALL_PATH); ln -fsv lib$(RAYLIB_LIB_NAME).so.$(RAYLIB_API_VERSION) lib$(RAYLIB_LIB_NAME).so
             # Uncomment to update the runtime linker cache with RAYLIB_INSTALL_PATH.
             # Not necessary if later embedding RPATH in your executable. See examples/Makefile.
-			ldconfig $(RAYLIB_INSTALL_PATH)
+	@		ldconfig $(RAYLIB_INSTALL_PATH)
         else
             # Installing raylib to $(RAYLIB_INSTALL_PATH).
-			cp --update --verbose $(RAYLIB_RELEASE_PATH)/lib$(RAYLIB_LIB_NAME).a $(RAYLIB_INSTALL_PATH)/lib$(RAYLIB_LIB_NAME).a
+	@		cp --update --verbose $(RAYLIB_RELEASE_PATH)/lib$(RAYLIB_LIB_NAME).a $(RAYLIB_INSTALL_PATH)/lib$(RAYLIB_LIB_NAME).a
         endif
         # Copying raylib development files to $(RAYLIB_H_INSTALL_PATH).
-		cp --update raylib.h $(RAYLIB_H_INSTALL_PATH)/raylib.h
-		cp --update raymath.h $(RAYLIB_H_INSTALL_PATH)/raymath.h
-		cp --update rlgl.h $(RAYLIB_H_INSTALL_PATH)/rlgl.h
-		@echo "raylib development files installed/updated!"
+	@	cp --update raylib.h $(RAYLIB_H_INSTALL_PATH)/raylib.h
+	@	cp --update raymath.h $(RAYLIB_H_INSTALL_PATH)/raymath.h
+	@	cp --update rlgl.h $(RAYLIB_H_INSTALL_PATH)/rlgl.h
+	@	echo "raylib development files installed/updated!"
     else
-		@echo "This function currently works on GNU/Linux systems. Add yours today (^;"
+	@	echo "This function currently works on GNU/Linux systems. Add yours today (^;"
     endif
 else
 	@echo "Error: Root permissions needed for installation. Try sudo make install"
@@ -764,20 +764,20 @@ ifeq ($(ROOT),root)
     # and $(RAYLIB_H_INSTALL_PATH). Please confirm each item.
     ifeq ($(PLATFORM_OS),LINUX)
         ifeq ($(RAYLIB_LIBTYPE),SHARED)
-		rm --force --interactive --verbose $(RAYLIB_INSTALL_PATH)/libraylib.so
-		rm --force --interactive --verbose $(RAYLIB_INSTALL_PATH)/libraylib.so.$(RAYLIB_API_VERSION)
-		rm --force --interactive --verbose $(RAYLIB_INSTALL_PATH)/libraylib.so.$(RAYLIB_VERSION)
+	@	rm --force --interactive --verbose $(RAYLIB_INSTALL_PATH)/libraylib.so
+	@	rm --force --interactive --verbose $(RAYLIB_INSTALL_PATH)/libraylib.so.$(RAYLIB_API_VERSION)
+	@	rm --force --interactive --verbose $(RAYLIB_INSTALL_PATH)/libraylib.so.$(RAYLIB_VERSION)
         # Uncomment to clean up the runtime linker cache. See install target.
-		ldconfig
+	@	ldconfig
         else
-		rm --force --interactive --verbose $(RAYLIB_INSTALL_PATH)/libraylib.a
+	@	rm --force --interactive --verbose $(RAYLIB_INSTALL_PATH)/libraylib.a
         endif
-		rm --force --interactive --verbose $(RAYLIB_H_INSTALL_PATH)/raylib.h
-		rm --force --interactive --verbose $(RAYLIB_H_INSTALL_PATH)/raymath.h
-		rm --force --interactive --verbose $(RAYLIB_H_INSTALL_PATH)/rlgl.h
-		@echo "raylib development files removed!"
+	@	rm --force --interactive --verbose $(RAYLIB_H_INSTALL_PATH)/raylib.h
+	@	rm --force --interactive --verbose $(RAYLIB_H_INSTALL_PATH)/raymath.h
+	@	rm --force --interactive --verbose $(RAYLIB_H_INSTALL_PATH)/rlgl.h
+	@	echo "raylib development files removed!"
         else
-		@echo "This function currently works on GNU/Linux systems. Add yours today (^;"
+	@	echo "This function currently works on GNU/Linux systems. Add yours today (^;"
     endif
 else
 	@echo "Error: Root permissions needed for uninstallation. Try sudo make uninstall"
@@ -787,19 +787,20 @@ endif
 
 # Clean everything
 clean:	clean_shell_$(PLATFORM_SHELL)
-	@echo "removed all generated files!"
+	@echo "Remove dependencies in raylib"
+	@echo "Remove ${RAYLIB_LIB_NAME}.a"
 
 clean_shell_sh:
-	rm -fv *.o $(RAYLIB_RELEASE_PATH)/lib$(RAYLIB_LIB_NAME).a $(RAYLIB_RELEASE_PATH)/lib$(RAYLIB_LIB_NAME).bc $(RAYLIB_RELEASE_PATH)/lib$(RAYLIB_LIB_NAME).so*
+	@rm -f *.o $(RAYLIB_RELEASE_PATH)/lib$(RAYLIB_LIB_NAME).a $(RAYLIB_RELEASE_PATH)/lib$(RAYLIB_LIB_NAME).bc $(RAYLIB_RELEASE_PATH)/lib$(RAYLIB_LIB_NAME).so*
 ifeq ($(PLATFORM),PLATFORM_ANDROID)
-	rm -fv $(NATIVE_APP_GLUE)/android_native_app_glue.o
+	@rm -f $(NATIVE_APP_GLUE)/android_native_app_glue.o
 endif
 
 # Set specific target variable
 clean_shell_cmd: SHELL=cmd
 clean_shell_cmd:
-	del *.o /s
-	cd $(RAYLIB_RELEASE_PATH) & \
+	@del *.o /s
+	@cd $(RAYLIB_RELEASE_PATH) & \
 	del lib$(RAYLIB_LIB_NAME).a /s & \
 	del lib$(RAYLIB_LIB_NAME)dll.a /s & \
 	del $(RAYLIB_LIB_NAME).dll /s

@@ -59,6 +59,7 @@ ${OBJS_DIR}:
 
 ${NAME}: ${OBJS}
 	@printf "\bdone\n"
+	@make -C ${RAYLIB_PATH}/src
 	@${CC} ${CXXFLAGS} ${LDFLAGS} ${LDLIBS} -g -o ${NAME} ${OBJS} ${LIBRAYLIB} -I ${INCS_DIR}
 	@echo "Build ${NAME}: done"
 
@@ -78,6 +79,7 @@ ${OBJS_DIR}/%.o: ${SRCS_DIR}/%.cpp | ${OBJS_DIR}
 clean:
 	@echo "Remove dependencies in ${NAME}"
 	@rm -rf ${OBJS_DIR}
+	@make -C ${RAYLIB_PATH}/src clean
 
 
 fclean: clean
