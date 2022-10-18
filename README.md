@@ -6,6 +6,9 @@
 #### 대충 5-staged 파이프라인의 장점, 처리 과정에 대한 개념적 설명
 <br/><br/><br/>
 
+## Requirement
+### Raylib has to be pre-installed before running program
+
 ## Install
 	$ make
 <br/><br/><br/><br/>
@@ -23,3 +26,6 @@
 
 ## Result
 #### 결과 이미지 스크린샷, 동영상
+
+## Contact
+### younganswer@kookmin.ac.kr
