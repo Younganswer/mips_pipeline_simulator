@@ -7,7 +7,8 @@
 <br/><br/><br/>
 
 ## Requirement
-### Raylib has to be pre-installed before running program
+#### Raylib has to be pre-installed before running program
+<br/><br/><br/>
 
 ## Install
 	$ make
