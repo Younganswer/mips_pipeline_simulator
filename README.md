@@ -26,6 +26,7 @@
 
 ## Result
 #### 결과 이미지 스크린샷, 동영상
+<br/><br/><br/>
 
 ## Contact
 ### younganswer@kookmin.ac.kr
