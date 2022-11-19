@@ -50,7 +50,7 @@ public:
 
 class Info {
 private:
-	bool	read_instructions(void);
+	
 
 public:
 	// GUI
@@ -61,9 +61,12 @@ public:
 	// Back
 	vector<Instruction>	pipeline;
 	vector<Instruction>	all_instructions;
-
+	
 	Info(void);
 	~Info(void);
+
+	// Setter
+	bool	read_file(FILE *textSegment, FILE *dataSegment);
 };
 
 #endif

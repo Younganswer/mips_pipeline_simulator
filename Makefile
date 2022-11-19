@@ -8,6 +8,8 @@ RAYLIB_PATH		= ./raylib
 INCLUDE_PATH	= -I. -I$(RAYLIB_PATH)/src -I$(RAYLIB_PATH)/src/external -I$(RAYLIB_PATH)/src/extras
 LDLIBS			= -lraylib -framework OpenGL -framework Cocoa -framework IOKit -framework CoreAudio -framework CoreVideo
 
+ASSEMBLER_PATH	= ./assembler
+
 CC			= clang++
 CXXFLAGS	= -Wall -Wextra -Werror -O2 -std=c++17
 LDFLAGS		= -fsanitize=address -g3 -L. -L$(RAYLIB_PATH)/src
@@ -40,11 +42,12 @@ DEPS = ${OBJS:.o=.d}
 
 
 all: ${NAME}
+	
 
-
-INPUT_FILE = test.txt
+INPUT_FILE = test.s
 run: ${NAME}
-	./${NAME} < ${INPUT_FILE}
+	@${ASSEMBLER_PATH}/spim/spim -file ${INPUT_FILE} -dump
+	@./${NAME} text.asm data.asm
 
 
 ${OBJS_DIR}:
@@ -60,6 +63,7 @@ ${OBJS_DIR}:
 ${NAME}: ${OBJS}
 	@printf "\bdone\n"
 	@make -C ${RAYLIB_PATH}/src
+	@make -C ${ASSEMBLER_PATH}/spim
 	@${CC} ${CXXFLAGS} ${LDFLAGS} ${LDLIBS} -g -o ${NAME} ${OBJS} ${LIBRAYLIB} -I ${INCS_DIR}
 	@echo "Build ${NAME}: done"
 
@@ -79,12 +83,13 @@ ${OBJS_DIR}/%.o: ${SRCS_DIR}/%.cpp | ${OBJS_DIR}
 clean:
 	@echo "Remove dependencies in ${NAME}"
 	@rm -rf ${OBJS_DIR}
-	@make -C ${RAYLIB_PATH}/src clean
 
 
 fclean: clean
 	@echo "Remove ${NAME}"
-	@${RM} ${NAME}
+	@make -C ${RAYLIB_PATH}/src clean
+	@make -C ${ASSEMBLER_PATH}/spim clean
+	@${RM} ${NAME} *.asm
 	
 
 re:
