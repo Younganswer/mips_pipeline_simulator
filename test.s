@@ -31,15 +31,20 @@
 # OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 #
 
-        .data
-msg:   .asciiz "Hello World"
-	.extern foobar 4
+		.data 0x10010000
+var1:	.word 0x12345678
+var2:	.word 0x9abcdef0
 
-        .text
-        .globl main
-main:   li $v0, 4       # syscall 4 (print_str)
-        la $a0, msg     # argument: string
-        syscall         # print the string
-        lw $t1, foobar
-        
-        jr $ra          # retrun to caller
+msg:	.asciiz "Hello World\n"
+		.extern foobar 4
+
+		.text 0x00400024
+		.globl main
+main:   li $v0, 4	# syscall 4 (print_str)
+		la $a0, msg	# argument: string
+		syscall		# print the string
+		lw $t1, foobar
+		li $t2, 0x10010000
+		sw $t1, 0($t2)
+
+		jr $ra  # retrun to caller
