@@ -1,4 +1,5 @@
 #include "../../incs/camera.hpp"
+#include "../../incs/info.hpp"
 
 bool	init_camera(Camera2D &camera) {
 	camera.target = (Vector2){ 0.0f, 0.0f };
