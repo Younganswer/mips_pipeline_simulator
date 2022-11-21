@@ -1,10 +1,32 @@
 #ifndef BUTTON_HPP
 # define BUTTON_HPP
 
-# include "info.hpp"
 # include "../raylib/src/raylib.h"
 
-bool	init_button(Button &button);
-bool	handling_button(Info &info);
+typedef enum _ButtonState {
+	NORMAL		= 0,
+	MOUSE_HOVER	= 1,
+	PRESSED		= 2
+}	ButtonState;
+
+class Button {
+	private:
+		Texture2D	_button;
+		Rectangle	_btnBounds;
+		Rectangle	_sourceRec;
+		ButtonState	_state;
+		bool		_btnAction;
+
+	public:
+		Button(void);
+		~Button(void);
+
+		// Getters
+		ButtonState	getButtonState(void);
+
+		// Setters
+		bool	setButtonState(void);
+		bool	setButtonPos(void);
+};
 
 #endif
