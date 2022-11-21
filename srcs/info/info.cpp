@@ -6,7 +6,7 @@
 Instruction::Instruction(void) {
 	status			= IF;
 	program_counter	= 0;
-	binary_code		= 0;
+	hex_value		= 0;
 	instruction		= string();
 	return;
 }
@@ -51,7 +51,7 @@ bool	Info::read_file(FILE *textSegment, FILE *dataSegment) {
 		}
 		hex[10] = '\0';
 		instruction.instruction += string("[") + string(hex) + string("]");
-		instruction.binary_code = (unsigned int)strtol(hex, NULL, 16);
+		instruction.hex_value = (unsigned int)strtol(hex, NULL, 16);
 		pipeline.push_back(instruction);
 		all_instructions.push_back(instruction);
 	}

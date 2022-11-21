@@ -38,35 +38,33 @@ typedef struct _Button {
 }	Button;
 
 class Instruction {
-public:
-	Status			status;
-	unsigned int	program_counter;
-	unsigned int	binary_code;
-	string			instruction;
-
-	Instruction(void);
-	~Instruction(void);
+	public:
+		Status			status;
+		unsigned int	program_counter;
+		unsigned int	hex_value;
+		string			instruction;
+	
+		Instruction(void);
+		~Instruction(void);
 };
 
 class Info {
-private:
-	
+	private:
 
-public:
-	// GUI
-	Camera2D	camera;
-	Button		button;
-	Vector2		mouse;
 
-	// Back
-	vector<Instruction>	pipeline;
-	vector<Instruction>	all_instructions;
-	
-	Info(void);
-	~Info(void);
+	public:
+		// GUI
+		Camera2D	camera;
+		Button		button;
+		Vector2		mouse;
 
-	// Setter
-	bool	read_file(FILE *textSegment, FILE *dataSegment);
+		// Background
+		vector<Instruction>	all_instructions;
+
+		Info(void);
+		~Info(void);
+
+		bool	read_file(FILE *textSegment, FILE *dataSegment);
 };
 
 #endif
