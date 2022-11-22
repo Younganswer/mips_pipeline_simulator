@@ -39,7 +39,7 @@
 
 ### Make support following commands
 * `make (all)` : compile program
-* `make run` : run program (include make all)
+* `make run` : run program (includes make all)
 * `make clean` : remove all object files
 * `make fclean` : remove all object files and executable file
 * `make re` : recompile program
