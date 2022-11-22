@@ -26,6 +26,7 @@ SRCS =	main.cpp \
 		button/button.cpp \
 		camera/camera.cpp \
 		info/info.cpp \
+		instruction/instruction.cpp \
 		shape/draw_arrow.cpp \
 		shape/draw_dot.cpp \
 		shape/draw_mux.cpp \
@@ -56,6 +57,7 @@ ${OBJS_DIR}:
 	@mkdir -p objs/button
 	@mkdir -p objs/camera
 	@mkdir -p objs/info
+	@mkdir -p objs/instruction
 	@mkdir -p objs/shape
 	@mkdir -p objs/window
 

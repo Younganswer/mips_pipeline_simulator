@@ -2,8 +2,11 @@
 # define INFO_HPP
 
 # include "../raylib/src/raylib.h"
-# include "camera.hpp"
 # include "button.hpp"
+# include "camera.hpp"
+# include "instruction.hpp"
+
+# include <vector>
 
 using namespace std;
 
@@ -13,12 +16,14 @@ typedef enum _ScreenSize {
 }	ScreenSize;
 
 class Info {
-	private:
-		Camera2D	camera;
-		Button		button;
-		Mouse		mouse;
-		vector<Instruction>	pipeline;
-		vector<Instruction>	all_instructions;
+	public:
+		Camera2D			camera;
+		Button				button;
+		vector<Instruction>	instructions;
+
+		Info(void);
+		Info(const char *textSegment, const char *dataSegment);
+		~Info(void);
 };
 
 #endif

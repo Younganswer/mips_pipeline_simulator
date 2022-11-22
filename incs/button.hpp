@@ -11,22 +11,26 @@ typedef enum _ButtonState {
 
 class Button {
 	private:
-		Texture2D	_button;
+		Texture2D	_texture;
 		Rectangle	_btnBounds;
 		Rectangle	_sourceRec;
 		ButtonState	_state;
-		bool		_btnAction;
+		bool		_action;
+
+		// Setters
+		bool	setState(void);
+		bool	setPos(void);
 
 	public:
 		Button(void);
 		~Button(void);
 
 		// Getters
-		ButtonState	getButtonState(void);
-
-		// Setters
-		bool	setButtonState(void);
-		bool	setButtonPos(void);
+		Texture2D	getTexture(void);
+		Rectangle	getBtnBounds(void);
+		Rectangle	getSourceRec(void);
+		ButtonState	getState(void);
+		bool		action(void);
 };
 
 #endif
