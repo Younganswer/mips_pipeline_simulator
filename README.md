@@ -34,6 +34,14 @@
 
 ### For custom File
 	$ make run [INPUT_FILE="your_mips_file.s"]
+<br/>
+
+### Make support following commands
+* `make (all)` : compile program
+* `make run` : run program (include make all)
+* `make clean` : remove all object files
+* `make fclean` : remove all object files and executable file
+* `make re` : recompile program
 <br/><br/><br/>
 
 ## Result
