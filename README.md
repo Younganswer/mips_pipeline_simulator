@@ -6,20 +6,32 @@
 #### 대충 5-staged 파이프라인의 장점, 처리 과정에 대한 개념적 설명
 <br/><br/><br/>
 
+## Requirement
+#### Raylib has to be pre-installed before running program
+
+### Brew
+	$ brew install raylib
+<br/><br/><br/>
+
 ## Install
 	$ make
 <br/><br/><br/><br/>
 
 ## Usage
 #### Default
-	$ make run
+	$ make run 
 * Rule "run" execute following command
-	* ./assembler "input.s" | ./mips_pipeline_simulator
+	* ./mips_pipeline_simulator test.asm data.asm
+* Recomand not to use in manual
 <br/>
 
 #### For custom File
-	$ make run INPUT_FILE="custom.s"
+	$ make run [INPUT_FILE="your_mips_file.s"]
 <br/><br/><br/>
 
 ## Result
 #### 결과 이미지 스크린샷, 동영상
+<br/><br/><br/>
+
+## Contact
+### younganswer@kookmin.ac.kr
