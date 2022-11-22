@@ -6,10 +6,15 @@
 #### 대충 5-staged 파이프라인의 장점, 처리 과정에 대한 개념적 설명
 <br/><br/><br/>
 
+## Platform
+* Code Type: &nbsp;ARM64
+* Platform: &nbsp;&nbsp;macOS 12.6 (21G115)
+<br/><br/><br/><br/>
+
 ## Requirement
 #### Raylib has to be pre-installed before running program
 
-### Brew
+### Brew (in MacOS)
 	$ brew install raylib
 <br/><br/><br/>
 
