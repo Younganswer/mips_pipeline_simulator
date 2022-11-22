@@ -8,9 +8,6 @@ Info::Info(const char *textSegment, const char *dataSegment) {
 	// Initialize camera
 	init_camera(this->camera);
 
-	// Initialize button
-	button = Button();
-
 	// Initialize instructions
 	ifstream	asmFile(textSegment);
 	string		asmLine;
