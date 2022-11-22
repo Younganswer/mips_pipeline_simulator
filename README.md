@@ -27,7 +27,7 @@
 	$ make run [INPUT_FILE=test.s]
 * Default input file is "test.s"
 * Rule "run" execute following command
-	* ./assembler/spim/spim -file test.s -dump; ./mips_pipeline_simulator test.asm data.asm
+	* `./assembler/spim/spim -file test.s -dump` `./mips_pipeline_simulator test.asm data.asm`
 	* Using in manual is not recommended
 <br/>
 
