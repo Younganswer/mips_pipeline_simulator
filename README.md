@@ -22,7 +22,7 @@
 	$ make run 
 * Rule "run" execute following command
 	* ./mips_pipeline_simulator test.asm data.asm
-* Recomand not to use in manual
+	* Using in manual is not recommended
 <br/>
 
 #### For custom File
