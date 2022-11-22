@@ -13,6 +13,7 @@
 
 ## Requirement
 #### Raylib has to be pre-installed before running program
+<br/>
 
 ### Brew (in MacOS)
 	$ brew install raylib
@@ -23,16 +24,25 @@
 <br/><br/><br/><br/>
 
 ## Usage
-#### Default
+### Default
 	$ make run [INPUT_FILE=test.s]
 * Default input file is "test.s"
-* Rule "run" execute following command
-	* ./assembler/spim/spim -file test.s -dump; ./mips_pipeline_simulator test.asm data.asm
-	* Using in manual is not recommended
+* Rule "run" execute following two commands
+	* `./assembler/spim/spim -file test.s -dump`
+	* `./mips_pipeline_simulator text.asm data.asm`
+* Using in manual is not recommended
 <br/>
 
-#### For custom File
+### For custom File
 	$ make run [INPUT_FILE="your_mips_file.s"]
+<br/>
+
+### Make support following commands
+* `make (all)` : compile program
+* `make run` : run program (includes make all)
+* `make clean` : remove all object files
+* `make fclean` : remove all object files and executable file
+* `make re` : recompile program
 <br/><br/><br/>
 
 ## Result
