@@ -14,7 +14,7 @@
 ## Requirement
 #### Raylib has to be pre-installed before running program
 
-### Brew (in MacOS)
+### Brew (in macOS)
 	$ brew install raylib
 <br/><br/><br/>
 
