@@ -23,16 +23,16 @@
 <br/><br/><br/><br/>
 
 ## Usage
-#### Default
+### Default
 	$ make run [INPUT_FILE=test.s]
 * Default input file is "test.s"
 * Rule "run" execute following two commands
 	* `./assembler/spim/spim -file test.s -dump`
-	* `./mips_pipeline_simulator test.asm data.asm`
+	* `./mips_pipeline_simulator text.asm data.asm`
 * Using in manual is not recommended
 <br/>
 
-#### For custom File
+### For custom File
 	$ make run [INPUT_FILE="your_mips_file.s"]
 <br/><br/><br/>
 
