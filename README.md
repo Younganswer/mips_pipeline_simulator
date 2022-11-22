@@ -19,13 +19,14 @@
 
 ## Usage
 #### Default
-	$ make run
+	$ make run 
 * Rule "run" execute following command
-	* ./assembler "input.s" | ./mips_pipeline_simulator
+	* ./mips_pipeline_simulator test.asm data.asm
+* Recomand not to use in manual
 <br/>
 
 #### For custom File
-	$ make run INPUT_FILE="custom.s"
+	$ make run [INPUT_FILE="your_mips_file.s"]
 <br/><br/><br/>
 
 ## Result
