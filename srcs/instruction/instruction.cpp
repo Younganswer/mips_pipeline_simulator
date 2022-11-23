@@ -5,8 +5,8 @@ Instruction::Instruction(void) {}
 
 Instruction::Instruction(const string &_asm) {
 	this->_asm = string(_asm.substr(0, 23));
-	_pc = stoul(this->_asm.substr(1, 10), nullptr, 16);
-	_id = stoul(this->_asm.substr(13, 10), nullptr, 16);
+	_pc = stoul(this->_asm.substr(1, 10), nullptr, 16); // hex string to unsigned long
+	_id = stoul(this->_asm.substr(13, 10), nullptr, 16); // hex string to unsigned long
 	_rs = (_id >> 21) & 0x1F;
 	_rt = (_id >> 16) & 0x1F;
 	_rd = (_id >> 11) & 0x1F;

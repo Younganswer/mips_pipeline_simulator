@@ -11,8 +11,8 @@ Info::Info(const char *textSegment, const char *dataSegment) {
 	// Initialize instructions
 	ifstream	asmFile(textSegment);
 	string		asmLine;
-	getline(asmFile, asmLine);
-	getline(asmFile, asmLine);
+	getline(asmFile, asmLine); // Skip first line
+	getline(asmFile, asmLine); // Skip second line
 	while (getline(asmFile, asmLine)) {
 		instructions.push_back(Instruction(asmLine));
 	}
