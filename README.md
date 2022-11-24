@@ -50,7 +50,7 @@
 <br/><br/><br/>
 
 ## Usage
-### Interaction
+### Keyboard Interaction
 | Keyboard                    | Action                         |
 | --------------------------- | ------------------------------ |
 | `←`                         | Move camera to left            |
@@ -63,6 +63,7 @@
 
 <br/>
 
+### Mouse Interaction
 | Mouse                       | Action                         |
 | --------------------------- | ------------------------------ |
 | `Click "next_cycle" button` | Execute next cycle of pipeline |
