@@ -51,7 +51,7 @@
 
 ## Usage
 ### Keyboard Interaction
-| Keyboard                    | Action                         |
+| Key                         | Action                         |
 | --------------------------- | ------------------------------ |
 | `←`                         | Move camera to left            |
 | `→`                         | Move camera to right           |
