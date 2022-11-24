@@ -53,21 +53,21 @@
 <br/>
 
 ### Interaction
-| keyboard                    | action                         |
+| Keyboard                    | Action                         |
 | --------------------------- | ------------------------------ |
-| `←`                         | move camera to left            |
-| `→`                         | move camera to right           |
-| `↑`                         | move camera to up              |
-| `↓`                         | move camera to down            |
-| `i`                         | zoom in                        |
-| `o`                         | zoom out                       |
-| `ESC ⎋`                     | exit program                   |
+| `←`                         | Move camera to left            |
+| `→`                         | Move camera to right           |
+| `↑`                         | Move camera to up              |
+| `↓`                         | Move camera to down            |
+| `i`                         | Zoom in                        |
+| `o`                         | Zoom out                       |
+| `ESC ⎋`                     | Exit program                   |
 
 <br/>
 
-| mouse                       | action                         |
+| Mouse                       | Action                         |
 | --------------------------- | ------------------------------ |
-| `click "next_cycle" button` | Execute next cycle of pipeline |
+| `Click "next_cycle" button` | Execute next cycle of pipeline |
 
 <br/><br/><br/>
 
