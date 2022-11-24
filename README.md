@@ -53,15 +53,15 @@
 <br/>
 
 ### Interaction
-| keyboard | action               |
-| -------- | -------------------- |
-| `←`      | move camera to left  |
-| `→`      | move camera to right |
-| `↑`      | move camera to up    |
-| `↓`      | move camera to down  |
-| `i`      | zoom in              |
-| `o`      | zoom out             |
-| `ESC ⎋`  | exit program         |
+| keyboard                    | action                         |
+| --------------------------- | ------------------------------ |
+|           `←`               |      move camera to left       |
+|           `→`               |      move camera to right      |
+|           `↑`               |      move camera to up         |
+|           `↓`               |      move camera to down       |
+|           `i`               |      zoom in                   |
+|           `o`               |      zoom out                  |
+|           `ESC ⎋`           |      exit program              |
 
 <br/>
 
