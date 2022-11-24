@@ -50,11 +50,6 @@
 <br/><br/><br/>
 
 ## Usage
-* This program is made for showing how the "MIPS 5-staged pipeline" works.
-* Your assembly code will be converted to machine code and then executed.
-* You can see the process of execution in the data path of the window.
-<br/>
-
 ### Interaction
 | Keyboard                    | Action                         |
 | --------------------------- | ------------------------------ |
