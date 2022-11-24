@@ -61,8 +61,6 @@
 | `o`                         | Zoom out                       |
 | `ESC ⎋`                     | Exit program                   |
 
-<br/>
-
 ### Mouse Interaction
 | Mouse                       | Action                         |
 | --------------------------- | ------------------------------ |
