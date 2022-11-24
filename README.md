@@ -63,6 +63,7 @@
 | `o`      | zoom out             |
 | `ESC ⎋`  | exit program         |
 
+<br/>
 | mouse                       | action                         |
 | --------------------------- | ------------------------------ |
 | `click "next_cycle" button` | Execute next cycle of pipeline |
