@@ -46,6 +46,25 @@
 * `make re` : recompile program
 <br/><br/><br/>
 
+## How to use
+#### This program is made for showing how the "MIPS 5-staged pipeline" works.
+#### Your assembly code will be converted to machine code and then executed.
+#### You can see the process of execution in the data path of the window.
+### Interaction
+| keyboard | action               |
+| -------- | -------------------- |
+| `←`      | move camera to left  |
+| `→`      | move camera to right |
+| `↑`      | move camera to up    |
+| `↓`      | move camera to down  |
+| `i`      | zoom in              |
+| `o`      | zoom out             |
+| `ESC ⎋`  | exit program         |
+
+| mouse                       | action                         |
+| --------------------------- | ------------------------------ |
+| `click "next_cycle" button` | Execute next cycle of pipeline |
+
 ## Result
 #### 결과 이미지 스크린샷, 동영상
 <br/><br/><br/>
