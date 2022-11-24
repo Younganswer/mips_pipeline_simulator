@@ -15,7 +15,7 @@
 #### Raylib has to be pre-installed before running program
 <br/>
 
-### Brew (in MacOS)
+### Brew (in macOS)
 	$ brew install raylib
 <br/><br/><br/>
 
@@ -25,7 +25,7 @@
 
 ## Usage
 ### Default
-	$ make run [INPUT_FILE=test.s]
+	$ make run [INPUT_FILE="test.s"]
 * Default input file is "test.s"
 * Rule "run" execute following two commands
 	* `./assembler/spim/spim -file test.s -dump`
@@ -35,6 +35,7 @@
 
 ### For custom File
 	$ make run [INPUT_FILE="your_mips_file.s"]
+* Input file has to be ".s" file
 <br/>
 
 ### Make support following commands
