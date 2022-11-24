@@ -47,23 +47,28 @@
 <br/><br/><br/>
 
 ## How to use
-#### This program is made for showing how the "MIPS 5-staged pipeline" works.
-#### Your assembly code will be converted to machine code and then executed.
-#### You can see the process of execution in the data path of the window.
+* This program is made for showing how the "MIPS 5-staged pipeline" works.
+* Your assembly code will be converted to machine code and then executed.
+* You can see the process of execution in the data path of the window.
+<br/>
+
 ### Interaction
-| keyboard | action               |
-| -------- | -------------------- |
-| `←`      | move camera to left  |
-| `→`      | move camera to right |
-| `↑`      | move camera to up    |
-| `↓`      | move camera to down  |
-| `i`      | zoom in              |
-| `o`      | zoom out             |
-| `ESC ⎋`  | exit program         |
+| keyboard                    | action                         |
+| --------------------------- | ------------------------------ |
+| `←`                         | move camera to left            |
+| `→`                         | move camera to right           |
+| `↑`                         | move camera to up              |
+| `↓`                         | move camera to down            |
+| `i`                         | zoom in                        |
+| `o`                         | zoom out                       |
+| `ESC ⎋`                     | exit program                   |
+
+<br/>
 
 | mouse                       | action                         |
 | --------------------------- | ------------------------------ |
 | `click "next_cycle" button` | Execute next cycle of pipeline |
+
 <br/><br/><br/>
 
 ## Result
