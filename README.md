@@ -23,7 +23,7 @@
 	$ make
 <br/><br/><br/><br/>
 
-## Usage
+## How to run
 ### Default
 	$ make run [INPUT_FILE="test.s"]
 * Default &nbsp;*INPUT_FILE*&nbsp; is "test.s"
@@ -46,7 +46,7 @@
 * `make re` : recompile program
 <br/><br/><br/>
 
-## How to use
+## Usage
 * This program is made for showing how the "MIPS 5-staged pipeline" works.
 * Your assembly code will be converted to machine code and then executed.
 * You can see the process of execution in the data path of the window.
