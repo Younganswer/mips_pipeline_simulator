@@ -15,11 +15,19 @@ typedef enum _ScreenSize {
 	screenHeight	= 108*6
 }	ScreenSize;
 
+typedef struct	_Memory {
+	unsigned int	address;
+	unsigned int	value;
+}	Memory;
+
 class Info {
 	public:
-		Camera2D			camera;
-		Button				button;
-		vector<Instruction>	instructions;
+		Camera2D				camera;
+		Button					button;
+		vector<Instruction>		instructions;
+		unsigned int			registerValues[32];
+		vector<Memory>			memoryValues;
+		vector<unsigned int>	st;
 
 		Info(void);
 		Info(const char *textSegment, const char *dataSegment);

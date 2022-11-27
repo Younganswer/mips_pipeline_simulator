@@ -31,8 +31,8 @@ class Forward {
 		void	setWbWb(bool wb_wb);
 
 		// Utils
-		int		getForwardA(void) const;
-		int		getForwardB(void) const;
+		int		forwardA(void) const;
+		int		forwardB(void) const;
 };
 
 #endif
