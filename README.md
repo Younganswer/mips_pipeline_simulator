@@ -30,7 +30,7 @@
 ### Default
 	$ make run [INPUT_FILE="test.s"]
 * Default &nbsp;*INPUT_FILE*&nbsp; is "test.s"
-* Rule "run" execute following two commands
+* Rule "run" executes following two commands
 	* `./assembler/spim/spim -file test.s -dump`
 	* `./mips_pipeline_simulator text.asm data.asm`
 * Using in manual is not recommended
