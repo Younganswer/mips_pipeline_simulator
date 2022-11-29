@@ -91,6 +91,69 @@ bool	draw_id_ex(const Info &info) {
 	// draw pipeline rectangle ---------------------------------------------------------------------------
 		DrawRectangleLinesEx(Rectangle{100, -500, 300, 2000}, 5.0f, BLACK);
 	// draw pipeline rectangle ---------------------------------------------------------------------------
+
+	// draw rs -------------------------------------------------------------------------------------------
+		DrawTextEx(GetFontDefault(), "rs value", Vector2{120, -240}, 30.0f, 2.0f, BLACK);
+		DrawTextEx(GetFontDefault(), "=>", Vector2{130, -200}, 30.0f, 2.0f, BLACK);
+
+		// draw rs value ---------------------------------------------------------------------------------
+			// TODO: Get rs value from info
+			DrawTextEx(GetFontDefault(), "0x00000001", Vector2{170, -200}, 30.0f, 2.0f, BLACK);
+		// draw rs value ---------------------------------------------------------------------------------
+	// draw rs -------------------------------------------------------------------------------------------
+
+	// draw rt -------------------------------------------------------------------------------------------
+		DrawTextEx(GetFontDefault(), "rt value", Vector2{120, 100}, 30.0f, 2.0f, BLACK);
+		DrawTextEx(GetFontDefault(), "=>", Vector2{130, 140}, 30.0f, 2.0f, BLACK);
+
+		// draw rt value ---------------------------------------------------------------------------------
+			// TODO: Get rt value from info
+			DrawTextEx(GetFontDefault(), "0x00000002", Vector2{170, 140}, 30.0f, 2.0f, BLACK);
+		// draw rt value ---------------------------------------------------------------------------------
+	// draw rt -------------------------------------------------------------------------------------------
+
+	// draw sign extended immediate -----------------------------------------------------------------------
+		DrawTextEx(GetFontDefault(), "Sign extended", Vector2{120, 460}, 30.0f, 2.0f, BLACK);
+		DrawTextEx(GetFontDefault(), "immediate value", Vector2{120, 500}, 30.0f, 2.0f, BLACK);
+		DrawTextEx(GetFontDefault(), "=>", Vector2{130, 540}, 30.0f, 2.0f, BLACK);
+
+		// draw sign extended immediate value -------------------------------------------------------------
+			// TODO: Get sign extended immediate value from info
+			DrawTextEx(GetFontDefault(), "0xfffffabc", Vector2{170, 540}, 30.0f, 2.0f, BLACK);
+		// draw sign extended immediate value -------------------------------------------------------------
+	// draw sign extended immediate -----------------------------------------------------------------------
+
+	// draw rs address -----------------------------------------------------------------------------------
+		DrawTextEx(GetFontDefault(), "rs", Vector2{120, 860}, 30.0f, 2.0f, BLACK);
+		DrawTextEx(GetFontDefault(), "=>", Vector2{130, 900}, 30.0f, 2.0f, BLACK);
+
+		// draw rs address value -------------------------------------------------------------------------
+			// TODO: Get rs address value from info
+			DrawTextEx(GetFontDefault(), "$10", Vector2{170, 900}, 30.0f, 2.0f, BLACK);
+		// draw rs address value -------------------------------------------------------------------------
+	// draw rs address -----------------------------------------------------------------------------------
+
+	// draw rt address -----------------------------------------------------------------------------------
+		DrawTextEx(GetFontDefault(), "rt", Vector2{120, 980}, 30.0f, 2.0f, BLACK);
+		DrawTextEx(GetFontDefault(), "=>", Vector2{130, 1020}, 30.0f, 2.0f, BLACK);
+
+		// draw rt address value -------------------------------------------------------------------------
+			// TODO: Get rt address value from info
+			DrawTextEx(GetFontDefault(), "$11", Vector2{170, 1020}, 30.0f, 2.0f, BLACK);
+		// draw rt address value -------------------------------------------------------------------------
+	// draw rt address -----------------------------------------------------------------------------------
+
+	// draw rd address -----------------------------------------------------------------------------------
+		DrawTextEx(GetFontDefault(), "rd", Vector2{120, 1100}, 30.0f, 2.0f, BLACK);
+		DrawTextEx(GetFontDefault(), "=>", Vector2{130, 1140}, 30.0f, 2.0f, BLACK);
+
+		// draw rd address value -------------------------------------------------------------------------
+			// TODO: Get rd address value from info
+			DrawTextEx(GetFontDefault(), "$12", Vector2{170, 1140}, 30.0f, 2.0f, BLACK);
+		// draw rd address value -------------------------------------------------------------------------
+	// draw rd address -----------------------------------------------------------------------------------
+
+	// TODO: Draw something that idw
 	return (true);
 }
 
