@@ -1,6 +1,7 @@
 #include "../../incs/info.hpp"
 #include "../../incs/shape.hpp"
 #include "../../incs/window.hpp"
+#include "../../incs/draw_contents.hpp"
 #include <iostream>
 
 int	btnClicked = 0;
@@ -14,25 +15,25 @@ bool	draw_camera_sight(Info &info) {
 		
 		// check instruction --------------------------------------------------------------------------
 			for (auto iter=info.instructions.begin(); iter!=info.instructions.end(); iter++) {
-				string	cur_str = iter->getAsm();
-				cur_str += " " + to_string(iter->getOpcode());
-				if (iter->getFormat() == R) {
-					cur_str += " " + to_string(iter->getRs());
-					cur_str += " " + to_string(iter->getRt());
-					cur_str += " " + to_string(iter->getRd());
-					cur_str += " " + to_string(iter->getShamt());
-					cur_str += " " + to_string(iter->getFunct());
-				} else if (iter->getFormat() == I) {
-					cur_str += " " + to_string(iter->getRs());
-					cur_str += " " + to_string(iter->getRt());
-					cur_str += " " + to_string(iter->getImm());
-				} else if (iter->getFormat() == J) {
-					cur_str += " " + to_string(iter->getImm());
+				string	cur_str = iter->get_asm_string();
+				cur_str += " " + to_string(iter->get_opcode());
+				if (iter->get_format() == R) {
+					cur_str += " " + to_string(iter->get_rs());
+					cur_str += " " + to_string(iter->get_rt());
+					cur_str += " " + to_string(iter->get_rd());
+					cur_str += " " + to_string(iter->get_shamt());
+					cur_str += " " + to_string(iter->get_funct());
+				} else if (iter->get_format() == I) {
+					cur_str += " " + to_string(iter->get_rs());
+					cur_str += " " + to_string(iter->get_rt());
+					cur_str += " " + to_string(iter->get_imm());
+				} else if (iter->get_format() == J) {
+					cur_str += " " + to_string(iter->get_imm());
 				}
 				DrawText(cur_str.c_str(), posX-500, posY+offsetY, 20, RED);
 				offsetY += 30;
 			}
-		// check instruction --------------------------------------------------------------------------
+		// check instruction -------------------------------------------------------------------------
 
 		// cross line --------------------------------------------------------------------------------
 			DrawLine(posX, posY-screenHeight*5, posX, posY+screenHeight*5, GREEN);
@@ -40,7 +41,7 @@ bool	draw_camera_sight(Info &info) {
 		// cross line --------------------------------------------------------------------------------
 		
 		// check mouse click -------------------------------------------------------------------------
-			if (info.button.action() && btnClicked == 0) {
+			if (info.button.is_actioned() && btnClicked == 0) {
 				btnClicked = 64 * 3;
 			}
 			if (0 < btnClicked) {
@@ -49,7 +50,9 @@ bool	draw_camera_sight(Info &info) {
 			}
 		// check mouse click -------------------------------------------------------------------------
 		
-		draw_content();
+		// draw contents -----------------------------------------------------------------------------
+			draw_contents(info);
+		// draw contents -----------------------------------------------------------------------------
 
 	EndMode2D();
 	return (true);

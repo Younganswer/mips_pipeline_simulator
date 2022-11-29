@@ -16,7 +16,7 @@ Texture2D	Button::get_texture(void) { return (this->texture); }
 Rectangle	Button::get_btn_bounds(void) { return (this->btnBounds); }
 Rectangle	Button::get_source_rec(void) { return (this->sourceRec); }
 ButtonState	Button::get_state(void) { set_state(); return (this->state); }
-bool		Button::action(void) { getState(); return (this->action); }
+bool		Button::is_actioned(void) { get_state(); return (this->isActioned); }
 
 // Setters
 bool	Button::set_state(void) {
@@ -30,7 +30,7 @@ bool	Button::set_state(void) {
 			this->state = MOUSE_HOVER;
 		}
 		if (IsMouseButtonReleased(MOUSE_LEFT_BUTTON)) {
-			this->action = true;
+			this->isActioned = true;
 		}
 	} else {
 		this->state = NORMAL;

@@ -7,9 +7,6 @@
 // draw_camera_sight.cpp
 bool	draw_camera_sight(Info &info);
 
-// draw_contect.cpp
-bool	draw_content(void);
-
 // draw_edge.cpp
 bool	draw_edge(void);
 

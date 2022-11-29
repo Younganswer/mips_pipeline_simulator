@@ -30,7 +30,7 @@ class Button {
 		Rectangle	get_btn_bounds(void);
 		Rectangle	get_source_rec(void);
 		ButtonState	get_state(void);
-		bool		action(void);
+		bool		is_actioned(void);
 };
 
 #endif

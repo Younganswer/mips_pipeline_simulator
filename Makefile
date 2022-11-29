@@ -5,14 +5,14 @@ IDX		= 0
 NAME	= mips_pipeline_simulator
 
 RAYLIB_PATH		= ./raylib
-INCLUDE_PATH	= -I. -I$(RAYLIB_PATH)/src -I$(RAYLIB_PATH)/src/external -I$(RAYLIB_PATH)/src/extras
+INCLUDE_PATH	= -I. -I${LIBS_DIR}/${RAYLIB_PATH}/src -I${LIBS_DIR}/${RAYLIB_PATH}/src/external -I${LIBS_DIR}/${RAYLIB_PATH}/src/extras
 LDLIBS			= -lraylib -framework OpenGL -framework Cocoa -framework IOKit -framework CoreAudio -framework CoreVideo
 
 ASSEMBLER_PATH	= ./assembler
 
 CC			= clang++
 CXXFLAGS	= -Wall -Wextra -Werror -O2 -std=c++17
-LDFLAGS		= -fsanitize=address -g3 -L. -L$(RAYLIB_PATH)/src
+LDFLAGS		= -fsanitize=address -g3 -L. -L${LIBS_DIR}/${RAYLIB_PATH}/src
 RM			= rm -f
 
 LIBRAYLIB	= ./raylib/src/libraylib.a
@@ -25,6 +25,11 @@ OBJS_DIR	= ./objs
 SRCS =	main.cpp \
 		button/button.cpp \
 		camera/camera.cpp \
+		draw/draw_contents.cpp \
+		draw/draw_operations.cpp \
+		draw/draw_pipelines.cpp \
+		forward/forward.cpp \
+		hazard/hazard.cpp \
 		info/info.cpp \
 		instruction/instruction.cpp \
 		shape/draw_arrow.cpp \
@@ -32,7 +37,6 @@ SRCS =	main.cpp \
 		shape/draw_mux.cpp \
 		shape/draw_trapezoid.cpp \
 		window/draw_camera_sight.cpp \
-		window/draw_content.cpp \
 		window/draw_edge.cpp \
 		window/draw_guide.cpp \
 		window/draw_window.cpp
@@ -56,6 +60,9 @@ ${OBJS_DIR}:
 	@mkdir -p objs
 	@mkdir -p objs/button
 	@mkdir -p objs/camera
+	@mkdir -p objs/draw
+	@mkdir -p objs/forward
+	@mkdir -p objs/hazard
 	@mkdir -p objs/info
 	@mkdir -p objs/instruction
 	@mkdir -p objs/shape
@@ -66,7 +73,7 @@ ${NAME}: ${OBJS}
 	@printf "\bdone\n"
 	@make -C ${LIBS_DIR}/${RAYLIB_PATH}/src
 	@make -C ${LIBS_DIR}/${ASSEMBLER_PATH}/spim
-	@${CC} ${CXXFLAGS} ${LDFLAGS} ${LDLIBS} -g -o ${NAME} ${OBJS} ${LIBRAYLIB} -I ${INCS_DIR}
+	@${CC} ${CXXFLAGS} ${LDFLAGS} ${LDLIBS} -g -o ${NAME} ${OBJS} ${LIBS_DIR}/${LIBRAYLIB} -I ${INCS_DIR}
 	@echo "Build ${NAME}: done"
 
 

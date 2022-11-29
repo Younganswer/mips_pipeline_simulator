@@ -28,6 +28,8 @@ class Info {
 		unsigned int			registerValues[32];
 		vector<Memory>			memoryValues;
 		vector<unsigned int>	st;
+		
+		// TODO: add pipeline registers to info
 
 		Info(void);
 		Info(const char *textSegment, const char *dataSegment);
