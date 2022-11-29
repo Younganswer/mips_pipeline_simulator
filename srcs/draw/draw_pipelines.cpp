@@ -12,9 +12,9 @@ bool	draw_if_id(const Info &info) {
 		DrawTextEx(GetFontDefault(), "IF/ID", (Vector2) { -2420, -570 }, 50.0f, 2.0f, BLACK);
 	// draw text that indicates the current pipeline stage -----------------------------------------------
 
-	// draw pipeline rectangle ---------------------------------------------------------------------------
+	// draw pipeline sector ---------------------------------------------------------------------------
 		DrawRectangleLinesEx(Rectangle{-2500, -500, 300, 2000}, 5.0f, BLACK);
-	// draw pipeline rectangle ---------------------------------------------------------------------------
+	// draw pipeline sector ---------------------------------------------------------------------------
 
 	// draw instruction write signal ---------------------------------------------------------------------
 		DrawTextEx(GetFontDefault(), "Instruction write", Vector2{-2480, -480}, 30.0f, 2.0f, BLACK);
@@ -59,11 +59,11 @@ bool	draw_id_ex(const Info &info) {
 		DrawTextEx(GetFontDefault(), "ID/EX", (Vector2) { 180, -1170 }, 50.0f, 2.0f, BLACK);
 	// draw text that indicates the current pipeline stage -----------------------------------------------
 
-	// draw signal rectangle -----------------------------------------------------------------------------
+	// draw signal sector -----------------------------------------------------------------------------
 		DrawRectangleLinesEx(Rectangle{100, -1100, 300, 200}, 5.0f, BLUE);
 		DrawRectangleLinesEx(Rectangle{100, -900, 300, 200}, 5.0f, BLUE);
 		DrawRectangleLinesEx(Rectangle{100, -700, 300, 200}, 5.0f, BLUE);
-	// draw signal rectangle -----------------------------------------------------------------------------
+	// draw signal sector -----------------------------------------------------------------------------
 
 	// draw signal ---------------------------------------------------------------------------------------
 		DrawTextEx(GetFontDefault(), "Write back", Vector2{120, -1080}, 40.0f, 2.0f, BLUE);
@@ -88,9 +88,9 @@ bool	draw_id_ex(const Info &info) {
 		// draw execute signal value ---------------------------------------------------------------------
 	// draw signal ---------------------------------------------------------------------------------------
 
-	// draw pipeline rectangle ---------------------------------------------------------------------------
+	// draw pipeline sector ---------------------------------------------------------------------------
 		DrawRectangleLinesEx(Rectangle{100, -500, 300, 2000}, 5.0f, BLACK);
-	// draw pipeline rectangle ---------------------------------------------------------------------------
+	// draw pipeline sector ---------------------------------------------------------------------------
 
 	// draw rs -------------------------------------------------------------------------------------------
 		DrawTextEx(GetFontDefault(), "rs value", Vector2{120, -240}, 30.0f, 2.0f, BLACK);
@@ -164,10 +164,10 @@ bool	draw_ex_mem(const Info &info) {
 		DrawTextEx(GetFontDefault(), "EX/MEM", Vector2{1850, -970}, 50.0f, 2.0f, BLACK);
 	// draw text that indicate the current pipeline stage ------------------------------------------------
 
-	// draw signal rectangle -----------------------------------------------------------------------------
+	// draw signal sector -----------------------------------------------------------------------------
 		DrawRectangleLinesEx(Rectangle{1800, -900, 300, 200}, 5.0f, BLUE);
 		DrawRectangleLinesEx(Rectangle{1800, -700, 300, 200}, 5.0f, BLUE);
-	// draw signal rectangle -----------------------------------------------------------------------------
+	// draw signal sector -----------------------------------------------------------------------------
 
 	// draw signal ---------------------------------------------------------------------------------------
 		DrawTextEx(GetFontDefault(), "Write back", Vector2{1820, -880}, 40.0f, 2.0f, BLUE);
@@ -187,9 +187,9 @@ bool	draw_ex_mem(const Info &info) {
 		// draw memory read signal value -----------------------------------------------------------------
 	// draw signal ---------------------------------------------------------------------------------------
 
-	// draw pipeline rectangle ---------------------------------------------------------------------------
+	// draw pipeline sector ---------------------------------------------------------------------------
 		DrawRectangleLinesEx(Rectangle{1800, -500, 300, 2000}, 5.0f, BLACK);
-	// draw pipeline rectangle ---------------------------------------------------------------------------
+	// draw pipeline sector ---------------------------------------------------------------------------
 
 	// draw ALU result -----------------------------------------------------------------------------------
 		DrawTextEx(GetFontDefault(), "ALU result", Vector2{1820, 0}, 30.0f, 2.0f, BLACK);
@@ -223,9 +223,9 @@ bool	draw_mem_wb(const Info &info) {
 		DrawTextEx(GetFontDefault(), "MEM/WB", Vector2{3340, -770}, 50.0f, 2.0f, BLACK);
 	// draw text that indicate the current pipeline stage ------------------------------------------------
 
-	// draw signal rectangle -----------------------------------------------------------------------------
+	// draw signal sector -----------------------------------------------------------------------------
 		DrawRectangleLinesEx(Rectangle{3300, -700, 300, 200}, 5.0f, BLUE);
-	// draw signal rectangle -----------------------------------------------------------------------------
+	// draw signal sector -----------------------------------------------------------------------------
 
 	// draw signal ---------------------------------------------------------------------------------------
 		DrawTextEx(GetFontDefault(), "Write back", Vector2{3320, -680}, 40.0f, 2.0f, BLUE);
@@ -237,8 +237,29 @@ bool	draw_mem_wb(const Info &info) {
 		// draw memory write signal value ----------------------------------------------------------------
 	// draw signal ---------------------------------------------------------------------------------------
 
-	// draw pipeline rectangle ---------------------------------------------------------------------------
+	// draw pipeline sector ---------------------------------------------------------------------------
 		DrawRectangleLinesEx(Rectangle{3300, -500, 300, 2000}, 5.0f, BLACK);
-	// draw pipeline rectangle ---------------------------------------------------------------------------
+	// draw pipeline sector ---------------------------------------------------------------------------
+
+	// draw data read from memory ------------------------------------------------------------------------
+		DrawTextEx(GetFontDefault(), "Data read", Vector2{3320, 0}, 30.0f, 2.0f, BLACK);
+		DrawTextEx(GetFontDefault(), "from memory", Vector2{3320, 40}, 30.0f, 2.0f, BLACK);
+		DrawTextEx(GetFontDefault(), "=>", Vector2{3340, 80}, 30.0f, 2.0f, BLACK);
+
+		// draw data read from memory value --------------------------------------------------------------
+			// TODO: Get data read from memory value from info
+			DrawTextEx(GetFontDefault(), "0x87654321", Vector2{3380, 80}, 30.0f, 2.0f, BLACK);
+		// draw data read from memory value --------------------------------------------------------------
+	// draw data read from memory ------------------------------------------------------------------------
+
+	// draw ALU result -----------------------------------------------------------------------------------
+		DrawTextEx(GetFontDefault(), "ALU result", Vector2{3320, 800}, 30.0f, 2.0f, BLACK);
+		DrawTextEx(GetFontDefault(), "=>", Vector2{3340, 840}, 30.0f, 2.0f, BLACK);
+
+		// draw ALU result value ------------------------------------------------------------------------
+			// TODO: Get ALU result value from info
+			DrawTextEx(GetFontDefault(), "0x00000003", Vector2{3380, 840}, 30.0f, 2.0f, BLACK);
+		// draw ALU result value ------------------------------------------------------------------------
+	// draw ALU result -----------------------------------------------------------------------------------
 	return (true);
 }

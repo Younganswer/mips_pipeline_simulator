@@ -26,6 +26,8 @@ SRCS =	main.cpp \
 		button/button.cpp \
 		camera/camera.cpp \
 		draw/draw_contents.cpp \
+		draw/draw_hazard_unit.cpp \
+		draw/draw_forwarding_unit.cpp \
 		draw/draw_operations.cpp \
 		draw/draw_pipelines.cpp \
 		forward/forward.cpp \

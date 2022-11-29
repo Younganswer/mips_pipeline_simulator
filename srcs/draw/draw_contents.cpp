@@ -1,10 +1,10 @@
 #include "../../incs/draw_contents.hpp"
 #include "../../incs/shape.hpp"
 
-static bool	DrawCircleSectorLinesEx(float posX, float posY);
+bool	draw_contents(const Info &info);
+bool	DrawCircleSectorLinesEx(float posX, float posY, float radius, int startAngle, int endAngle, int segments, Color color);
 
 bool	draw_contents(const Info &info) {
-	DrawCircleSectorLinesEx(0, 0);	
 	// draw operations ------------------------------------------------------------------
 		draw_instruction_fetch(info);
 		draw_instruction_decode(info);
@@ -22,16 +22,15 @@ bool	draw_contents(const Info &info) {
 	return (true);
 }
 
-static bool	DrawCircleSectorLinesEx(float posX, float posY) {
-	DrawLineEx((Vector2){ -3000+posX-72, posY }, (Vector2){ -3000+posX+72, posY }, 3.0f, BLACK);
-	DrawCircleSectorLines((Vector2){ -3000+posX, posY }, 70.0f, -90.0f, 90.0f, 0, BLACK);
-	DrawCircleSectorLines((Vector2){ -3000+posX, posY }, 70.25f, -90.0f, 90.0f, 0, BLACK);
-	DrawCircleSectorLines((Vector2){ -3000+posX, posY }, 70.5f, -90.0f, 90.0f, 0, BLACK);
-	DrawCircleSectorLines((Vector2){ -3000+posX, posY }, 70.75f, -90.0f, 90.0f, 0, BLACK);
-	DrawCircleSectorLines((Vector2){ -3000+posX, posY }, 71.0f, -90.0f, 90.0f, 0, BLACK);
-	DrawCircleSectorLines((Vector2){ -3000+posX, posY }, 71.25f, -90.0f, 90.0f, 0, BLACK);
-	DrawCircleSectorLines((Vector2){ -3000+posX, posY }, 71.5f, -90.0f, 90.0f, 0, BLACK);
-	DrawCircleSectorLines((Vector2){ -3000+posX, posY }, 71.75f, -90.0f, 90.0f, 0, BLACK);
-	DrawCircleSectorLines((Vector2){ -3000+posX, posY }, 72.0f, -90.0f, 90.0f, 0, BLACK);
+bool	DrawCircleSectorLinesEx(float posX, float posY, float radius, int startAngle, int endAngle, int segments, Color color) {
+	DrawCircleSectorLines((Vector2){ posX, posY }, radius+0.0f, startAngle, endAngle, segments, color);
+	DrawCircleSectorLines((Vector2){ posX, posY }, radius+0.25f, startAngle, endAngle, segments, color);
+	DrawCircleSectorLines((Vector2){ posX, posY }, radius+0.5f, startAngle, endAngle, segments, color);
+	DrawCircleSectorLines((Vector2){ posX, posY }, radius+0.75f, startAngle, endAngle, segments, color);
+	DrawCircleSectorLines((Vector2){ posX, posY }, radius+1.0f, startAngle, endAngle, segments, color);
+	DrawCircleSectorLines((Vector2){ posX, posY }, radius+1.25f, startAngle, endAngle, segments, color);
+	DrawCircleSectorLines((Vector2){ posX, posY }, radius+1.5f, startAngle, endAngle, segments, color);
+	DrawCircleSectorLines((Vector2){ posX, posY }, radius+1.75f, startAngle, endAngle, segments, color);
+	DrawCircleSectorLines((Vector2){ posX, posY }, radius+2.0f, startAngle, endAngle, segments, color);
 	return (true);
 }
