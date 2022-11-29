@@ -8,9 +8,9 @@ bool	draw_mem_wb(const Info &info);
 bool	draw_if_id(const Info &info) {
 	(void) info;
 
-	// draw text that indicates the pipeline stage -------------------------------------------------------
+	// draw text that indicates the current pipeline stage -----------------------------------------------
 		DrawTextEx(GetFontDefault(), "IF/ID", (Vector2) { -2420, -570 }, 50.0f, 2.0f, BLACK);
-	// draw text that indicates the pipeline stage -------------------------------------------------------
+	// draw text that indicates the current pipeline stage -----------------------------------------------
 
 	// draw pipeline rectangle ---------------------------------------------------------------------------
 		DrawRectangleLinesEx(Rectangle{-2500, -500, 300, 2000}, 5.0f, BLACK);
@@ -38,16 +38,16 @@ bool	draw_if_id(const Info &info) {
 
 	// draw program counter ------------------------------------------------------------------------------
 
-	// draw instruction -------------------------------------------------------------------------------
+	// draw instruction ----------------------------------------------------------------------------------
 		DrawTextEx(GetFontDefault(), "Instruction", Vector2{-2480, 300}, 30.0f, 2.0f, BLACK);
 		DrawTextEx(GetFontDefault(), "=>", Vector2{-2470, 340}, 30.0f, 2.0f, BLACK);
 
-		// draw instruction value -------------------------------------------------------------------------
+		// draw instruction value ------------------------------------------------------------------------
 			// TODO: Get instruction value from info
 			DrawTextEx(GetFontDefault(), "0x12345678", Vector2{-2430, 340}, 30.0f, 2.0f, BLACK);
-		// draw instruction value -------------------------------------------------------------------------
+		// draw instruction value ------------------------------------------------------------------------
 
-	// draw instruction -------------------------------------------------------------------------------
+	// draw instruction ----------------------------------------------------------------------------------
 
 	return (true);
 }
@@ -55,9 +55,9 @@ bool	draw_if_id(const Info &info) {
 bool	draw_id_ex(const Info &info) {
 	(void) info;
 
-	// draw text that indicates the pipeline stage -------------------------------------------------------
+	// draw text that indicates the current pipeline stage -----------------------------------------------
 		DrawTextEx(GetFontDefault(), "ID/EX", (Vector2) { 180, -1170 }, 50.0f, 2.0f, BLACK);
-	// draw text that indicates the pipeline stage -------------------------------------------------------
+	// draw text that indicates the current pipeline stage -----------------------------------------------
 
 	// draw signal rectangle -----------------------------------------------------------------------------
 		DrawRectangleLinesEx(Rectangle{100, -1100, 300, 200}, 5.0f, BLUE);
@@ -112,16 +112,16 @@ bool	draw_id_ex(const Info &info) {
 		// draw rt value ---------------------------------------------------------------------------------
 	// draw rt -------------------------------------------------------------------------------------------
 
-	// draw sign extended immediate -----------------------------------------------------------------------
+	// draw sign extended immediate ----------------------------------------------------------------------
 		DrawTextEx(GetFontDefault(), "Sign extended", Vector2{120, 460}, 30.0f, 2.0f, BLACK);
 		DrawTextEx(GetFontDefault(), "immediate value", Vector2{120, 500}, 30.0f, 2.0f, BLACK);
 		DrawTextEx(GetFontDefault(), "=>", Vector2{130, 540}, 30.0f, 2.0f, BLACK);
 
-		// draw sign extended immediate value -------------------------------------------------------------
+		// draw sign extended immediate value ------------------------------------------------------------
 			// TODO: Get sign extended immediate value from info
 			DrawTextEx(GetFontDefault(), "0xfffffabc", Vector2{170, 540}, 30.0f, 2.0f, BLACK);
-		// draw sign extended immediate value -------------------------------------------------------------
-	// draw sign extended immediate -----------------------------------------------------------------------
+		// draw sign extended immediate value ------------------------------------------------------------
+	// draw sign extended immediate ----------------------------------------------------------------------
 
 	// draw rs address -----------------------------------------------------------------------------------
 		DrawTextEx(GetFontDefault(), "rs", Vector2{120, 860}, 30.0f, 2.0f, BLACK);
@@ -159,7 +159,60 @@ bool	draw_id_ex(const Info &info) {
 
 bool	draw_ex_mem(const Info &info) {
 	(void) info;
-	DrawRectangleLinesEx(Rectangle{1800, -500, 300, 2000}, 5.0f, BLACK);
+
+	// draw text that indicate the current pipeline stage ------------------------------------------------
+		DrawTextEx(GetFontDefault(), "EX/MEM", Vector2{1850, -970}, 50.0f, 2.0f, BLACK);
+	// draw text that indicate the current pipeline stage ------------------------------------------------
+
+	// draw signal rectangle -----------------------------------------------------------------------------
+		DrawRectangleLinesEx(Rectangle{1800, -900, 300, 200}, 5.0f, BLUE);
+		DrawRectangleLinesEx(Rectangle{1800, -700, 300, 200}, 5.0f, BLUE);
+	// draw signal rectangle -----------------------------------------------------------------------------
+
+	// draw signal ---------------------------------------------------------------------------------------
+		DrawTextEx(GetFontDefault(), "Write back", Vector2{1820, -880}, 40.0f, 2.0f, BLUE);
+		DrawTextEx(GetFontDefault(), "=>", Vector2{1840, -820}, 40.0f, 2.0f, BLUE);
+
+		// draw memory write signal value ----------------------------------------------------------------
+			// TODO: Get memory write signal value from info
+			DrawTextEx(GetFontDefault(), "True", Vector2{1880, -825}, 50.0f, 2.0f, BLUE);
+		// draw memory write signal value ----------------------------------------------------------------
+
+		DrawTextEx(GetFontDefault(), "Memory read", Vector2{1820, -680}, 40.0f, 2.0f, BLUE);
+		DrawTextEx(GetFontDefault(), "=>", Vector2{1840, -620}, 40.0f, 2.0f, BLUE);
+
+		// draw memory read signal value -----------------------------------------------------------------
+			// TODO: Get memory read signal value from info
+			DrawTextEx(GetFontDefault(), "True", Vector2{1880, -625}, 50.0f, 2.0f, BLUE);
+		// draw memory read signal value -----------------------------------------------------------------
+	// draw signal ---------------------------------------------------------------------------------------
+
+	// draw pipeline rectangle ---------------------------------------------------------------------------
+		DrawRectangleLinesEx(Rectangle{1800, -500, 300, 2000}, 5.0f, BLACK);
+	// draw pipeline rectangle ---------------------------------------------------------------------------
+
+	// draw ALU result -----------------------------------------------------------------------------------
+		DrawTextEx(GetFontDefault(), "ALU result", Vector2{1820, 0}, 30.0f, 2.0f, BLACK);
+		DrawTextEx(GetFontDefault(), "=>", Vector2{1840, 40}, 30.0f, 2.0f, BLACK);
+
+		// draw ALU result value ------------------------------------------------------------------------
+			// TODO: Get ALU result value from info
+			DrawTextEx(GetFontDefault(), "0x00000003", Vector2{1880, 40}, 30.0f, 2.0f, BLACK);
+		// draw ALU result value ------------------------------------------------------------------------
+	// draw ALU result -----------------------------------------------------------------------------------
+
+	// draw sign extended immediate ----------------------------------------------------------------------
+		DrawTextEx(GetFontDefault(), "Sign extended", Vector2{1820, 460}, 30.0f, 2.0f, BLACK);
+		DrawTextEx(GetFontDefault(), "immediate value", Vector2{1820, 500}, 30.0f, 2.0f, BLACK);
+		DrawTextEx(GetFontDefault(), "=>", Vector2{1840, 540}, 30.0f, 2.0f, BLACK);
+
+		// draw sign extended immediate value ------------------------------------------------------------
+			// TODO: Get sign extended immediate value from info
+			DrawTextEx(GetFontDefault(), "0xfffffabc", Vector2{1880, 540}, 30.0f, 2.0f, BLACK);
+		// draw sign extended immediate value ------------------------------------------------------------
+	// draw sign extended immediate ----------------------------------------------------------------------
+
+	// TODO: Draw something that idw
 	return (true);
 }
 
