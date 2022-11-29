@@ -217,7 +217,28 @@ bool	draw_ex_mem(const Info &info) {
 }
 
 bool	draw_mem_wb(const Info &info) {
-	DrawRectangleLinesEx(Rectangle{3300, -500, 300, 2000}, 5.0f, BLACK);
 	(void) info;
+
+	// draw text that indicate the current pipeline stage ------------------------------------------------
+		DrawTextEx(GetFontDefault(), "MEM/WB", Vector2{3340, -770}, 50.0f, 2.0f, BLACK);
+	// draw text that indicate the current pipeline stage ------------------------------------------------
+
+	// draw signal rectangle -----------------------------------------------------------------------------
+		DrawRectangleLinesEx(Rectangle{3300, -700, 300, 200}, 5.0f, BLUE);
+	// draw signal rectangle -----------------------------------------------------------------------------
+
+	// draw signal ---------------------------------------------------------------------------------------
+		DrawTextEx(GetFontDefault(), "Write back", Vector2{3320, -680}, 40.0f, 2.0f, BLUE);
+		DrawTextEx(GetFontDefault(), "=>", Vector2{3340, -620}, 40.0f, 2.0f, BLUE);
+
+		// draw memory write signal value ----------------------------------------------------------------
+			// TODO: Get memory write signal value from info
+			DrawTextEx(GetFontDefault(), "True", Vector2{3380, -625}, 50.0f, 2.0f, BLUE);
+		// draw memory write signal value ----------------------------------------------------------------
+	// draw signal ---------------------------------------------------------------------------------------
+
+	// draw pipeline rectangle ---------------------------------------------------------------------------
+		DrawRectangleLinesEx(Rectangle{3300, -500, 300, 2000}, 5.0f, BLACK);
+	// draw pipeline rectangle ---------------------------------------------------------------------------
 	return (true);
 }
