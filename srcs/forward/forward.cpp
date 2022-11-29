@@ -1,46 +1,46 @@
 #include "../../incs/forward.hpp"
 
 Forward::Forward(void) {
-	this->_ex_rs = 0;
-	this->_ex_rt = 0;
-	this->_mem_rd = 0;
-	this->_wb_rd = 0;
-	this->_mem_wb = false;
-	this->_wb_wb = false;
+	this->exRs = 0;
+	this->exRt = 0;
+	this->memRd = 0;
+	this->wbRd = 0;
+	this->memWb = false;
+	this->wbWb = false;
 }
 
 Forward::~Forward(void) {}
 
 // Getter
-int		Forward::getExRs(void) const { return this->_ex_rs; }
-int		Forward::getExRt(void) const { return this->_ex_rt; }
-int		Forward::getMemRd(void) const { return this->_mem_rd; }
-int		Forward::getWbRd(void) const { return this->_wb_rd; }
-bool	Forward::getMemWb(void) const { return this->_mem_wb; }
-bool	Forward::getWbWb(void) const { return this->_wb_wb; }
+int		Forward::get_ex_rs(void) const { return this->exRs; }
+int		Forward::get_ex_rt(void) const { return this->exRt; }
+int		Forward::get_mem_rd(void) const { return this->memRd; }
+int		Forward::get_wb_rd(void) const { return this->wbRd; }
+bool	Forward::get_mem_wb(void) const { return this->memWb; }
+bool	Forward::get_wb_wb(void) const { return this->wbWb; }
 
 // Setter
-void	Forward::setExRs(int ex_rs) { this->_ex_rs = ex_rs; }
-void	Forward::setExRt(int ex_rt) { this->_ex_rt = ex_rt; }
-void	Forward::setMemRd(int mem_rd) { this->_mem_rd = mem_rd; }
-void	Forward::setWbRd(int wb_rd) { this->_wb_rd = wb_rd; }
-void	Forward::setMemWb(bool mem_wb) { this->_mem_wb = mem_wb; }
-void	Forward::setWbWb(bool wb_wb) { this->_wb_wb = wb_wb; }
+void	Forward::set_ex_rs(int exRs) { this->exRs = exRs; }
+void	Forward::set_ex_rt(int exRt) { this->exRt = exRt; }
+void	Forward::set_mem_rd(int memRd) { this->memRd = memRd; }
+void	Forward::set_wb_rd(int wbRd) { this->wbRd = wbRd; }
+void	Forward::set_mem_wb(bool memWb) { this->memWb = memWb; }
+void	Forward::set_wb_wb(bool wbWb) { this->wbWb = wbWb; }
 
 // Utils
-int		Forward::forwardA(void) const {
-	if (this->_ex_rs == this->_wb_rd && this->_wb_wb) {
+int		Forward::forward_a(void) const {
+	if (this->exRs == this->wbRd && this->wbWb) {
 		return (2);
-	} else if (this->_ex_rs == this->_mem_rd && this->_mem_wb) {
+	} else if (this->exRs == this->memRd && this->memWb) {
 		return (1);
 	}
 	return (0);
 }
 
-int		Forward::forwardB(void) const {
-	if (this->_ex_rt == this->_wb_rd && this->_wb_wb) {
+int		Forward::forward_b(void) const {
+	if (this->exRt == this->wbRd && this->wbWb) {
 		return (2);
-	} else if (this->_ex_rt == this->_mem_rd && this->_mem_wb) {
+	} else if (this->exRt == this->memRd && this->memWb) {
 		return (1);
 	}
 	return (0);

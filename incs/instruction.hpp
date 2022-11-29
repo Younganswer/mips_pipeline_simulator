@@ -21,39 +21,39 @@ typedef enum _Status {
 
 class Instruction {
 	private:
-		unsigned int	_pc;
-		unsigned int	_id;
-		int				_rs;
-		int				_rt;
-		int				_rd;
-		int				_imm;
-		int				_shamt;
-		int				_funct;
-		int				_opcode;
-		int				_result;
-		Format			_format;
-		Status			_status;
-		string			_asm;
+		unsigned int	pc;
+		unsigned int	id;
+		int				rs;
+		int				rt;
+		int				rd;
+		int				imm;
+		int				shamt;
+		int				funct;
+		int				opcode;
+		int				result;
+		Format			format;
+		Status			status;
+		string			asmString;
 
 	public:
 		Instruction(void);
-		Instruction(const string &_asm);
+		Instruction(const string &asmString);
 		~Instruction(void);
 
 		// Getters
-		int		getId(void);
-		int		getPc(void);
-		int		getRs(void);
-		int		getRt(void);
-		int		getRd(void);
-		int		getImm(void);
-		int		getShamt(void);
-		int		getFunct(void);
-		int		getOpcode(void);
-		int		getResult(void);
-		Format	getFormat(void);
-		Status	getStatus(void);
-		string	getAsm(void);
+		int		get_id(void);
+		int		get_pc(void);
+		int		get_rs(void);
+		int		get_rt(void);
+		int		get_rd(void);
+		int		get_imm(void);
+		int		get_shamt(void);
+		int		get_funct(void);
+		int		get_opcode(void);
+		int		get_result(void);
+		Format	get_format(void);
+		Status	get_status(void);
+		string	get_asm_string(void);
 };
 
 #endif

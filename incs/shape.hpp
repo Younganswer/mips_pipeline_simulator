@@ -2,7 +2,7 @@
 # define SHAPE_HPP
 
 # include "info.hpp"
-# include "../raylib/src/raylib.h"
+# include "../libs/raylib/src/raylib.h"
 
 # define ARROW_LENGTH 20
 

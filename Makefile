@@ -17,7 +17,7 @@ RM			= rm -f
 
 LIBRAYLIB	= ./raylib/src/libraylib.a
 
-
+LIBS_DIR	= ./libs
 INCS_DIR	= ./incs
 SRCS_DIR	= ./srcs
 OBJS_DIR	= ./objs
@@ -47,7 +47,7 @@ all: ${NAME}
 
 INPUT_FILE = test.s
 run: ${NAME}
-	@${ASSEMBLER_PATH}/spim/spim -file ${INPUT_FILE} -dump
+	@${LIBS_DIR}/${ASSEMBLER_PATH}/spim/spim -file ${INPUT_FILE} -dump
 	@./${NAME} text.asm data.asm
 
 
@@ -64,8 +64,8 @@ ${OBJS_DIR}:
 
 ${NAME}: ${OBJS}
 	@printf "\bdone\n"
-	@make -C ${RAYLIB_PATH}/src
-	@make -C ${ASSEMBLER_PATH}/spim
+	@make -C ${LIBS_DIR}/${RAYLIB_PATH}/src
+	@make -C ${LIBS_DIR}/${ASSEMBLER_PATH}/spim
 	@${CC} ${CXXFLAGS} ${LDFLAGS} ${LDLIBS} -g -o ${NAME} ${OBJS} ${LIBRAYLIB} -I ${INCS_DIR}
 	@echo "Build ${NAME}: done"
 
@@ -89,8 +89,8 @@ clean:
 
 fclean: clean
 	@echo "Remove ${NAME}"
-	@make -C ${RAYLIB_PATH}/src clean
-	@make -C ${ASSEMBLER_PATH}/spim clean
+	@make -C ${LIBS_DIR}/${RAYLIB_PATH}/src clean
+	@make -C ${LIBS_DIR}/${ASSEMBLER_PATH}/spim clean
 	@${RM} ${NAME} *.asm
 	
 

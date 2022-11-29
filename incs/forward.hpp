@@ -3,36 +3,36 @@
 
 class Forward {
 	private:
-		int		_ex_rs;
-		int		_ex_rt;
-		int		_mem_rd;
-		int		_wb_rd;
-		bool	_mem_wb;
-		bool	_wb_wb;
+		int		exRs;
+		int		exRt;
+		int		memRd;
+		int		wbRd;
+		bool	memWb;
+		bool	wbWb;
 
 	public:
 		Forward(void);
 		~Forward(void);
 
 		// Getter
-		int		getExRs(void) const;
-		int		getExRt(void) const;
-		int		getMemRd(void) const;
-		int		getWbRd(void) const;
-		bool	getMemWb(void) const;
-		bool	getWbWb(void) const;
+		int		get_ex_rs(void) const;
+		int		get_ex_rt(void) const;
+		int		get_mem_rd(void) const;
+		int		get_wb_rd(void) const;
+		bool	get_mem_wb(void) const;
+		bool	get_wb_wb(void) const;
 
 		// Setter
-		void	setExRs(int ex_rs);
-		void	setExRt(int ex_rt);
-		void	setMemRd(int mem_rd);
-		void	setWbRd(int wb_rd);
-		void	setMemWb(bool mem_wb);
-		void	setWbWb(bool wb_wb);
+		void	set_ex_rs(int exRs);
+		void	set_ex_rt(int exRt);
+		void	set_mem_rd(int memRd);
+		void	set_wb_rd(int wbRd);
+		void	set_mem_wb(bool memWb);
+		void	set_wb_wb(bool wbWb);
 
 		// Utils
-		int		forwardA(void) const;
-		int		forwardB(void) const;
+		int		forward_a(void) const;
+		int		forward_b(void) const;
 };
 
 #endif

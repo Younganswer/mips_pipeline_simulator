@@ -2,7 +2,7 @@
 # define WINDOW_HPP
 
 # include "info.hpp"
-# include "../raylib/src/raylib.h"
+# include "../libs/raylib/src/raylib.h"
 
 // draw_camera_sight.cpp
 bool	draw_camera_sight(Info &info);

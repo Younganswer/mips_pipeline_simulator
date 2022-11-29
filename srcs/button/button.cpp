@@ -2,66 +2,48 @@
 #include "../../incs/info.hpp"
 
 Button::Button(void) {
-	this->_texture		= LoadTexture("./assets/button_next-cycle.png");
-	this->_sourceRec	= { 0, 0, (float)this->_texture.width, (float)this->_texture.height };
-	this->_btnBounds	= { (float)screenWidth - (this->_texture.width-20), (float)screenHeight - (this->_texture.height + 20), (float)this->_texture.width, (float)this->_texture.height };
-	this->_state		= NORMAL;
-	this->_action		= false;
+	this->texture		= LoadTexture("./assets/button_next-cycle.png");
+	this->sourceRec		= { 0, 0, (float)this->texture.width, (float)this->texture.height };
+	this->btnBounds		= { (float)screenWidth - (this->texture.width-20), (float)screenHeight - (this->texture.height + 20), (float)this->texture.width, (float)this->texture.height };
+	this->state			= NORMAL;
+	this->isActioned	= false;
 }
 
-Button::~Button(void) {
-	UnloadTexture(this->_texture);
-}
+Button::~Button(void) { UnloadTexture(this->texture); }
 
 // Getters
-Texture2D	Button::getTexture(void) {
-	return (this->_texture);
-}
-
-Rectangle	Button::getBtnBounds(void) {
-	return (this->_btnBounds);
-}
-
-Rectangle	Button::getSourceRec(void) {
-	return (this->_sourceRec);
-}
-
-ButtonState	Button::getState(void) {
-	setState();
-	return (this->_state);
-}
-
-bool	Button::action(void) {
-	getState();
-	return (this->_action);
-}
+Texture2D	Button::get_texture(void) { return (this->texture); }
+Rectangle	Button::get_btn_bounds(void) { return (this->btnBounds); }
+Rectangle	Button::get_source_rec(void) { return (this->sourceRec); }
+ButtonState	Button::get_state(void) { set_state(); return (this->state); }
+bool		Button::action(void) { getState(); return (this->action); }
 
 // Setters
-bool	Button::setState(void) {
+bool	Button::set_state(void) {
 	Vector2	mousePos = GetMousePosition();
-	this->_action = false;
+	this->isActioned = false;
 
-	if (CheckCollisionPointRec(mousePos, this->_btnBounds)) {
+	if (CheckCollisionPointRec(mousePos, this->btnBounds)) {
 		if (IsMouseButtonPressed(MOUSE_LEFT_BUTTON)) {
-			this->_state = PRESSED;
+			this->state = PRESSED;
 		} else {
-			this->_state = MOUSE_HOVER;
+			this->state = MOUSE_HOVER;
 		}
 		if (IsMouseButtonReleased(MOUSE_LEFT_BUTTON)) {
-			this->_action = true;
+			this->action = true;
 		}
 	} else {
-		this->_state = NORMAL;
+		this->state = NORMAL;
 	}
-	setPos();
+	set_pos();
 	return (true);
 }
 
-bool	Button::setPos(void) {
-	if (this->_state == MOUSE_HOVER || this->_state == PRESSED) {
-		this->_btnBounds.x = (float)screenWidth - (this->_texture.width+20);
+bool	Button::set_pos(void) {
+	if (this->state == MOUSE_HOVER || this->state == PRESSED) {
+		this->btnBounds.x = (float)screenWidth - (this->texture.width+20);
 	} else {
-		this->_btnBounds.x = (float)screenWidth - (this->_texture.width-20);
+		this->btnBounds.x = (float)screenWidth - (this->texture.width-20);
 	}
 	return (true);
 }

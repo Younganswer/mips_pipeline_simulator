@@ -1,7 +1,7 @@
 #ifndef BUTTON_HPP
 # define BUTTON_HPP
 
-# include "../raylib/src/raylib.h"
+# include "../libs/raylib/src/raylib.h"
 
 typedef enum _ButtonState {
 	NORMAL		= 0,
@@ -11,25 +11,25 @@ typedef enum _ButtonState {
 
 class Button {
 	private:
-		Texture2D	_texture;
-		Rectangle	_btnBounds;
-		Rectangle	_sourceRec;
-		ButtonState	_state;
-		bool		_action;
+		Texture2D	texture;
+		Rectangle	btnBounds;
+		Rectangle	sourceRec;
+		ButtonState	state;
+		bool		isActioned;
 
 		// Setters
-		bool	setState(void);
-		bool	setPos(void);
+		bool	set_state(void);
+		bool	set_pos(void);
 
 	public:
 		Button(void);
 		~Button(void);
 
 		// Getters
-		Texture2D	getTexture(void);
-		Rectangle	getBtnBounds(void);
-		Rectangle	getSourceRec(void);
-		ButtonState	getState(void);
+		Texture2D	get_texture(void);
+		Rectangle	get_btn_bounds(void);
+		Rectangle	get_source_rec(void);
+		ButtonState	get_state(void);
 		bool		action(void);
 };
 

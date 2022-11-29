@@ -1,26 +1,26 @@
 #include "../../incs/hazard.hpp"
 
 Hazard::Hazard(void) {
-	this->_mem_read = false;
-	this->_id_rs = 0;
-	this->_id_rt = 0;
-	this->_ex_rd = 0;
+	this->memRead = false;
+	this->idRs = 0;
+	this->idRt = 0;
+	this->exRd = 0;
 }
 
 Hazard::~Hazard(void) {}
 
 // Getters
-bool	Hazard::getMemRead(void) { return this->_mem_read; }
-int		Hazard::getIdRs(void) { return this->_id_rs; }
-int		Hazard::getIdRt(void) { return this->_id_rt; }
-int		Hazard::getExRd(void) { return this->_ex_rd; }
+bool	Hazard::get_mem_read(void) { return this->memRead; }
+int		Hazard::get_id_rs(void) { return this->idRs; }
+int		Hazard::get_id_rt(void) { return this->idRt; }
+int		Hazard::get_ex_rd(void) { return this->exRd; }
 
 // Setters
-void	Hazard::setMemRead(bool mem_read) { this->_mem_read = mem_read; }
-void	Hazard::setIdRs(int id_rs) { this->_id_rs = id_rs; }
-void	Hazard::setIdRt(int id_rt) { this->_id_rt = id_rt; }
-void	Hazard::setExRd(int ex_rd) { this->_ex_rd = ex_rd; }
+void	Hazard::set_mem_read(bool mem_read) { this->memRead = mem_read; }
+void	Hazard::set_id_rs(int id_rs) { this->idRs = id_rs; }
+void	Hazard::set_id_rt(int id_rt) { this->idRt = id_rt; }
+void	Hazard::set_ex_rd(int ex_rd) { this->exRd = ex_rd; }
 
 // Utils
-bool	Hazard::pcWrite(void) const { return ((this->_mem_read && (this->_id_rs == this->_ex_rd || this->_id_rt == this->_ex_rd)) == false); }
-bool	Hazard::instructionFetch(void) const { return ((this->_mem_read && (this->_id_rs == this->_ex_rd || this->_id_rt == this->_ex_rd)) == false); }
+bool	Hazard::pc_write(void) const { return ((this->memRead && (this->idRs == this->exRd || this->idRt == this->exRd)) == false); }
+bool	Hazard::instruction_fetch(void) const { return ((this->memRead && (this->idRs == this->exRd || this->idRt == this->exRd)) == false); }

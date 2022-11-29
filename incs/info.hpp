@@ -1,7 +1,7 @@
 #ifndef INFO_HPP
 # define INFO_HPP
 
-# include "../raylib/src/raylib.h"
+# include "../libs/raylib/src/raylib.h"
 # include "button.hpp"
 # include "camera.hpp"
 # include "instruction.hpp"
