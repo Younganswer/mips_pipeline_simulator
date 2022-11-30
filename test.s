@@ -31,9 +31,16 @@
 # OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 #
 
-		.data 0x10010000
+		.data 0x10008000
 var1:	.word 0x12345678
 var2:	.word 0x9abcdef0
+var3:	.word 3
+var4:	.word 4
+var5:	.word 5
+var6:	.word 6
+		.data 0x1000a004
+var7:	.word 7
+var8:	.word 8
 
 msg:	.asciiz "Hello World\n"
 		.extern foobar 4

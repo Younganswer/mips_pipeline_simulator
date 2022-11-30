@@ -7,6 +7,7 @@ Button::Button(void) {
 	this->btnBounds		= { (float)screenWidth - (this->texture.width-20), (float)screenHeight - (this->texture.height + 20), (float)this->texture.width, (float)this->texture.height };
 	this->state			= NORMAL;
 	this->isActioned	= false;
+	this->cycle			= 0;
 }
 
 Button::~Button(void) { UnloadTexture(this->texture); }
@@ -17,6 +18,7 @@ Rectangle	Button::get_btn_bounds(void) { return (this->btnBounds); }
 Rectangle	Button::get_source_rec(void) { return (this->sourceRec); }
 ButtonState	Button::get_state(void) { set_state(); return (this->state); }
 bool		Button::is_actioned(void) { get_state(); return (this->isActioned); }
+size_t		Button::get_cycle(void) { return (this->cycle); }
 
 // Setters
 bool	Button::set_state(void) {
@@ -34,6 +36,9 @@ bool	Button::set_state(void) {
 		}
 	} else {
 		this->state = NORMAL;
+	}
+	if (this->isActioned) {
+		this->cycle++;
 	}
 	set_pos();
 	return (true);

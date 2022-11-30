@@ -43,10 +43,9 @@ SRCS =	main.cpp \
 		shape/draw_dot.cpp \
 		shape/draw_mux.cpp \
 		shape/draw_trapezoid.cpp \
-		window/draw_camera_sight.cpp \
-		window/draw_edge.cpp \
-		window/draw_guide.cpp \
-		window/draw_window.cpp
+		render/draw_camera_sight.cpp \
+		render/draw_window.cpp \
+		render/render.cpp
 		
 SRCS := ${addprefix ${SRCS_DIR}/, ${SRCS}}
 OBJS = ${SRCS:${SRCS_DIR}/%.cpp=${OBJS_DIR}/%.o}
@@ -73,7 +72,7 @@ ${OBJS_DIR}:
 	@mkdir -p objs/info
 	@mkdir -p objs/instruction
 	@mkdir -p objs/shape
-	@mkdir -p objs/window
+	@mkdir -p objs/render
 
 
 ${NAME}: ${OBJS}

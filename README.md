@@ -32,7 +32,7 @@
 
 ## How to run
 ### Default
-	$ make run [INPUT_FILE="test.s"]
+	$ make run [INPUT_FILE="test.s"] [SIZE_FACTOR=size_factor]
 * Default &nbsp;*INPUT_FILE*&nbsp; is "test.s"
 * Rule "run" executes following two commands
 	* `./libs/assembler/spim/spim -file test.s -dump`

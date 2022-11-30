@@ -1,6 +1,6 @@
 #include "../../incs/info.hpp"
 #include "../../incs/shape.hpp"
-#include "../../incs/window.hpp"
+#include "../../incs/render.hpp"
 #include "../../incs/draw_contents.hpp"
 #include <iostream>
 

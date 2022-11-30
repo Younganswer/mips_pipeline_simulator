@@ -28,7 +28,7 @@ int	main(int argc, char **argv) {
 			BeginDrawing();
 			
 			ClearBackground(RAYWHITE);
-			draw_window(info);
+			render(info);
 
 			EndDrawing();
 		//----------------------------------------------------------------------------------

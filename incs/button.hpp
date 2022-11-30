@@ -1,6 +1,7 @@
 #ifndef BUTTON_HPP
 # define BUTTON_HPP
 
+# include <stddef.h>
 # include "../libs/raylib/src/raylib.h"
 
 typedef enum _ButtonState {
@@ -16,6 +17,7 @@ class Button {
 		Rectangle	sourceRec;
 		ButtonState	state;
 		bool		isActioned;
+		size_t		cycle;
 
 		// Setters
 		bool	set_state(void);
@@ -31,6 +33,7 @@ class Button {
 		Rectangle	get_source_rec(void);
 		ButtonState	get_state(void);
 		bool		is_actioned(void);
+		size_t		get_cycle(void);
 };
 
 #endif
