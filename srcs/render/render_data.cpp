@@ -11,27 +11,6 @@ bool	render_data(Info &info) {
 	return (true);
 }
 
-
-bool	render_user_data_segment(Info &info) {
-	// draw text ------------------------------------------------------------------------------------------------------------------------------
-		DrawTextEx(GetFontDefault(), "User data segment", (Vector2){ screenWidth, screenHeight/2+25 }, 20.0f, 1.0f, BLACK);
-	// draw text ------------------------------------------------------------------------------------------------------------------------------
-
-	// draw data segment sector ---------------------------------------------------------------------------------------------------------------
-		DrawRectangle(screenWidth, screenHeight/2+50, 177, 350, Fade(LIGHTGRAY, 0.5f));
-		DrawRectangleLines(screenWidth, screenHeight/2+50, 177, 350, GRAY);
-	// draw data segment sector ---------------------------------------------------------------------------------------------------------------
-
-	// draw data segment contents ------------------------------------------------------------------------------------------------------------
-		for (size_t i=0; i<10&&i<info.mem.size(); i++) {
-			string	address = string("[0x") + n2hexstr(info.mem[i].address) + string("]");
-			string	value = string("0x") + n2hexstr(info.mem[i].value);
-			DrawTextEx(GetFontDefault(), address.c_str(), (Vector2){ screenWidth+10, (float)screenHeight/2+60+(i*15) }, 10.0f, 1.0f, BLACK);
-			DrawTextEx(GetFontDefault(), value.c_str(), (Vector2){ screenWidth+100, (float)screenHeight/2+60+(i*15) }, 10.0f, 1.0f, BLACK);
-		}
-	return (true);
-}
-
 bool	render_register(Info &info) {
 	// draw text -------------------------------------------------------------------------------------------------------------------------------
 		DrawTextEx(GetFontDefault(), "Register", (Vector2){ screenWidth, 55 }, 20.0f, 1.0f, BLACK);
@@ -54,6 +33,27 @@ bool	render_register(Info &info) {
 	// draw register contents ------------------------------------------------------------------------------------------------------------------
 	return (true);
 }
+
+bool	render_user_data_segment(Info &info) {
+	// draw text ------------------------------------------------------------------------------------------------------------------------------
+		DrawTextEx(GetFontDefault(), "User data segment", (Vector2){ screenWidth, screenHeight/2+25 }, 20.0f, 1.0f, BLACK);
+	// draw text ------------------------------------------------------------------------------------------------------------------------------
+
+	// draw data segment sector ---------------------------------------------------------------------------------------------------------------
+		DrawRectangle(screenWidth, screenHeight/2+50, 177, 350, Fade(LIGHTGRAY, 0.5f));
+		DrawRectangleLines(screenWidth, screenHeight/2+50, 177, 350, GRAY);
+	// draw data segment sector ---------------------------------------------------------------------------------------------------------------
+
+	// draw data segment contents ------------------------------------------------------------------------------------------------------------
+		for (size_t i=0; i<10&&i<info.mem.size(); i++) {
+			string	address = string("[0x") + n2hexstr(info.mem[i].address) + string("]");
+			string	value = string("0x") + n2hexstr(info.mem[i].value);
+			DrawTextEx(GetFontDefault(), address.c_str(), (Vector2){ screenWidth+10, (float)screenHeight/2+60+(i*15) }, 10.0f, 1.0f, BLACK);
+			DrawTextEx(GetFontDefault(), value.c_str(), (Vector2){ screenWidth+100, (float)screenHeight/2+60+(i*15) }, 10.0f, 1.0f, BLACK);
+		}
+	return (true);
+}
+
 template <typename I> std::string n2hexstr(I w, size_t hex_len) {
     static const char* digits = "0123456789abcdef";
     std::string rc(hex_len,'0');

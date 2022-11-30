@@ -11,12 +11,12 @@ LDLIBS			= -lraylib -framework OpenGL -framework Cocoa -framework IOKit -framewo
 ASSEMBLER_PATH	= ./assembler
 
 SIZE_FACTOR = 0
-ifeq (, ${filter ${SIZE_FACTOR}, 6 7 8 9 10})
+ifeq (, ${filter ${SIZE_FACTOR}, 6 7 8 9})
 	SIZE_FACTOR := 8
 endif
 
 CC			= clang++
-CXXFLAGS	= -Wall -Wextra -Werror -O2 -std=c++17 -D SIZE_FACTOR=${SIZE_FACTOR}
+CXXFLAGS	= -Wall -Wextra -Werror -O2 -std=c++17 -DSIZE_FACTOR=${SIZE_FACTOR}
 LDFLAGS		= -fsanitize=address -g3 -L. -L${LIBS_DIR}/${RAYLIB_PATH}/src
 RM			= rm -f
 
