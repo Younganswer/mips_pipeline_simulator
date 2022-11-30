@@ -26,7 +26,8 @@
 	$ make (all) [SIZE_FACTOR=size_factor]
 * *SIZE_FACTOR*: size factor of the window (default: 8.0)
 	* Only 6, 7, 8, 9, and 10 are supported for &nbsp;*SIZE_FACTOR*
-	* If you want to use other values, you have to execute `$ make re SIZE_FACTOR=size_factor`
+	* If you want to use other values, you have to execute
+		* `$ make re SIZE_FACTOR=size_factor`
 <br/><br/><br/><br/>
 
 ## How to run
