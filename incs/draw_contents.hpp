@@ -5,6 +5,7 @@
 
 // draw_contents.cpp
 bool	draw_contents(const Info &info);
+bool	DrawCircleSectorLinesEx(float posX, float posY, float radius, int startAngle, int endAngle, int segments, Color color);
 
 // draw_operations.cpp
 bool	draw_instruction_fetch(const Info &info);
@@ -18,5 +19,11 @@ bool	draw_if_id(const Info &info);
 bool	draw_id_ex(const Info &info);
 bool	draw_ex_mem(const Info &info);
 bool	draw_mem_wb(const Info &info);
+
+// draw_hazard_unit.cpp
+bool	draw_hazard_unit(const Info &info);
+
+// draw_forwarding_unit.cpp
+bool	draw_forwarding_unit(const Info &info);
 
 #endif

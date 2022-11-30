@@ -5,14 +5,17 @@
 # include "button.hpp"
 # include "camera.hpp"
 # include "instruction.hpp"
-
 # include <vector>
+
+# ifndef SIZE_FACTOR
+#  define SIZE_FACTOR 8
+# endif
 
 using namespace std;
 
 typedef enum _ScreenSize {
-	screenWidth		= 192*6,
-	screenHeight	= 108*6
+	screenWidth		= 192*SIZE_FACTOR,
+	screenHeight	= 108*SIZE_FACTOR
 }	ScreenSize;
 
 typedef struct	_Memory {
