@@ -23,7 +23,9 @@
 <br/><br/><br/>
 
 ## Install
-	$ make
+	$ make (all) [SIZE_FACTOR=size_factor]
+* *SIZE_FACTOR*: size factor of the window (default: 8.0)
+	* Only 6, 7, 8, 9, and 10 are supported for &nbsp;*SIZE_FACTOR*
 <br/><br/><br/><br/>
 
 ## How to run
