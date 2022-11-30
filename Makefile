@@ -10,7 +10,7 @@ LDLIBS			= -lraylib -framework OpenGL -framework Cocoa -framework IOKit -framewo
 
 ASSEMBLER_PATH	= ./assembler
 
-SIZE_FACTOR = 0
+SIZE_FACTOR		= 0
 ifeq (, ${filter ${SIZE_FACTOR}, 6 7 8 9})
 	SIZE_FACTOR := 8
 endif

@@ -19,8 +19,8 @@ bool	manipulate_camera(Camera2D &camera) {
 	// Camera zoom controls
 	if (IsKeyDown(KEY_I)) camera.zoom *= 1.025f;
 	else if (IsKeyDown(KEY_O)) camera.zoom *= 0.975f;
-	if (camera.zoom > 3.0f) camera.zoom = 3.0f;
-	else if (camera.zoom < 0.1f) camera.zoom = 0.1f;
+	if (camera.zoom > 1.0f) camera.zoom = 1.0f;
+	else if (camera.zoom < 0.125f) camera.zoom = 0.125f;
 
 	// Camera reset
 	if (IsKeyPressed(KEY_R)) {

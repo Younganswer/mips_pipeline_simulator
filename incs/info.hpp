@@ -46,7 +46,7 @@ const static string	register_text[32] = {
 	"$gp",
 	"$sp",
 	"$s8",
-	"$ra"
+	"$ra",
 };
 
 typedef struct	_Memory {
