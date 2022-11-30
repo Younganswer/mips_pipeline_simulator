@@ -6,7 +6,7 @@
 
 int	btnClicked = 0;
 
-bool	draw_camera_sight(Info &info) {
+bool	render_camera_sight(Info &info) {
 	int	posX	= (int)info.camera.target.x;
 	int	posY	= (int)info.camera.target.y;
 	int	offsetY	= -180;

@@ -11,7 +11,7 @@ LDLIBS			= -lraylib -framework OpenGL -framework Cocoa -framework IOKit -framewo
 ASSEMBLER_PATH	= ./assembler
 
 SIZE_FACTOR = 0
-ifneq (, ${filter ${SIZE_FACTOR}, 6 7 8 9 10})
+ifeq (, ${filter ${SIZE_FACTOR}, 6 7 8 9 10})
 	SIZE_FACTOR := 8
 endif
 
@@ -43,9 +43,9 @@ SRCS =	main.cpp \
 		shape/draw_dot.cpp \
 		shape/draw_mux.cpp \
 		shape/draw_trapezoid.cpp \
-		render/draw_camera_sight.cpp \
-		render/draw_window.cpp \
-		render/render.cpp
+		render/render.cpp \
+		render/render_camera_sight.cpp \
+		render/render_data.cpp
 		
 SRCS := ${addprefix ${SRCS_DIR}/, ${SRCS}}
 OBJS = ${SRCS:${SRCS_DIR}/%.cpp=${OBJS_DIR}/%.o}

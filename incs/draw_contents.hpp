@@ -5,7 +5,6 @@
 
 // draw_contents.cpp
 bool	draw_contents(const Info &info);
-bool	DrawCircleSectorLinesEx(float posX, float posY, float radius, int startAngle, int endAngle, int segments, Color color);
 
 // draw_operations.cpp
 bool	draw_instruction_fetch(const Info &info);

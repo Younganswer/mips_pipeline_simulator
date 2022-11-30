@@ -7,10 +7,10 @@
 // render.cpp
 bool	render(Info &info);
 
-// draw_camera_sight.cpp
-bool	draw_camera_sight(Info &info);
+// render_camera_sight.cpp
+bool	render_camera_sight(Info &info);
 
-// draw_window.cpp
-bool	draw_window(Info &info);
+// render_data
+bool	render_data(Info &info);
 
 #endif
