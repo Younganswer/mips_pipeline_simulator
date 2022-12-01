@@ -44,7 +44,9 @@ SRCS =	main.cpp \
 		shape/draw_trapezoid.cpp \
 		render/render.cpp \
 		render/render_camera_sight.cpp \
-		render/render_data.cpp
+		render/render_data.cpp \
+		pipeline/Pipeline.cpp
+
 		
 SRCS := ${addprefix ${SRCS_DIR}/, ${SRCS}}
 OBJS = ${SRCS:${SRCS_DIR}/%.cpp=${OBJS_DIR}/%.o}
