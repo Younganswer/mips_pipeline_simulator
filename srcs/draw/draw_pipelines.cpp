@@ -61,8 +61,11 @@ bool	draw_id_ex(const Info &info) {
 
 	// draw signal sector -----------------------------------------------------------------------------
 		DrawRectangleLinesEx(Rectangle{100, -1100, 300, 200}, 5.0f, BLUE);
+		DrawRectangle(100, -1100, 300, 200, Fade(BLUE, 0.2f));
 		DrawRectangleLinesEx(Rectangle{100, -900, 300, 200}, 5.0f, BLUE);
+		DrawRectangle(100, -900, 300, 200, Fade(BLUE, 0.2f));
 		DrawRectangleLinesEx(Rectangle{100, -700, 300, 200}, 5.0f, BLUE);
+		DrawRectangle(100, -700, 300, 200, Fade(BLUE, 0.2f));
 	// draw signal sector -----------------------------------------------------------------------------
 
 	// draw signal ---------------------------------------------------------------------------------------
@@ -166,7 +169,9 @@ bool	draw_ex_mem(const Info &info) {
 
 	// draw signal sector -----------------------------------------------------------------------------
 		DrawRectangleLinesEx(Rectangle{1800, -900, 300, 200}, 5.0f, BLUE);
+		DrawRectangle(1800, -900, 300, 200, Fade(BLUE, 0.2f));
 		DrawRectangleLinesEx(Rectangle{1800, -700, 300, 200}, 5.0f, BLUE);
+		DrawRectangle(1800, -700, 300, 200, Fade(BLUE, 0.2f));
 	// draw signal sector -----------------------------------------------------------------------------
 
 	// draw signal ---------------------------------------------------------------------------------------
@@ -225,6 +230,7 @@ bool	draw_mem_wb(const Info &info) {
 
 	// draw signal sector -----------------------------------------------------------------------------
 		DrawRectangleLinesEx(Rectangle{3300, -700, 300, 200}, 5.0f, BLUE);
+		DrawRectangle(3300, -700, 300, 200, Fade(BLUE, 0.2f));
 	// draw signal sector -----------------------------------------------------------------------------
 
 	// draw signal ---------------------------------------------------------------------------------------

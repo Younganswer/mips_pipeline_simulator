@@ -15,6 +15,7 @@ bool	draw_units(const Info &info) {
 bool	draw_hazard_unit(const Info &info) {
 	// draw hazard unit sector ------------------------------------------------------------------------------------
 		DrawRectangleRoundedLines(Rectangle{ -1600, -1700, 500, 300 }, 0.5f, 0, 5.0f, RED);
+		DrawRectangleRounded(Rectangle{ -1600, -1700, 500, 300 }, 0.5f, 0, Fade(RED, 0.2f));
 	// draw hazard unit sector ------------------------------------------------------------------------------------
 
 	// draw text --------------------------------------------------------------------------------------------------
@@ -29,11 +30,13 @@ bool	draw_hazard_unit(const Info &info) {
 
 bool	draw_control_unit(const Info &info) {
 	// draw control unit sector ------------------------------------------------------------------------------------
-		DrawRectangleRoundedLines(Rectangle{ -1900, -1100, 300, 500 }, 1.0f, 0, 5.0f, RED);
+		DrawRectangleRoundedLines(Rectangle{ -1900, -1100, 300, 500 }, 1.0f, 0, 5.0f, BLUE);
+		DrawRectangleRounded(Rectangle{ -1900, -1100, 300, 500 }, 1.0f, 0, Fade(BLUE, 0.2f));
 	// draw control unit sector ------------------------------------------------------------------------------------
 
 	// draw text --------------------------------------------------------------------------------------------------
-		DrawTextEx(GetFontDefault(), "Control", Vector2{ -1850, -870 }, 60.0f, 3.0f, RED);
+		DrawTextEx(GetFontDefault(), "Control", Vector2{ -1850, -910 }, 60.0f, 3.0f, BLUE);
+		DrawTextEx(GetFontDefault(), "unit", Vector2{ -1800, -830 }, 60.0f, 3.0f, BLUE);
 	// draw text --------------------------------------------------------------------------------------------------
 	(void) info;
 	return (true);
@@ -41,12 +44,13 @@ bool	draw_control_unit(const Info &info) {
 
 bool	draw_forwarding_unit(const Info &info) {
 	// draw forwarding unit sector ------------------------------------------------------------------------------
-		DrawRectangleRoundedLines(Rectangle{ 1300, 1520, 480, 300 }, 1.0f, 0, 5.0f, BLUE);
+		DrawRectangleRoundedLines(Rectangle{ 1300, 1520, 480, 300 }, 1.0f, 0, 5.0f, GOLD);
+		DrawRectangleRounded(Rectangle{ 1300, 1520, 480, 300 }, 1.0f, 0, Fade(GOLD, 0.2f));
 	// draw forwarding unit sector ------------------------------------------------------------------------------
 
 	// draw text --------------------------------------------------------------------------------------------------
-		DrawTextEx(GetFontDefault(), "Forwarding", Vector2{ 1370, 1600 }, 70.0f, 3.0f, BLUE);
-		DrawTextEx(GetFontDefault(), "unit", Vector2{ 1490, 1690 }, 70.0f, 3.0f, BLUE);
+		DrawTextEx(GetFontDefault(), "Forwarding", Vector2{ 1370, 1600 }, 70.0f, 3.0f, GOLD);
+		DrawTextEx(GetFontDefault(), "unit", Vector2{ 1490, 1690 }, 70.0f, 3.0f, GOLD);
 	// draw text --------------------------------------------------------------------------------------------------
 	
 	(void) info;
