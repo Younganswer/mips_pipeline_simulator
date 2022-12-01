@@ -11,7 +11,7 @@ LDLIBS			= -lraylib -framework OpenGL -framework Cocoa -framework IOKit -framewo
 ASSEMBLER_PATH	= ./assembler
 
 SIZE_FACTOR		= 0
-ifeq (, ${filter ${SIZE_FACTOR}, 6 7 8 9})
+ifeq (, ${filter ${SIZE_FACTOR}, 7 8 9})
 	SIZE_FACTOR := 8
 endif
 
@@ -31,8 +31,7 @@ SRCS =	main.cpp \
 		button/button.cpp \
 		camera/camera.cpp \
 		draw/draw_contents.cpp \
-		draw/draw_hazard_unit.cpp \
-		draw/draw_forwarding_unit.cpp \
+		draw/draw_units.cpp \
 		draw/draw_operations.cpp \
 		draw/draw_pipelines.cpp \
 		forward/forward.cpp \

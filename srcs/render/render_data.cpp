@@ -37,20 +37,22 @@ bool	render_register(Info &info) {
 
 bool	render_user_data_segment(Info &info) {
 	// draw text ------------------------------------------------------------------------------------------------------------------------------
-		DrawTextEx(GetFontDefault(), "User data segment", (Vector2){ screenWidth-200, (float)screenHeight/2-35 }, 20.0f, 1.0f, BLACK);
+		DrawTextEx(GetFontDefault(), "User data segment", (Vector2){ screenWidth-200, 440.0f }, 20.0f, 1.0f, BLACK);
 	// draw text ------------------------------------------------------------------------------------------------------------------------------
 
 	// draw data segment sector ---------------------------------------------------------------------------------------------------------------
-		DrawRectangle(screenWidth-200, screenHeight/2-10, 177, 350, Fade(LIGHTGRAY, 0.5f));
-		DrawRectangleLines(screenWidth-200, screenHeight/2-10, 177, 350, GRAY);
+		float	btnHeight = info.button.get_btn_bounds().y;
+		cout << "btnHeight: " << btnHeight << endl;
+		DrawRectangle(screenWidth-200, 465, 177, btnHeight-500, Fade(LIGHTGRAY, 0.5f));
+		DrawRectangleLines(screenWidth-200, 465, 177, btnHeight-500, GRAY);
 	// draw data segment sector ---------------------------------------------------------------------------------------------------------------
 
 	// draw data segment contents ------------------------------------------------------------------------------------------------------------
 		for (size_t i=0; i<10&&i<info.mem.size(); i++) {
 			string	address = string("[0x") + n2hexstr(info.mem[i].address) + string("]");
 			string	value = string("0x") + n2hexstr(info.mem[i].value);
-			DrawTextEx(GetFontDefault(), address.c_str(), (Vector2){ screenWidth-200+10, (float)screenHeight/2+(i*15) }, 10.0f, 1.0f, BLACK);
-			DrawTextEx(GetFontDefault(), value.c_str(), (Vector2){ screenWidth-200+100, (float)screenHeight/2+(i*15) }, 10.0f, 1.0f, BLACK);
+			DrawTextEx(GetFontDefault(), address.c_str(), (Vector2){ screenWidth-200+10, (float)475+(i*15) }, 10.0f, 1.0f, BLACK);
+			DrawTextEx(GetFontDefault(), value.c_str(), (Vector2){ screenWidth-200+100, (float)475+(i*15) }, 10.0f, 1.0f, BLACK);
 		}
 	return (true);
 }

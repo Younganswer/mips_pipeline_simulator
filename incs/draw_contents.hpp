@@ -19,10 +19,7 @@ bool	draw_id_ex(const Info &info);
 bool	draw_ex_mem(const Info &info);
 bool	draw_mem_wb(const Info &info);
 
-// draw_hazard_unit.cpp
-bool	draw_hazard_unit(const Info &info);
-
-// draw_forwarding_unit.cpp
-bool	draw_forwarding_unit(const Info &info);
+// draw_units.cpp
+bool	draw_units(const Info &info);
 
 #endif
