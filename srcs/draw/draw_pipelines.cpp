@@ -2,12 +2,13 @@
 
 bool	draw_if_id(const Info &info);
 bool	draw_id_ex(const Info &info);
+bool	draw_id_ex_signal(const Info &info);
 bool	draw_ex_mem(const Info &info);
+bool	draw_ex_mem_signal(const Info &info);
 bool	draw_mem_wb(const Info &info);
+bool	draw_mem_wb_signal(const Info &info);
 
 bool	draw_if_id(const Info &info) {
-	(void) info;
-
 	// draw text that indicates the current pipeline stage -----------------------------------------------
 		DrawTextEx(GetFontDefault(), "IF/ID", (Vector2) { -2420, -570 }, 50.0f, 2.0f, BLACK);
 	// draw text that indicates the current pipeline stage -----------------------------------------------
@@ -49,47 +50,14 @@ bool	draw_if_id(const Info &info) {
 
 	// draw instruction ----------------------------------------------------------------------------------
 
+	(void) info;
 	return (true);
 }
 
 bool	draw_id_ex(const Info &info) {
-	(void) info;
-
-	// draw text that indicates the current pipeline stage -----------------------------------------------
-		DrawTextEx(GetFontDefault(), "ID/EX", (Vector2) { 180, -1170 }, 50.0f, 2.0f, BLACK);
-	// draw text that indicates the current pipeline stage -----------------------------------------------
-
-	// draw signal sector -----------------------------------------------------------------------------
-		DrawRectangleLinesEx(Rectangle{100, -1100, 300, 200}, 5.0f, BLUE);
-		DrawRectangle(100, -1100, 300, 200, Fade(BLUE, 0.2f));
-		DrawRectangleLinesEx(Rectangle{100, -900, 300, 200}, 5.0f, BLUE);
-		DrawRectangle(100, -900, 300, 200, Fade(BLUE, 0.2f));
-		DrawRectangleLinesEx(Rectangle{100, -700, 300, 200}, 5.0f, BLUE);
-		DrawRectangle(100, -700, 300, 200, Fade(BLUE, 0.2f));
-	// draw signal sector -----------------------------------------------------------------------------
-
-	// draw signal ---------------------------------------------------------------------------------------
-		DrawTextEx(GetFontDefault(), "Write back", Vector2{120, -1080}, 40.0f, 2.0f, BLUE);
-		DrawTextEx(GetFontDefault(), "=>", Vector2{140, -1020}, 40.0f, 2.0f, BLUE);
-		// draw write back signal value ------------------------------------------------------------------
-			// TODO: Get write back signal value from info
-			DrawTextEx(GetFontDefault(), "True", Vector2{180, -1025}, 50.0f, 2.0f, BLUE);
-		// draw write back signal value ------------------------------------------------------------------
-
-		DrawTextEx(GetFontDefault(), "Memory Read", Vector2{120, -880}, 40.0f, 2.0f, BLUE);
-		DrawTextEx(GetFontDefault(), "=>", Vector2{140, -820}, 40.0f, 2.0f, BLUE);
-		// draw memory read signal value -----------------------------------------------------------------
-			// TODO: Get memory read signal value from info
-			DrawTextEx(GetFontDefault(), "True", Vector2{180, -825}, 50.0f, 2.0f, BLUE);
-		// draw memory read signal value -----------------------------------------------------------------
-
-		DrawTextEx(GetFontDefault(), "Execute", Vector2{120, -680}, 40.0f, 2.0f, BLUE);
-		DrawTextEx(GetFontDefault(), "=>", Vector2{140, -620}, 40.0f, 2.0f, BLUE);
-		// draw execute signal value ---------------------------------------------------------------------
-			// TODO: Get execute signal value from info
-			DrawTextEx(GetFontDefault(), "True", Vector2{180, -625}, 50.0f, 2.0f, BLUE);
-		// draw execute signal value ---------------------------------------------------------------------
-	// draw signal ---------------------------------------------------------------------------------------
+	// draw id/ex signal -------------------------------------------------------------------------------
+		draw_id_ex_signal(info);
+	// draw id/ex signal -------------------------------------------------------------------------------
 
 	// draw pipeline sector ---------------------------------------------------------------------------
 		DrawRectangleLinesEx(Rectangle{100, -500, 300, 2000}, 5.0f, BLACK);
@@ -157,40 +125,14 @@ bool	draw_id_ex(const Info &info) {
 	// draw rd address -----------------------------------------------------------------------------------
 
 	// TODO: Draw something that idw
+	(void) info;
 	return (true);
 }
 
 bool	draw_ex_mem(const Info &info) {
-	(void) info;
-
-	// draw text that indicate the current pipeline stage ------------------------------------------------
-		DrawTextEx(GetFontDefault(), "EX/MEM", Vector2{1850, -970}, 50.0f, 2.0f, BLACK);
-	// draw text that indicate the current pipeline stage ------------------------------------------------
-
-	// draw signal sector -----------------------------------------------------------------------------
-		DrawRectangleLinesEx(Rectangle{1800, -900, 300, 200}, 5.0f, BLUE);
-		DrawRectangle(1800, -900, 300, 200, Fade(BLUE, 0.2f));
-		DrawRectangleLinesEx(Rectangle{1800, -700, 300, 200}, 5.0f, BLUE);
-		DrawRectangle(1800, -700, 300, 200, Fade(BLUE, 0.2f));
-	// draw signal sector -----------------------------------------------------------------------------
-
-	// draw signal ---------------------------------------------------------------------------------------
-		DrawTextEx(GetFontDefault(), "Write back", Vector2{1820, -880}, 40.0f, 2.0f, BLUE);
-		DrawTextEx(GetFontDefault(), "=>", Vector2{1840, -820}, 40.0f, 2.0f, BLUE);
-
-		// draw memory write signal value ----------------------------------------------------------------
-			// TODO: Get memory write signal value from info
-			DrawTextEx(GetFontDefault(), "True", Vector2{1880, -825}, 50.0f, 2.0f, BLUE);
-		// draw memory write signal value ----------------------------------------------------------------
-
-		DrawTextEx(GetFontDefault(), "Memory read", Vector2{1820, -680}, 40.0f, 2.0f, BLUE);
-		DrawTextEx(GetFontDefault(), "=>", Vector2{1840, -620}, 40.0f, 2.0f, BLUE);
-
-		// draw memory read signal value -----------------------------------------------------------------
-			// TODO: Get memory read signal value from info
-			DrawTextEx(GetFontDefault(), "True", Vector2{1880, -625}, 50.0f, 2.0f, BLUE);
-		// draw memory read signal value -----------------------------------------------------------------
-	// draw signal ---------------------------------------------------------------------------------------
+	// draw ex/mem signal ------------------------------------------------------------------------------
+		draw_ex_mem_signal(info);
+	// draw ex/mem signal ------------------------------------------------------------------------------
 
 	// draw pipeline sector ---------------------------------------------------------------------------
 		DrawRectangleLinesEx(Rectangle{1800, -500, 300, 2000}, 5.0f, BLACK);
@@ -218,30 +160,14 @@ bool	draw_ex_mem(const Info &info) {
 	// draw sign extended immediate ----------------------------------------------------------------------
 
 	// TODO: Draw something that idw
+	(void) info;
 	return (true);
 }
 
 bool	draw_mem_wb(const Info &info) {
-	(void) info;
-
-	// draw text that indicate the current pipeline stage ------------------------------------------------
-		DrawTextEx(GetFontDefault(), "MEM/WB", Vector2{3340, -770}, 50.0f, 2.0f, BLACK);
-	// draw text that indicate the current pipeline stage ------------------------------------------------
-
-	// draw signal sector -----------------------------------------------------------------------------
-		DrawRectangleLinesEx(Rectangle{3300, -700, 300, 200}, 5.0f, BLUE);
-		DrawRectangle(3300, -700, 300, 200, Fade(BLUE, 0.2f));
-	// draw signal sector -----------------------------------------------------------------------------
-
-	// draw signal ---------------------------------------------------------------------------------------
-		DrawTextEx(GetFontDefault(), "Write back", Vector2{3320, -680}, 40.0f, 2.0f, BLUE);
-		DrawTextEx(GetFontDefault(), "=>", Vector2{3340, -620}, 40.0f, 2.0f, BLUE);
-
-		// draw memory write signal value ----------------------------------------------------------------
-			// TODO: Get memory write signal value from info
-			DrawTextEx(GetFontDefault(), "True", Vector2{3380, -625}, 50.0f, 2.0f, BLUE);
-		// draw memory write signal value ----------------------------------------------------------------
-	// draw signal ---------------------------------------------------------------------------------------
+	// draw mem/wb signal ------------------------------------------------------------------------------
+		draw_mem_wb_signal(info);
+	// draw mem/wb signal ------------------------------------------------------------------------------
 
 	// draw pipeline sector ---------------------------------------------------------------------------
 		DrawRectangleLinesEx(Rectangle{3300, -500, 300, 2000}, 5.0f, BLACK);
@@ -267,5 +193,262 @@ bool	draw_mem_wb(const Info &info) {
 			DrawTextEx(GetFontDefault(), "0x00000003", Vector2{3380, 840}, 30.0f, 2.0f, BLACK);
 		// draw ALU result value ------------------------------------------------------------------------
 	// draw ALU result -----------------------------------------------------------------------------------
+	(void) info;
 	return (true);
 }
+
+bool	draw_id_ex_signal(const Info &info) {
+	// draw text that indicates the current pipeline stage -----------------------------------------------
+		DrawTextEx(GetFontDefault(), "ID/EX", (Vector2) { 180, -1620 }, 50.0f, 2.0f, BLACK);
+	// draw text that indicates the current pipeline stage -----------------------------------------------
+
+	// draw signal sector -----------------------------------------------------------------------------
+		DrawRectangleLinesEx(Rectangle{100, -1560, 300, 1060}, 5.0f, Fade(BLUE, 0.4f));
+		DrawRectangle(100, -1560, 300, 1060, Fade(BLUE, 0.1f));
+	// draw signal sector -----------------------------------------------------------------------------
+
+	// draw signal ---------------------------------------------------------------------------------------
+
+		// draw ALU Opcode sector --------------------------------------------------------------------
+			DrawRectangleLinesEx(Rectangle{120, -1540, 260, 110}, 5.0f, Fade(BLUE, 0.8f));
+			DrawRectangle(120, -1540, 260, 110, Fade(BLUE, 0.15f));
+			// draw ALU Opcode signal ----------------------------------------------------------------
+				DrawTextEx(GetFontDefault(), "ALUOp", Vector2{135, -1525}, 40.0f, 2.0f, BLUE);
+				DrawTextEx(GetFontDefault(), "=>", Vector2{160, -1480}, 40.0f, 2.0f, BLUE);
+				// draw ALU Opcode signal value --------------------------------------------------------
+					// TODO: Get ALU Opcode signal value from info
+					DrawTextEx(GetFontDefault(), "True", Vector2{200, -1480}, 40.0f, 2.0f, BLUE);
+				// draw ALU Opcode signal value --------------------------------------------------------
+			// draw ALU Opcode signal ----------------------------------------------------------------
+		// draw ALU Opcode sector --------------------------------------------------------------------
+
+		// draw ALU Source sector --------------------------------------------------------------------
+			DrawRectangleLinesEx(Rectangle{120, -1410, 260, 110}, 5.0f, Fade(BLUE, 0.8f));
+			DrawRectangle(120, -1410, 260, 110, Fade(BLUE, 0.15f));
+			// draw ALU Source signal ----------------------------------------------------------------
+				DrawTextEx(GetFontDefault(), "ALUSrc", Vector2{135, -1395}, 40.0f, 2.0f, BLUE);
+				DrawTextEx(GetFontDefault(), "=>", Vector2{160, -1350}, 40.0f, 2.0f, BLUE);
+				// draw ALU Source signal value --------------------------------------------------------
+					// TODO: Get ALU Source signal value from info
+					DrawTextEx(GetFontDefault(), "True", Vector2{200, -1350}, 40.0f, 2.0f, BLUE);
+				// draw ALU Source signal value --------------------------------------------------------
+			// draw ALU Source signal ----------------------------------------------------------------
+		// draw ALU Source sector --------------------------------------------------------------------
+		
+		// draw Register Destination sector --------------------------------------------------------------------
+			DrawRectangleLinesEx(Rectangle{120, -1280, 260, 110}, 5.0f, Fade(BLUE, 0.8f));
+			DrawRectangle(120, -1280, 260, 110, Fade(BLUE, 0.15f));
+			// draw Register Destination signal ----------------------------------------------------------------
+				DrawTextEx(GetFontDefault(), "RegDst", Vector2{135, -1265}, 40.0f, 2.0f, BLUE);
+				DrawTextEx(GetFontDefault(), "=>", Vector2{160, -1220}, 40.0f, 2.0f, BLUE);
+				// draw Register Destination signal value --------------------------------------------------------
+					// TODO: Get Register Destination signal value from info
+					DrawTextEx(GetFontDefault(), "True", Vector2{200, -1220}, 40.0f, 2.0f, BLUE);
+				// draw Register Destination signal value --------------------------------------------------------
+			// draw Register Destination signal ----------------------------------------------------------------
+		// draw Register Destination sector --------------------------------------------------------------------
+
+		// draw Memory Write sector --------------------------------------------------------------------
+			DrawRectangleLinesEx(Rectangle{120, -1150, 260, 110}, 5.0f, Fade(BLUE, 0.8f));
+			DrawRectangle(120, -1150, 260, 110, Fade(BLUE, 0.15f));
+			// draw Memory Write signal ----------------------------------------------------------------
+				DrawTextEx(GetFontDefault(), "MemWrite", Vector2{135, -1135}, 40.0f, 2.0f, BLUE);
+				DrawTextEx(GetFontDefault(), "=>", Vector2{160, -1090}, 40.0f, 2.0f, BLUE);
+				// draw Memory Write signal value --------------------------------------------------------
+					// TODO: Get Memory Write signal value from info
+					DrawTextEx(GetFontDefault(), "True", Vector2{200, -1090}, 40.0f, 2.0f, BLUE);
+				// draw Memory Write signal value --------------------------------------------------------
+			// draw Memory Write signal ----------------------------------------------------------------
+		// draw Memory Write sector --------------------------------------------------------------------
+
+		// draw Memory Read sector --------------------------------------------------------------------
+			DrawRectangleLinesEx(Rectangle{120, -1020, 260, 110}, 5.0f, Fade(BLUE, 0.8f));
+			DrawRectangle(120, -1020, 260, 110, Fade(BLUE, 0.15f));
+			// draw Memory Read signal ----------------------------------------------------------------
+				DrawTextEx(GetFontDefault(), "MemRead", Vector2{135, -1005}, 40.0f, 2.0f, BLUE);
+				DrawTextEx(GetFontDefault(), "=>", Vector2{160, -960}, 40.0f, 2.0f, BLUE);
+				// draw Memory Read signal value --------------------------------------------------------
+					// TODO: Get Memory Read signal value from info
+					DrawTextEx(GetFontDefault(), "True", Vector2{200, -960}, 40.0f, 2.0f, BLUE);
+				// draw Memory Read signal value --------------------------------------------------------
+			// draw Memory Read signal ----------------------------------------------------------------
+		// draw Memory Read sector --------------------------------------------------------------------
+
+		// draw Branch sector ---------------------------------------------------------------------------
+			DrawRectangleLinesEx(Rectangle{120, -890, 260, 110}, 5.0f, Fade(BLUE, 0.8f));
+			DrawRectangle(120, -890, 260, 110, Fade(BLUE, 0.15f));
+			// draw Branch signal -------------------------------------------------------------------------
+				DrawTextEx(GetFontDefault(), "Branch", Vector2{135, -875}, 40.0f, 2.0f, BLUE);
+				DrawTextEx(GetFontDefault(), "=>", Vector2{160, -830}, 40.0f, 2.0f, BLUE);
+				// draw Branch signal value ----------------------------------------------------------------
+					// TODO: Get Branch signal value from info
+					DrawTextEx(GetFontDefault(), "False", Vector2{200, -830}, 40.0f, 2.0f, BLUE);
+				// draw Branch signal value ----------------------------------------------------------------
+			// draw Branch signal -------------------------------------------------------------------------
+		// draw Branch sector ---------------------------------------------------------------------------
+
+		// draw Register write sector -----------------------------------------------------------------
+			DrawRectangleLinesEx(Rectangle{120, -760, 260, 110}, 5.0f, Fade(BLUE, 0.8f));
+			DrawRectangle(120, -760, 260, 110, Fade(BLUE, 0.15f));
+			// draw Register write signal ----------------------------------------------------------------
+				DrawTextEx(GetFontDefault(), "RegWrite", Vector2{135, -745}, 40.0f, 2.0f, BLUE);
+				DrawTextEx(GetFontDefault(), "=>", Vector2{160, -700}, 40.0f, 2.0f, BLUE);
+				// draw Register write signal value --------------------------------------------------------
+					// TODO: Get Register write signal value from info
+					DrawTextEx(GetFontDefault(), "True", Vector2{200, -700}, 40.0f, 2.0f, BLUE);
+				// draw Register write signal value --------------------------------------------------------
+			// draw Register write signal ----------------------------------------------------------------
+		// draw Register write sector -----------------------------------------------------------------
+
+		// draw Memory to register sector ----------------------------------------------------------------
+			DrawRectangleLinesEx(Rectangle{120, -630, 260, 110}, 5.0f, Fade(BLUE, 0.8f));
+			DrawRectangle(120, -630, 260, 110, Fade(BLUE, 0.15f));
+			// draw Memory to register signal ---------------------------------------------------------------
+				DrawTextEx(GetFontDefault(), "MemToReg", Vector2{135, -615}, 40.0f, 2.0f, BLUE);
+				DrawTextEx(GetFontDefault(), "=>", Vector2{160, -570}, 40.0f, 2.0f, BLUE);
+				// draw Memory to register signal value -----------------------------------------------------
+					// TODO: Get Memory to register signal value from info
+					DrawTextEx(GetFontDefault(), "True", Vector2{200, -570}, 40.0f, 2.0f, BLUE);
+				// draw Memory to register signal value -----------------------------------------------------
+			// draw Memory to register signal ---------------------------------------------------------------
+		// draw Memory to register sector ----------------------------------------------------------------
+
+	// draw signal ---------------------------------------------------------------------------------------
+	(void) info;
+	return (true);
+}
+
+bool	draw_ex_mem_signal(const Info &info) {
+	// draw text that indicates the current pipeline stage -----------------------------------------------
+		DrawTextEx(GetFontDefault(), "EX/MEM", (Vector2) { 1850, -1230 }, 50.0f, 2.0f, BLACK);
+	// draw text that indicates the current pipeline stage -----------------------------------------------
+
+	// draw signal sector -----------------------------------------------------------------------------
+		DrawRectangleLinesEx(Rectangle{1800, -1170, 300, 670}, 5.0f, Fade(BLUE, 0.4f));
+		DrawRectangle(1800, -1170, 300, 670, Fade(BLUE, 0.1f));
+	// draw signal sector -----------------------------------------------------------------------------
+
+	// draw signal ---------------------------------------------------------------------------------------
+		
+		// draw Memory Write sector --------------------------------------------------------------------
+			DrawRectangleLinesEx(Rectangle{1820, -1150, 260, 110}, 5.0f, Fade(BLUE, 0.8f));
+			DrawRectangle(1820, -1150, 260, 110, Fade(BLUE, 0.15f));
+			DrawLineEx(Vector2{ 380, -1095 }, Vector2 { 1820, -1095 }, 5.0f, Fade(BLUE, 0.8f));
+			// draw Memory Write signal ----------------------------------------------------------------
+				DrawTextEx(GetFontDefault(), "MemWrite", Vector2{1835, -1135}, 40.0f, 2.0f, BLUE);
+				DrawTextEx(GetFontDefault(), "=>", Vector2{1860, -1090}, 40.0f, 2.0f, BLUE);
+				// draw Memory Write signal value --------------------------------------------------------
+					// TODO: Get Memory Write signal value from info
+					DrawTextEx(GetFontDefault(), "True", Vector2{1900, -1090}, 40.0f, 2.0f, BLUE);
+				// draw Memory Write signal value --------------------------------------------------------
+			// draw Memory Write signal ----------------------------------------------------------------
+
+		// draw Memory Write sector --------------------------------------------------------------------
+
+		// draw Memory Read sector --------------------------------------------------------------------
+			DrawRectangleLinesEx(Rectangle{1820, -1020, 260, 110}, 5.0f, Fade(BLUE, 0.8f));
+			DrawRectangle(1820, -1020, 260, 110, Fade(BLUE, 0.15f));
+			DrawLineEx(Vector2{ 380, -965 }, Vector2 { 1820, -965 }, 5.0f, Fade(BLUE, 0.8f));
+			// draw Memory Read signal ----------------------------------------------------------------
+				DrawTextEx(GetFontDefault(), "MemRead", Vector2{1835, -1005}, 40.0f, 2.0f, BLUE);
+				DrawTextEx(GetFontDefault(), "=>", Vector2{1860, -960}, 40.0f, 2.0f, BLUE);
+				// draw Memory Read signal value --------------------------------------------------------	
+					// TODO: Get Memory Read signal value from info
+					DrawTextEx(GetFontDefault(), "True", Vector2{1900, -960}, 40.0f, 2.0f, BLUE);
+				// draw Memory Read signal value --------------------------------------------------------
+			// draw Memory Read signal ----------------------------------------------------------------
+		// draw Memory Read sector --------------------------------------------------------------------
+	
+		// draw Branch sector -----------------------------------------------------------------------
+			DrawRectangleLinesEx(Rectangle{1820, -890, 260, 110}, 5.0f, Fade(BLUE, 0.8f));
+			DrawRectangle(1820, -890, 260, 110, Fade(BLUE, 0.15f));
+			DrawLineEx(Vector2{ 380, -835 }, Vector2 { 1820, -835 }, 5.0f, Fade(BLUE, 0.8f));
+			// draw Branch signal -------------------------------------------------------------------------
+				DrawTextEx(GetFontDefault(), "Branch", Vector2{1835, -875}, 40.0f, 2.0f, BLUE);
+				DrawTextEx(GetFontDefault(), "=>", Vector2{1860, -830}, 40.0f, 2.0f, BLUE);
+				// draw Branch signal value ----------------------------------------------------------------
+					// TODO: Get Branch signal value from info
+					DrawTextEx(GetFontDefault(), "Flase", Vector2{1900, -830}, 40.0f, 2.0f, BLUE);
+				// draw Branch signal value ----------------------------------------------------------------
+			// draw Branch signal -------------------------------------------------------------------------
+		// draw Branch sector -----------------------------------------------------------------------
+
+		// draw Register Write sector ----------------------------------------------------------------
+			DrawRectangleLinesEx(Rectangle{1820, -760, 260, 110}, 5.0f, Fade(BLUE, 0.8f));
+			DrawRectangle(1820, -760, 260, 110, Fade(BLUE, 0.15f));
+			DrawLineEx(Vector2{ 380, -705 }, Vector2 { 1820, -705 }, 5.0f, Fade(BLUE, 0.8f));
+			// draw Register write signal ----------------------------------------------------------------
+				DrawTextEx(GetFontDefault(), "RegWrite", Vector2{1835, -745}, 40.0f, 2.0f, BLUE);
+				DrawTextEx(GetFontDefault(), "=>", Vector2{1860, -700}, 40.0f, 2.0f, BLUE);
+				// draw Register write signal value --------------------------------------------------------
+					// TODO: Get Register write signal value from info
+					DrawTextEx(GetFontDefault(), "True", Vector2{1900, -700}, 40.0f, 2.0f, BLUE);
+				// draw Register write signal value --------------------------------------------------------
+			// draw Register write signal ----------------------------------------------------------------
+		// draw Register Write sector ----------------------------------------------------------------
+
+		// draw Memory to Register sector -------------------------------------------------------------
+			DrawRectangleLinesEx(Rectangle{1820, -630, 260, 110}, 5.0f, Fade(BLUE, 0.8f));
+			DrawRectangle(1820, -630, 260, 110, Fade(BLUE, 0.15f));
+			DrawLineEx(Vector2{ 380, -575 }, Vector2 { 1820, -575 }, 5.0f, Fade(BLUE, 0.8f));
+			// draw Memory to register signal ---------------------------------------------------------------
+				DrawTextEx(GetFontDefault(), "MemToReg", Vector2{1835, -615}, 40.0f, 2.0f, BLUE);
+				DrawTextEx(GetFontDefault(), "=>", Vector2{1860, -570}, 40.0f, 2.0f, BLUE);
+				// draw Memory to register signal value -----------------------------------------------------
+					// TODO: Get Memory to register signal value from info
+					DrawTextEx(GetFontDefault(), "True", Vector2{1900, -570}, 40.0f, 2.0f, BLUE);
+				// draw Memory to register signal value -----------------------------------------------------
+			// draw Memory to register signal ---------------------------------------------------------------
+		// draw Memory to Register sector -------------------------------------------------------------
+	
+	// draw signal ---------------------------------------------------------------------------------------
+	(void) info;
+	return (true);
+}
+
+bool	draw_mem_wb_signal(const Info &info) {
+	// draw text that indicates the current pipeline stage -----------------------------------------------
+		DrawTextEx(GetFontDefault(), "MEM/WB", Vector2{3340, -840}, 50.0f, 2.0f, BLACK);
+	// draw text that indicates the current pipeline stage -----------------------------------------------
+
+	// draw signal sector -----------------------------------------------------------------------------
+		DrawRectangleLinesEx(Rectangle{3300, -780, 300, 280}, 5.0f, Fade(BLUE, 0.8f));
+		DrawRectangle(3300, -780, 300, 280, Fade(BLUE, 0.1f));
+	// draw signal sector -----------------------------------------------------------------------------
+
+	// draw signal ---------------------------------------------------------------------------------------
+		
+		// draw Register Write sector ----------------------------------------------------------------
+			DrawRectangleLinesEx(Rectangle{3320, -760, 260, 110}, 5.0f, Fade(BLUE, 0.8f));
+			DrawRectangle(3320, -760, 260, 110, Fade(BLUE, 0.15f));
+			DrawLineEx(Vector2 { 2080, -705 }, Vector2 { 3320, -705 }, 5.0f, Fade(BLUE, 0.8f));
+			// draw Register write signal ----------------------------------------------------------------
+				DrawTextEx(GetFontDefault(), "RegWrite", Vector2{3335, -745}, 40.0f, 2.0f, BLUE);
+				DrawTextEx(GetFontDefault(), "=>", Vector2{3360, -700}, 40.0f, 2.0f, BLUE);
+				// draw Register write signal value --------------------------------------------------------
+					// TODO: Get Register write signal value from info
+					DrawTextEx(GetFontDefault(), "True", Vector2{3400, -700}, 40.0f, 2.0f, BLUE);
+				// draw Register write signal value --------------------------------------------------------
+			// draw Register write signal ----------------------------------------------------------------
+		// draw Register Write sector ----------------------------------------------------------------
+
+		// draw Memory To Register sector -------------------------------------------------------------
+			DrawRectangleLinesEx(Rectangle{3320, -630, 260, 110}, 5.0f, Fade(BLUE, 0.8f));
+			DrawRectangle(3320, -630, 260, 110, Fade(BLUE, 0.15f));
+			DrawLineEx(Vector2 { 2080, -575 }, Vector2 { 3320, -575 }, 5.0f, Fade(BLUE, 0.8f));
+			// draw Memory to register signal ---------------------------------------------------------------
+				DrawTextEx(GetFontDefault(), "MemToReg", Vector2{3335, -615}, 40.0f, 2.0f, BLUE);
+				DrawTextEx(GetFontDefault(), "=>", Vector2{3360, -570}, 40.0f, 2.0f, BLUE);
+				// draw Memory to register signal value -----------------------------------------------------
+					//TODO: Get Memory to register signal value from info
+					DrawTextEx(GetFontDefault(), "True", Vector2{3400, -570}, 40.0f, 2.0f, BLUE);
+				// draw Memory to register signal value -----------------------------------------------------
+			// draw Memory to register signal ---------------------------------------------------------------
+		// draw Memory To Register sector -------------------------------------------------------------
+
+	// draw signal ---------------------------------------------------------------------------------------
+
+	(void) info;
+	return (true);
+}
+//3300, -500, 300, 2000
