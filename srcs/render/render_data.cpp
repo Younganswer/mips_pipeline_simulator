@@ -43,12 +43,12 @@ bool	render_user_data_segment(Info &info) {
 	// draw data segment sector ---------------------------------------------------------------------------------------------------------------
 		float	btnHeight = info.button.get_btn_bounds().y;
 		cout << "btnHeight: " << btnHeight << endl;
-		DrawRectangle(screenWidth-200, 465, 177, btnHeight-500, Fade(LIGHTGRAY, 0.5f));
-		DrawRectangleLines(screenWidth-200, 465, 177, btnHeight-500, GRAY);
+		DrawRectangle(screenWidth-200, 465, 177, btnHeight-510, Fade(LIGHTGRAY, 0.5f));
+		DrawRectangleLines(screenWidth-200, 465, 177, btnHeight-510, GRAY);
 	// draw data segment sector ---------------------------------------------------------------------------------------------------------------
 
 	// draw data segment contents ------------------------------------------------------------------------------------------------------------
-		for (size_t i=0; i<10&&i<info.mem.size(); i++) {
+		for (size_t i=0; i<9+(SIZE_FACTOR-7)*7&&i<info.mem.size(); i++) {
 			string	address = string("[0x") + n2hexstr(info.mem[i].address) + string("]");
 			string	value = string("0x") + n2hexstr(info.mem[i].value);
 			DrawTextEx(GetFontDefault(), address.c_str(), (Vector2){ screenWidth-200+10, (float)475+(i*15) }, 10.0f, 1.0f, BLACK);

@@ -41,6 +41,18 @@ var6:	.word 6
 		.data 0x1000a004
 var7:	.word 7
 var8:	.word 8
+var9:	.word 9
+var10:	.word 10
+		.data 0x1000c000
+var11:	.word 11
+var12:	.word 12
+var13:	.word 13
+var14:	.word 14
+		.data 0x1000e000
+var15:	.word 15
+var16:	.word 16
+var17:	.word 17
+var18:	.word 18
 
 msg:	.asciiz "Hello World\n"
 		.extern foobar 4
