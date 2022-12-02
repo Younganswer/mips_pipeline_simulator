@@ -45,7 +45,7 @@ SRCS =	main.cpp \
 		render/render.cpp \
 		render/render_camera_sight.cpp \
 		render/render_data.cpp \
-		pipeline/Pipeline.cpp
+		pipeline/pipeline.cpp
 
 		
 SRCS := ${addprefix ${SRCS_DIR}/, ${SRCS}}
@@ -74,6 +74,7 @@ ${OBJS_DIR}:
 	@mkdir -p objs/instruction
 	@mkdir -p objs/shape
 	@mkdir -p objs/render
+	@mkdir -p objs/pipeline
 
 
 ${NAME}: ${OBJS}

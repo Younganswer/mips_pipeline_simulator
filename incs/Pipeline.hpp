@@ -1,81 +1,123 @@
 #ifndef PIPELINE_HPP
 # define PIPELINE_HPP
-# include "../../incs/instruction.hpp"
 
+# define ui unsigned int
 
-class IFID
-{
+# include "instruction.hpp"
+
+class IFID {
 	private:
-		unsigned int	pc;
+		ui				pc;
 		Instruction		instruction;
 
-		//getter
-		unsigned int	get_pc(void);
+	public:
+		IFID(void);
+		~IFID(void);
+
+		// getter
+		ui		get_pc(void);
+
+		// setter
+		void	set_pc(ui pc);
 };
 
-class IDEX
-{
+class IDEX {
 	private:
-		unsigned int	wb;
-		unsigned int	m;
-		unsigned int	ex;
-		unsigned int	pc;
-		unsigned int	read_data_1;
-		unsigned int	read_data_2;
-		unsigned int	extend_imm;
-		unsigned int	rs;
-		unsigned int	rt; // 2번 쓰일 예정.
-		unsigned int	rd;
+		ui	wb;
+		ui	m;
+		ui	ex;
+		ui	pc;
+		ui	readData1;
+		ui	readData2;
+		ui	extendImm;
+		ui	rs;
+		ui	rt; // 2번 쓰일 예정.
+		ui	rd;
 
-		public:
-			IDEX(void);
-			~IDEX(void);
-			// getter
-			unsigned int	get_wb(void);
-			unsigned int	get_m(void);
-			unsigned int	get_ex(void);
-			unsigned int	get_pc(void);
-			unsigned int	get_read_data_1(void);
-			unsigned int	get_read_data_2(void);
-			unsigned int	get_extend_imm(void);
-			unsigned int	get_rs(void);
-			unsigned int	get_rt(void);
+	public:
+		IDEX(void);
+		~IDEX(void);
+
+		// getter
+		ui	get_wb(void);
+		ui	get_m(void);
+		ui	get_ex(void);
+		ui	get_pc(void);
+		ui	get_read_data_1(void);
+		ui	get_read_data_2(void);
+		ui	get_extend_imm(void);
+		ui	get_rs(void);
+		ui	get_rt(void);
+		ui	get_rd(void);
+
+		// setter
+		void	set_wb(ui wb);
+		void	set_m(ui m);
+		void	set_ex(ui ex);
+		void	set_pc(ui pc);
+		void	set_read_data_1(ui readData1);
+		void	set_read_data_2(ui readData2);
+		void	set_extend_imm(ui extendImm);
+		void	set_rs(ui rs);
+		void	set_rt(ui rt);
+		void	set_rd(ui rd);
 };
 
-class EXMEM
-{
+class EXMEM {
 	private:
-		unsigned int	wb;
-		unsigned int	m;
-		unsigned int	add_result;
-		unsigned int	zero_flag;
-		unsigned int	alu_result;
-		unsigned int	read_data_2;
-		unsigned int	extend_imm;
-		unsigned int	write_data;
+		ui	wb;
+		ui	m;
+		ui	addResult;
+		ui	zeroFlag;
+		ui	aluResult;
+		ui	readData2;
+		ui	extendImm;
+		ui	writeData;
 
-		//getter
-		unsigned int	get_wb(void);
-		unsigned int	get_m(void);
-		unsigned int	get_add_result(void);
-		unsigned int	get_zero_flag(void);
-		unsigned int	get_alu_result(void);
-		unsigned int	get_read_data_2(void);
-		unsigned int	get_extend_imm(void);
-		unsigned int	get_write_data(void);
+	public:
+		EXMEM(void);
+		~EXMEM(void);
+
+		// getter
+		ui	get_wb(void);
+		ui	get_m(void);
+		ui	get_add_result(void);
+		ui	get_zero_flag(void);
+		ui	get_alu_result(void);
+		ui	get_read_data_2(void);
+		ui	get_extend_imm(void);
+		ui	get_write_data(void);
+
+		// setter
+		void	set_wb(ui wb);
+		void	set_m(ui m);
+		void	set_add_result(ui addResult);
+		void	set_zero_flag(ui zeroFlag);
+		void	set_alu_result(ui aluResult);
+		void	set_read_data_2(ui readData2);
+		void	set_extend_imm(ui extendImm);
+		void	set_write_data(ui writeData);
 };
 
-class MEMWB
-{
+class MEMWB {
 	private:
-		unsigned int	wb;
-		unsigned int	read_data;
-		unsigned int	alu_result;
+		ui	wb;
+		ui	readData;
+		ui	aluResult;
 
-	//getter
-	unsigned int	get_wb(void);
-	unsigned int	get_read_data(void);
-	unsigned int	get_alu_result(void);
+	public:
+		MEMWB(void);
+		~MEMWB(void);
+		
+		// getter
+		ui	get_wb(void);
+		ui	get_read_data(void);
+		ui	get_alu_result(void);
+
+		// setter
+		void	set_wb(ui wb);
+		void	set_read_data(ui readData);
+		void	set_alu_result(ui aluResult);
 };
 
 #endif
