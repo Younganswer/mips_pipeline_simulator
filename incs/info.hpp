@@ -69,9 +69,15 @@ class Info {
 		// Memory
 		vector<Memory>		mem;
 
+		// TODO: add pipelines, hazard unit, forward unit
+
 		Info(void);
 		Info(const char *textSegment, const char *dataSegment);
 		~Info(void);
 };
+
+// TODO: create button action -> update function (Info &info)
+// TODO: create update function -> execute each stage
+// TODO: There are 5 stages fetch, decode, execute, memory and writeback stages
 
 #endif
