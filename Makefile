@@ -99,18 +99,18 @@ ${OBJS_DIR}/%.o: ${SRCS_DIR}/%.cpp | ${OBJS_DIR}
 
 clean:
 	@echo "Remove dependencies in ${NAME}"
-	@rm -rf ${OBJS_DIR}
+	@rm -rf ${OBJS_DIR} *.asm
 
 
 fclean: clean
 	@echo "Remove ${NAME}"
 	@make -C ${LIBS_DIR}/${RAYLIB_PATH}/src clean
 	@make -C ${LIBS_DIR}/${ASSEMBLER_PATH}/spim clean
-	@${RM} ${NAME} *.asm
+	@${RM} ${NAME}
 	
 
 re:
-	@make fclean
+	@make clean
 	@make all
 
 

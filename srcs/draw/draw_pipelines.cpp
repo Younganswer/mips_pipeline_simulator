@@ -41,12 +41,12 @@ bool	draw_if_id(const Info &info) {
 	// draw program counter ------------------------------------------------------------------------------
 
 	// draw instruction ----------------------------------------------------------------------------------
-		DrawTextEx(GetFontDefault(), "Instruction", Vector2{-2480, 300}, 30.0f, 2.0f, BLACK);
-		DrawTextEx(GetFontDefault(), "=>", Vector2{-2470, 340}, 30.0f, 2.0f, BLACK);
+		DrawTextEx(GetFontDefault(), "Instruction", Vector2{-2480, 400}, 30.0f, 2.0f, BLACK);
+		DrawTextEx(GetFontDefault(), "=>", Vector2{-2470, 440}, 30.0f, 2.0f, BLACK);
 
 		// draw instruction value ------------------------------------------------------------------------
 			// TODO: Get instruction value from info
-			DrawTextEx(GetFontDefault(), "0x12345678", Vector2{-2430, 340}, 30.0f, 2.0f, BLACK);
+			DrawTextEx(GetFontDefault(), "0x12345678", Vector2{-2430, 440}, 30.0f, 2.0f, BLACK);
 		// draw instruction value ------------------------------------------------------------------------
 
 	// draw instruction ----------------------------------------------------------------------------------
@@ -55,7 +55,7 @@ bool	draw_if_id(const Info &info) {
 		DrawLineEx(Vector2{ -1600, -1550 }, Vector2{ -2350, -1550}, 5.0f, BLACK);
 		draw_down_arrow(-2350, -1550, -2350, -600, BLACK);
 		draw_right_arrow(-2670, -330, -2500, -330, BLACK);
-		draw_right_arrow(-2600, 330, -2500, 330, BLACK);
+		draw_right_arrow(-2600, 430, -2500, 430, BLACK);
 	// draw lines ----------------------------------------------------------------------------------------
 	(void) info;
 	return (true);
