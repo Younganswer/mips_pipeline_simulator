@@ -1,6 +1,10 @@
 #include "../../incs/pipeline.hpp"
 #include <iostream>
 
+IFID::IFID(void) {}
+
+IFID::~IFID(void) {}
+
 // IFID getter
 ui	IFID::get_pc(void) { return (this->pc); }
 
