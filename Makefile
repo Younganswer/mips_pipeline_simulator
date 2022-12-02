@@ -79,8 +79,8 @@ ${OBJS_DIR}:
 
 ${NAME}: ${OBJS}
 	@printf "\bdone\n"
-	@make -C ${LIBS_DIR}/${RAYLIB_PATH}/src
-	@make -C ${LIBS_DIR}/${ASSEMBLER_PATH}/spim
+	@make -s -C ${LIBS_DIR}/${RAYLIB_PATH}/src
+	@make -s -C ${LIBS_DIR}/${ASSEMBLER_PATH}/spim
 	${CC} ${CXXFLAGS} ${LDFLAGS} ${LDLIBS} -g -o ${NAME} ${OBJS} ${LIBS_DIR}/${LIBRAYLIB} -I ${INCS_DIR}
 	@echo "Build ${NAME}: done"
 

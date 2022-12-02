@@ -37,13 +37,6 @@ Info::Info(const char *textSegment, const char *dataSegment) {
 	}
 	dataFile.close();
 
-	{
-		// check memory
-		for (size_t i=0; i<mem.size(); i++) {
-			cout << "[0x" << n2hexstr(mem[i].address, 8) << "] 0x" << n2hexstr(mem[i].value, 8) << '\n';
-		}
-	}
-
 	// Initialize registers
 	memset(registerValues, 0, sizeof(registerValues));
 	// global pointer

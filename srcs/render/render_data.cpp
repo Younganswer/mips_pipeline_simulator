@@ -42,7 +42,6 @@ bool	render_user_data_segment(Info &info) {
 
 	// draw data segment sector ---------------------------------------------------------------------------------------------------------------
 		float	btnHeight = info.button.get_btn_bounds().y;
-		cout << "btnHeight: " << btnHeight << endl;
 		DrawRectangle(screenWidth-200, 465, 177, btnHeight-510, Fade(LIGHTGRAY, 0.5f));
 		DrawRectangleLines(screenWidth-200, 465, 177, btnHeight-510, GRAY);
 	// draw data segment sector ---------------------------------------------------------------------------------------------------------------
