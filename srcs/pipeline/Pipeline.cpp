@@ -45,7 +45,7 @@ void	EXMEM::set_read_data_2(ui readData2) { this->readData2 = readData2; }
 void	EXMEM::set_extend_imm(ui extendImm) { this->extendImm = extendImm; }
 void	EXMEM::set_write_data(ui writeData) { this->writeData = writeData; }
 
-// MEMWB getter
+// MEMWB getter 
 ui	MEMWB::get_wb(void) { return (this->wb); }
 ui	MEMWB::get_alu_result(void) { return (this->aluResult); }
 ui	MEMWB::get_read_data(void) { return (this->readData); }
