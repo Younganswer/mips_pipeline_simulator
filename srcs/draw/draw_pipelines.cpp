@@ -98,41 +98,52 @@ bool	draw_id_ex(const Info &info) {
 		DrawTextEx(GetFontDefault(), "Sign extended", Vector2{120, 900}, 30.0f, 2.0f, BLACK);
 		DrawTextEx(GetFontDefault(), "immediate value", Vector2{120, 940}, 30.0f, 2.0f, BLACK);
 		DrawTextEx(GetFontDefault(), "=>", Vector2{130, 980}, 30.0f, 2.0f, BLACK);
-
 		// draw sign extended immediate value ------------------------------------------------------------
 			// TODO: Get sign extended immediate value from info
 			DrawTextEx(GetFontDefault(), "0xfffffabc", Vector2{170, 980}, 30.0f, 2.0f, BLACK);
 		// draw sign extended immediate value ------------------------------------------------------------
+		// draw line ------------------------------------------------------------------------------------
+			draw_right_arrow(-1300, 955, 100, 955, BLACK);
 	// draw sign extended immediate ----------------------------------------------------------------------
 
 	// draw rs address -----------------------------------------------------------------------------------
 		DrawTextEx(GetFontDefault(), "rs", Vector2{120, 1120}, 30.0f, 2.0f, BLACK);
 		DrawTextEx(GetFontDefault(), "=>", Vector2{130, 1160}, 30.0f, 2.0f, BLACK);
-
 		// draw rs address value -------------------------------------------------------------------------
 			// TODO: Get rs address value from info
 			DrawTextEx(GetFontDefault(), "$10", Vector2{170, 1160}, 30.0f, 2.0f, BLACK);
 		// draw rs address value -------------------------------------------------------------------------
+		// draw line ------------------------------------------------------------------------------------
+			DrawCircle(-1810, -185, 10, BLACK);
+			DrawLineEx(Vector2{-1810, -185}, Vector2{-1810, 1160}, 5.0f, BLACK);
+			draw_right_arrow(-1810, 1160, 100, 1160, BLACK);
+		// draw line ------------------------------------------------------------------------------------
 	// draw rs address -----------------------------------------------------------------------------------
 
 	// draw rt address -----------------------------------------------------------------------------------
 		DrawTextEx(GetFontDefault(), "rt", Vector2{120, 1240}, 30.0f, 2.0f, BLACK);
 		DrawTextEx(GetFontDefault(), "=>", Vector2{130, 1280}, 30.0f, 2.0f, BLACK);
-
 		// draw rt address value -------------------------------------------------------------------------
 			// TODO: Get rt address value from info
 			DrawTextEx(GetFontDefault(), "$11", Vector2{170, 1280}, 30.0f, 2.0f, BLACK);
 		// draw rt address value -------------------------------------------------------------------------
+		// draw line ------------------------------------------------------------------------------------
+			DrawCircle(-1930, 25, 10, BLACK);
+			DrawLineEx(Vector2{-1930, 25}, Vector2{-1930, 1280}, 5.0f, BLACK);
+			draw_right_arrow(-1930, 1280, 100, 1280, BLACK);
+		// draw line ------------------------------------------------------------------------------------
 	// draw rt address -----------------------------------------------------------------------------------
 
 	// draw rd address -----------------------------------------------------------------------------------
 		DrawTextEx(GetFontDefault(), "rd", Vector2{120, 1360}, 30.0f, 2.0f, BLACK);
 		DrawTextEx(GetFontDefault(), "=>", Vector2{130, 1400}, 30.0f, 2.0f, BLACK);
-
 		// draw rd address value -------------------------------------------------------------------------
 			// TODO: Get rd address value from info
 			DrawTextEx(GetFontDefault(), "$12", Vector2{170, 1400}, 30.0f, 2.0f, BLACK);
 		// draw rd address value -------------------------------------------------------------------------
+		// draw line ------------------------------------------------------------------------------------
+			DrawCircle(-2050, 1400, 10, BLACK);
+			draw_right_arrow(-2050, 1400, 100, 1400, BLACK);
 	// draw rd address -----------------------------------------------------------------------------------
 
 	// draw mux sector -----------------------------------------------------------------------------------

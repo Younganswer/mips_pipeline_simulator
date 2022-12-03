@@ -2,6 +2,10 @@
 #include "../../incs/shape.hpp"
 
 bool	draw_contents(const Info &info) {
+	// draw units -----------------------------------------------------------------------
+		draw_units(info);
+	// draw units -----------------------------------------------------------------------
+	
 	// draw operations ------------------------------------------------------------------
 		draw_instruction_fetch(info);
 		draw_instruction_decode(info);
@@ -16,9 +20,5 @@ bool	draw_contents(const Info &info) {
 		draw_ex_mem(info);
 		draw_mem_wb(info);
 	// draw pipeline --------------------------------------------------------------------
-
-	// draw units -----------------------------------------------------------------------
-		draw_units(info);
-	// draw units -----------------------------------------------------------------------
 	return (true);
 }

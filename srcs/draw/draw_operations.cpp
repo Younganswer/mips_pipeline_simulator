@@ -60,32 +60,25 @@ bool	draw_instruction_fetch(const Info &info) {
 		// draw lines -------------------------------------------------------------------------------------------------
 			draw_down_arrow(-3800, -200, -3800, -30, BLACK);
 			draw_right_arrow(-4000, 70, -3850, 70, BLACK);
-			DrawLineEx(Vector2{ -4000, 70 }, Vector2{ -4000, -800 }, 5.0f, BLACK);
-			DrawLineEx(Vector2{ -4000, -800 }, Vector2{ -2635, -800 }, 5.0f, BLACK);
-			DrawLineEx(Vector2{ -2635, -800 }, Vector2{ -2635, -330 }, 5.0f, BLACK);
+			DrawLineEx(Vector2{ -4000, 70 }, Vector2{ -4000, -600 }, 5.0f, BLACK);
+			DrawLineEx(Vector2{ -4000, -600 }, Vector2{ -2635, -600 }, 5.0f, BLACK);
+			DrawLineEx(Vector2{ -2635, -600 }, Vector2{ -2635, -330 }, 5.0f, BLACK);
 			DrawCircle(-2635, -330, 10.0f, BLACK);
 			
-			// TODO: draw extra lines
 			draw_right_arrow(-4100, 170, -3850, 170, BLACK);
-			DrawLineEx(Vector2{ -4100, 170 }, Vector2{ -4100, -1300 }, 5.0f, BLACK);
-			// TODO: draw extra lines
+			DrawLineEx(Vector2{ -4100, 170 }, Vector2{ -4100, -1250 }, 5.0f, BLACK);
+			DrawLineEx(Vector2{ -4100, -1250 }, Vector2{ -765, -1250 }, 5.0f, BLACK);
+			DrawLineEx(Vector2{ -765, -1250 }, Vector2{ -765, -435 }, 5.0f, BLACK);
+			DrawLineEx(Vector2{ -765, -435 }, Vector2{ -912, -435 }, 5.0f, BLACK);
 		// draw lines -------------------------------------------------------------------------------------------------
 	// draw mux sector ----------------------------------------------------------------------------------------------
 
-	// draw and gate sector -----------------------------------------------------------------------------------------
-		draw_circle_sector_lines_ex(-3800, -300, 100, -90, 90, 0, 5.0f, BLACK);
-		// draw lines -------------------------------------------------------------------------------------------------
-			draw_down_arrow(-3850, -1200, -3850, -300, BLACK);
-			draw_down_arrow(-3750, -500, -3750, -300, BLACK);
-		// draw lines -------------------------------------------------------------------------------------------------
-	// draw and gate sector -----------------------------------------------------------------------------------------
-
 	// draw Branch sector -------------------------------------------------------------------------------------------
-		DrawRectangleLinesEx(Rectangle{ -3800, -650, 250, 150 }, 5.0f, BLUE);
-		DrawRectangle(-3800, -650, 250, 150, Fade(BLUE, 0.2f));
+		DrawRectangleLinesEx(Rectangle{ -3900, -350, 200, 150 }, 5.0f, BLUE);
+		DrawRectangle(-3900, -350, 200, 150, Fade(BLUE, 0.2f));
 		// draw text --------------------------------------------------------------------------------------------------
-			DrawTextEx(GetFontDefault(), "ID/EX", Vector2{ -3735, -612 }, 40.0f, 3.0f, BLUE);
-			DrawTextEx(GetFontDefault(), "Branch", Vector2{ -3745, -568 }, 40.0f, 3.0f, BLUE);
+			DrawTextEx(GetFontDefault(), "ID/EX", Vector2{ -3860, -320 }, 40.0f, 3.0f, BLUE);
+			DrawTextEx(GetFontDefault(), "Branch", Vector2{ -3870, -270 }, 40.0f, 3.0f, BLUE);
 		// draw text --------------------------------------------------------------------------------------------------
 	// draw Branch sector -------------------------------------------------------------------------------------------
 	(void) info;
@@ -102,11 +95,31 @@ bool	draw_instruction_decode(const Info &info) {
 			draw_right_arrow(-2200, -320, -1150, -320, BLACK);
 			draw_right_arrow(-1300, -550, -1150, -550, BLACK);
 		// draw lines -------------------------------------------------------------------------------------------------
+	
 		// draw shift left 2 sector -----------------------------------------------------------------------------------
 			draw_circle_lines_ex(-1400, -550, 100, 5.0f, BLACK);
 			// draw text --------------------------------------------------------------------------------------------------
 				DrawTextEx(GetFontDefault(), "Shift", Vector2{ -1455, -610 }, 50.0f, 3.0f, BLACK);
 				DrawTextEx(GetFontDefault(), "Left 2", Vector2{ -1470, -540 }, 50.0f, 3.0f, BLACK);
+			// draw text --------------------------------------------------------------------------------------------------
+			// draw line --------------------------------------------------------------------------------------------------
+				draw_up_arrow(-1400, 855, -1400, -450, BLACK);
+			// draw line --------------------------------------------------------------------------------------------------
+		// draw shift left 2 sector -----------------------------------------------------------------------------------
+	// draw ALU sector ----------------------------------------------------------------------------------------------
+
+	// draw sign extend sector --------------------------------------------------------------------------------------
+		draw_circle_lines_ex(-1400, 955, 100, 5.0f, BLACK);
+		// draw text --------------------------------------------------------------------------------------------------
+			DrawTextEx(GetFontDefault(), "Sign", Vector2{ -1445, 895 }, 50.0f, 3.0f, BLACK);
+			DrawTextEx(GetFontDefault(), "Extend", Vector2{ -1480, 965 }, 50.0f, 3.0f, BLACK);
+		// draw text --------------------------------------------------------------------------------------------------
+		// draw line --------------------------------------------------------------------------------------------------
+			DrawCircle(-2050, 955, 10, BLACK);
+			DrawLineEx(Vector2{ -2050, 955 }, Vector2{ -1500, 955 }, 5.0f, BLACK);
+		// draw line --------------------------------------------------------------------------------------------------
+	// draw sign extend sector --------------------------------------------------------------------------------------
+
 	// draw Registers sector ----------------------------------------------------------------------------------------
 		DrawRectangleLinesEx(Rectangle{ -700, -250, 600, 950 }, 5.0f, BLACK);
 		// draw text --------------------------------------------------------------------------------------------------
@@ -118,6 +131,26 @@ bool	draw_instruction_decode(const Info &info) {
 			DrawTextEx(GetFontDefault(), "ReadData2", Vector2{ -390, 510 }, 50.0f, 3.0f, BLACK);
 			DrawTextEx(GetFontDefault(), "WriteData", Vector2{ -660, 610 }, 50.0f, 3.0f, BLACK);
 		// draw lines -------------------------------------------------------------------------------------------------
+			DrawLineEx(Vector2{ -2200, 430, }, Vector2{ -2050, 430 }, 5.0f, BLACK);
+			DrawCircle(-2050, -850, 10.0f, BLACK);
+			DrawLineEx(Vector2{ -2050, -850 }, Vector2{ -2050, 1400 }, 5.0f, BLACK);
+			DrawCircle(-2050, 430, 10.0f, BLACK);
+			DrawCircle(-2050, -185, 10.0f, BLACK);
+			draw_right_arrow(-2050, -185, -700, -185, BLACK);
+			DrawCircle(-2050, 25, 10.0f, BLACK);
+			draw_right_arrow(-2050, 25, -700, 25, BLACK);
+			draw_right_arrow(-800, 210, -700, 210, BLACK);
+			draw_right_arrow(-1150, 425, -700, 425, BLACK);
+			draw_right_arrow(-940, 635, -700, 635, BLACK);
+		
+	// draw MEM/WB RegWrite sector ----------------------------------------------------------------------------------
+		DrawRectangleLinesEx(Rectangle{ -1050, 135, 250, 150 }, 5.0f, BLUE);
+		DrawRectangle(-1050, 135, 250, 150, Fade(BLUE, 0.2f));
+		// draw text --------------------------------------------------------------------------------------------------
+			DrawTextEx(GetFontDefault(), "MEM/WB", Vector2{ -1012, 165 }, 40.0f, 3.0f, BLUE);
+			DrawTextEx(GetFontDefault(), "RegWrite", Vector2{ -1011, 215 }, 40.0f, 3.0f, BLUE);
+		// draw text --------------------------------------------------------------------------------------------------
+	// draw MEM/WB RegWrite sector ----------------------------------------------------------------------------------
 	(void) info;
 	return (true);
 }
