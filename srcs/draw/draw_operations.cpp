@@ -86,11 +86,38 @@ bool	draw_instruction_fetch(const Info &info) {
 		// draw text --------------------------------------------------------------------------------------------------
 			DrawTextEx(GetFontDefault(), "ID/EX", Vector2{ -3735, -612 }, 40.0f, 3.0f, BLUE);
 			DrawTextEx(GetFontDefault(), "Branch", Vector2{ -3745, -568 }, 40.0f, 3.0f, BLUE);
+		// draw text --------------------------------------------------------------------------------------------------
+	// draw Branch sector -------------------------------------------------------------------------------------------
 	(void) info;
 	return (true);
 }
 
 bool	draw_instruction_decode(const Info &info) {
+	// draw ALU sector ----------------------------------------------------------------------------------------------
+		draw_trapezoid(-1150, -635, 200);
+		// draw text --------------------------------------------------------------------------------------------------
+			DrawTextEx(GetFontDefault(), "+", Vector2{ -975, -465 }, 70.0f, 3.0f, BLACK);
+		// draw text --------------------------------------------------------------------------------------------------
+		// draw lines -------------------------------------------------------------------------------------------------
+			draw_right_arrow(-2200, -320, -1150, -320, BLACK);
+			draw_right_arrow(-1300, -550, -1150, -550, BLACK);
+		// draw lines -------------------------------------------------------------------------------------------------
+		// draw shift left 2 sector -----------------------------------------------------------------------------------
+			draw_circle_lines_ex(-1400, -550, 100, 5.0f, BLACK);
+			// draw text --------------------------------------------------------------------------------------------------
+				DrawTextEx(GetFontDefault(), "Shift", Vector2{ -1455, -610 }, 50.0f, 3.0f, BLACK);
+				DrawTextEx(GetFontDefault(), "Left 2", Vector2{ -1470, -540 }, 50.0f, 3.0f, BLACK);
+	// draw Registers sector ----------------------------------------------------------------------------------------
+		DrawRectangleLinesEx(Rectangle{ -700, -250, 600, 950 }, 5.0f, BLACK);
+		// draw text --------------------------------------------------------------------------------------------------
+			DrawTextEx(GetFontDefault(), "Registers", Vector2{ -550, 185 }, 70.0f, 3.0f, BLACK);
+			DrawTextEx(GetFontDefault(), "ReadReg1", Vector2{ -660, -210 }, 50.0f, 3.0f, BLACK);
+			DrawTextEx(GetFontDefault(), "ReadData1", Vector2{ -380, -95 }, 50.0f, 3.0f, BLACK);
+			DrawTextEx(GetFontDefault(), "ReadReg2", Vector2{ -660, 0 }, 50.0f, 3.0f, BLACK);
+			DrawTextEx(GetFontDefault(), "WriteReg", Vector2{ -660, 400 }, 50.0f, 3.0f, BLACK);
+			DrawTextEx(GetFontDefault(), "ReadData2", Vector2{ -390, 510 }, 50.0f, 3.0f, BLACK);
+			DrawTextEx(GetFontDefault(), "WriteData", Vector2{ -660, 610 }, 50.0f, 3.0f, BLACK);
+		// draw lines -------------------------------------------------------------------------------------------------
 	(void) info;
 	return (true);
 }
