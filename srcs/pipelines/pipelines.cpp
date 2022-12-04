@@ -6,9 +6,11 @@ IFID::~IFID(void) {}
 
 // IFID getter
 ui	IFID::get_pc(void) { return (this->pc); }
+Instruction	IFID::get_instruction(void) { return (this->instruction); }
 
 // IFID setter
 void	IFID::set_pc(ui pc) { this->pc = pc; }
+void	IFID::set_instruction(Instruction instruction) { this->instruction = instruction; }
 
 IDEX::IDEX(void) {}
 IDEX::~IDEX(void) {}
