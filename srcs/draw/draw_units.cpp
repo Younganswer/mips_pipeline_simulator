@@ -18,8 +18,12 @@ bool	draw_hazard_unit(const Info &info) {
 		DrawRectangleRoundedLines(Rectangle{ -1600, -1700, 500, 300 }, 0.5f, 0, 5.0f, RED);
 		DrawRectangleRounded(Rectangle{ -1600, -1700, 500, 300 }, 0.5f, 0, Fade(RED, 0.2f));
 		// draw lines -------------------------------------------------------------------------------------------
+		DrawCircleSector(Vector2{ -2050, -850 }, 10.0f, 135.0f, 315.0f, 0, RED);
 			DrawLineEx(Vector2{ -2050, -850 }, Vector2{ -2050, -1500 }, 5.0f, RED);
 			draw_right_arrow(-2050, -1500, -1600, -1500, RED);
+			DrawCircle(600, -985, 10.0f, RED);
+			DrawLineEx(Vector2{ 600, -985 }, Vector2{ 600, -1550 }, 5.0f, RED);
+			draw_left_arrow(600, -1550, -1100, -1550, RED);
 		// draw lines -------------------------------------------------------------------------------------------
 		// draw text --------------------------------------------------------------------------------------------------
 			DrawTextEx(GetFontDefault(), "Hazard", Vector2{ -1460, -1650 }, 70.0f, 3.0f, RED);
@@ -38,6 +42,7 @@ bool	draw_control_unit(const Info &info) {
 		DrawRectangleRoundedLines(Rectangle{ -1900, -1100, 300, 500 }, 1.0f, 0, 5.0f, BLUE);
 		DrawRectangleRounded(Rectangle{ -1900, -1100, 300, 500 }, 1.0f, 0, Fade(BLUE, 0.2f));
 		// draw lines -------------------------------------------------------------------------------------------------
+			DrawCircleSector(Vector2{ -2050, -850 }, 10.0f, -45.0f, 135.0f, 0, BLUE);
 			draw_right_arrow(-2050, -850, -1900, -850, Fade(BLUE, 0.8f));
 		// draw lines -------------------------------------------------------------------------------------------------
 		// draw text --------------------------------------------------------------------------------------------------
