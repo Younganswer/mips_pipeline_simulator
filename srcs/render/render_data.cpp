@@ -18,8 +18,8 @@ bool	render_register(Info &info) {
 	// draw text -------------------------------------------------------------------------------------------------------------------------------
 
 	// draw register sector --------------------------------------------------------------------------------------------------------------------
-		DrawRectangle(screenWidth-200, 80, 177, 350, Fade(LIGHTGRAY, 0.5f));
-		DrawRectangleLines(screenWidth-200, 80, 177, 350, GRAY);
+		DrawRectangle(screenWidth-200, 80, 177, 340, Fade(LIGHTGRAY, 0.5f));
+		DrawRectangleLines(screenWidth-200, 80, 177, 340, GRAY);
 	// draw register sector --------------------------------------------------------------------------------------------------------------------
 
 	// draw register contents ------------------------------------------------------------------------------------------------------------------
@@ -37,22 +37,23 @@ bool	render_register(Info &info) {
 
 bool	render_user_data_segment(Info &info) {
 	// draw text ------------------------------------------------------------------------------------------------------------------------------
-		DrawTextEx(GetFontDefault(), "User data segment", (Vector2){ screenWidth-200, 440.0f }, 20.0f, 1.0f, BLACK);
+		DrawTextEx(GetFontDefault(), "User data segment", (Vector2){ screenWidth-200, 430.0f }, 20.0f, 1.0f, BLACK);
 	// draw text ------------------------------------------------------------------------------------------------------------------------------
 
 	// draw data segment sector ---------------------------------------------------------------------------------------------------------------
 		float	btnHeight = info.button.get_btn_bounds().y;
-		DrawRectangle(screenWidth-200, 465, 177, btnHeight-510, Fade(LIGHTGRAY, 0.5f));
-		DrawRectangleLines(screenWidth-200, 465, 177, btnHeight-510, GRAY);
+		DrawRectangle(screenWidth-200, 455, 177, btnHeight-495, Fade(LIGHTGRAY, 0.5f));
+		DrawRectangleLines(screenWidth-200, 455, 177, btnHeight-495, GRAY);
 	// draw data segment sector ---------------------------------------------------------------------------------------------------------------
 
 	// draw data segment contents ------------------------------------------------------------------------------------------------------------
-		for (size_t i=0; i<9+(SIZE_FACTOR-7)*7&&i<info.mem.size(); i++) {
+		for (size_t i=0; i<10+(SIZE_FACTOR-7)*7&&i<info.mem.size(); i++) {
 			string	address = string("[0x") + n2hexstr(info.mem[i].address) + string("]");
 			string	value = string("0x") + n2hexstr(info.mem[i].value);
-			DrawTextEx(GetFontDefault(), address.c_str(), (Vector2){ screenWidth-200+10, (float)475+(i*15) }, 10.0f, 1.0f, BLACK);
-			DrawTextEx(GetFontDefault(), value.c_str(), (Vector2){ screenWidth-200+100, (float)475+(i*15) }, 10.0f, 1.0f, BLACK);
+			DrawTextEx(GetFontDefault(), address.c_str(), (Vector2){ screenWidth-200+10, (float)465+(i*15) }, 10.0f, 1.0f, BLACK);
+			DrawTextEx(GetFontDefault(), value.c_str(), (Vector2){ screenWidth-200+100, (float)465+(i*15) }, 10.0f, 1.0f, BLACK);
 		}
+	// draw data segment contents ------------------------------------------------------------------------------------------------------------
 	return (true);
 }
 

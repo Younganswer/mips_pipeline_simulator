@@ -2,10 +2,9 @@
 #include "../../incs/info.hpp"
 
 bool	init_camera(Camera2D &camera) {
-	camera.target = (Vector2){ 0.0f, 0.0f };
+	camera.target = (Vector2){ 600.0f, 0.0f };
 	camera.offset = (Vector2){ screenWidth/2.0f, screenHeight/2.0f };
-	camera.zoom = 0.3f;
-	camera.rotation = 0.0f;
+	camera.zoom = 0.125f;
 	return (true);
 }
 
@@ -24,9 +23,9 @@ bool	manipulate_camera(Camera2D &camera) {
 
 	// Camera reset
 	if (IsKeyPressed(KEY_R)) {
-		camera.target.x = 0.0f;
+		camera.target.x = 600.0f;
 		camera.target.y = 0.0f;
-		camera.zoom = 0.8f;
+		camera.zoom = 0.125f;
 	}
 
 	return (true);

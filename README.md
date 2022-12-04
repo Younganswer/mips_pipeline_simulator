@@ -63,6 +63,7 @@
 | `↓`                         | Move camera to down            |
 | `i`                         | Zoom in                        |
 | `o`                         | Zoom out                       |
+| `r`                         | Reset camera                   |
 | `ESC ⎋`                     | Exit program                   |
 
 ### Mouse Interaction

@@ -14,16 +14,17 @@ bool	render(Info &info) {
 }
 
 bool	render_guide(void) {
-	DrawRectangle( 10, 10, 320, 120, Fade(SKYBLUE, 0.5f));
-	DrawRectangleLines( 10, 10, 320, 120, BLUE);
+	DrawRectangleLines( 10, 10, 300, 150, BLUE);
+	DrawRectangle( 10, 10, 300, 150, Fade(BLUE, 0.2f));
 	DrawText("Free 2d camera controls:", 30, 30, 20, BLACK);
 	DrawText("- Arrow to move camera", 40, 60, 20, DARKGRAY);
 	DrawText("- I / O to Zoom in-out", 40, 90, 20, DARKGRAY);
+	DrawText("- R to reset camera", 40, 120, 20, DARKGRAY);
 
-	DrawRectangle( 340, 10, 280, 90, Fade(PINK, 0.5f));
-	DrawRectangleLines( 340, 10, 280, 90, PURPLE);
-	DrawText("Simulator controls:", 360, 30, 20, BLACK);
-	DrawText("- Click to go next cycle", 360, 60, 20, DARKGRAY);
+	DrawRectangleLines( 315, 10, 280, 90, RED);
+	DrawRectangle( 315, 10, 280, 90, Fade(RED, 0.2f));
+	DrawText("Simulator controls:", 335, 30, 20, BLACK);
+	DrawText("- Click to go next cycle", 335, 60, 20, DARKGRAY);
 	return (true);
 }
 
