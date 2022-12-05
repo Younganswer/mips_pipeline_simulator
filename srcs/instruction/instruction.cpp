@@ -28,16 +28,16 @@ Instruction::Instruction(const string &asmString) {
 Instruction::~Instruction(void) {}
 
 // Getter
-int		Instruction::get_id(void) { return this->id; }
-int		Instruction::get_pc(void) { return this->pc; }
-int		Instruction::get_rs(void) { return this->rs; }
-int		Instruction::get_rt(void) { return this->rt; }
-int		Instruction::get_rd(void) { return this->rd; }
-int		Instruction::get_imm(void) { return this->imm; }
-int		Instruction::get_shamt(void) { return this->shamt; }
-int		Instruction::get_funct(void) { return this->funct; }
-int		Instruction::get_opcode(void) { return this->opcode; }
-int		Instruction::get_result(void) { return this->result; }
-Format	Instruction::get_format(void) { return this->format; }
-Status	Instruction::get_status(void) { return this->status; }
-string	Instruction::get_asm_string(void) { return this->asmString; }
+int		Instruction::get_id(void) const { return this->id; }
+int		Instruction::get_pc(void) const { return this->pc; }
+int		Instruction::get_rs(void) const { return this->rs; }
+int		Instruction::get_rt(void) const { return this->rt; }
+int		Instruction::get_rd(void) const { return this->rd; }
+int		Instruction::get_imm(void) const { return this->imm; }
+int		Instruction::get_shamt(void) const { return this->shamt; }
+int		Instruction::get_funct(void) const { return this->funct; }
+int		Instruction::get_opcode(void) const { return this->opcode; }
+int		Instruction::get_result(void) const { return this->result; }
+Format	Instruction::get_format(void) const { return this->format; }
+Status	Instruction::get_status(void) const { return this->status; }
+string	Instruction::get_asm_string(void) const { return this->asmString; }

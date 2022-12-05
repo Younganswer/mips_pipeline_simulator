@@ -16,9 +16,11 @@ class IFID {
 
 		// getter
 		ui		get_pc(void);
+		Instruction	get_instruction(void);
 
 		// setter
 		void	set_pc(ui pc);
+		void	set_instruction(Instruction instruction);
 };
 
 class IDEX {

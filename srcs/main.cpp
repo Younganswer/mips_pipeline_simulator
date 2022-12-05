@@ -13,6 +13,10 @@ int	main(int argc, char **argv) {
 
 	// Set variables -----------------------------------------------------------------------
 	Info	info(argv[1], argv[2]);
+	// init_camera(info.camera);
+	// info.setInstructions(argv[1]);
+	// info.setMemory(argv[2]);
+	// info.setRegisterValues();
 
 	SetTargetFPS(60);   // Set our simulator to run at 60 frames-per-second
 	//--------------------------------------------------------------------------------------

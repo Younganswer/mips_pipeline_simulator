@@ -68,13 +68,21 @@ class Info {
 		vector<ui>			st;
 		// Memory
 		vector<Memory>		mem;
+		// c
 
 		// TODO: add pipelines, hazard unit, forward unit
 
 		Info(void);
 		Info(const char *textSegment, const char *dataSegment);
 		~Info(void);
+
+		//set instructions vector
+		void	setInstructions(const char *textSegment);
+		void	setMemory(const char *dataSegment);
+		void	setRegisterValues(void);
 };
+
+// extern class Info	info;
 
 // TODO: create button action -> update function (Info &info)
 // TODO: create update function -> execute each stage

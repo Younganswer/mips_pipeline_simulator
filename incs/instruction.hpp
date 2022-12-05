@@ -41,19 +41,19 @@ class Instruction {
 		~Instruction(void);
 
 		// Getters
-		int		get_id(void);
-		int		get_pc(void);
-		int		get_rs(void);
-		int		get_rt(void);
-		int		get_rd(void);
-		int		get_imm(void);
-		int		get_shamt(void);
-		int		get_funct(void);
-		int		get_opcode(void);
-		int		get_result(void);
-		Format	get_format(void);
-		Status	get_status(void);
-		string	get_asm_string(void);
+		int		get_id(void) const;
+		int		get_pc(void) const;
+		int		get_rs(void) const;
+		int		get_rt(void) const;
+		int		get_rd(void) const;
+		int		get_imm(void) const;
+		int		get_shamt(void) const;
+		int		get_funct(void) const;
+		int		get_opcode(void) const;
+		int		get_result(void) const;
+		Format	get_format(void) const;
+		Status	get_status(void) const;
+		string	get_asm_string(void) const;
 };
 
 #endif
