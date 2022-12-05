@@ -69,6 +69,7 @@ ui	IDEX::calc_alu_op(ui opcode, ui funct) {
 		return (ALUOP_LW);
 	else if (opcode == 43)
 		return (ALUOP_SW);
+	return (-1);
 }
 
 EXMEM::EXMEM(void) {}
