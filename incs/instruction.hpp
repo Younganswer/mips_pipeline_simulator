@@ -48,7 +48,7 @@ class Instruction {
 		Instruction(const string &asmString);
 		~Instruction(void);
 
-		// Getters
+		// Getter
 		int		get_id(void) const;
 		int		get_pc(void) const;
 		int		get_rs(void) const;
@@ -62,6 +62,9 @@ class Instruction {
 		Format	get_format(void) const;
 		Status	get_status(void) const;
 		string	get_asm_string(void) const;
+
+		// Setter
+		bool	set_status(Status status);
 };
 
 #endif

@@ -1,7 +1,21 @@
 #include "../../incs/instruction.hpp"
 #include <iostream>
 
-Instruction::Instruction(void) {}
+Instruction::Instruction(void) {
+	this->asmString = string();
+	this->pc = 0;
+	this->id = 0;
+	this->rs = 0;
+	this->rt = 0;
+	this->rd = 0;
+	this->imm = 0;
+	this->shamt = 0;
+	this->funct = 0;
+	this->opcode = 0;
+	this->result = 0;
+	this->format = R;
+	this->status = IF;
+}
 
 Instruction::Instruction(const string &asmString) {
 	this->asmString = string(asmString.substr(0, 23));
@@ -41,3 +55,6 @@ int		Instruction::get_result(void) const { return this->result; }
 Format	Instruction::get_format(void) const { return this->format; }
 Status	Instruction::get_status(void) const { return this->status; }
 string	Instruction::get_asm_string(void) const { return this->asmString; }
+
+// Setter
+bool	Instruction::set_status(Status status) { this->status = status; return (true); }
