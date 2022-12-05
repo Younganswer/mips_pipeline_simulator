@@ -65,6 +65,7 @@ class IDEX {
 		ui	rs;
 		ui	rt; // 2번 쓰일 예정.
 		ui	rd;
+		Instruction	instruction;
 
 	public:
 		IDEX(void);
@@ -85,6 +86,7 @@ class IDEX {
 		ui	get_rs(void) const;
 		ui	get_rt(void) const;
 		ui	get_rd(void) const;
+		Instruction	get_instruction(void);
 
 		// setter
 		bool	set_alu_op(ui aluOp);
@@ -102,6 +104,7 @@ class IDEX {
 		bool	set_rs(ui rs);
 		bool	set_rt(ui rt);
 		bool	set_rd(ui rd);
+		bool	set_instruction(const Instruction &instruction);
 
 		// calculate ALUOP by opcode and funct
 		ui	calc_alu_op(ui opcode, ui funct);
@@ -120,6 +123,7 @@ class EXMEM {
 		ui	readData2;
 		ui	extendImm;
 		ui	writeData;
+		Instruction	instruction;
 
 	public:
 		EXMEM(void);
@@ -137,6 +141,7 @@ class EXMEM {
 		ui	get_read_data_2(void);
 		ui	get_extend_imm(void);
 		ui	get_write_data(void);
+		Instruction	get_instruction(void);
 
 		// setter
 		void	set_mem_write(ui memWrite);
@@ -150,6 +155,7 @@ class EXMEM {
 		void	set_read_data_2(ui readData2);
 		void	set_extend_imm(ui extendImm);
 		void	set_write_data(ui writeData);
+		void	set_instruction(const Instruction &instruction);
 };
 
 class MEMWB {
@@ -158,6 +164,7 @@ class MEMWB {
 		ui	memToReg;
 		ui	readData;
 		ui	aluResult;
+		Instruction	instruction;
 
 	public:
 		MEMWB(void);
@@ -168,12 +175,14 @@ class MEMWB {
 		ui	get_mem_to_reg(void);
 		ui	get_read_data(void);
 		ui	get_alu_result(void);
+		Instruction	get_instruction(void);
 
 		// setter
 		void	set_reg_write(ui regWrite);
 		void	set_mem_to_reg(ui memToReg);
 		void	set_read_data(ui readData);
 		void	set_alu_result(ui aluResult);
+		void	set_instruction(const Instruction &instruction);
 };
 
 #endif

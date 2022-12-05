@@ -32,6 +32,7 @@ ui	IDEX::get_extend_imm(void) const { return (this->extendImm); }
 ui	IDEX::get_rs(void) const { return (this->rs); }
 ui	IDEX::get_rt(void) const { return (this->rt); }
 ui	IDEX::get_rd(void) const { return (this->rd); }
+Instruction	IDEX::get_instruction(void) { return (this->instruction); }
 
 // IDEX setter
 bool	IDEX::set_alu_op(ui aluOp) { this->aluOp = aluOp; return (true); }
@@ -48,6 +49,7 @@ bool	IDEX::set_extend_imm(ui extendImm) { this->extendImm = extendImm; return (t
 bool	IDEX::set_rs(ui rs) { this->rs = rs; return (true); }
 bool	IDEX::set_rt(ui rt) { this->rt = rt; return (true); }
 bool	IDEX::set_rd(ui rd) { this->rd = rd; return (true); }
+bool	IDEX::set_instruction(const Instruction &instruction) { this->instruction = instruction; return (true); }
 
 //calculate ALUop by opcode and funct
 ui	IDEX::calc_alu_op(ui opcode, ui funct) {
@@ -89,6 +91,7 @@ ui	EXMEM::get_alu_result(void) { return (this->aluResult); }
 ui	EXMEM::get_read_data_2(void) { return (this->readData2); }
 ui	EXMEM::get_extend_imm(void) { return (this->extendImm); }
 ui	EXMEM::get_write_data(void) { return (this->writeData); }
+Instruction	EXMEM::get_instruction(void) { return (this->instruction); }
 
 // EXMEM setter
 void	EXMEM::set_mem_write(ui memWrite) { this->memWrite = memWrite; }
@@ -102,6 +105,7 @@ void	EXMEM::set_alu_result(ui aluResult) { this->aluResult = aluResult; }
 void	EXMEM::set_read_data_2(ui readData2) { this->readData2 = readData2; }
 void	EXMEM::set_extend_imm(ui extendImm) { this->extendImm = extendImm; }
 void	EXMEM::set_write_data(ui writeData) { this->writeData = writeData; }
+void	EXMEM::set_instruction(const Instruction &instruction) { this->instruction = instruction; }
 
 //MEMWB constructor and destructor
 MEMWB::MEMWB(void) {}
@@ -112,9 +116,11 @@ ui	MEMWB::get_reg_write(void) { return (this->regWrite); }
 ui	MEMWB::get_mem_to_reg(void) { return (this->memToReg); }
 ui	MEMWB::get_read_data(void) { return (this->readData); }
 ui	MEMWB::get_alu_result(void) { return (this->aluResult); }
+Instruction	MEMWB::get_instruction(void) { return (this->instruction); }
 
 // MEMWB setter
 void	MEMWB::set_reg_write(ui regWrite) { this->regWrite = regWrite; }
 void	MEMWB::set_mem_to_reg(ui memToReg) { this->memToReg = memToReg; }
 void	MEMWB::set_read_data(ui readData) { this->readData = readData; }
 void	MEMWB::set_alu_result(ui aluResult) { this->aluResult = aluResult; }
+void	MEMWB::set_instruction(const Instruction &instruction) { this->instruction = instruction; }
