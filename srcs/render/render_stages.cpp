@@ -175,11 +175,121 @@ bool	render_instruction_decode(const Info &info) {
 			DrawTextEx(GetFontDefault(), "RegWrite", Vector2{ -1161, 225 }, 40.0f, 3.0f, BLUE);
 		// draw text --------------------------------------------------------------------------------------------------
 	// draw MEM/WB RegWrite sector ----------------------------------------------------------------------------------
+
+	// draw mux sector -----------------------------------------------------------------------------------
+		DrawRectangleRoundedLines(Rectangle{-450, -940, 100, 450}, 1.0f, 0, 5.0f, BLACK);
+		DrawLineEx(Vector2{ -1100, -1500 }, Vector2 { -400, -1500 }, 5.0f, BLACK);
+		draw_down_arrow(-400, -1500, -400, -940, BLACK);
+		draw_right_arrow(-1600, -855, -450, -855, BLACK);
+		draw_right_arrow(-550, -580, -450, -580, BLACK);
+		DrawTextEx(GetFontDefault(), "0", Vector2{-610, -610}, 70.0f, 2.0f, BLACK);
+		// draw mux text --------------------------------------------------------------------------------
+			DrawTextEx(GetFontDefault(), "M", Vector2{-423, -850}, 70.0f, 2.0f, BLACK);
+			DrawTextEx(GetFontDefault(), "U", Vector2{-420, -750}, 70.0f, 2.0f, BLACK);
+			DrawTextEx(GetFontDefault(), "X", Vector2{-420, -650}, 70.0f, 2.0f, BLACK);
+		// draw mux text --------------------------------------------------------------------------------
+	// draw mux sector -----------------------------------------------------------------------------------
 	(void) info;
 	return (true);
 }
 
 bool	render_execute(const Info &info) {
+	// draw mux sector -----------------------------------------------------------------------------------------------
+		DrawRectangleRoundedLines(Rectangle{ 750, -220, 100, 300 }, 1.0f, 0, 5.0f, BLACK);
+		// draw text --------------------------------------------------------------------------------------------------
+			DrawTextEx(GetFontDefault(), "M", Vector2{ 775, -165 }, 70.0f, 3.0f, BLACK);
+			DrawTextEx(GetFontDefault(), "U", Vector2{ 778, -100 }, 70.0f, 3.0f, BLACK);
+			DrawTextEx(GetFontDefault(), "X", Vector2{ 778, -35 }, 70.0f, 3.0f, BLACK);
+		// draw text --------------------------------------------------------------------------------------------------
+		// draw lines -------------------------------------------------------------------------------------------------
+			draw_right_arrow(550, -120, 750, -120, BLACK);
+			draw_right_arrow(400, -70, 750, -70, BLACK);
+			draw_right_arrow(650, -20, 750, -20, BLACK);
+			DrawLineEx(Vector2{ 1335, 1570 }, Vector2{ 900, 1570 }, 5.0f, BLACK);
+			DrawLineEx(Vector2{ 900, 1570 }, Vector2{ 900, 220 }, 5.0f, BLACK);
+			DrawLineEx(Vector2{ 900, 220 }, Vector2{ 800, 220 }, 5.0f, BLACK);
+			draw_up_arrow(800, 220, 800, 80, BLACK);
+
+	// draw mux sector -----------------------------------------------------------------------------------------------
+		DrawRectangleRoundedLines(Rectangle{ 750, 385, 100, 300 }, 1.0f, 0, 5.0f, BLACK);
+		// draw text --------------------------------------------------------------------------------------------------
+			DrawTextEx(GetFontDefault(), "M", Vector2{ 775, 440 }, 70.0f, 3.0f, BLACK);
+			DrawTextEx(GetFontDefault(), "U", Vector2{ 778, 505 }, 70.0f, 3.0f, BLACK);
+			DrawTextEx(GetFontDefault(), "X", Vector2{ 778, 570 }, 70.0f, 3.0f, BLACK);
+		// draw text --------------------------------------------------------------------------------------------------
+		// draw lines -------------------------------------------------------------------------------------------------
+			DrawCircle(550, 485, 10.0f, BLACK);
+			draw_right_arrow(550, 485, 750, 485, BLACK);
+			draw_right_arrow(400, 535, 750, 535, BLACK);
+			DrawCircle(650, 585, 10.0f, BLACK);
+			draw_right_arrow(650, 585, 750, 585, BLACK);
+			DrawLineEx(Vector2{ 1300, 1670 }, Vector2{ 800, 1670 }, 5.0f, BLACK);
+			draw_up_arrow(800, 1670, 800, 685, BLACK);
+			DrawLineEx(Vector2{ 550, -120 }, Vector2{ 550, 3000 }, 5.0f, BLACK);
+			DrawLineEx(Vector2{ 650, -20 }, Vector2{ 650, 3000 }, 5.0f, BLACK);
+	
+	// draw ALU sector -----------------------------------------------------------------------------------------------
+		draw_trapezoid(1250, -115, 350);
+		// draw lines --------------------------------------------------------------------------------------------------
+			draw_right_arrow(850, -70, 1250, -70, BLACK);
+			draw_right_arrow(1210, 450, 1250, 450, BLACK);
+			draw_down_arrow(1600, -100, 1600, 0, BLACK);
+		// draw lines --------------------------------------------------------------------------------------------------
+		// draw mux sector --------------------------------------------------------------------------------------------
+			DrawRectangleRoundedLines(Rectangle{ 1150, 325, 60, 250 }, 1.0f, 0, 5.0f, BLACK);
+			// draw text ------------------------------------------------------------------------------------------------
+				DrawTextEx(GetFontDefault(), "M", Vector2{ 1166, 385 }, 40.0f, 3.0f, BLACK);
+				DrawTextEx(GetFontDefault(), "U", Vector2{ 1168, 435 }, 40.0f, 3.0f, BLACK);
+				DrawTextEx(GetFontDefault(), "X", Vector2{ 1168, 485 }, 40.0f, 3.0f, BLACK);
+			// draw text ------------------------------------------------------------------------------------------------
+			// draw lines -----------------------------------------------------------------------------------------------
+				DrawLineEx(Vector2{ 400, 955 }, Vector2{ 1000, 955 }, 5.0f, BLACK);
+				DrawLineEx(Vector2{ 1000, 955 }, Vector2{ 1000, 365 }, 5.0f, BLACK);
+				draw_right_arrow(1000, 365, 1150, 365, BLACK);
+				draw_right_arrow(850, 535, 1150, 535, BLACK);
+				draw_down_arrow(1180, 230, 1180, 325, BLACK);
+			// draw lines -----------------------------------------------------------------------------------------------
+			// draw ALU source sector ------------------------------------------------------------------------------------
+				DrawRectangleLinesEx(Rectangle{ 1000, 80, 200, 150 }, 5.0f, BLUE);
+				DrawRectangle(1000, 80, 200, 150, Fade(BLUE, 0.2f));
+				// draw text --------------------------------------------------------------------------------------------
+					DrawTextEx(GetFontDefault(), "ALU", Vector2{ 1060, 115 }, 40.0f, 3.0f, BLUE);
+					DrawTextEx(GetFontDefault(), "Source", Vector2{ 1030, 160 }, 40.0f, 3.0f, BLUE);
+				// draw text --------------------------------------------------------------------------------------------
+			// draw ALU source sector ------------------------------------------------------------------------------------
+	// draw ALU sector -----------------------------------------------------------------------------------------------
+	
+	// draw ALU Opcode sector ---------------------------------------------------------------------------------------
+		DrawRectangleLinesEx(Rectangle{ 1500, -250, 200, 150 }, 5.0f, BLUE);
+		DrawRectangle(1500, -250, 200, 150, Fade(BLUE, 0.2f));
+		// draw text --------------------------------------------------------------------------------------------------
+			DrawTextEx(GetFontDefault(), "ALU", Vector2{ 1565, -220 }, 40.0f, 3.0f, BLUE);
+			DrawTextEx(GetFontDefault(), "Opcode", Vector2{ 1530, -170 }, 40.0f, 3.0f, BLUE);
+		// draw text --------------------------------------------------------------------------------------------------
+	// draw ALU Opcode sector ---------------------------------------------------------------------------------------
+
+	// draw mux sector -----------------------------------------------------------------------------------------------
+		DrawRectangleRoundedLines(Rectangle{ 1550, 1095, 100, 250 }, 1.0f, 0, 5.0f, BLACK);
+		// draw text --------------------------------------------------------------------------------------------------
+			DrawTextEx(GetFontDefault(), "M", Vector2{ 1575, 1125 }, 70.0f, 3.0f, BLACK);
+			DrawTextEx(GetFontDefault(), "U", Vector2{ 1578, 1190 }, 70.0f, 3.0f, BLACK);
+			DrawTextEx(GetFontDefault(), "X", Vector2{ 1578, 1255 }, 70.0f, 3.0f, BLACK);
+		// draw text --------------------------------------------------------------------------------------------------
+		// draw lines -------------------------------------------------------------------------------------------------
+			draw_right_arrow(400, 1160, 1550, 1160, BLACK);
+			draw_right_arrow(400, 1280, 1550, 1280, BLACK);
+			draw_down_arrow(1600, 1000, 1600, 1095, BLACK);
+		// draw lines -------------------------------------------------------------------------------------------------
+		// draw ID/EX RegDst sector ------------------------------------------------------------------------------------
+			DrawRectangleLinesEx(Rectangle{ 1500, 860, 200, 140 }, 5.0f, BLUE);
+			DrawRectangle(1500, 860, 200, 140, Fade(BLUE, 0.2f));
+			// draw text --------------------------------------------------------------------------------------------------
+				DrawTextEx(GetFontDefault(), "ID/EX", Vector2{ 1537, 885 }, 40.0f, 3.0f, BLUE);
+				DrawTextEx(GetFontDefault(), "RegDst", Vector2{ 1532, 935 }, 40.0f, 3.0f, BLUE);
+			// draw text --------------------------------------------------------------------------------------------------
+		// draw ID/EX RegDst sector ------------------------------------------------------------------------------------
+	// draw mux sector -----------------------------------------------------------------------------------------------
+
 	(void) info;
 	return (true);
 }

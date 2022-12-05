@@ -106,59 +106,45 @@ bool	render_id_ex(const Info &info) {
 			draw_right_arrow(-1300, 955, 100, 955, BLACK);
 	// draw sign extended immediate ----------------------------------------------------------------------
 
-	// draw rs address -----------------------------------------------------------------------------------
-		DrawTextEx(GetFontDefault(), "rs", Vector2{120, 1120}, 30.0f, 2.0f, BLACK);
-		DrawTextEx(GetFontDefault(), "=>", Vector2{130, 1160}, 30.0f, 2.0f, BLACK);
-		// draw rs address value -------------------------------------------------------------------------
-			// TODO: Get rs address value from info
-			DrawTextEx(GetFontDefault(), "$10", Vector2{170, 1160}, 30.0f, 2.0f, BLACK);
-		// draw rs address value -------------------------------------------------------------------------
+	// draw rt address -----------------------------------------------------------------------------------
+		DrawTextEx(GetFontDefault(), "rt", Vector2{120, 1125}, 30.0f, 2.0f, BLACK);
+		DrawTextEx(GetFontDefault(), "=>", Vector2{130, 1165}, 30.0f, 2.0f, BLACK);
+		// draw rt address value -------------------------------------------------------------------------
+			// TODO: Get rt address value from info
+			DrawTextEx(GetFontDefault(), "$11", Vector2{170, 1165}, 30.0f, 2.0f, BLACK);
+		// draw rt address value -------------------------------------------------------------------------
 		// draw line ------------------------------------------------------------------------------------
 			DrawCircle(-1810, -185, 10, BLACK);
 			DrawLineEx(Vector2{-1810, -185}, Vector2{-1810, 1160}, 5.0f, BLACK);
 			draw_right_arrow(-1810, 1160, 100, 1160, BLACK);
 		// draw line ------------------------------------------------------------------------------------
-	// draw rs address -----------------------------------------------------------------------------------
-
 	// draw rt address -----------------------------------------------------------------------------------
-		DrawTextEx(GetFontDefault(), "rt", Vector2{120, 1240}, 30.0f, 2.0f, BLACK);
-		DrawTextEx(GetFontDefault(), "=>", Vector2{130, 1280}, 30.0f, 2.0f, BLACK);
-		// draw rt address value -------------------------------------------------------------------------
-			// TODO: Get rt address value from info
-			DrawTextEx(GetFontDefault(), "$11", Vector2{170, 1280}, 30.0f, 2.0f, BLACK);
-		// draw rt address value -------------------------------------------------------------------------
+
+	// draw rd address -----------------------------------------------------------------------------------
+		DrawTextEx(GetFontDefault(), "rd", Vector2{120, 1245}, 30.0f, 2.0f, BLACK);
+		DrawTextEx(GetFontDefault(), "=>", Vector2{130, 1285}, 30.0f, 2.0f, BLACK);
+		// draw rd address value -------------------------------------------------------------------------
+			// TODO: Get rd address value from info
+			DrawTextEx(GetFontDefault(), "$12", Vector2{170, 1285}, 30.0f, 2.0f, BLACK);
+		// draw rd address value -------------------------------------------------------------------------
 		// draw line ------------------------------------------------------------------------------------
 			DrawCircle(-1930, 25, 10, BLACK);
 			DrawLineEx(Vector2{-1930, 25}, Vector2{-1930, 1280}, 5.0f, BLACK);
 			draw_right_arrow(-1930, 1280, 100, 1280, BLACK);
 		// draw line ------------------------------------------------------------------------------------
-	// draw rt address -----------------------------------------------------------------------------------
-
 	// draw rd address -----------------------------------------------------------------------------------
-		DrawTextEx(GetFontDefault(), "rd", Vector2{120, 1360}, 30.0f, 2.0f, BLACK);
-		DrawTextEx(GetFontDefault(), "=>", Vector2{130, 1400}, 30.0f, 2.0f, BLACK);
-		// draw rd address value -------------------------------------------------------------------------
-			// TODO: Get rd address value from info
-			DrawTextEx(GetFontDefault(), "$12", Vector2{170, 1400}, 30.0f, 2.0f, BLACK);
-		// draw rd address value -------------------------------------------------------------------------
+
+	// draw rs address -----------------------------------------------------------------------------------
+		DrawTextEx(GetFontDefault(), "rs", Vector2{120, 1365}, 30.0f, 2.0f, BLACK);
+		DrawTextEx(GetFontDefault(), "=>", Vector2{130, 1405}, 30.0f, 2.0f, BLACK);
+		// draw rs address value -------------------------------------------------------------------------
+			// TODO: Get rs address value from info
+			DrawTextEx(GetFontDefault(), "$10", Vector2{170, 1405}, 30.0f, 2.0f, BLACK);
+		// draw rs address value -------------------------------------------------------------------------
 		// draw line ------------------------------------------------------------------------------------
 			DrawCircle(-2050, 1400, 10, BLACK);
 			draw_right_arrow(-2050, 1400, 100, 1400, BLACK);
-	// draw rd address -----------------------------------------------------------------------------------
-
-	// draw mux sector -----------------------------------------------------------------------------------
-		DrawRectangleRoundedLines(Rectangle{-450, -940, 100, 450}, 1.0f, 0, 5.0f, BLACK);
-		DrawLineEx(Vector2{ -1100, -1500 }, Vector2 { -400, -1500 }, 5.0f, BLACK);
-		draw_down_arrow(-400, -1500, -400, -940, BLACK);
-		draw_right_arrow(-1600, -855, -450, -855, BLACK);
-		draw_right_arrow(-550, -580, -450, -580, BLACK);
-		DrawTextEx(GetFontDefault(), "0", Vector2{-610, -610}, 70.0f, 2.0f, BLACK);
-		// draw mux text --------------------------------------------------------------------------------
-			DrawTextEx(GetFontDefault(), "M", Vector2{-423, -850}, 70.0f, 2.0f, BLACK);
-			DrawTextEx(GetFontDefault(), "U", Vector2{-420, -750}, 70.0f, 2.0f, BLACK);
-			DrawTextEx(GetFontDefault(), "X", Vector2{-420, -650}, 70.0f, 2.0f, BLACK);
-		// draw mux text --------------------------------------------------------------------------------
-	// draw mux sector -----------------------------------------------------------------------------------
+	// draw rs address -----------------------------------------------------------------------------------
 
 	// TODO: Draw something that idw
 	(void) info;
@@ -175,25 +161,43 @@ bool	render_ex_mem(const Info &info) {
 	// draw pipeline sector ---------------------------------------------------------------------------
 
 	// draw ALU result -----------------------------------------------------------------------------------
-		DrawTextEx(GetFontDefault(), "ALU result", Vector2{1820, 0}, 30.0f, 2.0f, BLACK);
-		DrawTextEx(GetFontDefault(), "=>", Vector2{1840, 40}, 30.0f, 2.0f, BLACK);
-
+		DrawTextEx(GetFontDefault(), "ALU result", Vector2{1820, 200}, 30.0f, 2.0f, BLACK);
+		DrawTextEx(GetFontDefault(), "=>", Vector2{1840, 240}, 30.0f, 2.0f, BLACK);
 		// draw ALU result value ------------------------------------------------------------------------
 			// TODO: Get ALU result value from info
-			DrawTextEx(GetFontDefault(), "0x00000003", Vector2{1880, 40}, 30.0f, 2.0f, BLACK);
+			DrawTextEx(GetFontDefault(), "0x00000003", Vector2{1880, 240}, 30.0f, 2.0f, BLACK);
 		// draw ALU result value ------------------------------------------------------------------------
+		// draw line ------------------------------------------------------------------------------------
+			draw_right_arrow(1670, 235, 1800, 235, BLACK);
+		// draw line ------------------------------------------------------------------------------------
 	// draw ALU result -----------------------------------------------------------------------------------
 
-	// draw sign extended immediate ----------------------------------------------------------------------
-		DrawTextEx(GetFontDefault(), "Sign extended", Vector2{1820, 460}, 30.0f, 2.0f, BLACK);
-		DrawTextEx(GetFontDefault(), "immediate value", Vector2{1820, 500}, 30.0f, 2.0f, BLACK);
-		DrawTextEx(GetFontDefault(), "=>", Vector2{1840, 540}, 30.0f, 2.0f, BLACK);
+	// draw write data -----------------------------------------------------------------------------------
+		DrawTextEx(GetFontDefault(), "Write data", Vector2{1820, 665}, 30.0f, 2.0f, BLACK);
+		DrawTextEx(GetFontDefault(), "=>", Vector2{1840, 705}, 30.0f, 2.0f, BLACK);
+		// draw write data value ------------------------------------------------------------------------
+			// TODO: Get write data value from info
+			DrawTextEx(GetFontDefault(), "0x00000003", Vector2{1880, 705}, 30.0f, 2.0f, BLACK);
+		// draw write data value ------------------------------------------------------------------------
+		// draw line ------------------------------------------------------------------------------------
+			DrawCircle(1100, 535, 10, BLACK);
+			DrawLineEx(Vector2{1100, 535}, Vector2{1100, 700}, 5.0f, BLACK);
+			draw_right_arrow(1100, 700, 1800, 700, BLACK);
+		// draw line ------------------------------------------------------------------------------------
+	// draw write data -----------------------------------------------------------------------------------
 
-		// draw sign extended immediate value ------------------------------------------------------------
-			// TODO: Get sign extended immediate value from info
-			DrawTextEx(GetFontDefault(), "0xfffffabc", Vector2{1880, 540}, 30.0f, 2.0f, BLACK);
-		// draw sign extended immediate value ------------------------------------------------------------
-	// draw sign extended immediate ----------------------------------------------------------------------
+	// draw write register -----------------------------------------------------------------------
+		DrawTextEx(GetFontDefault(), "Write register", Vector2{1820, 1185}, 30.0f, 2.0f, BLACK);
+		DrawTextEx(GetFontDefault(), "=>", Vector2{1840, 1225}, 30.0f, 2.0f, BLACK);
+		// draw write register value ----------------------------------------------------------------
+			// TODO: Get write register value from info
+			DrawTextEx(GetFontDefault(), "$12", Vector2{1880, 1225}, 30.0f, 2.0f, BLACK);
+		// draw write register value ----------------------------------------------------------------
+		// draw line ------------------------------------------------------------------------------------
+			draw_right_arrow(1650, 1220, 1800, 1220, BLACK);
+		// draw line ------------------------------------------------------------------------------------
+	// draw write register -----------------------------------------------------------------------
+
 
 	// TODO: Draw something that idw
 	(void) info;

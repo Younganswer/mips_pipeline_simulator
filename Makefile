@@ -36,7 +36,7 @@ SRCS =	main.cpp \
 		render/render_data.cpp \
 		render/render_contents.cpp \
 		render/render_units.cpp \
-		render/render_operations.cpp \
+		render/render_stages.cpp \
 		render/render_pipelines.cpp \
 		pipelines/pipelines.cpp \
 		shape/draw_arrow.cpp \

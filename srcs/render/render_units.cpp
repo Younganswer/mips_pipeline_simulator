@@ -59,12 +59,18 @@ bool	render_forwarding_unit(const Info &info) {
 	// draw forwarding unit sector ------------------------------------------------------------------------------
 		DrawRectangleRoundedLines(Rectangle{ 1300, 1520, 480, 300 }, 1.0f, 0, 5.0f, GOLD);
 		DrawRectangleRounded(Rectangle{ 1300, 1520, 480, 300 }, 1.0f, 0, Fade(GOLD, 0.2f));
+		// draw text --------------------------------------------------------------------------------------------------
+			DrawTextEx(GetFontDefault(), "Forwarding", Vector2{ 1370, 1600 }, 70.0f, 3.0f, GOLD);
+			DrawTextEx(GetFontDefault(), "unit", Vector2{ 1490, 1690 }, 70.0f, 3.0f, GOLD);
+		// draw text --------------------------------------------------------------------------------------------------
+		// draw lines -------------------------------------------------------------------------------------------------
+			DrawLineEx(Vector2{ 400, 1400 }, Vector2{ 700, 1400 }, 5.0f, GOLD);
+			DrawLineEx(Vector2{ 700, 1400 }, Vector2{ 700, 1770 }, 5.0f, GOLD);
+			draw_right_arrow(700, 1770, 1335, 1770, GOLD);
+			DrawCircle(1450, 1160, 10.0f, GOLD);
+			draw_down_arrow(1450, 1160, 1450, 1520, GOLD);
 	// draw forwarding unit sector ------------------------------------------------------------------------------
 
-	// draw text --------------------------------------------------------------------------------------------------
-		DrawTextEx(GetFontDefault(), "Forwarding", Vector2{ 1370, 1600 }, 70.0f, 3.0f, GOLD);
-		DrawTextEx(GetFontDefault(), "unit", Vector2{ 1490, 1690 }, 70.0f, 3.0f, GOLD);
-	// draw text --------------------------------------------------------------------------------------------------
 	
 	(void) info;
 	return (true);

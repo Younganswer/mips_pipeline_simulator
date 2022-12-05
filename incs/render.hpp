@@ -16,7 +16,7 @@ bool	render_data(Info &info);
 // render_contents.cpp
 bool	render_contents(const Info &info);
 
-// render_operations.cpp
+// render_stages.cpp
 bool	render_instruction_fetch(const Info &info);
 bool	render_instruction_decode(const Info &info);
 bool	render_execute(const Info &info);
