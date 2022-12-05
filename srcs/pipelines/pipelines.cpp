@@ -18,20 +18,20 @@ IDEX::IDEX(void) {}
 IDEX::~IDEX(void) {}
 
 // IDEX getter
-ui	IDEX::get_alu_op(void) const { return (this->aluOp); }
-ui	IDEX::get_alu_src(void) const { return (this->aluSrc); }
-ui	IDEX::get_reg_dst(void) const { return (this->regDst); }
-ui	IDEX::get_mem_write(void) const { return (this->memWrite); }
-ui	IDEX::get_mem_read(void) const { return (this->memRead); }
-ui	IDEX::get_branch(void) const { return (this->branch); }
-ui	IDEX::get_reg_write(void) const { return (this->regWrite); }
-ui	IDEX::get_mem_to_reg(void) const { return (this->memToReg); }
-ui	IDEX::get_read_data1(void) const { return (this->readData1); }
-ui	IDEX::get_read_data2(void) const { return (this->readData2); }
-ui	IDEX::get_extend_imm(void) const { return (this->extendImm); }
-ui	IDEX::get_rs(void) const { return (this->rs); }
-ui	IDEX::get_rt(void) const { return (this->rt); }
-ui	IDEX::get_rd(void) const { return (this->rd); }
+ui			IDEX::get_alu_op(void) const { return (this->aluOp); }
+ui			IDEX::get_alu_src(void) const { return (this->aluSrc); }
+ui			IDEX::get_reg_dst(void) const { return (this->regDst); }
+ui			IDEX::get_mem_write(void) const { return (this->memWrite); }
+ui			IDEX::get_mem_read(void) const { return (this->memRead); }
+ui			IDEX::get_branch(void) const { return (this->branch); }
+ui			IDEX::get_reg_write(void) const { return (this->regWrite); }
+ui			IDEX::get_mem_to_reg(void) const { return (this->memToReg); }
+ui			IDEX::get_read_data1(void) const { return (this->readData1); }
+ui			IDEX::get_read_data2(void) const { return (this->readData2); }
+ui			IDEX::get_extend_imm(void) const { return (this->extendImm); }
+ui			IDEX::get_rs(void) const { return (this->rs); }
+ui			IDEX::get_rt(void) const { return (this->rt); }
+ui			IDEX::get_rd(void) const { return (this->rd); }
 Instruction	IDEX::get_instruction(void) { return (this->instruction); }
 
 // IDEX setter
