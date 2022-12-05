@@ -35,16 +35,22 @@ SRCS =	main.cpp \
 		hazard/hazard.cpp \
 		info/info.cpp \
 		instruction/instruction.cpp \
+		render/render.cpp \
+		render/render_camera_sight.cpp \
+		render/render_data.cpp \
+		pipelines/pipelines.cpp \
 		shape/draw_arrow.cpp \
 		shape/draw_circle_lines_ex.cpp \
 		shape/draw_circle_sector_lines_ex.cpp \
 		shape/draw_dot.cpp \
 		shape/draw_mux.cpp \
 		shape/draw_trapezoid.cpp \
-		render/render.cpp \
-		render/render_camera_sight.cpp \
-		render/render_data.cpp \
-		pipelines/pipelines.cpp
+		stages/fetch.cpp \
+		stages/decode.cpp \
+		stages/execute.cpp \
+		stages/memory.cpp \
+		stages/writeback.cpp \
+		update/update.cpp
 
 		
 SRCS := ${addprefix ${SRCS_DIR}/, ${SRCS}}
@@ -78,9 +84,11 @@ ${OBJS_DIR}:
 	@mkdir -p objs/hazard
 	@mkdir -p objs/info
 	@mkdir -p objs/instruction
-	@mkdir -p objs/shape
-	@mkdir -p objs/render
 	@mkdir -p objs/pipelines
+	@mkdir -p objs/render
+	@mkdir -p objs/shape
+	@mkdir -p objs/stages
+	@mkdir -p objs/update
 
 
 ${NAME}: ${OBJS}

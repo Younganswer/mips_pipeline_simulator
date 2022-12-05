@@ -2,6 +2,7 @@
 #include "../../incs/shape.hpp"
 #include "../../incs/render.hpp"
 #include "../../incs/draw_contents.hpp"
+#include "../../incs/update.hpp"
 #include <iostream>
 
 int	btnClicked = 0;
@@ -43,6 +44,7 @@ bool	render_camera_sight(Info &info) {
 		// check mouse click -------------------------------------------------------------------------
 			if (info.button.is_actioned() && btnClicked == 0) {
 				btnClicked = 64 * 3;
+				update(info);
 			}
 			if (0 < btnClicked) {
 				DrawText("Button Clicked!", posX-145, posY-40, 40, RED);
