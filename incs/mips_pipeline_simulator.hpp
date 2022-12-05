@@ -9,7 +9,10 @@
 # include "hazard.hpp"
 # include "info.hpp"
 # include "instruction.hpp"
+# include "pipelines.hpp"
 # include "render.hpp"
 # include "shape.hpp"
+# include "stages.hpp"
+# include "update.hpp"
 
 #endif

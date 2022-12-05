@@ -41,17 +41,6 @@ bool	render_camera_sight(Info &info) {
 			DrawLine(posX-screenWidth*5, posY, posX+screenWidth*5, posY, GREEN);
 		// cross line --------------------------------------------------------------------------------
 		
-		// check mouse click -------------------------------------------------------------------------
-			if (info.button.is_actioned() && btnClicked == 0) {
-				btnClicked = 64 * 3;
-				update(info);
-			}
-			if (0 < btnClicked) {
-				DrawText("Button Clicked!", posX-145, posY-40, 40, RED);
-				btnClicked--;
-			}
-		// check mouse click -------------------------------------------------------------------------
-		
 		// draw contents -----------------------------------------------------------------------------
 			draw_contents(info);
 		// draw contents -----------------------------------------------------------------------------
