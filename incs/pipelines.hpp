@@ -71,37 +71,37 @@ class IDEX {
 		~IDEX(void);
 
 		// getter
-		ui	get_alu_op(void);
-		ui	get_alu_src(void);
-		ui	get_reg_dst(void);
-		ui	get_mem_write(void);
-		ui	get_mem_read(void);
-		ui	get_branch(void);
-		ui	get_reg_write(void);
-		ui	get_mem_to_reg(void);
-		ui	get_read_data1(void);
-		ui	get_read_data2(void);
-		ui	get_extend_imm(void);
-		ui	get_rs(void);
-		ui	get_rt(void);
-		ui	get_rd(void);
+		ui	get_alu_op(void) const;
+		ui	get_alu_src(void) const;
+		ui	get_reg_dst(void) const;
+		ui	get_mem_write(void) const;
+		ui	get_mem_read(void) const;
+		ui	get_branch(void) const;
+		ui	get_reg_write(void) const;
+		ui	get_mem_to_reg(void) const;
+		ui	get_read_data1(void) const;
+		ui	get_read_data2(void) const;
+		ui	get_extend_imm(void) const;
+		ui	get_rs(void) const;
+		ui	get_rt(void) const;
+		ui	get_rd(void) const;
 
 		// setter
-		void	set_alu_op(ui aluOp);
-		void	set_alu_src(ui aluSrc);
-		void	set_reg_dst(ui regDst);
-		void	set_mem_write(ui memWrite);
-		void	set_mem_read(ui memRead);
-		void	set_branch(ui branch);
-		void	set_reg_write(ui regWrite);
-		void	set_mem_to_reg(ui memToReg);
-		void	set_pc(ui pc);
-		void	set_read_data_1(ui readData1);
-		void	set_read_data_2(ui readData2);
-		void	set_extend_imm(ui extendImm);
-		void	set_rs(ui rs);
-		void	set_rt(ui rt);
-		void	set_rd(ui rd);
+		bool	set_alu_op(ui aluOp);
+		bool	set_alu_src(ui aluSrc);
+		bool	set_reg_dst(ui regDst);
+		bool	set_mem_write(ui memWrite);
+		bool	set_mem_read(ui memRead);
+		bool	set_branch(ui branch);
+		bool	set_reg_write(ui regWrite);
+		bool	set_mem_to_reg(ui memToReg);
+		bool	set_pc(ui pc);
+		bool	set_read_data_1(ui readData1);
+		bool	set_read_data_2(ui readData2);
+		bool	set_extend_imm(ui extendImm);
+		bool	set_rs(ui rs);
+		bool	set_rt(ui rt);
+		bool	set_rd(ui rd);
 
 		// calculate ALUOP by opcode and funct
 		ui	calc_alu_op(ui opcode, ui funct);
