@@ -47,7 +47,7 @@ Info::Info(const char *textSegment, const char *dataSegment) {
 	// stack pointer
 	registerValues[sp] = 0x7ffffe40;
 
-	instructionCount = 9;
+	instructionIndex = 9;
 }
 
 Info::~Info(void) {}

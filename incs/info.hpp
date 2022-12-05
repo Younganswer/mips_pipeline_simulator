@@ -64,7 +64,7 @@ class Info {
 
 		// Instructions
 		vector<Instruction>	instructions;
-		size_t				instructionCount;
+		size_t				instructionIndex;
 
 		// Registers
 		ui					registerValues[32];
