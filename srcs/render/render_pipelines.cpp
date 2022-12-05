@@ -24,7 +24,7 @@ bool	render_if_id(const Info &info) {
 
 		// draw signal -----------------------------------------------------------------------------------
 			// TODO: Get signal value from info
-			DrawTextEx(GetFontDefault(), "True", Vector2{-2430, -440}, 30.0f, 2.0f, BLACK);
+			DrawTextEx(GetFontDefault(), "TRUE", Vector2{-2430, -440}, 30.0f, 2.0f, BLACK);
 		// draw signal -----------------------------------------------------------------------------------
 
 	// draw instruction write signal ---------------------------------------------------------------------
@@ -35,7 +35,7 @@ bool	render_if_id(const Info &info) {
 
 		// draw pc value ---------------------------------------------------------------------------------
 			// TODO: Get pc value from info
-			DrawTextEx(GetFontDefault(), "0x00400024", Vector2{-2430, -320}, 30.0f, 2.0f, BLACK);
+			DrawTextEx(GetFontDefault(), n2hexstr(info.ifid.get_pc()).c_str(), Vector2{-2430, -320}, 30.0f, 2.0f, BLACK);
 		// draw pc value ---------------------------------------------------------------------------------
 
 	// draw program counter ------------------------------------------------------------------------------
@@ -46,7 +46,7 @@ bool	render_if_id(const Info &info) {
 
 		// draw instruction value ------------------------------------------------------------------------
 			// TODO: Get instruction value from info
-			DrawTextEx(GetFontDefault(), "0x12345678", Vector2{-2430, 440}, 30.0f, 2.0f, BLACK);
+			DrawTextEx(GetFontDefault(), n2hexstr(info.ifid.get_id()).c_str(), Vector2{-2430, 440}, 30.0f, 2.0f, BLACK);
 		// draw instruction value ------------------------------------------------------------------------
 
 	// draw instruction ----------------------------------------------------------------------------------

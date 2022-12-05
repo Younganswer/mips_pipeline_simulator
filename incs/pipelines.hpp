@@ -6,7 +6,7 @@
 # include "instruction.hpp"
 
 // declare AluOp enum
-enum _AluOp {
+typedef enum _ALUOP {
 	ALUOP_LW = 0,
 	ALUOP_SW,
 	ALUOP_BEQ,
@@ -16,32 +16,37 @@ enum _AluOp {
 	ALUOP_AND,
 	ALUOP_OR,
 	ALUOP_SLT,
-};
+}	ALUOP;
 
-enum _FUNCTYPE {
+typedef enum _FUNCTYPE {
 	FUNCTYPE_ADD = 0x20,
 	FUNCTYPE_SUB = 0x22,
 	FUNCTYPE_AND = 0x24,
 	FUNCTYPE_OR = 0x25,
 	FUNCTYPE_SLT = 0x2a
-}; 
+}	FUNCTYPE;
 
 class IFID {
 	private:
-		ui				pc;
-		Instruction		instruction;
+		ui			pc;
+		ui			id;
+		Instruction	instruction;
 
 	public:
 		IFID(void);
 		~IFID(void);
 
 		// getter
-		ui		get_pc(void);
+		ui			get_pc(void) const;
+		ui			get_id(void) const;
+
 		Instruction	get_instruction(void);
+		Instruction	&get_instruction(void) const;
 
 		// setter
-		void	set_pc(ui pc);
-		void	set_instruction(Instruction instruction);
+		bool	set_pc(ui pc);
+		bool	set_id(ui id);
+		bool	set_instruction(const Instruction &instruction);
 };
 
 class IDEX {

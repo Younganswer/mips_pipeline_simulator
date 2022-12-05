@@ -1,16 +1,18 @@
 #include "../../incs/pipelines.hpp"
 #include <iostream>
 
-IFID::IFID(void) {}
+IFID::IFID(void) { this->pc = 0; this->id = 0; this->instruction = Instruction(); }
 IFID::~IFID(void) {}
 
 // IFID getter
-ui	IFID::get_pc(void) { return (this->pc); }
+ui			IFID::get_pc(void) const { return (this->pc); }
+ui			IFID::get_id(void) const { return (this->id); }
 Instruction	IFID::get_instruction(void) { return (this->instruction); }
 
 // IFID setter
-void	IFID::set_pc(ui pc) { this->pc = pc; }
-void	IFID::set_instruction(Instruction instruction) { this->instruction = instruction; }
+bool	IFID::set_pc(ui pc) { this->pc = pc; return (true); }
+bool	IFID::set_id(ui id) { this->id = id; return (true); }
+bool	IFID::set_instruction(const Instruction &instruction) { this->instruction = instruction; return (true); }
 
 IDEX::IDEX(void) {}
 IDEX::~IDEX(void) {}

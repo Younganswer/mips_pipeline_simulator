@@ -1,8 +1,6 @@
 #include "../../incs/render.hpp"
 #include <iostream>
 
-template <typename I> std::string n2hexstr(I w, size_t hex_len = sizeof(I)<<1);
-
 bool	render_register(Info &info);
 bool	render_user_data_segment(Info &info);
 
@@ -55,12 +53,4 @@ bool	render_user_data_segment(Info &info) {
 		}
 	// draw data segment contents ------------------------------------------------------------------------------------------------------------
 	return (true);
-}
-
-template <typename I> std::string n2hexstr(I w, size_t hex_len) {
-    static const char* digits = "0123456789abcdef";
-    std::string rc(hex_len,'0');
-    for (size_t i=0, j=(hex_len-1)*4 ; i<hex_len; ++i,j-=4)
-        rc[i] = digits[(w>>j) & 0x0f];
-    return rc;
 }

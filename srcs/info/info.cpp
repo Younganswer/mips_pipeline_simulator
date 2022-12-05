@@ -46,17 +46,11 @@ Info::Info(const char *textSegment, const char *dataSegment) {
 	registerValues[gp] = 0x10008000;
 	// stack pointer
 	registerValues[sp] = 0x7ffffe40;
+
+	instructionCount = 9;
 }
 
 Info::~Info(void) {}
-
-template <typename I> std::string n2hexstr(I w, size_t hex_len) {
-    static const char* digits = "0123456789abcdef";
-    std::string rc(hex_len,'0');
-    for (size_t i=0, j=(hex_len-1)*4 ; i<hex_len; ++i,j-=4)
-        rc[i] = digits[(w>>j) & 0x0f];
-    return rc;
-}
 
 void	Info::setInstructions(const char *textSegment) {
 	ifstream	asmFile(textSegment);

@@ -61,14 +61,18 @@ class Info {
 		Camera2D			camera;
 		// Button for next cycle
 		Button				button;
+
 		// Instructions
 		vector<Instruction>	instructions;
+		size_t				instructionCount;
+
 		// Registers
 		ui					registerValues[32];
 		// Stack
 		vector<ui>			st;
 		// Memory
 		vector<Memory>		mem;
+
 		// PIPELINES
 		IFID				ifid;
 		IDEX				idex;

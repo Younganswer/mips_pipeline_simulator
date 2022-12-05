@@ -6,6 +6,6 @@ bool	update(Info &info) {
 	memory(info);
 	execute(info);
 	// decode(info);
-	// fetch(info);
+	fetch(info);
 	return (true);
 }
