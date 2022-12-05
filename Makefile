@@ -57,6 +57,8 @@ SRCS := ${addprefix ${SRCS_DIR}/, ${SRCS}}
 OBJS = ${SRCS:${SRCS_DIR}/%.cpp=${OBJS_DIR}/%.o}
 DEPS = ${OBJS:.o=.d}
 
+ASMS = text.asm data.asm
+
 
 ifeq (${SIZE_FACTOR}, ${filter ${SIZE_FACTOR}, 7 8 9})
 	CXXFLAGS += -DSIZE_FACTOR=${SIZE_FACTOR}
@@ -71,7 +73,7 @@ all: ${NAME}
 INPUT_FILE = test.s
 run: ${NAME}
 	@${LIBS_DIR}/${ASSEMBLER_PATH}/spim/spim -file ${INPUT_FILE} -dump
-	@./${NAME} text.asm data.asm
+	@./${NAME} ${ASMS}
 
 
 ${OBJS_DIR}:
@@ -112,7 +114,7 @@ ${OBJS_DIR}/%.o: ${SRCS_DIR}/%.cpp | ${OBJS_DIR}
 
 clean:
 	@echo "Remove dependencies in ${NAME}"
-	@rm -rf ${OBJS_DIR} *.asm
+	@rm -rf ${OBJS_DIR} ${ASMS}
 
 
 fclean: clean
