@@ -7,6 +7,7 @@
 # include "button.hpp"
 # include "camera.hpp"
 # include "instruction.hpp"
+# include "pipelines.hpp"
 # include <vector>
 
 # ifndef SIZE_FACTOR
@@ -68,7 +69,12 @@ class Info {
 		vector<ui>			st;
 		// Memory
 		vector<Memory>		mem;
-		// c
+		// PIPELINES
+		IFID				ifid;
+		IDEX				idex;
+		EXMEM				exmem;
+		MEMWB				memwb;
+		
 
 		// TODO: add pipelines, hazard unit, forward unit
 

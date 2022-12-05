@@ -19,6 +19,14 @@ typedef enum _Status {
 	WB	= 4
 }	Status;
 
+typedef enum _R_FUNCT {
+	AND = 0x24,
+	OR = 0x25,
+	ADD = 0x20,
+	SUB = 0x22,
+	SLT = 0x2a,
+}	R_FUNCT;
+
 class Instruction {
 	private:
 		unsigned int	pc;

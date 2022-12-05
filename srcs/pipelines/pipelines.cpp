@@ -47,6 +47,30 @@ void	IDEX::set_rs(ui rs) { this->rs = rs; }
 void	IDEX::set_rt(ui rt) { this->rt = rt; }
 void	IDEX::set_rd(ui rd) { this->rd = rd; }
 
+//calculate ALUop by opcode and funct
+ui	IDEX::calc_alu_op(ui opcode, ui funct) {
+	if (opcode == 0) {
+		if (funct == FUNCTYPE_ADD)
+			return (ALUOP_ADD);
+		else if (funct == FUNCTYPE_SUB)
+			return (ALUOP_SUB);
+		else if (funct == FUNCTYPE_AND)
+			return (ALUOP_AND);
+		else if (funct == FUNCTYPE_OR)
+			return (ALUOP_OR);
+		else if (funct == FUNCTYPE_SLT)
+			return (ALUOP_SLT);
+	}
+	else if (opcode == 2)
+		return (ALUOP_JUMP);
+	else if (opcode == 4)
+		return (ALUOP_BEQ);
+	else if (opcode == 35)
+		return (ALUOP_LW);
+	else if (opcode == 43)
+		return (ALUOP_SW);
+}
+
 EXMEM::EXMEM(void) {}
 EXMEM::~EXMEM(void) {}
 
