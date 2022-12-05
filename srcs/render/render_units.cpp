@@ -69,8 +69,25 @@ bool	render_forwarding_unit(const Info &info) {
 			draw_right_arrow(700, 1770, 1335, 1770, GOLD);
 			DrawCircle(1450, 1160, 10.0f, GOLD);
 			draw_down_arrow(1450, 1160, 1450, 1520, GOLD);
+			draw_left_arrow(1870, 1590, 1760, 1590, GOLD);
+			draw_left_arrow(1870, 1750, 1760, 1750, GOLD);
+		// draw lines -------------------------------------------------------------------------------------------------
+		// draw EX/MEM RegWrite sector -------------------------------------------------------------------------------
+			DrawRectangleLinesEx(Rectangle{ 1870, 1515, 250, 150 }, 5.0f, BLUE);
+			DrawRectangle(1870, 1515, 250, 150, Fade(BLUE, 0.2f));
+			// draw text --------------------------------------------------------------------------------------------------
+				DrawTextEx(GetFontDefault(), "EX/MEM", Vector2{ 1906, 1545 }, 40.0f, 3.0f, BLUE);
+				DrawTextEx(GetFontDefault(), "RegWrite", Vector2{ 1905, 1600 }, 40.0f, 3.0f, BLUE);
+			// draw text --------------------------------------------------------------------------------------------------
+		// draw EX/MEM RegWrite sector -------------------------------------------------------------------------------
+		// draw MEM/WB RegWrite sector -------------------------------------------------------------------------------
+			DrawRectangleLinesEx(Rectangle{ 1870, 1685, 250, 150 }, 5.0f, BLUE);
+			DrawRectangle(1870, 1685, 250, 150, Fade(BLUE, 0.2f));
+			// draw text --------------------------------------------------------------------------------------------------
+				DrawTextEx(GetFontDefault(), "MEM/WB", Vector2{ 1905, 1715 }, 40.0f, 3.0f, BLUE);
+				DrawTextEx(GetFontDefault(), "RegWrite", Vector2{ 1905, 1770 }, 40.0f, 3.0f, BLUE);
+			// draw text --------------------------------------------------------------------------------------------------
 	// draw forwarding unit sector ------------------------------------------------------------------------------
-
 	
 	(void) info;
 	return (true);
