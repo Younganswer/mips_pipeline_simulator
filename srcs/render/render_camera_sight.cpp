@@ -1,7 +1,6 @@
 #include "../../incs/info.hpp"
 #include "../../incs/shape.hpp"
 #include "../../incs/render.hpp"
-#include "../../incs/draw_contents.hpp"
 #include "../../incs/update.hpp"
 #include <iostream>
 
@@ -41,9 +40,9 @@ bool	render_camera_sight(Info &info) {
 			DrawLine(posX-screenWidth*5, posY, posX+screenWidth*5, posY, GREEN);
 		// cross line --------------------------------------------------------------------------------
 		
-		// draw contents -----------------------------------------------------------------------------
-			draw_contents(info);
-		// draw contents -----------------------------------------------------------------------------
+		// render contents -----------------------------------------------------------------------------
+			render_contents(info);
+		// render contents -----------------------------------------------------------------------------
 
 	EndMode2D();
 	return (true);

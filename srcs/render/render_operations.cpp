@@ -1,13 +1,13 @@
-#include "../../incs/draw_contents.hpp"
+#include "../../incs/render.hpp"
 #include "../../incs/shape.hpp"
 
-bool	draw_instruction_fetch(const Info &info);
-bool	draw_instruction_decode(const Info &info);
-bool	draw_execute(const Info &info);
-bool	draw_memory_access(const Info &info);
-bool	draw_write_back(const Info &info);
+bool	render_instruction_fetch(const Info &info);
+bool	render_instruction_decode(const Info &info);
+bool	render_execute(const Info &info);
+bool	render_memory_access(const Info &info);
+bool	render_write_back(const Info &info);
 
-bool	draw_instruction_fetch(const Info &info) {
+bool	render_instruction_fetch(const Info &info) {
 	// draw instruction memory sector ---------------------------------------------------------------------------
 		DrawRectangleLinesEx(Rectangle{ -3100, -100, 500, 1000 }, 5.0f, BLACK);
 		// draw text --------------------------------------------------------------------------------------------------
@@ -99,7 +99,7 @@ bool	draw_instruction_fetch(const Info &info) {
 	return (true);
 }
 
-bool	draw_instruction_decode(const Info &info) {
+bool	render_instruction_decode(const Info &info) {
 	// draw ALU sector ----------------------------------------------------------------------------------------------
 		draw_trapezoid(-1150, -635, 200);
 		// draw text --------------------------------------------------------------------------------------------------
@@ -179,17 +179,17 @@ bool	draw_instruction_decode(const Info &info) {
 	return (true);
 }
 
-bool	draw_execute(const Info &info) {
+bool	render_execute(const Info &info) {
 	(void) info;
 	return (true);
 }
 
-bool	draw_memory_access(const Info &info) {
+bool	render_memory_access(const Info &info) {
 	(void) info;
 	return (true);
 }
 
-bool	draw_write_back(const Info &info) {
+bool	render_write_back(const Info &info) {
 	(void) info;
 	return (true);
 }

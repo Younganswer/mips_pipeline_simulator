@@ -1,15 +1,15 @@
-#include "../../incs/draw_contents.hpp"
+#include "../../incs/render.hpp"
 #include "../../incs/shape.hpp"
 
-bool	draw_if_id(const Info &info);
-bool	draw_id_ex(const Info &info);
-bool	draw_id_ex_signal(const Info &info);
-bool	draw_ex_mem(const Info &info);
-bool	draw_ex_mem_signal(const Info &info);
-bool	draw_mem_wb(const Info &info);
-bool	draw_mem_wb_signal(const Info &info);
+bool	render_if_id(const Info &info);
+bool	render_id_ex(const Info &info);
+bool	render_id_ex_signal(const Info &info);
+bool	render_ex_mem(const Info &info);
+bool	render_ex_mem_signal(const Info &info);
+bool	render_mem_wb(const Info &info);
+bool	render_mem_wb_signal(const Info &info);
 
-bool	draw_if_id(const Info &info) {
+bool	render_if_id(const Info &info) {
 	// draw text that indicates the current pipeline stage -----------------------------------------------
 		DrawTextEx(GetFontDefault(), "IF/ID", (Vector2) { -2420, -570 }, 50.0f, 2.0f, BLACK);
 	// draw text that indicates the current pipeline stage -----------------------------------------------
@@ -61,9 +61,9 @@ bool	draw_if_id(const Info &info) {
 	return (true);
 }
 
-bool	draw_id_ex(const Info &info) {
+bool	render_id_ex(const Info &info) {
 	// draw id/ex signal -------------------------------------------------------------------------------
-		draw_id_ex_signal(info);
+		render_id_ex_signal(info);
 	// draw id/ex signal -------------------------------------------------------------------------------
 
 	// draw pipeline sector ---------------------------------------------------------------------------
@@ -165,9 +165,9 @@ bool	draw_id_ex(const Info &info) {
 	return (true);
 }
 
-bool	draw_ex_mem(const Info &info) {
+bool	render_ex_mem(const Info &info) {
 	// draw ex/mem signal ------------------------------------------------------------------------------
-		draw_ex_mem_signal(info);
+		render_ex_mem_signal(info);
 	// draw ex/mem signal ------------------------------------------------------------------------------
 
 	// draw pipeline sector ---------------------------------------------------------------------------
@@ -200,9 +200,9 @@ bool	draw_ex_mem(const Info &info) {
 	return (true);
 }
 
-bool	draw_mem_wb(const Info &info) {
+bool	render_mem_wb(const Info &info) {
 	// draw mem/wb signal ------------------------------------------------------------------------------
-		draw_mem_wb_signal(info);
+		render_mem_wb_signal(info);
 	// draw mem/wb signal ------------------------------------------------------------------------------
 
 	// draw pipeline sector ---------------------------------------------------------------------------
@@ -233,7 +233,7 @@ bool	draw_mem_wb(const Info &info) {
 	return (true);
 }
 
-bool	draw_id_ex_signal(const Info &info) {
+bool	render_id_ex_signal(const Info &info) {
 	// draw text that indicates the current pipeline stage -----------------------------------------------
 		DrawTextEx(GetFontDefault(), "ID/EX", (Vector2) { 180, -1535 }, 50.0f, 2.0f, BLACK);
 	// draw text that indicates the current pipeline stage -----------------------------------------------
@@ -355,7 +355,7 @@ bool	draw_id_ex_signal(const Info &info) {
 	return (true);
 }
 
-bool	draw_ex_mem_signal(const Info &info) {
+bool	render_ex_mem_signal(const Info &info) {
 	// draw text that indicates the current pipeline stage -----------------------------------------------
 		DrawTextEx(GetFontDefault(), "EX/MEM", (Vector2) { 1850, -1130 }, 50.0f, 2.0f, BLACK);
 	// draw text that indicates the current pipeline stage -----------------------------------------------
@@ -427,7 +427,7 @@ bool	draw_ex_mem_signal(const Info &info) {
 	return (true);
 }
 
-bool	draw_mem_wb_signal(const Info &info) {
+bool	render_mem_wb_signal(const Info &info) {
 	// draw text that indicates the current pipeline stage -----------------------------------------------
 		DrawTextEx(GetFontDefault(), "MEM/WB", Vector2{3340, -855}, 50.0f, 2.0f, BLACK);
 	// draw text that indicates the current pipeline stage -----------------------------------------------

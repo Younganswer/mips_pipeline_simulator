@@ -1,19 +1,19 @@
-#include "../../incs/draw_contents.hpp"
+#include "../../incs/render.hpp"
 #include "../../incs/shape.hpp"
 
-bool	draw_units(const Info &info);
-bool	draw_hazard_unit(const Info &info);
-bool	draw_control_unit(const Info &info);
-bool	draw_forwarding_unit(const Info &info);
+bool	render_units(const Info &info);
+bool	render_hazard_unit(const Info &info);
+bool	render_control_unit(const Info &info);
+bool	render_forwarding_unit(const Info &info);
 
-bool	draw_units(const Info &info) {
-	draw_hazard_unit(info);
-	draw_control_unit(info);
-	draw_forwarding_unit(info);
+bool	render_units(const Info &info) {
+	render_hazard_unit(info);
+	render_control_unit(info);
+	render_forwarding_unit(info);
 	return (true);
 }
 
-bool	draw_hazard_unit(const Info &info) {
+bool	render_hazard_unit(const Info &info) {
 	// draw hazard unit sector ------------------------------------------------------------------------------------
 		DrawRectangleRoundedLines(Rectangle{ -1600, -1700, 500, 300 }, 0.5f, 0, 5.0f, RED);
 		DrawRectangleRounded(Rectangle{ -1600, -1700, 500, 300 }, 0.5f, 0, Fade(RED, 0.2f));
@@ -37,7 +37,7 @@ bool	draw_hazard_unit(const Info &info) {
 	return (true);
 }
 
-bool	draw_control_unit(const Info &info) {
+bool	render_control_unit(const Info &info) {
 	// draw control unit sector ------------------------------------------------------------------------------------
 		DrawRectangleRoundedLines(Rectangle{ -1900, -1100, 300, 500 }, 1.0f, 0, 5.0f, BLUE);
 		DrawRectangleRounded(Rectangle{ -1900, -1100, 300, 500 }, 1.0f, 0, Fade(BLUE, 0.2f));
@@ -55,7 +55,7 @@ bool	draw_control_unit(const Info &info) {
 	return (true);
 }
 
-bool	draw_forwarding_unit(const Info &info) {
+bool	render_forwarding_unit(const Info &info) {
 	// draw forwarding unit sector ------------------------------------------------------------------------------
 		DrawRectangleRoundedLines(Rectangle{ 1300, 1520, 480, 300 }, 1.0f, 0, 5.0f, GOLD);
 		DrawRectangleRounded(Rectangle{ 1300, 1520, 480, 300 }, 1.0f, 0, Fade(GOLD, 0.2f));

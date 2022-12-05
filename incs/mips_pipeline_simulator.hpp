@@ -4,7 +4,6 @@
 # include "../libs/raylib/src/raylib.h"
 # include "button.hpp"
 # include "camera.hpp"
-# include "draw_contents.hpp"
 # include "forward.hpp"
 # include "hazard.hpp"
 # include "info.hpp"

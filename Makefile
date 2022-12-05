@@ -27,10 +27,6 @@ OBJS_DIR	= ./objs
 SRCS =	main.cpp \
 		button/button.cpp \
 		camera/camera.cpp \
-		draw/draw_contents.cpp \
-		draw/draw_units.cpp \
-		draw/draw_operations.cpp \
-		draw/draw_pipelines.cpp \
 		forward/forward.cpp \
 		hazard/hazard.cpp \
 		info/info.cpp \
@@ -38,6 +34,10 @@ SRCS =	main.cpp \
 		render/render.cpp \
 		render/render_camera_sight.cpp \
 		render/render_data.cpp \
+		render/render_contents.cpp \
+		render/render_units.cpp \
+		render/render_operations.cpp \
+		render/render_pipelines.cpp \
 		pipelines/pipelines.cpp \
 		shape/draw_arrow.cpp \
 		shape/draw_circle_lines_ex.cpp \
@@ -79,7 +79,6 @@ ${OBJS_DIR}:
 	@mkdir -p objs
 	@mkdir -p objs/button
 	@mkdir -p objs/camera
-	@mkdir -p objs/draw
 	@mkdir -p objs/forward
 	@mkdir -p objs/hazard
 	@mkdir -p objs/info
