@@ -5,6 +5,27 @@
 
 # include "instruction.hpp"
 
+// declare AluOp enum
+enum _AluOp {
+	ALUOP_LW = 0,
+	ALUOP_SW,
+	ALUOP_BEQ,
+	ALUOP_JUMP,
+	ALUOP_ADD,
+	ALUOP_SUB,
+	ALUOP_AND,
+	ALUOP_OR,
+	ALUOP_SLT,
+};
+
+enum _FUNCTYPE {
+	FUNCTYPE_ADD = 0x20,
+	FUNCTYPE_SUB = 0x22,
+	FUNCTYPE_AND = 0x24,
+	FUNCTYPE_OR = 0x25,
+	FUNCTYPE_SLT = 0x2a
+}; 
+
 class IFID {
 	private:
 		ui				pc;
@@ -76,6 +97,9 @@ class IDEX {
 		void	set_rs(ui rs);
 		void	set_rt(ui rt);
 		void	set_rd(ui rd);
+
+		// calculate ALUOP by opcode and funct
+		ui	calc_alu_op(ui opcode, ui funct);
 };
 
 class EXMEM {

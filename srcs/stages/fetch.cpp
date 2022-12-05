@@ -3,11 +3,11 @@
 
 // fetch IFID pipeline
 
-void	fetch(IFID &ifid, const Info &info) {
+void	fetch(Info &info) {
 	static ui	pcCount = 0;
 
-	ifid.set_pc(info.instructions[pcCount].get_pc() + 4);
-	ifid.set_instruction(info.instructions[pcCount++]);
+	info.ifid.set_pc(info.instructions[pcCount].get_pc() + 4);
+	info.ifid.set_instruction(info.instructions[pcCount++]);
 }
 
 
