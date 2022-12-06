@@ -9,8 +9,8 @@ bool	fetch(Info &info) {
 		return (true);
 	}
 
-	info.instructions[info.instructionIndex].set_status(IF);
 	info.ifid.set_instruction(info.instructions[info.instructionIndex]);
+	info.ifid.get_instruction().set_status(IF);
 	info.ifid.set_pc(info.ifid.get_instruction().get_pc() + 4);
 	info.ifid.set_id(info.ifid.get_instruction().get_id());
 	info.instructionIndex++;

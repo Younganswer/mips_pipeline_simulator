@@ -21,11 +21,10 @@ IDEX::~IDEX(void) {}
 ui			IDEX::get_alu_op(void) const { return (this->aluOp); }
 ui			IDEX::get_alu_src(void) const { return (this->aluSrc); }
 ui			IDEX::get_reg_dst(void) const { return (this->regDst); }
-ui			IDEX::get_mem_write(void) const { return (this->memWrite); }
-ui			IDEX::get_mem_read(void) const { return (this->memRead); }
-ui			IDEX::get_branch(void) const { return (this->branch); }
-ui			IDEX::get_reg_write(void) const { return (this->regWrite); }
-ui			IDEX::get_mem_to_reg(void) const { return (this->memToReg); }
+bool		IDEX::get_mem_write(void) const { return (this->memWrite); }
+bool		IDEX::get_mem_read(void) const { return (this->memRead); }
+bool		IDEX::get_reg_write(void) const { return (this->regWrite); }
+bool		IDEX::get_mem_to_reg(void) const { return (this->memToReg); }
 ui			IDEX::get_read_data1(void) const { return (this->readData1); }
 ui			IDEX::get_read_data2(void) const { return (this->readData2); }
 ui			IDEX::get_extend_imm(void) const { return (this->extendImm); }
@@ -38,11 +37,10 @@ Instruction	IDEX::get_instruction(void) { return (this->instruction); }
 bool	IDEX::set_alu_op(ui aluOp) { this->aluOp = aluOp; return (true); }
 bool	IDEX::set_alu_src(ui aluSrc) { this->aluSrc = aluSrc; return (true); }
 bool	IDEX::set_reg_dst(ui regDst) { this->regDst = regDst; return (true); }
-bool	IDEX::set_mem_write(ui memWrite) { this->memWrite = memWrite; return (true); }
-bool	IDEX::set_mem_read(ui memRead) { this->memRead = memRead; return (true); }
-bool	IDEX::set_branch(ui branch) { this->branch = branch; return (true); }
-bool	IDEX::set_reg_write(ui regWrite) { this->regWrite = regWrite; return (true); }
-bool	IDEX::set_mem_to_reg(ui memToReg) { this->memToReg = memToReg; return (true); }
+bool	IDEX::set_mem_write(bool memWrite) { this->memWrite = memWrite; return (true); }
+bool	IDEX::set_mem_read(bool memRead) { this->memRead = memRead; return (true); }
+bool	IDEX::set_reg_write(bool regWrite) { this->regWrite = regWrite; return (true); }
+bool	IDEX::set_mem_to_reg(bool memToReg) { this->memToReg = memToReg; return (true); }
 bool	IDEX::set_read_data_1(ui readData1) { this->readData1 = readData1; return (true); }
 bool	IDEX::set_read_data_2(ui readData2) { this->readData2 = readData2; return (true); }
 bool	IDEX::set_extend_imm(ui extendImm) { this->extendImm = extendImm; return (true); }
@@ -51,46 +49,21 @@ bool	IDEX::set_rt(ui rt) { this->rt = rt; return (true); }
 bool	IDEX::set_rd(ui rd) { this->rd = rd; return (true); }
 bool	IDEX::set_instruction(const Instruction &instruction) { this->instruction = instruction; return (true); }
 
-//calculate ALUop by opcode and funct
-ui	IDEX::calc_alu_op(ui opcode, ui funct) {
-	if (opcode == 0) {
-		if (funct == FUNCTYPE_ADD)
-			return (ALUOP_ADD);
-		else if (funct == FUNCTYPE_SUB)
-			return (ALUOP_SUB);
-		else if (funct == FUNCTYPE_AND)
-			return (ALUOP_AND);
-		else if (funct == FUNCTYPE_OR)
-			return (ALUOP_OR);
-		else if (funct == FUNCTYPE_SLT)
-			return (ALUOP_SLT);
-	}
-	else if (opcode == 2)
-		return (ALUOP_JUMP);
-	else if (opcode == 4)
-		return (ALUOP_BEQ);
-	else if (opcode == 35)
-		return (ALUOP_LW);
-	else if (opcode == 43)
-		return (ALUOP_SW);
-	return (-1);
-}
-
 EXMEM::EXMEM(void) {}
 EXMEM::~EXMEM(void) {}
 
 // EXMEM getter
-ui	EXMEM::get_mem_write(void) { return (this->memWrite); }
-ui	EXMEM::get_mem_read(void) { return (this->memRead); }
-ui	EXMEM::get_branch(void) { return (this->branch); }
-ui	EXMEM::get_reg_write(void) { return (this->regWrite); }
-ui	EXMEM::get_mem_to_reg(void) { return (this->memToReg); }
-ui	EXMEM::get_add_result(void) { return (this->addResult); }
-ui	EXMEM::get_zero_flag(void) { return (this->zeroFlag); }
-ui	EXMEM::get_alu_result(void) { return (this->aluResult); }
-ui	EXMEM::get_read_data_2(void) { return (this->readData2); }
-ui	EXMEM::get_extend_imm(void) { return (this->extendImm); }
-ui	EXMEM::get_write_data(void) { return (this->writeData); }
+ui			EXMEM::get_mem_write(void) { return (this->memWrite); }
+ui			EXMEM::get_mem_read(void) { return (this->memRead); }
+ui			EXMEM::get_branch(void) { return (this->branch); }
+ui			EXMEM::get_reg_write(void) { return (this->regWrite); }
+ui			EXMEM::get_mem_to_reg(void) { return (this->memToReg); }
+ui			EXMEM::get_add_result(void) { return (this->addResult); }
+ui			EXMEM::get_zero_flag(void) { return (this->zeroFlag); }
+ui			EXMEM::get_alu_result(void) { return (this->aluResult); }
+ui			EXMEM::get_read_data_2(void) { return (this->readData2); }
+ui			EXMEM::get_extend_imm(void) { return (this->extendImm); }
+ui			EXMEM::get_write_data(void) { return (this->writeData); }
 Instruction	EXMEM::get_instruction(void) { return (this->instruction); }
 
 // EXMEM setter

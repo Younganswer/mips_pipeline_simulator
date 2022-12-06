@@ -26,8 +26,8 @@ bool	render_hazard_unit(const Info &info) {
 			draw_left_arrow(600, -1550, -1100, -1550, RED);
 		// draw lines -------------------------------------------------------------------------------------------
 		// draw text --------------------------------------------------------------------------------------------------
-			DrawTextEx(GetFontDefault(), "Hazard", Vector2{ -1460, -1650 }, 70.0f, 3.0f, RED);
-			DrawTextEx(GetFontDefault(), "detection", Vector2{ -1495, -1570 }, 70.0f, 3.0f, RED);
+			DrawTextEx(GetFontDefault(), "Hazard", Vector2{ -1460, -1660 }, 70.0f, 3.0f, RED);
+			DrawTextEx(GetFontDefault(), "detection", Vector2{ -1495, -1580 }, 70.0f, 3.0f, RED);
 			DrawTextEx(GetFontDefault(), "unit", Vector2{ -1410, -1500 }, 70.0f, 3.0f, RED);
 		// draw text --------------------------------------------------------------------------------------------------
 	// draw hazard unit sector ------------------------------------------------------------------------------------
@@ -46,8 +46,8 @@ bool	render_control_unit(const Info &info) {
 			draw_right_arrow(-2050, -850, -1900, -850, Fade(BLUE, 0.8f));
 		// draw lines -------------------------------------------------------------------------------------------------
 		// draw text --------------------------------------------------------------------------------------------------
-			DrawTextEx(GetFontDefault(), "Control", Vector2{ -1850, -910 }, 60.0f, 3.0f, BLUE);
-			DrawTextEx(GetFontDefault(), "unit", Vector2{ -1800, -830 }, 60.0f, 3.0f, BLUE);
+			DrawTextEx(GetFontDefault(), "Control", Vector2{ -1850, -925 }, 60.0f, 3.0f, BLUE);
+			DrawTextEx(GetFontDefault(), "unit", Vector2{ -1800, -845 }, 60.0f, 3.0f, BLUE);
 		// draw text --------------------------------------------------------------------------------------------------
 	// draw control unit sector ------------------------------------------------------------------------------------
 
@@ -64,9 +64,9 @@ bool	render_forwarding_unit(const Info &info) {
 			DrawTextEx(GetFontDefault(), "unit", Vector2{ 1490, 1690 }, 70.0f, 3.0f, GOLD);
 		// draw text --------------------------------------------------------------------------------------------------
 		// draw lines -------------------------------------------------------------------------------------------------
-			DrawLineEx(Vector2{ 400, 1400 }, Vector2{ 700, 1400 }, 5.0f, GOLD);
-			DrawLineEx(Vector2{ 700, 1400 }, Vector2{ 700, 1770 }, 5.0f, GOLD);
-			draw_right_arrow(700, 1770, 1335, 1770, GOLD);
+			DrawLineEx(Vector2{ 400, 1400 }, Vector2{ 725, 1400 }, 5.0f, GOLD);
+			DrawLineEx(Vector2{ 725, 1400 }, Vector2{ 725, 1770 }, 5.0f, GOLD);
+			draw_right_arrow(725, 1770, 1335, 1770, GOLD);
 			DrawCircle(1450, 1160, 10.0f, GOLD);
 			draw_down_arrow(1450, 1160, 1450, 1520, GOLD);
 			draw_left_arrow(1870, 1590, 1760, 1590, GOLD);

@@ -78,21 +78,21 @@ bool	render_instruction_fetch(const Info &info) {
 				DrawLineEx(Vector2{ -150, 220 }, Vector2{ -150, -1175 }, 5.0f, BLACK);
 				DrawLineEx(Vector2{ -150, -1175 }, Vector2{ -3855, -1175 }, 5.0f, BLACK);
 				draw_down_arrow(-3855, -1175, -3855, -250, BLACK);
-				draw_down_arrow(-3745, -400, -3745, -250, BLACK);
+				draw_down_arrow(-3745, -370, -3745, -250, BLACK);
 			// draw lines -------------------------------------------------------------------------------------------------
 		// draw and gate sector ----------------------------------------------------------------------------------------
 	// draw mux sector ----------------------------------------------------------------------------------------------
 
 	// draw Branch sector -------------------------------------------------------------------------------------------
-		DrawRectangleLinesEx(Rectangle{ -3810, -550, 200, 150 }, 5.0f, BLUE);
-		DrawRectangle(-3810, -550, 200, 150, Fade(BLUE, 0.2f));
+		DrawRectangleLinesEx(Rectangle{ -3810, -520, 200, 150 }, 5.0f, BLUE);
+		DrawRectangle(-3810, -520, 200, 150, Fade(BLUE, 0.2f));
 		// draw text --------------------------------------------------------------------------------------------------
-			DrawTextEx(GetFontDefault(), "ID/EX", Vector2{ -3770, -520 }, 40.0f, 3.0f, BLUE);
-			DrawTextEx(GetFontDefault(), "Branch", Vector2{ -3780, -470 }, 40.0f, 3.0f, BLUE);
+			DrawTextEx(GetFontDefault(), "ID/EX", Vector2{ -3770, -490 }, 40.0f, 3.0f, BLUE);
+			DrawTextEx(GetFontDefault(), "Branch", Vector2{ -3780, -435 }, 40.0f, 3.0f, BLUE);
 		// draw text --------------------------------------------------------------------------------------------------
 		// draw lines --------------------------------------------------------------------------------------------------
 			DrawLineEx(Vector2{ -1900, -950 }, Vector2{ -3710, -950 }, 5.0f, BLUE);
-			draw_down_arrow(-3710, -950, -3710, -550, BLUE);
+			draw_down_arrow(-3710, -950, -3710, -520, BLUE);
 		// draw lines --------------------------------------------------------------------------------------------------
 	// draw Branch sector -------------------------------------------------------------------------------------------
 	(void) info;
@@ -250,21 +250,21 @@ bool	render_execute(const Info &info) {
 				draw_down_arrow(1180, 230, 1180, 325, BLACK);
 			// draw lines -----------------------------------------------------------------------------------------------
 			// draw ALU source sector ------------------------------------------------------------------------------------
-				DrawRectangleLinesEx(Rectangle{ 1000, 80, 200, 150 }, 5.0f, BLUE);
-				DrawRectangle(1000, 80, 200, 150, Fade(BLUE, 0.2f));
+				DrawRectangleLinesEx(Rectangle{ 1000, 90, 200, 140 }, 5.0f, BLUE);
+				DrawRectangle(1000, 90, 200, 140, Fade(BLUE, 0.2f));
 				// draw text --------------------------------------------------------------------------------------------
-					DrawTextEx(GetFontDefault(), "ALU", Vector2{ 1060, 115 }, 40.0f, 3.0f, BLUE);
-					DrawTextEx(GetFontDefault(), "Source", Vector2{ 1030, 160 }, 40.0f, 3.0f, BLUE);
+					DrawTextEx(GetFontDefault(), "ALU", Vector2{ 1063, 120 }, 40.0f, 3.0f, BLUE);
+					DrawTextEx(GetFontDefault(), "Source", Vector2{ 1030, 165 }, 40.0f, 3.0f, BLUE);
 				// draw text --------------------------------------------------------------------------------------------
 			// draw ALU source sector ------------------------------------------------------------------------------------
 	// draw ALU sector -----------------------------------------------------------------------------------------------
 	
 	// draw ALU Opcode sector ---------------------------------------------------------------------------------------
-		DrawRectangleLinesEx(Rectangle{ 1500, -250, 200, 150 }, 5.0f, BLUE);
-		DrawRectangle(1500, -250, 200, 150, Fade(BLUE, 0.2f));
+		DrawRectangleLinesEx(Rectangle{ 1500, -240, 200, 140 }, 5.0f, BLUE);
+		DrawRectangle(1500, -240, 200, 140, Fade(BLUE, 0.2f));
 		// draw text --------------------------------------------------------------------------------------------------
-			DrawTextEx(GetFontDefault(), "ALU", Vector2{ 1565, -220 }, 40.0f, 3.0f, BLUE);
-			DrawTextEx(GetFontDefault(), "Opcode", Vector2{ 1530, -170 }, 40.0f, 3.0f, BLUE);
+			DrawTextEx(GetFontDefault(), "ALU", Vector2{ 1563, -210 }, 40.0f, 3.0f, BLUE);
+			DrawTextEx(GetFontDefault(), "Opcode", Vector2{ 1530, -165 }, 40.0f, 3.0f, BLUE);
 		// draw text --------------------------------------------------------------------------------------------------
 	// draw ALU Opcode sector ---------------------------------------------------------------------------------------
 
@@ -284,7 +284,7 @@ bool	render_execute(const Info &info) {
 			DrawRectangleLinesEx(Rectangle{ 1500, 860, 200, 140 }, 5.0f, BLUE);
 			DrawRectangle(1500, 860, 200, 140, Fade(BLUE, 0.2f));
 			// draw text --------------------------------------------------------------------------------------------------
-				DrawTextEx(GetFontDefault(), "ID/EX", Vector2{ 1537, 885 }, 40.0f, 3.0f, BLUE);
+				DrawTextEx(GetFontDefault(), "ID/EX", Vector2{ 1538, 885 }, 40.0f, 3.0f, BLUE);
 				DrawTextEx(GetFontDefault(), "RegDst", Vector2{ 1532, 935 }, 40.0f, 3.0f, BLUE);
 			// draw text --------------------------------------------------------------------------------------------------
 		// draw ID/EX RegDst sector ------------------------------------------------------------------------------------

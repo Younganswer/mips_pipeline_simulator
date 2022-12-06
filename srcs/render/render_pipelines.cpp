@@ -23,7 +23,6 @@ bool	render_if_id(const Info &info) {
 		DrawTextEx(GetFontDefault(), "=>", Vector2{-2470, -440}, 30.0f, 2.0f, BLACK);
 
 		// draw signal -----------------------------------------------------------------------------------
-			// TODO: Get signal value from info
 			DrawTextEx(GetFontDefault(), "TRUE", Vector2{-2430, -440}, 30.0f, 2.0f, BLACK);
 		// draw signal -----------------------------------------------------------------------------------
 
@@ -34,7 +33,6 @@ bool	render_if_id(const Info &info) {
 		DrawTextEx(GetFontDefault(), "=>", Vector2{-2470, -320}, 30.0f, 2.0f, BLACK);
 
 		// draw pc value ---------------------------------------------------------------------------------
-			// TODO: Get pc value from info
 			DrawTextEx(GetFontDefault(), n2hexstr(info.ifid.get_pc()).c_str(), Vector2{-2430, -320}, 30.0f, 2.0f, BLACK);
 		// draw pc value ---------------------------------------------------------------------------------
 
@@ -45,7 +43,6 @@ bool	render_if_id(const Info &info) {
 		DrawTextEx(GetFontDefault(), "=>", Vector2{-2470, 440}, 30.0f, 2.0f, BLACK);
 
 		// draw instruction value ------------------------------------------------------------------------
-			// TODO: Get instruction value from info
 			DrawTextEx(GetFontDefault(), n2hexstr(info.ifid.get_id()).c_str(), Vector2{-2430, 440}, 30.0f, 2.0f, BLACK);
 		// draw instruction value ------------------------------------------------------------------------
 
@@ -74,8 +71,7 @@ bool	render_id_ex(const Info &info) {
 		DrawTextEx(GetFontDefault(), "rs value", Vector2{120, -105}, 30.0f, 2.0f, BLACK);
 		DrawTextEx(GetFontDefault(), "=>", Vector2{130, -65}, 30.0f, 2.0f, BLACK);
 		// draw rs value ---------------------------------------------------------------------------------
-			// TODO: Get rs value from info
-			DrawTextEx(GetFontDefault(), "0x00000001", Vector2{170, -65}, 30.0f, 2.0f, BLACK);
+			DrawTextEx(GetFontDefault(), n2hexstr(info.idex.get_read_data1()).c_str(), Vector2{170, -65}, 30.0f, 2.0f, BLACK);
 		// draw rs value ---------------------------------------------------------------------------------
 		// draw line ------------------------------------------------------------------------------------
 			draw_right_arrow(-250, -70, 100, -70, BLACK);
@@ -86,8 +82,7 @@ bool	render_id_ex(const Info &info) {
 		DrawTextEx(GetFontDefault(), "rt value", Vector2{120, 500}, 30.0f, 2.0f, BLACK);
 		DrawTextEx(GetFontDefault(), "=>", Vector2{130, 540}, 30.0f, 2.0f, BLACK);
 		// draw rt value ---------------------------------------------------------------------------------
-			// TODO: Get rt value from info
-			DrawTextEx(GetFontDefault(), "0x00000002", Vector2{170, 540}, 30.0f, 2.0f, BLACK);
+			DrawTextEx(GetFontDefault(), n2hexstr(info.idex.get_read_data2()).c_str(), Vector2{170, 540}, 30.0f, 2.0f, BLACK);
 		// draw rt value ---------------------------------------------------------------------------------
 		// draw line ------------------------------------------------------------------------------------
 			draw_right_arrow(-250, 535, 100, 535, BLACK);
@@ -99,8 +94,7 @@ bool	render_id_ex(const Info &info) {
 		DrawTextEx(GetFontDefault(), "immediate value", Vector2{120, 940}, 30.0f, 2.0f, BLACK);
 		DrawTextEx(GetFontDefault(), "=>", Vector2{130, 980}, 30.0f, 2.0f, BLACK);
 		// draw sign extended immediate value ------------------------------------------------------------
-			// TODO: Get sign extended immediate value from info
-			DrawTextEx(GetFontDefault(), "0xfffffabc", Vector2{170, 980}, 30.0f, 2.0f, BLACK);
+			DrawTextEx(GetFontDefault(), n2hexstr(info.idex.get_extend_imm()).c_str(), Vector2{170, 980}, 30.0f, 2.0f, BLACK);
 		// draw sign extended immediate value ------------------------------------------------------------
 		// draw line ------------------------------------------------------------------------------------
 			draw_right_arrow(-1300, 955, 100, 955, BLACK);
@@ -110,8 +104,7 @@ bool	render_id_ex(const Info &info) {
 		DrawTextEx(GetFontDefault(), "rt", Vector2{120, 1125}, 30.0f, 2.0f, BLACK);
 		DrawTextEx(GetFontDefault(), "=>", Vector2{130, 1165}, 30.0f, 2.0f, BLACK);
 		// draw rt address value -------------------------------------------------------------------------
-			// TODO: Get rt address value from info
-			DrawTextEx(GetFontDefault(), "$11", Vector2{170, 1165}, 30.0f, 2.0f, BLACK);
+			DrawTextEx(GetFontDefault(), n2hexstr(info.idex.get_rt()).c_str(), Vector2{170, 1165}, 30.0f, 2.0f, BLACK);
 		// draw rt address value -------------------------------------------------------------------------
 		// draw line ------------------------------------------------------------------------------------
 			DrawCircle(-1810, -185, 10, BLACK);
@@ -124,8 +117,7 @@ bool	render_id_ex(const Info &info) {
 		DrawTextEx(GetFontDefault(), "rd", Vector2{120, 1245}, 30.0f, 2.0f, BLACK);
 		DrawTextEx(GetFontDefault(), "=>", Vector2{130, 1285}, 30.0f, 2.0f, BLACK);
 		// draw rd address value -------------------------------------------------------------------------
-			// TODO: Get rd address value from info
-			DrawTextEx(GetFontDefault(), "$12", Vector2{170, 1285}, 30.0f, 2.0f, BLACK);
+			DrawTextEx(GetFontDefault(), n2hexstr(info.idex.get_rd()).c_str(), Vector2{170, 1285}, 30.0f, 2.0f, BLACK);
 		// draw rd address value -------------------------------------------------------------------------
 		// draw line ------------------------------------------------------------------------------------
 			DrawCircle(-1930, 25, 10, BLACK);
@@ -138,8 +130,7 @@ bool	render_id_ex(const Info &info) {
 		DrawTextEx(GetFontDefault(), "rs", Vector2{120, 1365}, 30.0f, 2.0f, BLACK);
 		DrawTextEx(GetFontDefault(), "=>", Vector2{130, 1405}, 30.0f, 2.0f, BLACK);
 		// draw rs address value -------------------------------------------------------------------------
-			// TODO: Get rs address value from info
-			DrawTextEx(GetFontDefault(), "$10", Vector2{170, 1405}, 30.0f, 2.0f, BLACK);
+			DrawTextEx(GetFontDefault(), n2hexstr(info.idex.get_rs()).c_str(), Vector2{170, 1405}, 30.0f, 2.0f, BLACK);
 		// draw rs address value -------------------------------------------------------------------------
 		// draw line ------------------------------------------------------------------------------------
 			DrawCircle(-2050, 1400, 10, BLACK);
@@ -256,8 +247,8 @@ bool	render_id_ex_signal(const Info &info) {
 				DrawTextEx(GetFontDefault(), "ALUOp", Vector2{150, -1430}, 40.0f, 2.0f, BLUE);
 				DrawTextEx(GetFontDefault(), "=>", Vector2{175, -1385}, 40.0f, 2.0f, BLUE);
 				// draw ALU Opcode signal value --------------------------------------------------------
-					// TODO: Get ALU Opcode signal value from info
-					DrawTextEx(GetFontDefault(), "True", Vector2{215, -1385}, 40.0f, 2.0f, BLUE);
+					string	alu_opcode = (info.idex.get_alu_op() == 0) ? "00" : (info.idex.get_alu_op() == 1) ? "01" : "10";
+					DrawTextEx(GetFontDefault(), alu_opcode.c_str(), Vector2{215, -1385}, 40.0f, 2.0f, BLUE);
 				// draw ALU Opcode signal value --------------------------------------------------------
 			// draw ALU Opcode signal ----------------------------------------------------------------
 		// draw ALU Opcode sector --------------------------------------------------------------------
@@ -271,8 +262,7 @@ bool	render_id_ex_signal(const Info &info) {
 				DrawTextEx(GetFontDefault(), "ALUSrc", Vector2{150, -1295}, 40.0f, 2.0f, BLUE);
 				DrawTextEx(GetFontDefault(), "=>", Vector2{175, -1250}, 40.0f, 2.0f, BLUE);
 				// draw ALU Source signal value --------------------------------------------------------
-					// TODO: Get ALU Source signal value from info
-					DrawTextEx(GetFontDefault(), "True", Vector2{215, -1250}, 40.0f, 2.0f, BLUE);
+					DrawTextEx(GetFontDefault(), to_string(info.idex.get_alu_src()).c_str(), Vector2{215, -1250}, 40.0f, 2.0f, BLUE);
 				// draw ALU Source signal value --------------------------------------------------------
 			// draw ALU Source signal ----------------------------------------------------------------
 		// draw ALU Source sector --------------------------------------------------------------------
@@ -286,8 +276,7 @@ bool	render_id_ex_signal(const Info &info) {
 				DrawTextEx(GetFontDefault(), "RegDst", Vector2{150, -1160}, 40.0f, 2.0f, BLUE);
 				DrawTextEx(GetFontDefault(), "=>", Vector2{175, -1115}, 40.0f, 2.0f, BLUE);
 				// draw Register Destination signal value --------------------------------------------------------
-					// TODO: Get Register Destination signal value from info
-					DrawTextEx(GetFontDefault(), "True", Vector2{215, -1115}, 40.0f, 2.0f, BLUE);
+					DrawTextEx(GetFontDefault(), to_string(info.idex.get_reg_dst()).c_str(), Vector2{215, -1115}, 40.0f, 2.0f, BLUE);
 				// draw Register Destination signal value --------------------------------------------------------
 			// draw Register Destination signal ----------------------------------------------------------------
 		// draw Register Destination sector --------------------------------------------------------------------
@@ -301,8 +290,8 @@ bool	render_id_ex_signal(const Info &info) {
 				DrawTextEx(GetFontDefault(), "MemRead", Vector2{150, -1025}, 40.0f, 2.0f, BLUE);
 				DrawTextEx(GetFontDefault(), "=>", Vector2{175, -980}, 40.0f, 2.0f, BLUE);
 				// draw Memory Read signal value --------------------------------------------------------
-					// TODO: Get Memory Read signal value from info
-					DrawTextEx(GetFontDefault(), "True", Vector2{215, -980}, 40.0f, 2.0f, BLUE);
+					string	mem_read = (info.idex.get_mem_read()) ? "True" : "False";
+					DrawTextEx(GetFontDefault(), mem_read.c_str(), Vector2{215, -980}, 40.0f, 2.0f, BLUE);
 				// draw Memory Read signal value --------------------------------------------------------
 			// draw Memory Read signal ----------------------------------------------------------------
 		// draw Memory Read sector --------------------------------------------------------------------
@@ -316,8 +305,8 @@ bool	render_id_ex_signal(const Info &info) {
 				DrawTextEx(GetFontDefault(), "MemWrite", Vector2{150, -890}, 40.0f, 2.0f, BLUE);
 				DrawTextEx(GetFontDefault(), "=>", Vector2{175, -845}, 40.0f, 2.0f, BLUE);
 				// draw Memory Write signal value ----------------------------------------------------------------
-					// TODO: Get Memory Write signal value from info
-					DrawTextEx(GetFontDefault(), "True", Vector2{215, -845}, 40.0f, 2.0f, BLUE);
+					string	mem_write = (info.idex.get_mem_write()) ? "True" : "False";
+					DrawTextEx(GetFontDefault(), mem_write.c_str(), Vector2{215, -845}, 40.0f, 2.0f, BLUE);
 				// draw Memory Write signal value ----------------------------------------------------------------
 			// draw Memory Write signal -------------------------------------------------------------------------
 		// draw Memory Write sector ---------------------------------------------------------------------------
@@ -331,8 +320,8 @@ bool	render_id_ex_signal(const Info &info) {
 				DrawTextEx(GetFontDefault(), "MemToReg", Vector2{150, -755}, 40.0f, 2.0f, BLUE);
 				DrawTextEx(GetFontDefault(), "=>", Vector2{175, -710}, 40.0f, 2.0f, BLUE);
 				// draw Memory to register signal value --------------------------------------------------------
-					// TODO: Get Memory to register signal value from info
-					DrawTextEx(GetFontDefault(), "True", Vector2{215, -710}, 40.0f, 2.0f, BLUE);
+					string	mem_to_reg = (info.idex.get_mem_to_reg()) ? "True" : "False";
+					DrawTextEx(GetFontDefault(), mem_to_reg.c_str(), Vector2{215, -710}, 40.0f, 2.0f, BLUE);
 				// draw Memory to register signal value --------------------------------------------------------
 			// draw Memory to register signal ----------------------------------------------------------------
 		// draw Memory to register sector -----------------------------------------------------------------
@@ -347,8 +336,8 @@ bool	render_id_ex_signal(const Info &info) {
 				DrawTextEx(GetFontDefault(), "RegWrite", Vector2{150, -620}, 40.0f, 2.0f, BLUE);
 				DrawTextEx(GetFontDefault(), "=>", Vector2{175, -575}, 40.0f, 2.0f, BLUE);
 				// draw Register Write signal value -----------------------------------------------------
-					// TODO: Get Memory to register signal value from info
-					DrawTextEx(GetFontDefault(), "True", Vector2{215, -575}, 40.0f, 2.0f, BLUE);
+					string	reg_write = (info.idex.get_reg_write()) ? "True" : "False";
+					DrawTextEx(GetFontDefault(), reg_write.c_str(), Vector2{215, -575}, 40.0f, 2.0f, BLUE);
 				// draw Register Write signal value -----------------------------------------------------
 			// draw Register Write signal ---------------------------------------------------------------
 		// draw Register Write sector ----------------------------------------------------------------

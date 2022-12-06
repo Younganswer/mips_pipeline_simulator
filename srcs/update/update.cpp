@@ -5,7 +5,7 @@ bool	update(Info &info) {
 	writeback(info);
 	memory(info);
 	execute(info);
-	// decode(info);
+	decode(info);
 	fetch(info);
 	return (true);
 }
