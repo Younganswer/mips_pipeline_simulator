@@ -78,6 +78,9 @@ class Info {
 		IDEX				idex;
 		EXMEM				exmem;
 		MEMWB				memwb;
+
+		// Hazard unit
+		Hazard				hazard;
 		
 
 		// TODO: add pipelines, hazard unit, forward unit

@@ -14,12 +14,14 @@ bool	Hazard::get_mem_read(void) { return this->memRead; }
 int		Hazard::get_id_rs(void) { return this->idRs; }
 int		Hazard::get_id_rt(void) { return this->idRt; }
 int		Hazard::get_ex_rd(void) { return this->exRd; }
+bool	Hazard::get_if_flush(void) { return this->ifFlush; }
 
 // Setters
 void	Hazard::set_mem_read(bool mem_read) { this->memRead = mem_read; }
 void	Hazard::set_id_rs(int id_rs) { this->idRs = id_rs; }
 void	Hazard::set_id_rt(int id_rt) { this->idRt = id_rt; }
 void	Hazard::set_ex_rd(int ex_rd) { this->exRd = ex_rd; }
+void	Hazard::set_if_flush(bool if_flush) { this->ifFlush = if_flush; }
 
 // Utils
 bool	Hazard::pc_write(void) const { return ((this->memRead && (this->idRs == this->exRd || this->idRt == this->exRd)) == false); }

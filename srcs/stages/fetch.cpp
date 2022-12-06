@@ -9,6 +9,13 @@ bool	fetch(Info &info) {
 		return (true);
 	}
 
+	// check IF.FLUSH
+	if (info.hazard.get_if_flush()) {
+		info.hazard.set_if_flush(false);
+		// TODO :: flush IF/ID
+		return (true);
+	}
+
 	info.ifid.set_instruction(info.instructions[info.instructionIndex]);
 	info.ifid.get_instruction().set_status(IF);
 	info.ifid.set_pc(info.ifid.get_instruction().get_pc() + 4);
