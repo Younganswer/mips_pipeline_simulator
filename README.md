@@ -22,7 +22,7 @@
 	$ brew install raylib
 
 ### Linux
-        $ sudo apt-get -y install flex bison
+    $ sudo apt-get -y install flex bison
 <br/><br/><br/>
 
 ## Install
