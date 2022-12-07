@@ -29,7 +29,7 @@ typedef enum _FUNCTYPE {
 class IFID {
 	private:
 		ui			pc;
-		ui			id;
+		ui			instructionHex;
 		Instruction	instruction;
 
 	public:
@@ -38,14 +38,14 @@ class IFID {
 
 		// getter
 		ui			get_pc(void) const;
-		ui			get_id(void) const;
+		ui			get_instruction_hex(void) const;
 
 		Instruction	get_instruction(void);
 		Instruction	&get_instruction(void) const;
 
 		// setter
 		bool	set_pc(ui pc);
-		bool	set_id(ui id);
+		bool	set_instruction_hex(ui instructionHex);
 		bool	set_instruction(const Instruction &instruction);
 };
 

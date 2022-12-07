@@ -80,14 +80,6 @@ bool	decode(Info &info) {
 			info.idex.set_rd(instruction.get_rd());
 		// set register values -----------------------------------------------------------------------------------------
 	} else if (info.ifid.get_instruction().get_format() == J) {
-		// 한글로 작성하겠습니다.
-		// BEQ / JUMP instruction이 들어왔을때, IF/ID 파이프라인 IF.FLUSH를 1로 설정합니다.
-		// 그렇게 STALL을 설정함으로써 IF/ID 파이프라인을 비우고(nop), hazard를 해결합니다.
-		// beq와 jump의 다른 점은 beq는 register의 값이 같은지 비교하고 offset만큼 이동할지 말지를 결정하고(IF.FLUSH값이 1이 되냐마냐),
-		// jump는 무조건 이동하는거라서, IF.FLUSH값을 1로 설정합니다.
-		// 그리고, PC를 바꾸는 것이기 때문에, PC를 바꾸는 신호를 1로 설정합니다.
-		// 그래서 굳이 control signal 을 위한 객체를 만들 필요가 없습니다.
-
 		// TODO: handle j format
 		// set signal values -------------------------------------------------------------------------------------------
 			info.idex.set_alu_op(0);
