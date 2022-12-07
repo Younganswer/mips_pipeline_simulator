@@ -136,8 +136,6 @@ bool	render_id_ex(const Info &info) {
 			DrawCircle(-2050, 1400, 10, BLACK);
 			draw_right_arrow(-2050, 1400, 100, 1400, BLACK);
 	// draw rs address -----------------------------------------------------------------------------------
-
-	// TODO: Draw something that idw
 	(void) info;
 	return (true);
 }
@@ -153,10 +151,10 @@ bool	render_ex_mem(const Info &info) {
 
 	// draw ALU result -----------------------------------------------------------------------------------
 		DrawTextEx(GetFontDefault(), "ALU result", Vector2{1820, 200}, 30.0f, 2.0f, BLACK);
-		DrawTextEx(GetFontDefault(), "=>", Vector2{1840, 240}, 30.0f, 2.0f, BLACK);
+		DrawTextEx(GetFontDefault(), "=>", Vector2{1830, 240}, 30.0f, 2.0f, BLACK);
 		// draw ALU result value ------------------------------------------------------------------------
 			// TODO: Get ALU result value from info
-			DrawTextEx(GetFontDefault(), "0x00000003", Vector2{1880, 240}, 30.0f, 2.0f, BLACK);
+			DrawTextEx(GetFontDefault(), "0x00000003", Vector2{1870, 240}, 30.0f, 2.0f, BLACK);
 		// draw ALU result value ------------------------------------------------------------------------
 		// draw line ------------------------------------------------------------------------------------
 			draw_right_arrow(1670, 235, 1800, 235, BLACK);
@@ -165,10 +163,10 @@ bool	render_ex_mem(const Info &info) {
 
 	// draw write data -----------------------------------------------------------------------------------
 		DrawTextEx(GetFontDefault(), "Write data", Vector2{1820, 665}, 30.0f, 2.0f, BLACK);
-		DrawTextEx(GetFontDefault(), "=>", Vector2{1840, 705}, 30.0f, 2.0f, BLACK);
+		DrawTextEx(GetFontDefault(), "=>", Vector2{1830, 705}, 30.0f, 2.0f, BLACK);
 		// draw write data value ------------------------------------------------------------------------
 			// TODO: Get write data value from info
-			DrawTextEx(GetFontDefault(), "0x00000003", Vector2{1880, 705}, 30.0f, 2.0f, BLACK);
+			DrawTextEx(GetFontDefault(), "0x00000003", Vector2{1870, 705}, 30.0f, 2.0f, BLACK);
 		// draw write data value ------------------------------------------------------------------------
 		// draw line ------------------------------------------------------------------------------------
 			DrawCircle(1100, 535, 10, BLACK);
@@ -179,18 +177,15 @@ bool	render_ex_mem(const Info &info) {
 
 	// draw write register -----------------------------------------------------------------------
 		DrawTextEx(GetFontDefault(), "Write register", Vector2{1820, 1185}, 30.0f, 2.0f, BLACK);
-		DrawTextEx(GetFontDefault(), "=>", Vector2{1840, 1225}, 30.0f, 2.0f, BLACK);
+		DrawTextEx(GetFontDefault(), "=>", Vector2{1830, 1225}, 30.0f, 2.0f, BLACK);
 		// draw write register value ----------------------------------------------------------------
 			// TODO: Get write register value from info
-			DrawTextEx(GetFontDefault(), "$12", Vector2{1880, 1225}, 30.0f, 2.0f, BLACK);
+			DrawTextEx(GetFontDefault(), "$12", Vector2{1870, 1225}, 30.0f, 2.0f, BLACK);
 		// draw write register value ----------------------------------------------------------------
 		// draw line ------------------------------------------------------------------------------------
 			draw_right_arrow(1650, 1220, 1800, 1220, BLACK);
 		// draw line ------------------------------------------------------------------------------------
 	// draw write register -----------------------------------------------------------------------
-
-
-	// TODO: Draw something that idw
 	(void) info;
 	return (true);
 }
@@ -205,25 +200,44 @@ bool	render_mem_wb(const Info &info) {
 	// draw pipeline sector ---------------------------------------------------------------------------
 
 	// draw data read from memory ------------------------------------------------------------------------
-		DrawTextEx(GetFontDefault(), "Data read", Vector2{3320, 0}, 30.0f, 2.0f, BLACK);
-		DrawTextEx(GetFontDefault(), "from memory", Vector2{3320, 40}, 30.0f, 2.0f, BLACK);
-		DrawTextEx(GetFontDefault(), "=>", Vector2{3340, 80}, 30.0f, 2.0f, BLACK);
+		DrawTextEx(GetFontDefault(), "Data read", Vector2{3320, 410}, 30.0f, 2.0f, BLACK);
+		DrawTextEx(GetFontDefault(), "from memory", Vector2{3320, 450}, 30.0f, 2.0f, BLACK);
+		DrawTextEx(GetFontDefault(), "=>", Vector2{3330, 490}, 30.0f, 2.0f, BLACK);
 
 		// draw data read from memory value --------------------------------------------------------------
 			// TODO: Get data read from memory value from info
-			DrawTextEx(GetFontDefault(), "0x87654321", Vector2{3380, 80}, 30.0f, 2.0f, BLACK);
+			DrawTextEx(GetFontDefault(), "0x87654321", Vector2{3370, 490}, 30.0f, 2.0f, BLACK);
 		// draw data read from memory value --------------------------------------------------------------
+		// draw line ------------------------------------------------------------------------------------
+			draw_right_arrow(3150, 465, 3300, 465, BLACK);
+		// draw line ------------------------------------------------------------------------------------
 	// draw data read from memory ------------------------------------------------------------------------
 
 	// draw ALU result -----------------------------------------------------------------------------------
-		DrawTextEx(GetFontDefault(), "ALU result", Vector2{3320, 800}, 30.0f, 2.0f, BLACK);
-		DrawTextEx(GetFontDefault(), "=>", Vector2{3340, 840}, 30.0f, 2.0f, BLACK);
+		DrawTextEx(GetFontDefault(), "ALU result", Vector2{3320, 930}, 30.0f, 2.0f, BLACK);
+		DrawTextEx(GetFontDefault(), "=>", Vector2{3330, 970}, 30.0f, 2.0f, BLACK);
 
 		// draw ALU result value ------------------------------------------------------------------------
 			// TODO: Get ALU result value from info
-			DrawTextEx(GetFontDefault(), "0x00000003", Vector2{3380, 840}, 30.0f, 2.0f, BLACK);
+			DrawTextEx(GetFontDefault(), "0x00000003", Vector2{3370, 970}, 30.0f, 2.0f, BLACK);
 		// draw ALU result value ------------------------------------------------------------------------
+		// draw line ------------------------------------------------------------------------------------
+			DrawCircle(2550, 235, 10, BLACK);
+			DrawLineEx(Vector2{2550, 235}, Vector2{2550, 965}, 5.0f, BLACK);
+			draw_right_arrow(2550, 965, 3300, 965, BLACK);
 	// draw ALU result -----------------------------------------------------------------------------------
+
+	// draw write register -----------------------------------------------------------------------
+		DrawTextEx(GetFontDefault(), "Write register", Vector2{3320, 1185}, 30.0f, 2.0f, BLACK);
+		DrawTextEx(GetFontDefault(), "=>", Vector2{3330, 1225}, 30.0f, 2.0f, BLACK);
+		// draw write register value ----------------------------------------------------------------
+			// TODO: Get write register value from info
+			DrawTextEx(GetFontDefault(), "$12", Vector2{3370, 1225}, 30.0f, 2.0f, BLACK);
+		// draw write register value ----------------------------------------------------------------
+		// draw line ------------------------------------------------------------------------------------
+			draw_right_arrow(2100, 1220, 3300, 1220, BLACK);
+		// draw line ------------------------------------------------------------------------------------
+	// draw write register -----------------------------------------------------------------------
 	(void) info;
 	return (true);
 }
@@ -341,7 +355,6 @@ bool	render_id_ex_signal(const Info &info) {
 				// draw Register Write signal value -----------------------------------------------------
 			// draw Register Write signal ---------------------------------------------------------------
 		// draw Register Write sector ----------------------------------------------------------------
-
 		DrawLineEx(Vector2{ -30, -575 }, Vector2{ -30, -1390 }, 5.0f, Fade(BLUE, 0.8f));
 	// draw signal ---------------------------------------------------------------------------------------
 	(void) info;
@@ -414,7 +427,6 @@ bool	render_ex_mem_signal(const Info &info) {
 				// draw Register Write signal value --------------------------------------------------
 			// draw Register Write signal -----------------------------------------------------------
 		// draw Register Write sector --------------------------------------------------------------
-	
 	// draw signal ---------------------------------------------------------------------------------------
 	(void) info;
 	return (true);
@@ -431,7 +443,6 @@ bool	render_mem_wb_signal(const Info &info) {
 	// draw signal sector -----------------------------------------------------------------------------
 
 	// draw signal ---------------------------------------------------------------------------------------
-		
 		// draw Memory To Register sector -----------------------------------------------------------------
 			DrawRectangleLinesEx(Rectangle{3325, -770, 250, 110}, 5.0f, Fade(BLUE, 0.8f));
 			DrawRectangle(3325, -770, 250, 110, Fade(BLUE, 0.15f));
@@ -459,9 +470,7 @@ bool	render_mem_wb_signal(const Info &info) {
 				// draw Register Write signal value --------------------------------------------------
 			// draw Register Write signal -----------------------------------------------------------
 		// draw Register Write sector --------------------------------------------------------------
-	
 	// draw signal ---------------------------------------------------------------------------------------
-
 	(void) info;
 	return (true);
 }

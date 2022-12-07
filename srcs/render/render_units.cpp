@@ -31,8 +31,6 @@ bool	render_hazard_unit(const Info &info) {
 			DrawTextEx(GetFontDefault(), "unit", Vector2{ -1410, -1500 }, 70.0f, 3.0f, RED);
 		// draw text --------------------------------------------------------------------------------------------------
 	// draw hazard unit sector ------------------------------------------------------------------------------------
-
-
 	(void) info;
 	return (true);
 }
@@ -50,7 +48,6 @@ bool	render_control_unit(const Info &info) {
 			DrawTextEx(GetFontDefault(), "unit", Vector2{ -1800, -845 }, 60.0f, 3.0f, BLUE);
 		// draw text --------------------------------------------------------------------------------------------------
 	// draw control unit sector ------------------------------------------------------------------------------------
-
 	(void) info;
 	return (true);
 }
@@ -71,6 +68,12 @@ bool	render_forwarding_unit(const Info &info) {
 			draw_down_arrow(1450, 1160, 1450, 1520, GOLD);
 			draw_left_arrow(1870, 1590, 1760, 1590, GOLD);
 			draw_left_arrow(1870, 1750, 1760, 1750, GOLD);
+			DrawCircle(2200, 1220, 10, GOLD);
+			DrawLineEx(Vector2{ 2200, 1220 }, Vector2{ 2200, 1910 }, 5.0f, GOLD);
+			DrawLineEx(Vector2{ 2200, 1910 }, Vector2{ 1620, 1910 }, 5.0f, GOLD);
+			draw_up_arrow(1620, 1910, 1620, 1820, GOLD);
+			DrawCircle(1460, 2110, 10, GOLD);
+			draw_up_arrow(1460, 2110, 1460, 1820, GOLD);
 		// draw lines -------------------------------------------------------------------------------------------------
 		// draw EX/MEM RegWrite sector -------------------------------------------------------------------------------
 			DrawRectangleLinesEx(Rectangle{ 1870, 1515, 250, 150 }, 5.0f, BLUE);
@@ -87,8 +90,8 @@ bool	render_forwarding_unit(const Info &info) {
 				DrawTextEx(GetFontDefault(), "MEM/WB", Vector2{ 1905, 1715 }, 40.0f, 3.0f, BLUE);
 				DrawTextEx(GetFontDefault(), "RegWrite", Vector2{ 1905, 1770 }, 40.0f, 3.0f, BLUE);
 			// draw text --------------------------------------------------------------------------------------------------
+		// draw MEM/WB RegWrite sector -------------------------------------------------------------------------------
 	// draw forwarding unit sector ------------------------------------------------------------------------------
-	
 	(void) info;
 	return (true);
 }

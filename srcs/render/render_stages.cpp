@@ -141,9 +141,9 @@ bool	render_instruction_decode(const Info &info) {
 			DrawTextEx(GetFontDefault(), "ReadReg1", Vector2{ -810, -210 }, 50.0f, 3.0f, BLACK);
 			DrawTextEx(GetFontDefault(), "ReadData1", Vector2{ -530, -95 }, 50.0f, 3.0f, BLACK);
 			DrawTextEx(GetFontDefault(), "ReadReg2", Vector2{ -810, 0 }, 50.0f, 3.0f, BLACK);
-			DrawTextEx(GetFontDefault(), "WriteReg", Vector2{ -810, 400 }, 50.0f, 3.0f, BLACK);
+			DrawTextEx(GetFontDefault(), "WriteData", Vector2{ -810, 400 }, 50.0f, 3.0f, BLACK);
 			DrawTextEx(GetFontDefault(), "ReadData2", Vector2{ -540, 510 }, 50.0f, 3.0f, BLACK);
-			DrawTextEx(GetFontDefault(), "WriteData", Vector2{ -810, 610 }, 50.0f, 3.0f, BLACK);
+			DrawTextEx(GetFontDefault(), "WriteReg", Vector2{ -810, 610 }, 50.0f, 3.0f, BLACK);
 		// draw lines -------------------------------------------------------------------------------------------------
 			DrawLineEx(Vector2{ -2200, 430, }, Vector2{ -2050, 430 }, 5.0f, BLACK);
 			DrawLineEx(Vector2{ -2050, -850 }, Vector2{ -2050, 1400 }, 5.0f, BLACK);
@@ -153,9 +153,16 @@ bool	render_instruction_decode(const Info &info) {
 			DrawCircle(-2050, 25, 10.0f, BLACK);
 			draw_right_arrow(-2050, 25, -850, 25, BLACK);
 			draw_right_arrow(-950, 220, -850, 220, BLACK);
+			DrawLineEx(Vector2{ 3900, 715 }, Vector2{ 4000, 715 }, 5.0f, BLACK);
+			DrawLineEx(Vector2{ 4000, 715 }, Vector2{ 4000, 2320 }, 5.0f, BLACK);
+			DrawLineEx(Vector2{ 4000, 2320 }, Vector2{ -1150, 2320 }, 5.0f, BLACK);
+			DrawLineEx(Vector2{ -1150, 2320 }, Vector2{ -1150, 425 }, 5.0f, BLACK);
 			draw_right_arrow(-1150, 425, -850, 425, BLACK);
+			DrawLineEx(Vector2{ 3600, 1220 }, Vector2{ 3700, 1220 }, 5.0f, BLACK);
+			DrawLineEx(Vector2{ 3700, 1220 }, Vector2{ 3700, 2110 }, 5.0f, BLACK);
+			DrawLineEx(Vector2{ 3700, 2110 }, Vector2{ -940, 2110 }, 5.0f, BLACK);
+			DrawLineEx(Vector2{ -940, 2110 }, Vector2{ -940, 635 }, 5.0f, BLACK);
 			draw_right_arrow(-940, 635, -850, 635, BLACK);
-			// TODO: draw more lines
 		// draw lines -------------------------------------------------------------------------------------------------
 		// draw equal sector -------------------------------------------------------------------------------------------
 			draw_circle_lines_ex(0, 220, 50, 5.0f, BLACK);
@@ -209,6 +216,10 @@ bool	render_execute(const Info &info) {
 			DrawLineEx(Vector2{ 900, 1570 }, Vector2{ 900, 220 }, 5.0f, BLACK);
 			DrawLineEx(Vector2{ 900, 220 }, Vector2{ 800, 220 }, 5.0f, BLACK);
 			draw_up_arrow(800, 220, 800, 80, BLACK);
+			DrawCircle(550, 2320, 10.0f, BLACK);
+			DrawLineEx(Vector2{ 550, 2320 }, Vector2{ 550, -120 }, 5.0f, BLACK);
+		// draw lines -------------------------------------------------------------------------------------------------
+	// draw mux sector -----------------------------------------------------------------------------------------------
 
 	// draw mux sector -----------------------------------------------------------------------------------------------
 		DrawRectangleRoundedLines(Rectangle{ 750, 385, 100, 300 }, 1.0f, 0, 5.0f, BLACK);
@@ -225,9 +236,13 @@ bool	render_execute(const Info &info) {
 			draw_right_arrow(650, 585, 750, 585, BLACK);
 			DrawLineEx(Vector2{ 1300, 1670 }, Vector2{ 800, 1670 }, 5.0f, BLACK);
 			draw_up_arrow(800, 1670, 800, 685, BLACK);
-			DrawLineEx(Vector2{ 550, -120 }, Vector2{ 550, 3000 }, 5.0f, BLACK);
-			DrawLineEx(Vector2{ 650, -20 }, Vector2{ 650, 3000 }, 5.0f, BLACK);
-	
+			DrawCircle(2300, 235, 10.0f, BLACK);
+			DrawLineEx(Vector2{ 2300, 235 }, Vector2{ 2300, 2010 }, 5.0f, BLACK);
+			DrawLineEx(Vector2{ 2300, 2010 }, Vector2{ 650, 2010 }, 5.0f, BLACK);
+			DrawLineEx(Vector2{ 650, 2010 }, Vector2{ 650, -20 }, 5.0f, BLACK);
+		// draw lines -------------------------------------------------------------------------------------------------
+	// draw mux sector -----------------------------------------------------------------------------------------------
+
 	// draw ALU sector -----------------------------------------------------------------------------------------------
 		draw_trapezoid(1250, -115, 350);
 		// draw lines --------------------------------------------------------------------------------------------------
@@ -257,6 +272,7 @@ bool	render_execute(const Info &info) {
 					DrawTextEx(GetFontDefault(), "Source", Vector2{ 1030, 165 }, 40.0f, 3.0f, BLUE);
 				// draw text --------------------------------------------------------------------------------------------
 			// draw ALU source sector ------------------------------------------------------------------------------------
+		// draw mux sector --------------------------------------------------------------------------------------------
 	// draw ALU sector -----------------------------------------------------------------------------------------------
 	
 	// draw ALU Opcode sector ---------------------------------------------------------------------------------------
@@ -295,11 +311,62 @@ bool	render_execute(const Info &info) {
 }
 
 bool	render_memory_access(const Info &info) {
+	// draw Data memory sector --------------------------------------------------------------------------------------
+		DrawRectangleLinesEx(Rectangle{ 2650, 65, 500, 800 }, 5.0f, BLACK);
+		// draw text --------------------------------------------------------------------------------------------------
+			DrawTextEx(GetFontDefault(), "Data", Vector2{ 2830, 395 }, 70.0f, 3.0f, BLACK);
+			DrawTextEx(GetFontDefault(), "Memory", Vector2{ 2790, 475 }, 70.0f, 3.0f, BLACK);
+			DrawTextEx(GetFontDefault(), "Address", Vector2{ 2680, 215 }, 40.0f, 3.0f, BLACK);
+			DrawTextEx(GetFontDefault(), "Write", Vector2{ 2680, 660 }, 40.0f, 3.0f, BLACK);
+			DrawTextEx(GetFontDefault(), "Data", Vector2{ 2680, 710 }, 40.0f, 3.0f, BLACK);
+		// draw text --------------------------------------------------------------------------------------------------
+		// draw EX/MEM MemRead signal sector ---------------------------------------------------------------------------
+			DrawRectangleLinesEx(Rectangle{ 2670, -140, 225, 140 }, 5.0f, BLUE);
+			DrawRectangle(2670, -140, 225, 140, Fade(BLUE, 0.2f));
+			// draw text ------------------------------------------------------------------------------------------------
+				DrawTextEx(GetFontDefault(), "EX/MEM", Vector2{ 2695, -115 }, 40.0f, 3.0f, BLUE);
+				DrawTextEx(GetFontDefault(), "MemRead", Vector2{ 2695, -65 }, 40.0f, 3.0f, BLUE);
+			// draw text ------------------------------------------------------------------------------------------------
+		// draw EX/MEM MemRead signal sector ---------------------------------------------------------------------------
+		// draw EX/MEM MemWrite signal sector --------------------------------------------------------------------------
+			DrawRectangleLinesEx(Rectangle{ 2905, -140, 225, 140 }, 5.0f, BLUE);
+			DrawRectangle(2905, -140, 225, 140, Fade(BLUE, 0.2f));
+			// draw text ------------------------------------------------------------------------------------------------
+				DrawTextEx(GetFontDefault(), "EX/MEM", Vector2{ 2933, -115 }, 40.0f, 3.0f, BLUE);
+				DrawTextEx(GetFontDefault(), "MemWrite", Vector2{ 2930, -65 }, 40.0f, 3.0f, BLUE);
+			// draw text ------------------------------------------------------------------------------------------------
+		// draw lines -------------------------------------------------------------------------------------------------
+			draw_right_arrow(2100, 235, 2650, 235, BLACK);
+			draw_right_arrow(2100, 700, 2650, 700, BLACK);
+			draw_down_arrow(2782, 0, 2782, 65, BLACK);
+			draw_down_arrow(3017, 0, 3017, 65, BLACK);
+		// draw lines -------------------------------------------------------------------------------------------------
+	// draw Data memory sector --------------------------------------------------------------------------------------
 	(void) info;
 	return (true);
 }
 
 bool	render_write_back(const Info &info) {
+	// draw mux sector -----------------------------------------------------------------------------------------------
+		DrawRectangleRoundedLines(Rectangle{ 3800, 390, 100, 650 }, 1.0f, 0, 5.0f, BLACK);
+		// draw text --------------------------------------------------------------------------------------------------
+			DrawTextEx(GetFontDefault(), "M", Vector2{ 3825, 540 }, 70.0f, 3.0f, BLACK);
+			DrawTextEx(GetFontDefault(), "U", Vector2{ 3828, 680 }, 70.0f, 3.0f, BLACK);
+			DrawTextEx(GetFontDefault(), "X", Vector2{ 3828, 820 }, 70.0f, 3.0f, BLACK);
+		// draw text --------------------------------------------------------------------------------------------------
+		// draw MEM/WB MemToReg signal sector --------------------------------------------------------------------------
+			DrawRectangleLinesEx(Rectangle{ 3730, 160, 240, 140 }, 5.0f, BLUE);
+			DrawRectangle(3730, 160, 240, 140, Fade(BLUE, 0.2f));
+			// draw text ------------------------------------------------------------------------------------------------
+				DrawTextEx(GetFontDefault(), "MEM/WB", Vector2{ 3760, 185 }, 40.0f, 3.0f, BLUE);
+				DrawTextEx(GetFontDefault(), "MemToReg", Vector2{ 3750, 235 }, 40.0f, 3.0f, BLUE);
+			// draw text ------------------------------------------------------------------------------------------------
+		// draw lines -------------------------------------------------------------------------------------------------
+			draw_right_arrow(3600, 465, 3800, 465, BLACK);
+			draw_right_arrow(3600, 965, 3800, 965, BLACK);
+			draw_down_arrow(3850, 300, 3850, 390, BLACK);
+		// draw lines -------------------------------------------------------------------------------------------------
+
 	(void) info;
 	return (true);
 }
