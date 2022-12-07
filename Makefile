@@ -10,7 +10,9 @@ INCLUDE_PATH	= -I. -I${LIBS_DIR}/${RAYLIB_PATH}/src -I${LIBS_DIR}/${RAYLIB_PATH}
 LDLIBS_SRC		= ${LIBS_DIR}/${RAYLIB_PATH}/src/.ldlibs
 LIBRAYLIB		= ./raylib/src/libraylib.a
 LDLIBS			=
+
 ASSEMBLER_PATH	= assembler
+spim			= ${LIBS_DIR}/${ASSEMBLER_PATH}/spim/spim
 
 CC			= g++
 CXXFLAGS	= -Wall -Wextra -Werror -O2 -std=c++17
@@ -69,7 +71,7 @@ all: ${NAME}
 
 INPUT_FILE = test.s
 run: ${NAME}
-	@${LIBS_DIR}/${ASSEMBLER_PATH}/spim/spim -file ${INPUT_FILE} -dump
+	@${spim} -file ${INPUT_FILE} -dump
 	@./${NAME} ${ASMS}
 
 
@@ -93,14 +95,15 @@ ${LIBRAYLIB}:
 	@make -s -C ${LIBS_DIR}/${RAYLIB_PATH}/src
 
 
-ifndef LDLIBS
-	LDLIBS = ${shell cat ${LDLIBS_SRC}}
-endif
-
-${NAME}: ${OBJS} ${LIBRAYLIB}
-	@printf "\bdone\n"
+${spim}:
 	@make -s -C ${LIBS_DIR}/${ASSEMBLER_PATH}/spim
-	@${CC} ${CXXFLAGS} ${LDFLAGS} ${LDLIBS} -g -o ${NAME} ${OBJS} ${LIBS_DIR}/${LIBRAYLIB} -I ${INCS_DIR}
+
+
+${NAME}: ${OBJS}
+	@printf "\bdone\n"
+	@make ${LIBRAYLIB}
+	@make ${spim}
+	@LDLIBS=`cat ${LDLIBS_SRC}`; ${CC} ${CXXFLAGS} ${LDFLAGS} $$LDLIBS -g -o ${NAME} ${OBJS} ${LIBS_DIR}/${LIBRAYLIB} -I ${INCS_DIR}
 	@echo "Build ${NAME}: done"
 
 
