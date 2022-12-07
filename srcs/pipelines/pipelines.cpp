@@ -66,17 +66,17 @@ ui			EXMEM::get_write_data(void) const { return (this->writeData); }
 Instruction	EXMEM::get_instruction(void) const { return (this->instruction); }
 
 // EXMEM setter
-bool	EXMEM::set_mem_read(bool memRead) { this->memRead = memRead; }
-bool	EXMEM::set_mem_write(bool memWrite) { this->memWrite = memWrite; }
-bool	EXMEM::set_mem_to_reg(bool memToReg) { this->memToReg = memToReg; }
-bool	EXMEM::set_reg_write(bool regWrite) { this->regWrite = regWrite; }
-bool	EXMEM::set_add_result(ui addResult) { this->addResult = addResult; }
-bool	EXMEM::set_zero_flag(ui zeroFlag) { this->zeroFlag = zeroFlag; }
-bool	EXMEM::set_alu_result(ui aluResult) { this->aluResult = aluResult; }
-bool	EXMEM::set_read_data_2(ui readData2) { this->readData2 = readData2; }
-bool	EXMEM::set_extend_imm(ui extendImm) { this->extendImm = extendImm; }
-bool	EXMEM::set_write_data(ui writeData) { this->writeData = writeData; }
-bool	EXMEM::set_instruction(const Instruction &instruction) { this->instruction = instruction; }
+bool	EXMEM::set_mem_read(bool memRead) { this->memRead = memRead; return (true); }
+bool	EXMEM::set_mem_write(bool memWrite) { this->memWrite = memWrite; return (true); }
+bool	EXMEM::set_mem_to_reg(bool memToReg) { this->memToReg = memToReg; return (true); }
+bool	EXMEM::set_reg_write(bool regWrite) { this->regWrite = regWrite; return (true); }
+bool	EXMEM::set_add_result(ui addResult) { this->addResult = addResult; return (true); }
+bool	EXMEM::set_zero_flag(ui zeroFlag) { this->zeroFlag = zeroFlag; return (true); }
+bool	EXMEM::set_alu_result(ui aluResult) { this->aluResult = aluResult; return (true); }
+bool	EXMEM::set_read_data_2(ui readData2) { this->readData2 = readData2; return (true); }
+bool	EXMEM::set_extend_imm(ui extendImm) { this->extendImm = extendImm; return (true); }
+bool	EXMEM::set_write_data(ui writeData) { this->writeData = writeData; return (true); }
+bool	EXMEM::set_instruction(const Instruction &instruction) { this->instruction = instruction; return (true); }
 
 //MEMWB constructor and destructor
 MEMWB::MEMWB(void) {}
