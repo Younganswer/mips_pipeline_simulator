@@ -9,7 +9,7 @@ INCLUDE_PATH	= -I. -I${LIBS_DIR}/${RAYLIB_PATH}/src -I${LIBS_DIR}/${RAYLIB_PATH}
 LDLIBS_SRC		= ${LIBS_DIR}/${RAYLIB_PATH}/src/.ldlibs
 LDLIBS			= ${shell cat ${LDLIBS_SRC}}
 
-ASSEMBLER_PATH	= ./assembler
+ASSEMBLER_PATH	= assembler
 
 SIZE_FACTOR		= 0
 
@@ -131,7 +131,11 @@ re:
 	@make all
 
 
-.PHONY: all clean fclean re
+install:
+	@make -C ${LIBS_DIR}/${ASSEMBLER_PATH}/spim install
+
+
+.PHONY: all clean fclean re run install
 
 
 -include ${DEPS}
