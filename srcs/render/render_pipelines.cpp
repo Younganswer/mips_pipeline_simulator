@@ -43,7 +43,7 @@ bool	render_if_id(const Info &info) {
 		DrawTextEx(GetFontDefault(), "=>", Vector2{-2470, 440}, 30.0f, 2.0f, BLACK);
 
 		// draw instruction value ------------------------------------------------------------------------
-			DrawTextEx(GetFontDefault(), n2hexstr(info.ifid.get_id()).c_str(), Vector2{-2430, 440}, 30.0f, 2.0f, BLACK);
+			DrawTextEx(GetFontDefault(), n2hexstr(info.ifid.get_instruction_hex()).c_str(), Vector2{-2430, 440}, 30.0f, 2.0f, BLACK);
 		// draw instruction value ------------------------------------------------------------------------
 
 	// draw instruction ----------------------------------------------------------------------------------

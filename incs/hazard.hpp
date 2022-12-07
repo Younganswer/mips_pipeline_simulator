@@ -8,7 +8,6 @@ class Hazard {
 		int		idRs;
 		int		idRt;
 		int		exRd;
-		bool	ifFlush;
 
 	public:
 		Hazard(void);
@@ -19,14 +18,12 @@ class Hazard {
 		int		get_id_rs(void);
 		int		get_id_rt(void);
 		int		get_ex_rd(void);
-		bool	get_if_flush(void);
 		
 		// Setters
 		void	set_mem_read(bool memRead);
 		void	set_id_rs(int idRs);
 		void	set_id_rt(int idRt);
 		void	set_ex_rd(int exRd);
-		void	set_if_flush(bool ifFlush);
 
 		// Utils
 		bool	pc_write(void) const;

@@ -1,17 +1,17 @@
 #include "../../incs/pipelines.hpp"
 #include <iostream>
 
-IFID::IFID(void) { this->pc = 0; this->id = 0; this->instruction = Instruction(); }
+IFID::IFID(void) { this->pc = 0; this->instructionHex = 0; this->instruction = Instruction(); }
 IFID::~IFID(void) {}
 
 // IFID getter
 ui			IFID::get_pc(void) const { return (this->pc); }
-ui			IFID::get_id(void) const { return (this->id); }
+ui			IFID::get_instruction_hex(void) const { return (this->instructionHex); }
 Instruction	IFID::get_instruction(void) { return (this->instruction); }
 
 // IFID setter
 bool	IFID::set_pc(ui pc) { this->pc = pc; return (true); }
-bool	IFID::set_id(ui id) { this->id = id; return (true); }
+bool	IFID::set_instruction_hex(ui instructionHex) { this->instructionHex = instructionHex; return (true); }
 bool	IFID::set_instruction(const Instruction &instruction) { this->instruction = instruction; return (true); }
 
 IDEX::IDEX(void) {}
