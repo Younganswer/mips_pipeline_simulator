@@ -3,6 +3,8 @@
 
 # include "info.hpp"
 
+static bool	isBranch = false;
+
 // fetch.cpp
 bool	fetch(Info &info);
 

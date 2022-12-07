@@ -1,3 +1,4 @@
+#include "../../incs/stages.hpp"
 #include "../../incs/pipelines.hpp"
 #include "../../incs/info.hpp"
 
@@ -107,6 +108,7 @@ bool	decode(Info &info) {
 			info.idex.set_rd(instruction.get_rd());
 		// set register values -----------------------------------------------------------------------------------------
 	}
+	isBranch = true;
 	(void) info;
 	return (true);
 }

@@ -4,23 +4,19 @@ IDX		= 0
 
 NAME	= mips_pipeline_simulator
 
+LIBS_DIR		= ./libs
 RAYLIB_PATH		= raylib
 INCLUDE_PATH	= -I. -I${LIBS_DIR}/${RAYLIB_PATH}/src -I${LIBS_DIR}/${RAYLIB_PATH}/src/external -I${LIBS_DIR}/${RAYLIB_PATH}/src/extras
 LDLIBS_SRC		= ${LIBS_DIR}/${RAYLIB_PATH}/src/.ldlibs
-LDLIBS			= ${shell cat ${LDLIBS_SRC}}
-
+LIBRAYLIB		= ./raylib/src/libraylib.a
+LDLIBS			=
 ASSEMBLER_PATH	= assembler
-
-SIZE_FACTOR		= 0
 
 CC			= g++
 CXXFLAGS	= -Wall -Wextra -Werror -O2 -std=c++17
 LDFLAGS		= -fsanitize=address -g3 -L. -L${LIBS_DIR}/${RAYLIB_PATH}/src
 RM			= rm -f
 
-LIBRAYLIB	= ./raylib/src/libraylib.a
-
-LIBS_DIR	= ./libs
 INCS_DIR	= ./incs
 SRCS_DIR	= ./srcs
 OBJS_DIR	= ./objs
@@ -60,7 +56,7 @@ DEPS = ${OBJS:.o=.d}
 
 ASMS = text.asm data.asm
 
-
+SIZE_FACTOR	= 0
 ifeq (${SIZE_FACTOR}, ${filter ${SIZE_FACTOR}, 7 8 9})
 	CXXFLAGS += -DSIZE_FACTOR=${SIZE_FACTOR}
 else
@@ -79,7 +75,6 @@ run: ${NAME}
 
 ${OBJS_DIR}:
 	@echo "Build ${NAME}"
-	@echo ${LDLIBS}
 	@mkdir -p objs
 	@mkdir -p objs/button
 	@mkdir -p objs/camera
@@ -94,9 +89,16 @@ ${OBJS_DIR}:
 	@mkdir -p objs/update
 
 
-${NAME}: ${OBJS}
-	@printf "\bdone\n"
+${LIBRAYLIB}:
 	@make -s -C ${LIBS_DIR}/${RAYLIB_PATH}/src
+
+
+ifndef LDLIBS
+	LDLIBS = ${shell cat ${LDLIBS_SRC}}
+endif
+
+${NAME}: ${OBJS} ${LIBRAYLIB}
+	@printf "\bdone\n"
 	@make -s -C ${LIBS_DIR}/${ASSEMBLER_PATH}/spim
 	@${CC} ${CXXFLAGS} ${LDFLAGS} ${LDLIBS} -g -o ${NAME} ${OBJS} ${LIBS_DIR}/${LIBRAYLIB} -I ${INCS_DIR}
 	@echo "Build ${NAME}: done"
@@ -121,7 +123,7 @@ clean:
 
 fclean: clean
 	@echo "Remove ${NAME}"
-	@make -C ${LIBS_DIR}/${RAYLIB_PATH}/src clean
+	make -C ${LIBS_DIR}/${RAYLIB_PATH}/src clean
 	@make -C ${LIBS_DIR}/${ASSEMBLER_PATH}/spim clean
 	@${RM} ${NAME}
 	

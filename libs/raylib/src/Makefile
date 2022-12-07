@@ -572,7 +572,7 @@ LDLIBS_SRC = .ldlibs
 #------------------------------------------------------------------------------------------------
 # Default target entry
 all: raylib
-	echo ${LDLIBS} > ${LDLIBS_SRC}
+	@echo ${LDLIBS} > ${LDLIBS_SRC}
 
 # Compile raylib library
 # NOTE: Release directory is created if not exist

@@ -1,5 +1,6 @@
 #include "../../incs/stages.hpp"
 #include "../../incs/info.hpp"
+#include <iostream>
 
 bool	fetch(Info &info) {
 	// End of instructions
@@ -26,5 +27,9 @@ bool	fetch(Info &info) {
 	info.ifid.set_pc(info.ifid.get_instruction().get_pc() + 4);
 	info.ifid.set_id(info.ifid.get_instruction().get_id());
 	info.instructionIndex++;
+
+	if (isBranch) {
+		cout << "Branch" << '\n';
+	}
 	return (true);
 }
