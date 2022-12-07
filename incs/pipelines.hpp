@@ -74,10 +74,10 @@ class IDEX {
 		ui			get_alu_op(void) const;
 		ui			get_alu_src(void) const;
 		ui			get_reg_dst(void) const;
-		bool		get_mem_write(void) const;
 		bool		get_mem_read(void) const;
-		bool		get_reg_write(void) const;
+		bool		get_mem_write(void) const;
 		bool		get_mem_to_reg(void) const;
+		bool		get_reg_write(void) const;
 		ui			get_read_data1(void) const;
 		ui			get_read_data2(void) const;
 		ui			get_extend_imm(void) const;
@@ -106,11 +106,10 @@ class IDEX {
 
 class EXMEM {
 	private:
-		ui			memWrite;
-		ui			memRead;
-		ui			branch;
-		ui			regWrite;
-		ui			memToReg;
+		bool		memRead;
+		bool		memWrite;
+		bool		memToReg;
+		bool		regWrite;
 		ui			addResult;
 		ui			zeroFlag;
 		ui			aluResult;
@@ -124,32 +123,30 @@ class EXMEM {
 		~EXMEM(void);
 
 		// getter
-		ui			get_mem_write(void);
-		ui			get_mem_read(void);
-		ui			get_branch(void);
-		ui			get_reg_write(void);
-		ui			get_mem_to_reg(void);
-		ui			get_add_result(void);
-		ui			get_zero_flag(void);
-		ui			get_alu_result(void);
-		ui			get_read_data_2(void);
-		ui			get_extend_imm(void);
-		ui			get_write_data(void);
-		Instruction	get_instruction(void);
+		bool		get_mem_read(void) const;
+		bool		get_mem_write(void) const;
+		bool		get_mem_to_reg(void) const;
+		bool		get_reg_write(void) const;
+		ui			get_add_result(void) const;
+		ui			get_zero_flag(void) const;
+		ui			get_alu_result(void) const;
+		ui			get_read_data_2(void) const;
+		ui			get_extend_imm(void) const;
+		ui			get_write_data(void) const;
+		Instruction	get_instruction(void) const;
 
 		// setter
-		void	set_mem_write(ui memWrite);
-		void	set_mem_read(ui memRead);
-		void	set_branch(ui branch);
-		void	set_reg_write(ui regWrite);
-		void	set_mem_to_reg(ui memToReg);
-		void	set_add_result(ui addResult);
-		void	set_zero_flag(ui zeroFlag);
-		void	set_alu_result(ui aluResult);
-		void	set_read_data_2(ui readData2);
-		void	set_extend_imm(ui extendImm);
-		void	set_write_data(ui writeData);
-		void	set_instruction(const Instruction &instruction);
+		bool	set_mem_read(bool memRead);
+		bool	set_mem_write(bool memWrite);
+		bool	set_mem_to_reg(bool memToReg);
+		bool	set_reg_write(bool regWrite);
+		bool	set_add_result(ui addResult);
+		bool	set_zero_flag(ui zeroFlag);
+		bool	set_alu_result(ui aluResult);
+		bool	set_read_data_2(ui readData2);
+		bool	set_extend_imm(ui extendImm);
+		bool	set_write_data(ui writeData);
+		bool	set_instruction(const Instruction &instruction);
 };
 
 class MEMWB {

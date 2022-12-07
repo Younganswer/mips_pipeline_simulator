@@ -2,6 +2,7 @@
 #include "../../incs/info.hpp"
 
 bool	fetch(Info &info) {
+	// End of instructions
 	if (info.instructionIndex == info.instructions.size()) {
 		info.ifid.set_instruction(Instruction());
 		info.ifid.set_pc(0);

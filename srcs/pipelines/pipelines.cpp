@@ -53,32 +53,30 @@ EXMEM::EXMEM(void) {}
 EXMEM::~EXMEM(void) {}
 
 // EXMEM getter
-ui			EXMEM::get_mem_write(void) { return (this->memWrite); }
-ui			EXMEM::get_mem_read(void) { return (this->memRead); }
-ui			EXMEM::get_branch(void) { return (this->branch); }
-ui			EXMEM::get_reg_write(void) { return (this->regWrite); }
-ui			EXMEM::get_mem_to_reg(void) { return (this->memToReg); }
-ui			EXMEM::get_add_result(void) { return (this->addResult); }
-ui			EXMEM::get_zero_flag(void) { return (this->zeroFlag); }
-ui			EXMEM::get_alu_result(void) { return (this->aluResult); }
-ui			EXMEM::get_read_data_2(void) { return (this->readData2); }
-ui			EXMEM::get_extend_imm(void) { return (this->extendImm); }
-ui			EXMEM::get_write_data(void) { return (this->writeData); }
-Instruction	EXMEM::get_instruction(void) { return (this->instruction); }
+bool		EXMEM::get_mem_read(void) const { return (this->memRead); }
+bool		EXMEM::get_mem_write(void) const { return (this->memWrite); }
+bool		EXMEM::get_mem_to_reg(void) const { return (this->memToReg); }
+bool		EXMEM::get_reg_write(void) const { return (this->regWrite); }
+ui			EXMEM::get_add_result(void) const { return (this->addResult); }
+ui			EXMEM::get_zero_flag(void) const { return (this->zeroFlag); }
+ui			EXMEM::get_alu_result(void) const { return (this->aluResult); }
+ui			EXMEM::get_read_data_2(void) const { return (this->readData2); }
+ui			EXMEM::get_extend_imm(void) const { return (this->extendImm); }
+ui			EXMEM::get_write_data(void) const { return (this->writeData); }
+Instruction	EXMEM::get_instruction(void) const { return (this->instruction); }
 
 // EXMEM setter
-void	EXMEM::set_mem_write(ui memWrite) { this->memWrite = memWrite; }
-void	EXMEM::set_mem_read(ui memRead) { this->memRead = memRead; }
-void	EXMEM::set_branch(ui branch) { this->branch = branch; }
-void	EXMEM::set_reg_write(ui regWrite) { this->regWrite = regWrite; }
-void	EXMEM::set_mem_to_reg(ui memToReg) { this->memToReg = memToReg; }
-void	EXMEM::set_add_result(ui addResult) { this->addResult = addResult; }
-void	EXMEM::set_zero_flag(ui zeroFlag) { this->zeroFlag = zeroFlag; }
-void	EXMEM::set_alu_result(ui aluResult) { this->aluResult = aluResult; }
-void	EXMEM::set_read_data_2(ui readData2) { this->readData2 = readData2; }
-void	EXMEM::set_extend_imm(ui extendImm) { this->extendImm = extendImm; }
-void	EXMEM::set_write_data(ui writeData) { this->writeData = writeData; }
-void	EXMEM::set_instruction(const Instruction &instruction) { this->instruction = instruction; }
+bool	EXMEM::set_mem_read(bool memRead) { this->memRead = memRead; }
+bool	EXMEM::set_mem_write(bool memWrite) { this->memWrite = memWrite; }
+bool	EXMEM::set_mem_to_reg(bool memToReg) { this->memToReg = memToReg; }
+bool	EXMEM::set_reg_write(bool regWrite) { this->regWrite = regWrite; }
+bool	EXMEM::set_add_result(ui addResult) { this->addResult = addResult; }
+bool	EXMEM::set_zero_flag(ui zeroFlag) { this->zeroFlag = zeroFlag; }
+bool	EXMEM::set_alu_result(ui aluResult) { this->aluResult = aluResult; }
+bool	EXMEM::set_read_data_2(ui readData2) { this->readData2 = readData2; }
+bool	EXMEM::set_extend_imm(ui extendImm) { this->extendImm = extendImm; }
+bool	EXMEM::set_write_data(ui writeData) { this->writeData = writeData; }
+bool	EXMEM::set_instruction(const Instruction &instruction) { this->instruction = instruction; }
 
 //MEMWB constructor and destructor
 MEMWB::MEMWB(void) {}

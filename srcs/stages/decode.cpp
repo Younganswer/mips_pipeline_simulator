@@ -9,7 +9,7 @@ bool	decode(Info &info) {
 	instruction.set_status(ID);
 	info.idex.set_instruction(instruction);
 
-	// end of work
+	// IF/ID pipe is empty
 	if (instruction.get_pc() == 0) {
 		// set all values to 0
 		info.idex.set_alu_op(0);
