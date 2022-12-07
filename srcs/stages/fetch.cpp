@@ -12,6 +12,10 @@ bool	fetch(Info &info) {
 	// check IF.FLUSH
 	if (info.hazard.get_if_flush()) {
 		info.hazard.set_if_flush(false);
+
+		info.ifid.set_pc(info.idex.get_instruction().get_pc());
+		// set nop instruction
+		info.ifid.set_instruction(Instruction());
 		// TODO :: flush IF/ID
 		return (true);
 	}

@@ -8,6 +8,7 @@
 # include "camera.hpp"
 # include "instruction.hpp"
 # include "pipelines.hpp"
+# include "hazard.hpp"
 # include <vector>
 
 # ifndef SIZE_FACTOR
