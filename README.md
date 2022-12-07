@@ -18,8 +18,11 @@
 #### Raylib has to be pre-installed before running program
 <br/>
 
-### Brew (in macOS)
+### OSX
 	$ brew install raylib
+
+### Linux
+        $ sudo apt-get -y install flex bison
 <br/><br/><br/>
 
 ## Install
