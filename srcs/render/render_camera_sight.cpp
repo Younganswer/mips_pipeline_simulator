@@ -9,7 +9,7 @@ int	btnClicked = 0;
 bool	render_camera_sight(Info &info) {
 	int	posX	= (int)info.camera.target.x;
 	int	posY	= (int)info.camera.target.y;
-	int	offsetY	= -180;
+	// int	offsetY	= -180;
 	
 	BeginMode2D(info.camera);
 		

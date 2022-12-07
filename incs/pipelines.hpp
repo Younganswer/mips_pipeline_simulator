@@ -56,8 +56,8 @@ class IDEX {
 		ui			regDst;
 		bool		memRead;
 		bool		memWrite;
-		bool		memToReg;
 		bool		regWrite;
+		ui			memToReg;
 		ui			readData1;
 		ui			readData2;
 		ui			extendImm;
@@ -76,8 +76,8 @@ class IDEX {
 		ui			get_reg_dst(void) const;
 		bool		get_mem_read(void) const;
 		bool		get_mem_write(void) const;
-		bool		get_mem_to_reg(void) const;
 		bool		get_reg_write(void) const;
+		ui			get_mem_to_reg(void) const;
 		ui			get_read_data1(void) const;
 		ui			get_read_data2(void) const;
 		ui			get_extend_imm(void) const;
@@ -93,7 +93,7 @@ class IDEX {
 		bool	set_mem_write(bool memWrite);
 		bool	set_mem_read(bool memRead);
 		bool	set_reg_write(bool regWrite);
-		bool	set_mem_to_reg(bool memToReg);
+		bool	set_mem_to_reg(ui memToReg);
 		bool	set_pc(ui pc);
 		bool	set_read_data_1(ui readData1);
 		bool	set_read_data_2(ui readData2);
@@ -108,14 +108,14 @@ class EXMEM {
 	private:
 		bool		memRead;
 		bool		memWrite;
-		bool		memToReg;
 		bool		regWrite;
+		ui			memToReg;
 		ui			addResult;
 		ui			zeroFlag;
 		ui			aluResult;
 		ui			readData2;
 		ui			extendImm;
-		ui			writeData;
+		ui			writeRegister;
 		Instruction	instruction;
 
 	public:
@@ -125,36 +125,37 @@ class EXMEM {
 		// getter
 		bool		get_mem_read(void) const;
 		bool		get_mem_write(void) const;
-		bool		get_mem_to_reg(void) const;
 		bool		get_reg_write(void) const;
+		ui			get_mem_to_reg(void) const;
 		ui			get_add_result(void) const;
 		ui			get_zero_flag(void) const;
 		ui			get_alu_result(void) const;
 		ui			get_read_data_2(void) const;
 		ui			get_extend_imm(void) const;
-		ui			get_write_data(void) const;
+		ui			get_write_register(void) const;
 		Instruction	get_instruction(void) const;
 
 		// setter
 		bool	set_mem_read(bool memRead);
 		bool	set_mem_write(bool memWrite);
-		bool	set_mem_to_reg(bool memToReg);
 		bool	set_reg_write(bool regWrite);
+		bool	set_mem_to_reg(ui memToReg);
 		bool	set_add_result(ui addResult);
 		bool	set_zero_flag(ui zeroFlag);
 		bool	set_alu_result(ui aluResult);
 		bool	set_read_data_2(ui readData2);
 		bool	set_extend_imm(ui extendImm);
-		bool	set_write_data(ui writeData);
+		bool	set_write_register(ui writeRegister);
 		bool	set_instruction(const Instruction &instruction);
 };
 
 class MEMWB {
 	private:
-		ui	regWrite;
-		ui	memToReg;
-		ui	readData;
-		ui	aluResult;
+		bool		regWrite;
+		ui			memToReg;
+		ui			dataRead;
+		ui			aluResult;
+		ui			writeRegister;
 		Instruction	instruction;
 
 	public:
@@ -162,18 +163,20 @@ class MEMWB {
 		~MEMWB(void);
 		
 		// getter
-		ui	get_reg_write(void);
-		ui	get_mem_to_reg(void);
-		ui	get_read_data(void);
-		ui	get_alu_result(void);
-		Instruction	get_instruction(void);
+		bool		get_reg_write(void) const;
+		ui			get_mem_to_reg(void) const;
+		ui			get_data_read(void) const;
+		ui			get_alu_result(void) const;
+		ui			get_write_register(void) const;
+		Instruction	get_instruction(void) const;
 
 		// setter
-		void	set_reg_write(ui regWrite);
-		void	set_mem_to_reg(ui memToReg);
-		void	set_read_data(ui readData);
-		void	set_alu_result(ui aluResult);
-		void	set_instruction(const Instruction &instruction);
+		bool	set_reg_write(bool regWrite);
+		bool	set_mem_to_reg(ui memToReg);
+		bool	set_data_read(ui dataRead);
+		bool	set_alu_result(ui aluResult);
+		bool	set_write_register(ui writeRegister);
+		bool	set_instruction(const Instruction &instruction);
 };
 
 #endif
