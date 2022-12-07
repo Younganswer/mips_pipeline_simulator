@@ -4,10 +4,10 @@ IDX		= 0
 
 NAME	= mips_pipeline_simulator
 
-RAYLIB_PATH		= ./raylib
+RAYLIB_PATH		= raylib
 INCLUDE_PATH	= -I. -I${LIBS_DIR}/${RAYLIB_PATH}/src -I${LIBS_DIR}/${RAYLIB_PATH}/src/external -I${LIBS_DIR}/${RAYLIB_PATH}/src/extras
-LDLIBS			= -lraylib -framework OpenGL -framework Cocoa -framework IOKit -framework CoreAudio -framework CoreVideo
-# LDLIBS 	= -lraylib -lGL -lm -lpthread -ldl -lrt -lX11
+LDLIBS_SRC		= ${LIBS_DIR}/${RAYLIB_PATH}/src/.ldlibs
+LDLIBS			= ${shell cat ${LDLIBS_SRC}}
 
 ASSEMBLER_PATH	= ./assembler
 
@@ -79,6 +79,7 @@ run: ${NAME}
 
 ${OBJS_DIR}:
 	@echo "Build ${NAME}"
+	@echo ${LDLIBS}
 	@mkdir -p objs
 	@mkdir -p objs/button
 	@mkdir -p objs/camera

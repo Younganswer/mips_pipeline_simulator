@@ -566,10 +566,13 @@ ifeq ($(PLATFORM),PLATFORM_ANDROID)
     OBJS += android_native_app_glue.o
 endif
 
+LDLIBS_SRC = .ldlibs
+
 # Define processes to execute
 #------------------------------------------------------------------------------------------------
 # Default target entry
 all: raylib
+	echo ${LDLIBS} > ${LDLIBS_SRC}
 
 # Compile raylib library
 # NOTE: Release directory is created if not exist
@@ -795,6 +798,7 @@ clean_shell_sh:
 ifeq ($(PLATFORM),PLATFORM_ANDROID)
 	@rm -f $(NATIVE_APP_GLUE)/android_native_app_glue.o
 endif
+	@rm -f ${LDLIBS_SRC}
 
 # Set specific target variable
 clean_shell_cmd: SHELL=cmd
