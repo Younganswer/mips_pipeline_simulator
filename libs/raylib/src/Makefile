@@ -571,6 +571,7 @@ LDLIBS_SRC = .ldlibs
 # Define processes to execute
 #------------------------------------------------------------------------------------------------
 # Default target entry
+
 all: raylib
 	@echo ${LDLIBS} > ${LDLIBS_SRC}
 
@@ -642,7 +643,7 @@ else
         # Compile raylib static library version $(RAYLIB_VERSION)
         # WARNING: You should type "make clean" before doing this target.
 	@	$(AR) rcs $(RAYLIB_RELEASE_PATH)/lib$(RAYLIB_LIB_NAME).a $(OBJS)
-	@	echo "raylib static library generated (lib$(RAYLIB_LIB_NAME).a) in $(RAYLIB_RELEASE_PATH)!"
+#   @   echo "raylib static library generated (lib$(RAYLIB_LIB_NAME).a) in $(RAYLIB_RELEASE_PATH)!"
     endif
 endif
 

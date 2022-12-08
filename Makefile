@@ -8,11 +8,11 @@ LIBS_DIR		= ./libs
 RAYLIB_PATH		= raylib
 INCLUDE_PATH	= -I. -I${LIBS_DIR}/${RAYLIB_PATH}/src -I${LIBS_DIR}/${RAYLIB_PATH}/src/external -I${LIBS_DIR}/${RAYLIB_PATH}/src/extras
 LDLIBS_SRC		= ${LIBS_DIR}/${RAYLIB_PATH}/src/.ldlibs
-LIBRAYLIB		= ./raylib/src/libraylib.a
+LIBRAYLIB		= ${LIBS_DIR}/${RAYLIB_PATH}/src/libraylib.a
 LDLIBS			=
 
 ASSEMBLER_PATH	= assembler
-spim			= ${LIBS_DIR}/${ASSEMBLER_PATH}/spim/spim
+SPIM			= ${LIBS_DIR}/${ASSEMBLER_PATH}/spim/spim
 
 CC			= g++
 CXXFLAGS	= -Wall -Wextra -Werror -O2 -std=c++17
@@ -71,7 +71,7 @@ all: ${NAME}
 
 INPUT_FILE = test.s
 run: ${NAME}
-	@${spim} -file ${INPUT_FILE} -dump
+	@${SPIM} -file ${INPUT_FILE} -dump
 	@./${NAME} ${ASMS}
 
 
@@ -92,18 +92,20 @@ ${OBJS_DIR}:
 
 
 ${LIBRAYLIB}:
+	@echo -n "Build raylib static library generated"
 	@make -s -C ${LIBS_DIR}/${RAYLIB_PATH}/src
+	@echo ": done"
 
 
-${spim}:
+${SPIM}:
+	@echo -n "Build spim"
 	@make -s -C ${LIBS_DIR}/${ASSEMBLER_PATH}/spim
+	@echo ": done"
 
 
-${NAME}: ${OBJS}
+${NAME}: ${LIBRAYLIB} ${SPIM} ${OBJS}
 	@printf "\bdone\n"
-	@make ${LIBRAYLIB}
-	@make ${spim}
-	@LDLIBS=`cat ${LDLIBS_SRC}`; ${CC} ${CXXFLAGS} ${LDFLAGS} $$LDLIBS -g -o ${NAME} ${OBJS} ${LIBS_DIR}/${LIBRAYLIB} -I ${INCS_DIR}
+	@LDLIBS=`cat ${LDLIBS_SRC}`; ${CC} ${CXXFLAGS} ${LDFLAGS} $$LDLIBS -g -o ${NAME} ${OBJS} ${LIBRAYLIB} -I ${INCS_DIR}
 	@echo "Build ${NAME}: done"
 
 
@@ -126,7 +128,7 @@ clean:
 
 fclean: clean
 	@echo "Remove ${NAME}"
-	make -C ${LIBS_DIR}/${RAYLIB_PATH}/src clean
+	@make -C ${LIBS_DIR}/${RAYLIB_PATH}/src clean
 	@make -C ${LIBS_DIR}/${ASSEMBLER_PATH}/spim clean
 	@${RM} ${NAME}
 	

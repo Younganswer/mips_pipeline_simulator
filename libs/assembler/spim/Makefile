@@ -62,19 +62,22 @@ TEST_DIR = ../Tests
 DOC_DIR = ../Documentation
 
 
-
+# If you want to use "make install" use commented variables below.
 # Full path for the parent directory of all installed files:
-PREFIX = /usr/local
+# PREFIX = /usr/local
+PREFIX	= .
 
 # Full path for the directory that will hold the executable files:
-BIN_DIR = $(PREFIX)/bin
+# BIN_DIR = $(PREFIX)/bin
+BIN_DIR = .
 
 # Full path for the directory that will hold the exception handler:
-EXCEPTION_DIR = $(PREFIX)/share/spim
+# EXCEPTION_DIR = $(PREFIX)/share/spim
+EXCEPTION_DIR = .
 
 # Full path for the directory that will hold the man files:
-MAN_DIR = $(PREFIX)/share/man/man1
-
+# MAN_DIR = $(PREFIX)/share/man/man1
+MAN_DIR	= .
 
 
 # SPIM needs flex's -I flag since the scanner is used interactively.
@@ -180,7 +183,9 @@ TAGS:	*.cpp *.h *.l *.y
 
 
 clean:
-	rm -f spim spim.exe *.o TAGS test.out lex.yy.cpp parser_yacc.cpp parser_yacc.h y.output
+	@rm -f spim spim.exe *.o TAGS test.out lex.yy.cpp parser_yacc.cpp parser_yacc.h y.output
+	@echo "Remove dependencies in spim"
+	@echo "Remove spim"
 
 install: spim
 	install -d $(DESTDIR)$(BIN_DIR)
