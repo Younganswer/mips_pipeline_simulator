@@ -49,7 +49,7 @@
 <br/>
 
 ### For custom File
-	$ make run [INPUT_FILE="your_mips_file.s"]
+	$ make run [INPUT_FILE="your_assembly_file.s"]
 * &nbsp;*INPUT_FILE*&nbsp; has to be ".s" file
 <br/>
 
