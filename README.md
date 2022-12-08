@@ -17,11 +17,19 @@
 #### Raylib has to be pre-installed before running program
 <br/>
 
-### OSX
+### Raylib
+#### OSX
 	$ brew install raylib
+#### Linux
+checkout following link to install raylib
+https://github.com/raysan5/raylib/wiki/Working-on-GNU-Linux
 
-### Linux
+### Spim
+#### OSX
+* You can just install with Makefile
+#### Linux
     $ sudo apt-get -y install flex bison
+* You need to install flex and bison before installing spim
 <br/><br/><br/>
 
 ## Install
