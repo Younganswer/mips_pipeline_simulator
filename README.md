@@ -24,7 +24,7 @@
 
 ### Spim
 #### OSX
-* You can just install with Makefile
+* You can just install with make
 #### Linux
     $ sudo apt-get -y install flex bison
 * You need to install flex and bison before installing spim
