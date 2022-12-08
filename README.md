@@ -6,7 +6,6 @@
 * This program is made for showing how the "MIPS 5-staged pipeline" works.
 * Your assembly code will be converted to machine code and then executed.
 * You can see the process of execution in the data path of the window.
-#### 대충 5-staged 파이프라인의 장점, 처리 과정에 대한 개념적 설명
 <br/><br/><br/>
 
 ## Platform
