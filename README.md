@@ -18,8 +18,8 @@
 #### OSX
 	$ brew install raylib
 #### Linux
-checkout following link to install raylib
-https://github.com/raysan5/raylib/wiki/Working-on-GNU-Linux
+* checkout following link to install raylib
+	* https://github.com/raysan5/raylib/wiki/Working-on-GNU-Linux
 <br/><br/><br/>
 
 ### Spim
