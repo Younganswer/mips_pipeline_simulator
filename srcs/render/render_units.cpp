@@ -5,11 +5,13 @@ bool	render_units(const Info &info);
 bool	render_hazard_unit(const Info &info);
 bool	render_control_unit(const Info &info);
 bool	render_forwarding_unit(const Info &info);
+bool	render_jump_unit(const Info &info);
 
 bool	render_units(const Info &info) {
 	render_hazard_unit(info);
 	render_control_unit(info);
 	render_forwarding_unit(info);
+	render_jump_unit(info);
 	return (true);
 }
 
@@ -95,3 +97,25 @@ bool	render_forwarding_unit(const Info &info) {
 	(void) info;
 	return (true);
 }
+
+bool	render_jump_unit(const Info &info) {
+	// draw jump unit sector ---------------------------------------------------------------------------------------
+		draw_circle_lines_ex(-2800, -750, 100, 5.0f, Fade(LIME, 0.2f));
+		DrawCircle(-2800, -750, 100.0f, Fade(LIME, 0.05f));
+		// draw text --------------------------------------------------------------------------------------------------
+			DrawTextEx(GetFontDefault(), "Jump", Vector2{ -2870, -820 }, 70.0f, 3.0f, Fade(LIME, 0.8f));
+			DrawTextEx(GetFontDefault(), "unit", Vector2{ -2850, -740 }, 70.0f, 3.0f, Fade(LIME, 0.8f));
+		// draw text --------------------------------------------------------------------------------------------------
+		// draw lines -------------------------------------------------------------------------------------------------
+			DrawCircle(-2050, -800, 10.0f, Fade(LIME, 0.8f));
+			draw_left_arrow(-2050, -800, -2710, -800, Fade(LIME, 0.8f));
+
+			DrawCircle(-2125, -330, 10.0f, Fade(LIME, 0.8f));
+			DrawLineEx(Vector2{ -2125, -330 }, Vector2{ -2125, -700 }, 5.0f, Fade(LIME, 0.8f));
+			draw_left_arrow(-2125, -700, -2710, -700, Fade(LIME, 0.8f));
+		// draw lines -------------------------------------------------------------------------------------------------
+	// draw jump unit sector ---------------------------------------------------------------------------------------
+	(void) info;
+	return (true);
+}
+

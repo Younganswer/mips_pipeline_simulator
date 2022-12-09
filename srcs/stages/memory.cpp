@@ -45,7 +45,9 @@ bool	memory(Info &info) {
 			sort(info.mem.begin(), info.mem.end(), cmp);
 		}
 	// write data to memory ---------------------------------------------------------------------------------
-
+	
+	// TODO: set forwarding unit ----------------------------------------------------------------------------------
+		// info.forwarding_unit.set_reg_write(info.exmem.get_reg_write());
 	(void) info;
 	return (true);
 }
