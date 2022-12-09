@@ -3,7 +3,7 @@
 
 # include "info.hpp"
 
-static bool	isBranch = false;
+static bool	isBranched=false, isJumped=false;
 
 // fetch.cpp
 bool	fetch(Info &info);
