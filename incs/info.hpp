@@ -9,6 +9,7 @@
 # include "instruction.hpp"
 # include "pipelines.hpp"
 # include "hazard.hpp"
+# include "forward.hpp"
 # include <vector>
 
 # ifndef SIZE_FACTOR
@@ -82,6 +83,8 @@ class Info {
 
 		// Hazard unit
 		Hazard				hazard;
+		// Foward unit
+		Forward				forward;
 		
 
 		// TODO: add pipelines, hazard unit, forward unit

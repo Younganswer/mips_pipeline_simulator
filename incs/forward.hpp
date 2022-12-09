@@ -7,8 +7,8 @@ class Forward {
 		int		exRt;
 		int		memRd;
 		int		wbRd;
-		bool	memWb;
-		bool	wbWb;
+		bool	memRw;
+		bool	wbRw;
 
 	public:
 		Forward(void);
@@ -19,16 +19,16 @@ class Forward {
 		int		get_ex_rt(void) const;
 		int		get_mem_rd(void) const;
 		int		get_wb_rd(void) const;
-		bool	get_mem_wb(void) const;
-		bool	get_wb_wb(void) const;
+		bool	get_mem_rw(void) const;
+		bool	get_wb_rw(void) const;
 
 		// Setter
 		void	set_ex_rs(int exRs);
 		void	set_ex_rt(int exRt);
 		void	set_mem_rd(int memRd);
 		void	set_wb_rd(int wbRd);
-		void	set_mem_wb(bool memWb);
-		void	set_wb_wb(bool wbWb);
+		void	set_mem_rw(bool memRw);
+		void	set_wb_rw(bool wbRw);
 
 		// Utils
 		int		forward_a(void) const;
