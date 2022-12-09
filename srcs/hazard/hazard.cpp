@@ -23,5 +23,5 @@ void	Hazard::set_id_rt(int id_rt) { this->idRt = id_rt; }
 void	Hazard::set_ex_rd(int ex_rd) { this->exRd = ex_rd; }
 
 // Utils
-bool	Hazard::pc_write(void) const { return (((this->memRead && (this->idRs == this->exRd || this->idRt == this->exRd)) == false) || isBranch == false); } // check lw hazard and branch hazard
+bool	Hazard::pc_write(void) const { return (((this->memRead && (this->idRs == this->exRd || this->idRt == this->exRd)) == false) || isBranched == false); } // check lw hazard and branch hazard
 bool	Hazard::instruction_fetch(void) const { return ((this->memRead && (this->idRs == this->exRd || this->idRt == this->exRd)) == false); }

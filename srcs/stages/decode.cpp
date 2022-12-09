@@ -100,7 +100,7 @@ bool	decode(Info &info) {
 			info.idex.set_rd(instruction.get_rd());
 		// set register values -----------------------------------------------------------------------------------------
 	}
-	isBranch = true;
+	isBranched = true;
 	(void) info;
 	return (true);
 }
