@@ -62,6 +62,7 @@ bool	execute(Info &info) {
 		regDst = info.idex.get_rt();
 	else if (info.idex.get_reg_dst() == 1)
 		regDst = info.idex.get_rd();
+	(void) regDst;
 	// TODO: set EX/MEM pipeline register values ------------------------------------------------------------------
 	(void) info;
 	return (true);

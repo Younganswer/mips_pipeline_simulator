@@ -1,13 +1,13 @@
 #include "../../incs/render.hpp"
 #include "../../incs/shape.hpp"
 
-bool	render_units(const Info &info);
-bool	render_hazard_unit(const Info &info);
-bool	render_control_unit(const Info &info);
-bool	render_forwarding_unit(const Info &info);
-bool	render_jump_unit(const Info &info);
+bool	render_units(Info &info);
+bool	render_hazard_unit(Info &info);
+bool	render_control_unit(Info &info);
+bool	render_forwarding_unit(Info &info);
+bool	render_jump_unit(Info &info);
 
-bool	render_units(const Info &info) {
+bool	render_units(Info &info) {
 	render_hazard_unit(info);
 	render_control_unit(info);
 	render_forwarding_unit(info);
@@ -15,7 +15,7 @@ bool	render_units(const Info &info) {
 	return (true);
 }
 
-bool	render_hazard_unit(const Info &info) {
+bool	render_hazard_unit(Info &info) {
 	// draw hazard unit sector ------------------------------------------------------------------------------------
 		DrawRectangleRoundedLines(Rectangle{ -1600, -1700, 500, 300 }, 0.5f, 0, 5.0f, RED);
 		DrawRectangleRounded(Rectangle{ -1600, -1700, 500, 300 }, 0.5f, 0, Fade(RED, 0.2f));
@@ -37,7 +37,7 @@ bool	render_hazard_unit(const Info &info) {
 	return (true);
 }
 
-bool	render_control_unit(const Info &info) {
+bool	render_control_unit(Info &info) {
 	// draw control unit sector ------------------------------------------------------------------------------------
 		DrawRectangleRoundedLines(Rectangle{ -1900, -1100, 300, 500 }, 1.0f, 0, 5.0f, BLUE);
 		DrawRectangleRounded(Rectangle{ -1900, -1100, 300, 500 }, 1.0f, 0, Fade(BLUE, 0.2f));
@@ -54,7 +54,7 @@ bool	render_control_unit(const Info &info) {
 	return (true);
 }
 
-bool	render_forwarding_unit(const Info &info) {
+bool	render_forwarding_unit(Info &info) {
 	// draw forwarding unit sector ------------------------------------------------------------------------------
 		DrawRectangleRoundedLines(Rectangle{ 1300, 1520, 480, 300 }, 1.0f, 0, 5.0f, GOLD);
 		DrawRectangleRounded(Rectangle{ 1300, 1520, 480, 300 }, 1.0f, 0, Fade(GOLD, 0.2f));
@@ -72,10 +72,10 @@ bool	render_forwarding_unit(const Info &info) {
 			draw_left_arrow(1870, 1750, 1760, 1750, GOLD);
 			DrawCircle(2200, 1220, 10, GOLD);
 			DrawLineEx(Vector2{ 2200, 1220 }, Vector2{ 2200, 1910 }, 5.0f, GOLD);
-			DrawLineEx(Vector2{ 2200, 1910 }, Vector2{ 1620, 1910 }, 5.0f, GOLD);
-			draw_up_arrow(1620, 1910, 1620, 1820, GOLD);
-			DrawCircle(1460, 2110, 10, GOLD);
-			draw_up_arrow(1460, 2110, 1460, 1820, GOLD);
+			DrawLineEx(Vector2{ 2200, 1910 }, Vector2{ 1660, 1910 }, 5.0f, GOLD);
+			draw_up_arrow(1660, 1910, 1660, 1820, GOLD);
+			DrawCircle(1580, 2110, 10, GOLD);
+			draw_up_arrow(1580, 2110, 1580, 1820, GOLD);
 		// draw lines -------------------------------------------------------------------------------------------------
 		// draw EX/MEM RegWrite sector -------------------------------------------------------------------------------
 			DrawRectangleLinesEx(Rectangle{ 1870, 1515, 250, 150 }, 5.0f, BLUE);
@@ -98,7 +98,7 @@ bool	render_forwarding_unit(const Info &info) {
 	return (true);
 }
 
-bool	render_jump_unit(const Info &info) {
+bool	render_jump_unit(Info &info) {
 	// draw jump unit sector ---------------------------------------------------------------------------------------
 		draw_circle_lines_ex(-2800, -750, 100, 5.0f, Fade(LIME, 0.2f));
 		DrawCircle(-2800, -750, 100.0f, Fade(LIME, 0.05f));

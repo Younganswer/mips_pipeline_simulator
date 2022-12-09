@@ -9,11 +9,13 @@ bool	fetch(Info &info) {
 		info.ifid.set_instruction_hex(0);
 		return (true);
 	}
+
 	info.ifid.set_instruction(info.instructions[info.instructionIndex]);
 	info.ifid.get_instruction().set_status(IF);
 	info.ifid.set_pc(info.ifid.get_instruction().get_pc() + 4);
 	info.ifid.set_instruction_hex(info.ifid.get_instruction().get_id());
-	if (info.hazard.pc_write())
+	if (info.hazard.pc_write() == true) {
 		info.instructionIndex++;
+	}
 	return (true);
 }

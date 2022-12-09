@@ -1,17 +1,20 @@
 #include "../../incs/render.hpp"
 #include "../../incs/shape.hpp"
 
-bool	render_instruction_fetch(const Info &info);
-bool	render_instruction_decode(const Info &info);
-bool	render_execute(const Info &info);
-bool	render_memory_access(const Info &info);
-bool	render_write_back(const Info &info);
+bool	render_instruction_fetch(Info &info);
+bool	render_instruction_decode(Info &info);
+bool	render_execute(Info &info);
+bool	render_memory_access(Info &info);
+bool	render_write_back(Info &info);
 
-bool	render_instruction_fetch(const Info &info) {
+bool	render_instruction_fetch(Info &info) {
 	// draw instruction memory sector ---------------------------------------------------------------------------
 		DrawRectangleLinesEx(Rectangle{ -3100, -100, 500, 1000 }, 5.0f, BLACK);
 		// draw text --------------------------------------------------------------------------------------------------
-			DrawTextEx(GetFontDefault(), "Address", Vector2{ -3050, 90 }, 70.0f, 1.0f, BLACK);
+			DrawTextEx(GetFontDefault(), "Address", Vector2{ -3050, 50 }, 70.0f, 1.0f, BLACK);
+			DrawTextEx(GetFontDefault(), "=>", Vector2{ -3030, 125 }, 50.0f, 3.0f, BLACK);
+			// TODO: get pc value from pc unit not ifid
+			DrawTextEx(GetFontDefault(), n2hexstr(info.ifid.get_pc()-4).c_str(), Vector2{ -2980, 125 }, 50.0f, 3.0f, BLACK);
 			DrawTextEx(GetFontDefault(), "Instruction", Vector2{ -3030, 340 }, 70.0f, 3.0f, BLACK);
 			DrawTextEx(GetFontDefault(), "memory", Vector2{ -2970, 440 }, 70.0f, 3.0f, BLACK);
 		// draw text --------------------------------------------------------------------------------------------------
@@ -98,7 +101,7 @@ bool	render_instruction_fetch(const Info &info) {
 	return (true);
 }
 
-bool	render_instruction_decode(const Info &info) {
+bool	render_instruction_decode(Info &info) {
 	// draw ALU sector ----------------------------------------------------------------------------------------------
 		draw_trapezoid(-1150, -635, 200);
 		// draw text --------------------------------------------------------------------------------------------------
@@ -134,15 +137,45 @@ bool	render_instruction_decode(const Info &info) {
 	// draw sign extend sector --------------------------------------------------------------------------------------
 
 	// draw Registers sector ----------------------------------------------------------------------------------------
-		DrawRectangleLinesEx(Rectangle{ -850, -250, 600, 950 }, 5.0f, BLACK);
+		DrawRectangleLinesEx(Rectangle{ -850, -350, 600, 1150 }, 5.0f, BLACK);
 		// draw text --------------------------------------------------------------------------------------------------
 			DrawTextEx(GetFontDefault(), "Registers", Vector2{ -710, 185 }, 70.0f, 3.0f, BLACK);
-			DrawTextEx(GetFontDefault(), "ReadReg1", Vector2{ -810, -210 }, 50.0f, 3.0f, BLACK);
-			DrawTextEx(GetFontDefault(), "ReadData1", Vector2{ -530, -95 }, 50.0f, 3.0f, BLACK);
-			DrawTextEx(GetFontDefault(), "ReadReg2", Vector2{ -810, 0 }, 50.0f, 3.0f, BLACK);
-			DrawTextEx(GetFontDefault(), "WriteData", Vector2{ -810, 400 }, 50.0f, 3.0f, BLACK);
-			DrawTextEx(GetFontDefault(), "ReadData2", Vector2{ -540, 510 }, 50.0f, 3.0f, BLACK);
-			DrawTextEx(GetFontDefault(), "WriteReg", Vector2{ -810, 610 }, 50.0f, 3.0f, BLACK);
+			// read register 1 --------------------------------------------------------------------------------------------------
+				DrawTextEx(GetFontDefault(), "ReadReg1", Vector2{ -810, -240 }, 50.0f, 3.0f, BLACK);
+				DrawTextEx(GetFontDefault(), "=>", Vector2{ -800, -180 }, 50.0f, 3.0f, BLACK);
+				string	readReg1 = string("$") + to_string(info.ifid.get_instruction().get_rs());
+				DrawTextEx(GetFontDefault(), readReg1.c_str(), Vector2{ -750, -180 }, 50.0f, 3.0f, BLACK);
+			// read register 1 --------------------------------------------------------------------------------------------------
+			// read register 2 --------------------------------------------------------------------------------------------------
+				DrawTextEx(GetFontDefault(), "ReadReg2", Vector2{ -810, -30 }, 50.0f, 3.0f, BLACK);
+				DrawTextEx(GetFontDefault(), "=>", Vector2{ -800, 30 }, 50.0f, 3.0f, BLACK);
+				string	readReg2 = string("$") + to_string(info.ifid.get_instruction().get_rt());
+				DrawTextEx(GetFontDefault(), readReg2.c_str(), Vector2{ -750, 30 }, 50.0f, 3.0f, BLACK);
+			// read register 2 --------------------------------------------------------------------------------------------------
+			// write data -------------------------------------------------------------------------------------------
+				DrawTextEx(GetFontDefault(), "WriteData", Vector2{ -810, 380 }, 50.0f, 3.0f, BLACK);
+				DrawTextEx(GetFontDefault(), "=>", Vector2{ -800, 430 }, 40.0f, 3.0f, BLACK);
+				string	writeData = n2hexstr((info.memwb.get_mem_to_reg() == true) ? info.memwb.get_data_read() : info.memwb.get_alu_result());
+				DrawTextEx(GetFontDefault(), writeData.c_str(), Vector2{ -750, 430 }, 40.0f, 3.0f, BLACK);
+			// write data -------------------------------------------------------------------------------------------
+			// write register -----------------------------------------------------------------------------------------
+				DrawTextEx(GetFontDefault(), "WriteReg", Vector2{ -810, 580 }, 50.0f, 3.0f, BLACK);
+				DrawTextEx(GetFontDefault(), "=>", Vector2{ -800, 640 }, 50.0f, 3.0f, BLACK);
+				string	writeReg = string("$") + to_string(info.ifid.get_instruction().get_rd());
+				DrawTextEx(GetFontDefault(), writeReg.c_str(), Vector2{ -750, 640 }, 50.0f, 3.0f, BLACK);
+			// write register -----------------------------------------------------------------------------------------
+			// read data 1 -------------------------------------------------------------------------------------------
+				DrawTextEx(GetFontDefault(), "ReadData1", Vector2{ -550, -115 }, 50.0f, 3.0f, BLACK);
+				DrawTextEx(GetFontDefault(), "=>", Vector2{ -550, -65 }, 40.0f, 3.0f, BLACK);
+				string	readData1 = n2hexstr(info.registerValues[info.ifid.get_instruction().get_rs()]);
+				DrawTextEx(GetFontDefault(), readData1.c_str(), Vector2{ -500, -65 }, 40.0f, 3.0f, BLACK);
+			// read data 1 -------------------------------------------------------------------------------------------
+			// read data 2 -------------------------------------------------------------------------------------------
+				DrawTextEx(GetFontDefault(), "ReadData2", Vector2{ -550, 490 }, 50.0f, 3.0f, BLACK);
+				DrawTextEx(GetFontDefault(), "=>", Vector2{ -550, 540 }, 40.0f, 3.0f, BLACK);
+				string	readData2 = n2hexstr(info.registerValues[info.ifid.get_instruction().get_rt()]);
+				DrawTextEx(GetFontDefault(), readData2.c_str(), Vector2{ -500, 540 }, 40.0f, 3.0f, BLACK);
+			// read data 2 -------------------------------------------------------------------------------------------
 		// draw lines -------------------------------------------------------------------------------------------------
 			DrawLineEx(Vector2{ -2200, 430, }, Vector2{ -2050, 430 }, 5.0f, BLACK);
 			DrawLineEx(Vector2{ -2050, -850 }, Vector2{ -2050, 1400 }, 5.0f, BLACK);
@@ -171,9 +204,9 @@ bool	render_instruction_decode(const Info &info) {
 				DrawTextEx(GetFontDefault(), "X", Vector2{ -86, -75 }, 40.0f, 3.0f, BLACK);
 			// draw text --------------------------------------------------------------------------------------------------
 			// draw lines -------------------------------------------------------------------------------------------------
-				draw_right_arrow(-250, -70, -100, -70, BLACK);
-				draw_left_arrow(20, -140, -49, -140, BLACK);
 				draw_down_arrow(-75, -230, -75, -180, BLACK);
+				draw_right_arrow(-210, -140, -100, -140, BLACK);
+				draw_right_arrow(-250, -70, -100, -70, BLACK);
 			// draw lines -------------------------------------------------------------------------------------------------
 		// draw mux sector --------------------------------------------------------------------------------------------
 		// draw mux sector --------------------------------------------------------------------------------------------
@@ -185,7 +218,11 @@ bool	render_instruction_decode(const Info &info) {
 			// draw text --------------------------------------------------------------------------------------------------
 			// draw lines -------------------------------------------------------------------------------------------------
 				draw_right_arrow(-250, 535, -100, 535, BLACK);
-				draw_right_arrow(-170, 605, -100, 605, BLACK);
+				DrawLineEx(Vector2{ 1300, 1703.2 }, Vector2{ -210, 1703.2 }, 5.0f, BLACK);
+				DrawLineEx(Vector2{ -210, 1703.2 }, Vector2{ -210, -140 }, 5.0f, BLACK);
+				DrawCircle(-210, 605, 10.0f, BLACK);
+				draw_right_arrow(-210, 605, -100, 605, BLACK);
+				DrawLineEx(1500, 605, -75, 535, 5.0f, BLACK);
 				draw_up_arrow(-75, 695, -75, 645, BLACK);
 			// draw line --------------------------------------------------------------------------------------------------
 		// draw mux sector --------------------------------------------------------------------------------------------
@@ -227,7 +264,7 @@ bool	render_instruction_decode(const Info &info) {
 	return (true);
 }
 
-bool	render_execute(const Info &info) {
+bool	render_execute(Info &info) {
 	// draw mux sector -----------------------------------------------------------------------------------------------
 		DrawRectangleRoundedLines(Rectangle{ 750, -220, 100, 300 }, 1.0f, 0, 5.0f, BLACK);
 		// draw text --------------------------------------------------------------------------------------------------
@@ -261,8 +298,8 @@ bool	render_execute(const Info &info) {
 			draw_right_arrow(400, 535, 750, 535, BLACK);
 			DrawCircle(650, 585, 10.0f, BLACK);
 			draw_right_arrow(650, 585, 750, 585, BLACK);
-			DrawLineEx(Vector2{ 1300, 1670 }, Vector2{ 800, 1670 }, 5.0f, BLACK);
-			draw_up_arrow(800, 1670, 800, 685, BLACK);
+			DrawLineEx(Vector2{ 1300, 1636.6 }, Vector2{ 800, 1636.6 }, 5.0f, BLACK);
+			draw_up_arrow(800, 1636.6, 800, 685, BLACK);
 			DrawCircle(2300, 235, 10.0f, BLACK);
 			DrawLineEx(Vector2{ 2300, 235 }, Vector2{ 2300, 2010 }, 5.0f, BLACK);
 			DrawLineEx(Vector2{ 2300, 2010 }, Vector2{ 650, 2010 }, 5.0f, BLACK);
@@ -296,7 +333,6 @@ bool	render_execute(const Info &info) {
 		// draw lines --------------------------------------------------------------------------------------------------
 			draw_right_arrow(850, -70, 1250, -70, BLACK);
 			draw_right_arrow(1210, 450, 1250, 450, BLACK);
-			draw_down_arrow(1600, -100, 1600, 0, BLACK);
 		// draw lines --------------------------------------------------------------------------------------------------
 		// draw mux sector --------------------------------------------------------------------------------------------
 			DrawRectangleRoundedLines(Rectangle{ 1150, 325, 60, 250 }, 1.0f, 0, 5.0f, BLACK);
@@ -306,6 +342,7 @@ bool	render_execute(const Info &info) {
 				DrawTextEx(GetFontDefault(), "X", Vector2{ 1168, 485 }, 40.0f, 3.0f, BLACK);
 			// draw text ------------------------------------------------------------------------------------------------
 			// draw lines -----------------------------------------------------------------------------------------------
+				draw_down_arrow(1180, 230, 1180, 325, BLACK);
 				DrawLineEx(Vector2{ 400, 955 }, Vector2{ 1000, 955 }, 5.0f, BLACK);
 				DrawLineEx(Vector2{ 1000, 955 }, Vector2{ 1000, 365 }, 5.0f, BLACK);
 				draw_right_arrow(1000, 365, 1150, 365, BLACK);
@@ -350,15 +387,22 @@ bool	render_execute(const Info &info) {
 	return (true);
 }
 
-bool	render_memory_access(const Info &info) {
+bool	render_memory_access(Info &info) {
 	// draw Data memory sector --------------------------------------------------------------------------------------
 		DrawRectangleLinesEx(Rectangle{ 2650, 65, 500, 800 }, 5.0f, BLACK);
 		// draw text --------------------------------------------------------------------------------------------------
 			DrawTextEx(GetFontDefault(), "Data", Vector2{ 2830, 395 }, 70.0f, 3.0f, BLACK);
 			DrawTextEx(GetFontDefault(), "Memory", Vector2{ 2790, 475 }, 70.0f, 3.0f, BLACK);
-			DrawTextEx(GetFontDefault(), "Address", Vector2{ 2680, 215 }, 40.0f, 3.0f, BLACK);
-			DrawTextEx(GetFontDefault(), "Write", Vector2{ 2680, 660 }, 40.0f, 3.0f, BLACK);
-			DrawTextEx(GetFontDefault(), "Data", Vector2{ 2680, 710 }, 40.0f, 3.0f, BLACK);
+			// Address --------------------------------------------------------------------------------------------------
+				DrawTextEx(GetFontDefault(), "Address", Vector2{ 2680, 195 }, 40.0f, 3.0f, BLACK);
+				DrawTextEx(GetFontDefault(), "=>", Vector2{ 2690, 245 }, 40.0f, 3.0f, BLACK);
+				DrawTextEx(GetFontDefault(), n2hexstr(info.exmem.get_alu_result()).c_str(), Vector2{ 2720, 245 }, 40.0f, 3.0f, BLACK);
+			// Address --------------------------------------------------------------------------------------------------
+			// Write data ------------------------------------------------------------------------------------------------
+				DrawTextEx(GetFontDefault(), "Write data", Vector2{ 2680, 660 }, 40.0f, 3.0f, BLACK);
+				DrawTextEx(GetFontDefault(), "=>", Vector2{ 2690, 710 }, 40.0f, 3.0f, BLACK);
+				DrawTextEx(GetFontDefault(), n2hexstr(info.exmem.get_write_data()).c_str(), Vector2{ 2720, 710 }, 40.0f, 3.0f, BLACK);
+			// Write data ------------------------------------------------------------------------------------------------
 		// draw text --------------------------------------------------------------------------------------------------
 		// draw EX/MEM MemRead signal sector ---------------------------------------------------------------------------
 			DrawRectangleLinesEx(Rectangle{ 2670, -140, 225, 140 }, 5.0f, BLUE);
@@ -386,7 +430,7 @@ bool	render_memory_access(const Info &info) {
 	return (true);
 }
 
-bool	render_write_back(const Info &info) {
+bool	render_write_back(Info &info) {
 	// draw mux sector -----------------------------------------------------------------------------------------------
 		DrawRectangleRoundedLines(Rectangle{ 3800, 390, 100, 650 }, 1.0f, 0, 5.0f, BLACK);
 		// draw text --------------------------------------------------------------------------------------------------

@@ -1,7 +1,7 @@
 #include "../../incs/render.hpp"
 #include "../../incs/shape.hpp"
 
-bool	render_contents(const Info &info) {
+bool	render_contents(Info &info) {
 	// draw operations ------------------------------------------------------------------
 		render_instruction_fetch(info);
 		render_instruction_decode(info);

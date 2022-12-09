@@ -21,6 +21,7 @@ Info::Info(const char *textSegment, const char *dataSegment) {
 	getline(asmFile, asmLine); // Skip second line
 	while (getline(asmFile, asmLine)) {
 		instructions.push_back(Instruction(asmLine));
+		cout << instructions.back().get_pc() << " " << instructions.back().get_id() << endl;
 	}
 	asmFile.close();
 

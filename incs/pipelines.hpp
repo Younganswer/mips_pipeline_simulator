@@ -41,7 +41,6 @@ class IFID {
 		ui			get_instruction_hex(void) const;
 
 		Instruction	get_instruction(void);
-		Instruction	&get_instruction(void) const;
 
 		// setter
 		bool	set_pc(ui pc);
@@ -143,7 +142,7 @@ class EXMEM {
 class MEMWB {
 	private:
 		bool		regWrite;
-		ui			memToReg;
+		bool		memToReg;
 		ui			dataRead;
 		ui			aluResult;
 		ui			writeRegister;
@@ -155,7 +154,7 @@ class MEMWB {
 		
 		// getter
 		bool		get_reg_write(void) const;
-		ui			get_mem_to_reg(void) const;
+		bool		get_mem_to_reg(void) const;
 		ui			get_data_read(void) const;
 		ui			get_alu_result(void) const;
 		ui			get_write_register(void) const;
@@ -163,7 +162,7 @@ class MEMWB {
 
 		// setter
 		bool	set_reg_write(bool regWrite);
-		bool	set_mem_to_reg(ui memToReg);
+		bool	set_mem_to_reg(bool memToReg);
 		bool	set_data_read(ui dataRead);
 		bool	set_alu_result(ui aluResult);
 		bool	set_write_register(ui writeRegister);

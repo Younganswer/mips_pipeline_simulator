@@ -84,7 +84,7 @@ MEMWB::~MEMWB(void) {}
 
 // MEMWB getter
 bool		MEMWB::get_reg_write(void) const { return (this->regWrite); }
-ui			MEMWB::get_mem_to_reg(void) const { return (this->memToReg); }
+bool		MEMWB::get_mem_to_reg(void) const { return (this->memToReg); }
 ui			MEMWB::get_data_read(void) const { return (this->dataRead); }
 ui			MEMWB::get_alu_result(void) const { return (this->aluResult); }
 ui			MEMWB::get_write_register(void) const { return (this->writeRegister); }
@@ -92,7 +92,7 @@ Instruction	MEMWB::get_instruction(void) const { return (this->instruction); }
 
 // MEMWB setter
 bool	MEMWB::set_reg_write(bool regWrite) { this->regWrite = regWrite; return (true); }
-bool	MEMWB::set_mem_to_reg(ui memToReg) { this->memToReg = memToReg; return (true); }
+bool	MEMWB::set_mem_to_reg(bool memToReg) { this->memToReg = memToReg; return (true); }
 bool	MEMWB::set_data_read(ui dataRead) { this->dataRead = dataRead; return (true); }
 bool	MEMWB::set_alu_result(ui aluResult) { this->aluResult = aluResult; return (true); }
 bool	MEMWB::set_write_register(ui writeRegister) { this->writeRegister = writeRegister; return (true); }
