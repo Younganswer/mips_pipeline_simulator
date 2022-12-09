@@ -64,6 +64,11 @@ class Info {
 		// Button for next cycle
 		Button				button;
 
+		//current PC
+		ui					pcMuxinput[3];
+		ui					pcMuxselect;
+		ui					currentPc;
+
 		// Instructions
 		vector<Instruction>	instructions;
 		size_t				instructionIndex;
