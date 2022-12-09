@@ -9,7 +9,7 @@ bool	decode(Info &info) {
 	Instruction	instruction = info.ifid.get_instruction();
 	instruction.set_status(ID);
 	info.idex.set_instruction(instruction);
-
+	info.pcMuxselect = 0;
 	// IF/ID pipe is empty
 	if (instruction.get_pc() == 0) {
 		// set all values to 0
@@ -68,6 +68,7 @@ bool	decode(Info &info) {
 				info.idex.set_mem_write(0);
 				info.idex.set_mem_to_reg(0);
 				info.idex.set_reg_write(1);
+				info.pcMuxselect = 2;
 			}
 		// set signal values -------------------------------------------------------------------------------------------
 
@@ -81,6 +82,7 @@ bool	decode(Info &info) {
 		// set register values -----------------------------------------------------------------------------------------
 	} else if (info.ifid.get_instruction().get_format() == J) {
 		// TODO: handle j format
+			info.pcMuxselect = 1;
 		// set signal values -------------------------------------------------------------------------------------------
 			info.idex.set_alu_op(0);
 			info.idex.set_alu_src(0);
@@ -100,7 +102,14 @@ bool	decode(Info &info) {
 			info.idex.set_rd(instruction.get_rd());
 		// set register values -----------------------------------------------------------------------------------------
 	}
-	isBranched = true;
+	// calculate jump offset
+	ui	jumpResult = 0xf0000000; // 0b 1111 0000 0000 0000 0000 0000 0000 0000
+	jumpResult &= info.ifid.get_pc(); 
+	jumpResult |= (info.ifid.get_instruction().get_id() & 0x03ffffff) << 2;
+	info.pcMuxinput[1] = (jumpResult - info.ifid.get_pc()) / 4 + 1;
+
+	// calculate branch offset
+	info.pcMuxinput[2] = extend_sign(info.ifid.get_instruction().get_imm());
 	(void) info;
 	return (true);
 }

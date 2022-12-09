@@ -33,6 +33,8 @@ class Forward {
 		// Utils
 		int		forward_a(void) const;
 		int		forward_b(void) const;
+		int		forward_c(void) const;
+		int		forward_d(void) const;
 };
 
 #endif
