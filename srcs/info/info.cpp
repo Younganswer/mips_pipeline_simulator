@@ -49,6 +49,9 @@ Info::Info(const char *textSegment, const char *dataSegment) {
 	registerValues[sp] = 0x7ffffe40;
 
 	instructionIndex = 9;
+
+	pcMuxinput[0] = pcMuxinput[1] = pcMuxinput[2] = 0;
+	pcMuxselect = 0;
 }
 
 Info::~Info(void) {}
