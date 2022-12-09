@@ -43,8 +43,8 @@
 	$ make run [INPUT_FILE="test.s"] [SIZE_FACTOR=size_factor]
 * Default &nbsp;*INPUT_FILE*&nbsp; is "test.s"
 * Rule "run" executes following two commands
-	* `./libs/assembler/spim/spim -file test.s -dump`
-	* `./mips_pipeline_simulator text.asm data.asm`
+	* `cd ./libs/assembler/spim; ./spim -file ../../../test.s -dump; cd ../../../;`
+	* `./mips_pipeline_simulator ./libs/assembler/spim/text.asm ./libs/assembler/spim/data.asm`
 * Using in manual is not recommended
 <br/>
 
