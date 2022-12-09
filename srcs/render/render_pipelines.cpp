@@ -18,16 +18,6 @@ bool	render_if_id(const Info &info) {
 		DrawRectangleLinesEx(Rectangle{-2500, -500, 300, 2000}, 5.0f, BLACK);
 	// draw pipeline sector ---------------------------------------------------------------------------
 
-	// draw instruction write signal ---------------------------------------------------------------------
-		DrawTextEx(GetFontDefault(), "Instruction write", Vector2{-2480, -480}, 30.0f, 2.0f, BLACK);
-		DrawTextEx(GetFontDefault(), "=>", Vector2{-2470, -440}, 30.0f, 2.0f, BLACK);
-
-		// draw signal -----------------------------------------------------------------------------------
-			DrawTextEx(GetFontDefault(), "TRUE", Vector2{-2430, -440}, 30.0f, 2.0f, BLACK);
-		// draw signal -----------------------------------------------------------------------------------
-
-	// draw instruction write signal ---------------------------------------------------------------------
-
 	// draw program counter ------------------------------------------------------------------------------
 		DrawTextEx(GetFontDefault(), "Program counter", Vector2{-2480, -360}, 30.0f, 2.0f, BLACK);
 		DrawTextEx(GetFontDefault(), "=>", Vector2{-2470, -320}, 30.0f, 2.0f, BLACK);
@@ -153,8 +143,7 @@ bool	render_ex_mem(const Info &info) {
 		DrawTextEx(GetFontDefault(), "ALU result", Vector2{1820, 200}, 30.0f, 2.0f, BLACK);
 		DrawTextEx(GetFontDefault(), "=>", Vector2{1830, 240}, 30.0f, 2.0f, BLACK);
 		// draw ALU result value ------------------------------------------------------------------------
-			// TODO: Get ALU result value from info
-			DrawTextEx(GetFontDefault(), "0x00000003", Vector2{1870, 240}, 30.0f, 2.0f, BLACK);
+			DrawTextEx(GetFontDefault(), n2hexstr(info.exmem.get_alu_result()).c_str(), Vector2{1870, 240}, 30.0f, 2.0f, BLACK);
 		// draw ALU result value ------------------------------------------------------------------------
 		// draw line ------------------------------------------------------------------------------------
 			draw_right_arrow(1670, 235, 1800, 235, BLACK);
@@ -166,7 +155,7 @@ bool	render_ex_mem(const Info &info) {
 		DrawTextEx(GetFontDefault(), "=>", Vector2{1830, 705}, 30.0f, 2.0f, BLACK);
 		// draw write data value ------------------------------------------------------------------------
 			// TODO: Get write data value from info
-			DrawTextEx(GetFontDefault(), "0x00000003", Vector2{1870, 705}, 30.0f, 2.0f, BLACK);
+			DrawTextEx(GetFontDefault(), n2hexstr(info.exmem.get_write_data()).c_str(), Vector2{1870, 705}, 30.0f, 2.0f, BLACK);
 		// draw write data value ------------------------------------------------------------------------
 		// draw line ------------------------------------------------------------------------------------
 			DrawCircle(1100, 535, 10, BLACK);
@@ -179,8 +168,8 @@ bool	render_ex_mem(const Info &info) {
 		DrawTextEx(GetFontDefault(), "Write register", Vector2{1820, 1185}, 30.0f, 2.0f, BLACK);
 		DrawTextEx(GetFontDefault(), "=>", Vector2{1830, 1225}, 30.0f, 2.0f, BLACK);
 		// draw write register value ----------------------------------------------------------------
-			// TODO: Get write register value from info
-			DrawTextEx(GetFontDefault(), "$12", Vector2{1870, 1225}, 30.0f, 2.0f, BLACK);
+			string	write_register = string("$") + n2hexstr(info.exmem.get_write_register());
+			DrawTextEx(GetFontDefault(), write_register.c_str(), Vector2{1870, 1225}, 30.0f, 2.0f, BLACK);
 		// draw write register value ----------------------------------------------------------------
 		// draw line ------------------------------------------------------------------------------------
 			draw_right_arrow(1650, 1220, 1800, 1220, BLACK);
@@ -205,8 +194,7 @@ bool	render_mem_wb(const Info &info) {
 		DrawTextEx(GetFontDefault(), "=>", Vector2{3330, 490}, 30.0f, 2.0f, BLACK);
 
 		// draw data read from memory value --------------------------------------------------------------
-			// TODO: Get data read from memory value from info
-			DrawTextEx(GetFontDefault(), "0x87654321", Vector2{3370, 490}, 30.0f, 2.0f, BLACK);
+			DrawTextEx(GetFontDefault(), n2hexstr(info.memwb.get_data_read()).c_str(), Vector2{3370, 490}, 30.0f, 2.0f, BLACK);
 		// draw data read from memory value --------------------------------------------------------------
 		// draw line ------------------------------------------------------------------------------------
 			draw_right_arrow(3150, 465, 3300, 465, BLACK);
@@ -216,10 +204,8 @@ bool	render_mem_wb(const Info &info) {
 	// draw ALU result -----------------------------------------------------------------------------------
 		DrawTextEx(GetFontDefault(), "ALU result", Vector2{3320, 930}, 30.0f, 2.0f, BLACK);
 		DrawTextEx(GetFontDefault(), "=>", Vector2{3330, 970}, 30.0f, 2.0f, BLACK);
-
 		// draw ALU result value ------------------------------------------------------------------------
-			// TODO: Get ALU result value from info
-			DrawTextEx(GetFontDefault(), "0x00000003", Vector2{3370, 970}, 30.0f, 2.0f, BLACK);
+			DrawTextEx(GetFontDefault(), n2hexstr(info.memwb.get_alu_result()).c_str(), Vector2{3370, 970}, 30.0f, 2.0f, BLACK);
 		// draw ALU result value ------------------------------------------------------------------------
 		// draw line ------------------------------------------------------------------------------------
 			DrawCircle(2550, 235, 10, BLACK);
@@ -231,8 +217,8 @@ bool	render_mem_wb(const Info &info) {
 		DrawTextEx(GetFontDefault(), "Write register", Vector2{3320, 1185}, 30.0f, 2.0f, BLACK);
 		DrawTextEx(GetFontDefault(), "=>", Vector2{3330, 1225}, 30.0f, 2.0f, BLACK);
 		// draw write register value ----------------------------------------------------------------
-			// TODO: Get write register value from info
-			DrawTextEx(GetFontDefault(), "$12", Vector2{3370, 1225}, 30.0f, 2.0f, BLACK);
+			string	write_register = string("$") + n2hexstr(info.memwb.get_write_register());
+			DrawTextEx(GetFontDefault(), write_register.c_str(), Vector2{3370, 1225}, 30.0f, 2.0f, BLACK);
 		// draw write register value ----------------------------------------------------------------
 		// draw line ------------------------------------------------------------------------------------
 			draw_right_arrow(2100, 1220, 3300, 1220, BLACK);
@@ -334,8 +320,7 @@ bool	render_id_ex_signal(const Info &info) {
 				DrawTextEx(GetFontDefault(), "MemToReg", Vector2{150, -755}, 40.0f, 2.0f, BLUE);
 				DrawTextEx(GetFontDefault(), "=>", Vector2{175, -710}, 40.0f, 2.0f, BLUE);
 				// draw Memory to register signal value --------------------------------------------------------
-					string	mem_to_reg = (info.idex.get_mem_to_reg()) ? "True" : "False";
-					DrawTextEx(GetFontDefault(), mem_to_reg.c_str(), Vector2{215, -710}, 40.0f, 2.0f, BLUE);
+					DrawTextEx(GetFontDefault(), to_string(info.idex.get_mem_to_reg()).c_str(), Vector2{215, -710}, 40.0f, 2.0f, BLUE);
 				// draw Memory to register signal value --------------------------------------------------------
 			// draw Memory to register signal ----------------------------------------------------------------
 		// draw Memory to register sector -----------------------------------------------------------------
@@ -380,8 +365,8 @@ bool	render_ex_mem_signal(const Info &info) {
 				DrawTextEx(GetFontDefault(), "MemRead", Vector2{1850, -1025}, 40.0f, 2.0f, BLUE);
 				DrawTextEx(GetFontDefault(), "=>", Vector2{1875, -980}, 40.0f, 2.0f, BLUE);
 				// draw Memory Read signal value ---------------------------------------------------------
-					// TODO: Get Memory Read signal value from info
-					DrawTextEx(GetFontDefault(), "True", Vector2{1915, -980}, 40.0f, 2.0f, BLUE);
+					string	mem_read = (info.idex.get_mem_read()) ? "True" : "False";
+					DrawTextEx(GetFontDefault(), mem_read.c_str(), Vector2{1915, -980}, 40.0f, 2.0f, BLUE);
 				// draw Memory Read signal value ---------------------------------------------------------
 			// draw Memory Read signal -----------------------------------------------------------------
 		// draw Memory Read sector ---------------------------------------------------------------------
@@ -394,8 +379,8 @@ bool	render_ex_mem_signal(const Info &info) {
 				DrawTextEx(GetFontDefault(), "MemWrite", Vector2{1850, -890}, 40.0f, 2.0f, BLUE);
 				DrawTextEx(GetFontDefault(), "=>", Vector2{1875, -845}, 40.0f, 2.0f, BLUE);
 				// draw Memory Write signal value ---------------------------------------------------------------
-					// TODO: Get Memory Write signal value from info
-					DrawTextEx(GetFontDefault(), "True", Vector2{1915, -845}, 40.0f, 2.0f, BLUE);
+					string	mem_write = (info.idex.get_mem_write()) ? "True" : "False";
+					DrawTextEx(GetFontDefault(), mem_write.c_str(), Vector2{1915, -845}, 40.0f, 2.0f, BLUE);
 				// draw Memory Write signal value ---------------------------------------------------------------
 			// draw Memory Write signal -----------------------------------------------------------------------
 		// draw Memory Write sector -------------------------------------------------------------------------
@@ -408,8 +393,7 @@ bool	render_ex_mem_signal(const Info &info) {
 				DrawTextEx(GetFontDefault(), "MemToReg", Vector2{1850, -755}, 40.0f, 2.0f, BLUE);
 				DrawTextEx(GetFontDefault(), "=>", Vector2{1875, -710}, 40.0f, 2.0f, BLUE);
 				// draw Memory To Register signal value -------------------------------------------------------
-					// TODO: Get Memory To Register signal value from info
-					DrawTextEx(GetFontDefault(), "True", Vector2{1915, -710}, 40.0f, 2.0f, BLUE);
+					DrawTextEx(GetFontDefault(), to_string(info.exmem.get_mem_to_reg()).c_str(), Vector2{1915, -710}, 40.0f, 2.0f, BLUE);
 				// draw Memory To Register signal value -------------------------------------------------------
 			// draw Memory To Register signal ---------------------------------------------------------------
 		// draw Memory To Register sector -----------------------------------------------------------------
@@ -422,8 +406,8 @@ bool	render_ex_mem_signal(const Info &info) {
 				DrawTextEx(GetFontDefault(), "RegWrite", Vector2{1850, -620}, 40.0f, 2.0f, BLUE);
 				DrawTextEx(GetFontDefault(), "=>", Vector2{1875, -575}, 40.0f, 2.0f, BLUE);
 				// draw Register Write signal value --------------------------------------------------
-					// TODO: Get Register Write signal value from info
-					DrawTextEx(GetFontDefault(), "True", Vector2{1915, -575}, 40.0f, 2.0f, BLUE);
+					string	reg_write = (info.idex.get_reg_write()) ? "True" : "False";
+					DrawTextEx(GetFontDefault(), reg_write.c_str(), Vector2{1915, -575}, 40.0f, 2.0f, BLUE);
 				// draw Register Write signal value --------------------------------------------------
 			// draw Register Write signal -----------------------------------------------------------
 		// draw Register Write sector --------------------------------------------------------------
@@ -451,8 +435,7 @@ bool	render_mem_wb_signal(const Info &info) {
 				DrawTextEx(GetFontDefault(), "MemToReg", Vector2{3350, -755}, 40.0f, 2.0f, BLUE);
 				DrawTextEx(GetFontDefault(), "=>", Vector2{3375, -710}, 40.0f, 2.0f, BLUE);
 				// draw Memory To Register signal value -------------------------------------------------------
-					// TODO: Get Memory To Register signal value from info
-					DrawTextEx(GetFontDefault(), "True", Vector2{3415, -710}, 40.0f, 2.0f, BLUE);
+					DrawTextEx(GetFontDefault(), to_string(info.memwb.get_mem_to_reg()).c_str(), Vector2{3415, -710}, 40.0f, 2.0f, BLUE);
 				// draw Memory To Register signal value -------------------------------------------------------
 			// draw Memory To Register signal ---------------------------------------------------------------
 		// draw Memory To Register sector -----------------------------------------------------------------
@@ -465,8 +448,8 @@ bool	render_mem_wb_signal(const Info &info) {
 				DrawTextEx(GetFontDefault(), "RegWrite", Vector2{3350, -620}, 40.0f, 2.0f, BLUE);
 				DrawTextEx(GetFontDefault(), "=>", Vector2{3375, -575}, 40.0f, 2.0f, BLUE);
 				// draw Register Write signal value --------------------------------------------------
-					// TODO: Get Register Write signal value from info
-					DrawTextEx(GetFontDefault(), "True", Vector2{3415, -575}, 40.0f, 2.0f, BLUE);
+					string	reg_write = (info.memwb.get_reg_write()) ? "True" : "False";
+					DrawTextEx(GetFontDefault(), reg_write.c_str(), Vector2{3415, -575}, 40.0f, 2.0f, BLUE);
 				// draw Register Write signal value --------------------------------------------------
 			// draw Register Write signal -----------------------------------------------------------
 		// draw Register Write sector --------------------------------------------------------------

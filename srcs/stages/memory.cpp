@@ -40,7 +40,7 @@ bool	memory(Info &info) {
 		if (info.exmem.get_mem_write() == true) {
 			Memory	mem;
 			mem.address = info.exmem.get_alu_result();
-			mem.value = info.exmem.get_read_data_2();
+			mem.value = info.exmem.get_write_data();
 			info.mem.push_back(mem);
 			sort(info.mem.begin(), info.mem.end(), cmp);
 		}

@@ -110,11 +110,8 @@ class EXMEM {
 		bool		memWrite;
 		bool		regWrite;
 		ui			memToReg;
-		ui			addResult;
-		ui			zeroFlag;
 		ui			aluResult;
-		ui			readData2;
-		ui			extendImm;
+		ui			writeData;
 		ui			writeRegister;
 		Instruction	instruction;
 
@@ -127,11 +124,8 @@ class EXMEM {
 		bool		get_mem_write(void) const;
 		bool		get_reg_write(void) const;
 		ui			get_mem_to_reg(void) const;
-		ui			get_add_result(void) const;
-		ui			get_zero_flag(void) const;
 		ui			get_alu_result(void) const;
-		ui			get_read_data_2(void) const;
-		ui			get_extend_imm(void) const;
+		ui			get_write_data(void) const;
 		ui			get_write_register(void) const;
 		Instruction	get_instruction(void) const;
 
@@ -140,11 +134,8 @@ class EXMEM {
 		bool	set_mem_write(bool memWrite);
 		bool	set_reg_write(bool regWrite);
 		bool	set_mem_to_reg(ui memToReg);
-		bool	set_add_result(ui addResult);
-		bool	set_zero_flag(ui zeroFlag);
 		bool	set_alu_result(ui aluResult);
-		bool	set_read_data_2(ui readData2);
-		bool	set_extend_imm(ui extendImm);
+		bool	set_write_data(ui writeData);
 		bool	set_write_register(ui writeRegister);
 		bool	set_instruction(const Instruction &instruction);
 };

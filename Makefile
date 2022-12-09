@@ -92,7 +92,7 @@ ${OBJS_DIR}:
 
 
 ${LIBRAYLIB}:
-	@echo -n "Build raylib static library generated"
+	@echo -n "Build raylib static library"
 	@make -s -C ${LIBS_DIR}/${RAYLIB_PATH}/src
 	@echo ": done"
 

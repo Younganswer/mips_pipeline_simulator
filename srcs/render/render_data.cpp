@@ -24,7 +24,7 @@ bool	render_register(Info &info) {
 		for (size_t i=0; i<32; i++) {
 			string	reg = string("R") + to_string(i);
 			string	reg_text = string("[") + register_text[i] + string("]");
-			string	value = string("=   0x") + n2hexstr(info.registerValues[i]);
+			string	value = string("=   ") + n2hexstr(info.registerValues[i]);
 			DrawTextEx(GetFontDefault(), reg.c_str(), (Vector2){ screenWidth-200+10, (float)90+(i*10) }, 10.0f, 1.0f, BLACK);
 			DrawTextEx(GetFontDefault(), reg_text.c_str(), (Vector2){ screenWidth-200+40, (float)90+(i*10) }, 10.0f, 1.0f, BLACK);
 			DrawTextEx(GetFontDefault(), value.c_str(), (Vector2){ screenWidth-200+85, (float)90+(i*10) }, 10.0f, 1.0f, BLACK);
@@ -46,8 +46,8 @@ bool	render_user_data_segment(Info &info) {
 
 	// draw data segment contents ------------------------------------------------------------------------------------------------------------
 		for (size_t i=0; i<10+(SIZE_FACTOR-7)*7&&i<info.mem.size(); i++) {
-			string	address = string("[0x") + n2hexstr(info.mem[i].address) + string("]");
-			string	value = string("0x") + n2hexstr(info.mem[i].value);
+			string	address = string("[") + n2hexstr(info.mem[i].address) + string("]");
+			string	value = n2hexstr(info.mem[i].value);
 			DrawTextEx(GetFontDefault(), address.c_str(), (Vector2){ screenWidth-200+10, (float)465+(i*15) }, 10.0f, 1.0f, BLACK);
 			DrawTextEx(GetFontDefault(), value.c_str(), (Vector2){ screenWidth-200+100, (float)465+(i*15) }, 10.0f, 1.0f, BLACK);
 		}
