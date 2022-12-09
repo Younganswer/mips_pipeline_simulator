@@ -66,5 +66,16 @@ main:   li $v0, 4	# syscall 4 (print_str)
 		lw $t1, foobar
 		li $t2, 0x10010000
 		sw $t1, 0($t2)
+		addi $a1, $zero, 10
+
+		addi $sp, $sp, -4
+		sw $ra, 0($sp)
+		addi $sp, $sp, -4
+		sw $a1, 0($sp)
+
+		lw $a2, 0($sp)
+		addi $sp, $sp, 4
+		lw $a3, 0($sp)
+		addi $sp, $sp, 4
 
 		jr $ra  # retrun to caller
