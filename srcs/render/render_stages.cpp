@@ -60,6 +60,7 @@ bool	render_instruction_fetch(const Info &info) {
 		// draw lines -------------------------------------------------------------------------------------------------
 			draw_left_arrow(-2600, -1062.5, -3100, -1062.5, BLACK);
 			draw_left_arrow(-1900, -925, -3100, -925, BLACK);
+			
 			draw_down_arrow(-3800, -150, -3800, -30, BLACK);
 
 			DrawCircle(-2635, -330, 10.0f, BLACK);

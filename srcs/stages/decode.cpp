@@ -3,7 +3,7 @@
 #include "../../incs/info.hpp"
 
 ui	extend_sign(ui imm);
-ui	calc_alu_op(ui opcode, ui funct);
+ui	calc_alu_op(ui opcode);
 
 bool	decode(Info &info) {
 	Instruction	instruction = info.ifid.get_instruction();
@@ -31,7 +31,7 @@ bool	decode(Info &info) {
 
 	if (instruction.get_format() == R) {
 		// set signal values -------------------------------------------------------------------------------------------
-			info.idex.set_alu_op(calc_alu_op(instruction.get_opcode(), instruction.get_funct()));
+			info.idex.set_alu_op(calc_alu_op(instruction.get_opcode()));
 			info.idex.set_alu_src(0); // mux flag 0: ReadData2 is source of alu
 			info.idex.set_reg_dst(1); // mux flag 1: rd is destination
 			info.idex.set_mem_read(0); // False: R format doesn't use memory
@@ -50,7 +50,7 @@ bool	decode(Info &info) {
 		// set register values -----------------------------------------------------------------------------------------
 	} else if (instruction.get_format() == I) {
 		// set signal values -------------------------------------------------------------------------------------------
-			info.idex.set_alu_op(calc_alu_op(instruction.get_opcode(), instruction.get_funct()));
+			info.idex.set_alu_op(calc_alu_op(instruction.get_opcode()));
 			info.idex.set_alu_src(1); // mux flag 1: imm is source of alu
 			info.idex.set_reg_dst(0); // mux flag 0: rt is destination
 			if (instruction.get_opcode() == 0x23) { // lw
@@ -112,31 +112,20 @@ ui	extend_sign(ui imm) {
 	return (imm);
 }
 
-ui	calc_alu_op(ui opcode, ui funct) {
+ui	calc_alu_op(ui opcode) {
 	ui	ret = -1;
-	if (opcode == 0) {
-		if (funct == FUNCTYPE_ADD) {
-			ret = ALUOP_ADD;
-		} else if (funct == FUNCTYPE_SUB) {
-			ret = ALUOP_SUB;
-		} else if (funct == FUNCTYPE_AND) {
-			ret = ALUOP_AND;
-		} else if (funct == FUNCTYPE_OR) {
-			ret = ALUOP_OR;
-		} else if (funct == FUNCTYPE_SLT) {
-			ret = ALUOP_SLT;
-		}
-	} else if (opcode == 2) {
-		ret = ALUOP_JUMP;
-	} else if (opcode == 4) {
-		ret = ALUOP_BEQ;
-	} else if (opcode == 35) {
-		ret = ALUOP_LW;
-	} else if (opcode == 43) {
-		ret = ALUOP_SW;
+
+	if (opcode == 0x23 || opcode == 0x2b) {
+		ret = 0b00;
+	} else if (opcode == 0x04) {
+		ret = 0b01;
+	} else if (opcode == 0) {
+		ret = 0b10;
 	}
 	return (ret);
 }
+
+
 
 // TODO: Create control unit and initialize branch signal
 // branch in control unit

@@ -62,6 +62,7 @@ msg:	.asciiz "Hello World\n"
 main:   li $v0, 4	# syscall 4 (print_str)
 		la $a0, msg	# argument: string
 		syscall		# print the string
+		nop
 		lw $t1, foobar
 		li $t2, 0x10010000
 		sw $t1, 0($t2)
