@@ -57,6 +57,7 @@ OBJS = ${SRCS:${SRCS_DIR}/%.cpp=${OBJS_DIR}/%.o}
 DEPS = ${OBJS:.o=.d}
 
 ASMS = text.asm data.asm
+ASMS := ${addprefix ${LIBS_DIR}/${ASSEMBLER_PATH}/spim, ${ASMS}}
 
 SIZE_FACTOR	= 0
 ifeq (${SIZE_FACTOR}, ${filter ${SIZE_FACTOR}, 7 8 9})
@@ -71,7 +72,7 @@ all: ${NAME}
 
 INPUT_FILE = test.s
 run: ${NAME}
-	@${SPIM} -file ${INPUT_FILE} -dump
+	@cd ${LIBS_DIR}/${ASSEMBLER_PATH}/spim; ./spim -file ../../../${INPUT_FILE} -dump; cd ../../../;
 	@./${NAME} ${ASMS}
 
 
