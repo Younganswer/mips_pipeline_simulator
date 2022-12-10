@@ -1,6 +1,7 @@
 #include "../../incs/stages.hpp"
 #include "../../incs/pipelines.hpp"
 #include "../../incs/info.hpp"
+#include <iostream>
 
 ui	extend_sign(ui imm);
 ui	calc_alu_op(ui opcode);
@@ -81,8 +82,9 @@ bool	decode(Info &info) {
 			info.idex.set_rd(instruction.get_rd());
 		// set register values -----------------------------------------------------------------------------------------
 	} else if (info.ifid.get_instruction().get_format() == J) {
-		// TODO: handle j format
+		// set pcMuxSelect ---------------------------------------------------------------------------------------------
 			info.pcMuxSelect = 1;
+		// set pcMuxSelect ---------------------------------------------------------------------------------------------
 		// set signal values -------------------------------------------------------------------------------------------
 			info.idex.set_alu_op(0);
 			info.idex.set_alu_src(0);
@@ -102,14 +104,37 @@ bool	decode(Info &info) {
 			info.idex.set_rd(instruction.get_rd());
 		// set register values -----------------------------------------------------------------------------------------
 	}
-	// calculate jump offset
-	ui	jumpResult = 0xf0000000;
-	jumpResult &= info.ifid.get_pc(); 
-	jumpResult |= (info.ifid.get_instruction().get_id() & 0x03ffffff) << 2;
-	info.pcMuxInput[1] = (jumpResult - info.ifid.get_pc()) / 4 + 1;
 
-	// calculate branch offset
-	info.pcMuxInput[2] = extend_sign(info.ifid.get_instruction().get_imm());
+	// calculate jump offset ----------------------------------------------------------------------------------------
+		ui	jumpResult = 0xf0000000;
+		jumpResult &= info.ifid.get_pc(); 
+		jumpResult |= (info.ifid.get_instruction().get_id() & 0x03ffffff) << 2;
+		info.pcMuxInput[1] = (jumpResult - info.ifid.get_pc()) / 4 + 1;
+	// calculate jump offset ----------------------------------------------------------------------------------------
+
+	// calculate branch offset --------------------------------------------------------------------------------------
+		info.pcMuxInput[2] = extend_sign(info.ifid.get_instruction().get_imm()) - 1;
+	// calculate branch offset --------------------------------------------------------------------------------------
+
+	// set hazard unit -------------------------------------------------------------------------------------------
+		info.hazard.set_mem_read(info.idex.get_mem_read());
+		info.hazard.set_id_rs(info.ifid.get_instruction().get_rs());
+		info.hazard.set_id_rt(info.ifid.get_instruction().get_rt());
+		info.hazard.set_is_jumped(info.pcMuxSelect == 1);
+		info.hazard.set_is_branched(info.pcMuxSelect == 2);
+	// set hazard unit -------------------------------------------------------------------------------------------
+
+	// set signal hazard detected -------------------------------------------------------------------------------------------
+		if (info.hazard.control_mux_select_bit() == 1) {
+			info.idex.set_alu_op(0);
+			info.idex.set_alu_src(0);
+			info.idex.set_reg_dst(0);
+			info.idex.set_mem_read(0);
+			info.idex.set_mem_write(0);
+			info.idex.set_mem_to_reg(0);
+			info.idex.set_reg_write(0);
+		}
+	// set signal hazard detected -------------------------------------------------------------------------------------------
 	(void) info;
 	return (true);
 }

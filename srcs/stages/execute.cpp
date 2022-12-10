@@ -79,6 +79,9 @@ bool	execute(Info &info) {
 	// set EX/MEM pipeline register values ------------------------------------------------------------------
 
 	// TODO: set EX/MEM pipeline register values ------------------------------------------------------------------
+	// set hazard unit ------------------------------------------------------------------------------------------
+		info.hazard.set_ex_rt(info.idex.get_rt());
+	// set hazard unit ------------------------------------------------------------------------------------------
 	(void) info;
 	return (true);
 }
