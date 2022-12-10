@@ -13,8 +13,7 @@ bool	render_instruction_fetch(Info &info) {
 		// draw text --------------------------------------------------------------------------------------------------
 			DrawTextEx(GetFontDefault(), "Address", Vector2{ -3050, 50 }, 70.0f, 1.0f, BLACK);
 			DrawTextEx(GetFontDefault(), "=>", Vector2{ -3030, 125 }, 50.0f, 3.0f, BLACK);
-			// TODO: get pc value from pc unit not ifid
-			DrawTextEx(GetFontDefault(), n2hexstr(info.ifid.get_pc()-4).c_str(), Vector2{ -2980, 125 }, 50.0f, 3.0f, BLACK);
+			DrawTextEx(GetFontDefault(), n2hexstr(info.currentPc).c_str(), Vector2{ -2980, 125 }, 50.0f, 3.0f, BLACK);
 			DrawTextEx(GetFontDefault(), "Instruction", Vector2{ -3030, 340 }, 70.0f, 3.0f, BLACK);
 			DrawTextEx(GetFontDefault(), "memory", Vector2{ -2970, 440 }, 70.0f, 3.0f, BLACK);
 		// draw text --------------------------------------------------------------------------------------------------

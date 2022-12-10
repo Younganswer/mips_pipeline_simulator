@@ -6,7 +6,6 @@
 template <typename I> std::string n2hexstr(I w, size_t hex_len = sizeof(I)<<1);
 
 Info::Info(void) {
-	std::cout << "info default constructor" << std::endl;
 	// init_camera(this->camera);
 }
 
@@ -21,7 +20,6 @@ Info::Info(const char *textSegment, const char *dataSegment) {
 	getline(asmFile, asmLine); // Skip second line
 	while (getline(asmFile, asmLine)) {
 		instructions.push_back(Instruction(asmLine));
-		cout << instructions.back().get_pc() << " " << instructions.back().get_id() << endl;
 	}
 	asmFile.close();
 
@@ -50,8 +48,8 @@ Info::Info(const char *textSegment, const char *dataSegment) {
 
 	instructionIndex = 9;
 
-	pcMuxinput[0] = pcMuxinput[1] = pcMuxinput[2] = 0;
-	pcMuxselect = 0;
+	pcMuxInput[0] = pcMuxInput[1] = pcMuxInput[2] = 0;
+	pcMuxSelect = 0;
 }
 
 Info::~Info(void) {}

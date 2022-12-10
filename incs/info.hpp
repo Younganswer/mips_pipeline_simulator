@@ -64,9 +64,9 @@ class Info {
 		// Button for next cycle
 		Button				button;
 
-		//current PC
-		ui					pcMuxinput[3];
-		ui					pcMuxselect;
+		// Handle program counter
+		ui					pcMuxInput[3];
+		ui					pcMuxSelect;
 		ui					currentPc;
 
 		// Instructions

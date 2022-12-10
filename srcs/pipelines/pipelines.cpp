@@ -27,7 +27,7 @@ ui			IDEX::get_reg_dst(void) const { return (this->regDst); }
 bool		IDEX::get_mem_write(void) const { return (this->memWrite); }
 bool		IDEX::get_mem_read(void) const { return (this->memRead); }
 bool		IDEX::get_reg_write(void) const { return (this->regWrite); }
-ui			IDEX::get_mem_to_reg(void) const { return (this->memToReg); }
+bool		IDEX::get_mem_to_reg(void) const { return (this->memToReg); }
 ui			IDEX::get_read_data1(void) const { return (this->readData1); }
 ui			IDEX::get_read_data2(void) const { return (this->readData2); }
 ui			IDEX::get_extend_imm(void) const { return (this->extendImm); }
@@ -43,7 +43,7 @@ bool	IDEX::set_reg_dst(ui regDst) { this->regDst = regDst; return (true); }
 bool	IDEX::set_mem_write(bool memWrite) { this->memWrite = memWrite; return (true); }
 bool	IDEX::set_mem_read(bool memRead) { this->memRead = memRead; return (true); }
 bool	IDEX::set_reg_write(bool regWrite) { this->regWrite = regWrite; return (true); }
-bool	IDEX::set_mem_to_reg(ui memToReg) { this->memToReg = memToReg; return (true); }
+bool	IDEX::set_mem_to_reg(bool memToReg) { this->memToReg = memToReg; return (true); }
 bool	IDEX::set_read_data_1(ui readData1) { this->readData1 = readData1; return (true); }
 bool	IDEX::set_read_data_2(ui readData2) { this->readData2 = readData2; return (true); }
 bool	IDEX::set_extend_imm(ui extendImm) { this->extendImm = extendImm; return (true); }
@@ -61,7 +61,7 @@ EXMEM::~EXMEM(void) {}
 bool		EXMEM::get_mem_read(void) const { return (this->memRead); }
 bool		EXMEM::get_mem_write(void) const { return (this->memWrite); }
 bool		EXMEM::get_reg_write(void) const { return (this->regWrite); }
-ui			EXMEM::get_mem_to_reg(void) const { return (this->memToReg); }
+bool		EXMEM::get_mem_to_reg(void) const { return (this->memToReg); }
 ui			EXMEM::get_alu_result(void) const { return (this->aluResult); }
 ui			EXMEM::get_write_data(void) const { return (this->writeData); }
 ui			EXMEM::get_write_register(void) const { return (this->writeRegister); }
@@ -71,7 +71,7 @@ Instruction	EXMEM::get_instruction(void) const { return (this->instruction); }
 bool	EXMEM::set_mem_read(bool memRead) { this->memRead = memRead; return (true); }
 bool	EXMEM::set_mem_write(bool memWrite) { this->memWrite = memWrite; return (true); }
 bool	EXMEM::set_reg_write(bool regWrite) { this->regWrite = regWrite; return (true); }
-bool	EXMEM::set_mem_to_reg(ui memToReg) { this->memToReg = memToReg; return (true); }
+bool	EXMEM::set_mem_to_reg(bool memToReg) { this->memToReg = memToReg; return (true); }
 bool	EXMEM::set_alu_result(ui aluResult) { this->aluResult = aluResult; return (true); }
 bool	EXMEM::set_write_data(ui writeData) { this->writeData = writeData; return (true); }
 bool	EXMEM::set_write_register(ui writeRegister) { this->writeRegister = writeRegister; return (true); }
