@@ -107,6 +107,7 @@ bool	decode(Info &info) {
 	} else if (info.ifid.get_instruction().get_format() == J) {
 		// set pcMuxSelect ---------------------------------------------------------------------------------------------
 			info.pcMuxSelect = 1;
+			std::cout << "hello world!\n";
 		// set pcMuxSelect ---------------------------------------------------------------------------------------------
 		// set signal values -------------------------------------------------------------------------------------------
 			info.idex.set_alu_op(0);
@@ -132,7 +133,7 @@ bool	decode(Info &info) {
 		ui	jumpResult = 0xf0000000;
 		jumpResult &= info.ifid.get_pc(); 
 		jumpResult |= (info.ifid.get_instruction().get_id() & 0x03ffffff) << 2;
-		info.pcMuxInput[1] = (jumpResult - info.ifid.get_pc()) / 4 + 1;
+		info.pcMuxInput[1] = (int)(jumpResult - info.ifid.get_pc()) / 4;
 	// calculate jump offset ----------------------------------------------------------------------------------------
 
 	// calculate branch offset --------------------------------------------------------------------------------------
@@ -180,6 +181,14 @@ ui	calc_alu_op(ui opcode) {
 	} else if (opcode == 0) { // r format
 		ret = 0b10;
 	}
+	// } else if (opcode == 0x08 || opcode == 0x09) { // addi 여기서부터는 추가 구현
+	// 	ret = 3;
+	// } else if (opcode == 0x0a || opcode == 0x0b) { // slti
+	// 	ret = 4;
+	// } else if (opcode == 0x0c) { // andi
+	// 	ret = 5;
+	// } else if (opcode == 0x0d) // ori
+	// 	ret = 6;
 	return (ret);
 }
 

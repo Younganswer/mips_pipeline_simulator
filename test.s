@@ -23,12 +23,16 @@ var18:	.word 18
 
 .text 0x00400024
 .globl main
+
+foo:
+	add		$t0, $t0, $t1
+	addi	$t3, $0, 32768
+	j		main
+	add		$t0, $t0, $t1
+	add		$t0, $t0, $t1
+
 main:
 	lw		$t0, 0($gp)
 	lw		$t1, 4($gp)
-	beq		$t0, $t1, foo
 	add		$t2, $t0, $t1
-	addi	$t3, $0, 10
-
-foo:
-	jr		$ra
+	j		foo

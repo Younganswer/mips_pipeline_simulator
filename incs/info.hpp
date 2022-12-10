@@ -65,7 +65,7 @@ class Info {
 		Button				button;
 
 		// Handle program counter
-		ui					pcMuxInput[3];
+		int					pcMuxInput[3];
 		ui					pcMuxSelect;
 		ui					currentPc;
 

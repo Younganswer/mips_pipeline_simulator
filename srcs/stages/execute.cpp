@@ -107,4 +107,14 @@ ui	calc_alu_control(ui alu_op, ui funct) {
 		}
 	}
 	return (ret);
+	// } else if (alu_op == 3) { // addi
+	// 	ret = 0b0010; // ADD
+	// } else if (alu_op == 4) {
+	// 	ret = 0b0110; // SUB
+	// } else if (alu_op == 5) {
+	// 	ret = 0b0000; // AND
+	// } else if (alu_op == 6) {
+	// 	ret = 0b0001; // OR
+	// } else if (alu_op == 7) {
+	// }
 }
