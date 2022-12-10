@@ -34,7 +34,9 @@ bool	fetch(Info &info) {
 	// check Jump, Branch hazard -----------------------------------------------------------------------------------
 		if (info.hazard.if_flush() == true) {
 			info.ifid.set_instruction_hex(0);
-			info.ifid.set_instruction(Instruction());
+			Instruction	newInstruction;
+			newInstruction.set_pc(info.ifid.get_pc());
+			info.ifid.set_instruction(newInstruction);
 		}
 	// check Jump, Branch hazard -----------------------------------------------------------------------------------
 	return (true);

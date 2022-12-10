@@ -1,6 +1,8 @@
 #ifndef INSTRUCTION_HPP
 # define INSTRUCTION_HPP
 
+# define ui unsigned int
+
 # include <string>
 
 using namespace std;
@@ -29,19 +31,19 @@ typedef enum _R_FUNCT {
 
 class Instruction {
 	private:
-		unsigned int	pc;
-		unsigned int	id;
-		int				rs;
-		int				rt;
-		int				rd;
-		int				imm;
-		int				shamt;
-		int				funct;
-		int				opcode;
-		int				result;
-		Format			format;
-		Status			status;
-		string			asmString;
+		ui		pc;
+		ui		id;
+		int		rs;
+		int		rt;
+		int		rd;
+		int		imm;
+		int		shamt;
+		int		funct;
+		int		opcode;
+		int		result;
+		Format	format;
+		Status	status;
+		string	asmString;
 
 	public:
 		Instruction(void);
@@ -49,8 +51,8 @@ class Instruction {
 		~Instruction(void);
 
 		// Getter
-		int		get_id(void) const;
-		int		get_pc(void) const;
+		ui		get_pc(void) const;
+		ui		get_id(void) const;
 		int		get_rs(void) const;
 		int		get_rt(void) const;
 		int		get_rd(void) const;
@@ -64,6 +66,7 @@ class Instruction {
 		string	get_asm_string(void) const;
 
 		// Setter
+		bool	set_pc(ui pc);
 		bool	set_status(Status status);
 };
 

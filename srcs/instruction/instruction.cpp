@@ -42,8 +42,8 @@ Instruction::Instruction(const string &asmString) {
 Instruction::~Instruction(void) {}
 
 // Getter
-int		Instruction::get_id(void) const { return this->id; }
-int		Instruction::get_pc(void) const { return this->pc; }
+ui		Instruction::get_id(void) const { return this->id; }
+ui		Instruction::get_pc(void) const { return this->pc; }
 int		Instruction::get_rs(void) const { return this->rs; }
 int		Instruction::get_rt(void) const { return this->rt; }
 int		Instruction::get_rd(void) const { return this->rd; }
@@ -57,4 +57,5 @@ Status	Instruction::get_status(void) const { return this->status; }
 string	Instruction::get_asm_string(void) const { return this->asmString; }
 
 // Setter
+bool	Instruction::set_pc(ui pc) { this->pc = pc; return (true); }
 bool	Instruction::set_status(Status status) { this->status = status; return (true); }
