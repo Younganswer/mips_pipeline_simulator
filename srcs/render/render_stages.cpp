@@ -92,7 +92,7 @@ bool	render_instruction_fetch(Info &info) {
 				DrawLineEx(Vector2{ -50, 220 }, Vector2{ -170, 220 }, 5.0f, BLACK);
 				DrawLineEx(Vector2{ -170, 220 }, Vector2{ -170, -1125 }, 5.0f, BLACK);
 				draw_left_arrow(-170, -1125, -2500, -1125, BLACK);
-				draw_left_arrow(-1900, -1000, -2500, -1000, BLACK);
+				draw_left_arrow(-1892, -1000, -2500, -1000, BLACK);
 			// draw lines -------------------------------------------------------------------------------------------------
 		// draw and gate sector ----------------------------------------------------------------------------------------
 	// draw mux sector ----------------------------------------------------------------------------------------------
@@ -108,30 +108,30 @@ bool	render_instruction_decode(Info &info) {
 		// draw text --------------------------------------------------------------------------------------------------
 		// draw lines -------------------------------------------------------------------------------------------------
 			draw_right_arrow(-2200, -330, -1150, -330, BLACK);
-			draw_right_arrow(-1300, -550, -1150, -550, BLACK);
+			draw_right_arrow(-1250, -550, -1150, -550, BLACK);
 		// draw lines -------------------------------------------------------------------------------------------------
 	
 		// draw shift left 2 sector -----------------------------------------------------------------------------------
-			draw_circle_lines_ex(-1400, -550, 100, 5.0f, BLACK);
+			draw_circle_lines_ex(-1350, -550, 100, 5.0f, BLACK);
 			// draw text --------------------------------------------------------------------------------------------------
-				DrawTextEx(GetFontDefault(), "Shift", Vector2{ -1455, -610 }, 50.0f, 3.0f, BLACK);
-				DrawTextEx(GetFontDefault(), "Left 2", Vector2{ -1470, -540 }, 50.0f, 3.0f, BLACK);
+				DrawTextEx(GetFontDefault(), "Shift", Vector2{ -1405, -610 }, 50.0f, 3.0f, BLACK);
+				DrawTextEx(GetFontDefault(), "Left 2", Vector2{ -1420, -540 }, 50.0f, 3.0f, BLACK);
 			// draw text --------------------------------------------------------------------------------------------------
 			// draw line --------------------------------------------------------------------------------------------------
-				draw_up_arrow(-1400, 855, -1400, -450, BLACK);
+				draw_up_arrow(-1350, 855, -1350, -450, BLACK);
 			// draw line --------------------------------------------------------------------------------------------------
 		// draw shift left 2 sector -----------------------------------------------------------------------------------
 	// draw ALU sector ----------------------------------------------------------------------------------------------
 
 	// draw sign extend sector --------------------------------------------------------------------------------------
-		draw_circle_lines_ex(-1400, 955, 100, 5.0f, BLACK);
+		draw_circle_lines_ex(-1350, 955, 100, 5.0f, BLACK);
 		// draw text --------------------------------------------------------------------------------------------------
-			DrawTextEx(GetFontDefault(), "Sign", Vector2{ -1445, 895 }, 50.0f, 3.0f, BLACK);
-			DrawTextEx(GetFontDefault(), "Extend", Vector2{ -1480, 965 }, 50.0f, 3.0f, BLACK);
+			DrawTextEx(GetFontDefault(), "Sign", Vector2{ -1395, 895 }, 50.0f, 3.0f, BLACK);
+			DrawTextEx(GetFontDefault(), "Extend", Vector2{ -1430, 965 }, 50.0f, 3.0f, BLACK);
 		// draw text --------------------------------------------------------------------------------------------------
 		// draw line --------------------------------------------------------------------------------------------------
 			DrawCircle(-2050, 955, 10, BLACK);
-			DrawLineEx(Vector2{ -2050, 955 }, Vector2{ -1500, 955 }, 5.0f, BLACK);
+			draw_right_arrow(-2050, 955, -1450, 955, BLACK);
 		// draw line --------------------------------------------------------------------------------------------------
 	// draw sign extend sector --------------------------------------------------------------------------------------
 
@@ -220,11 +220,14 @@ bool	render_instruction_decode(Info &info) {
 				DrawTextEx(GetFontDefault(), "X", Vector2{ -86, 600 }, 40.0f, 3.0f, BLACK);
 			// draw text --------------------------------------------------------------------------------------------------
 			// draw lines -------------------------------------------------------------------------------------------------
+				DrawLineEx(Vector2{ 1333, 1570 }, Vector2{ -210, 1570 }, 5.0f, BLACK);
+				DrawLineEx(Vector2{ -210, 1570 }, Vector2{ -210, -140 }, 5.0f, BLACK);
+
 				draw_right_arrow(-250, 535, -100, 535, BLACK);
-				DrawLineEx(Vector2{ 1300, 1703.2 }, Vector2{ -210, 1703.2 }, 5.0f, BLACK);
-				DrawLineEx(Vector2{ -210, 1703.2 }, Vector2{ -210, -140 }, 5.0f, BLACK);
+				
 				DrawCircle(-210, 605, 10.0f, BLACK);
 				draw_right_arrow(-210, 605, -100, 605, BLACK);
+
 				DrawLineEx(Vector2{ 1500, 1820 }, Vector2{ 1500, 1946.6 }, 5.0f, BLACK);
 				DrawLineEx(Vector2{ 1500, 1946.6 }, Vector2{ -75, 1946.6 }, 5.0f, BLACK);
 				draw_up_arrow(-75, 1946.6, -75, 645, BLACK);
@@ -277,15 +280,17 @@ bool	render_execute(Info &info) {
 			DrawTextEx(GetFontDefault(), "X", Vector2{ 778, -35 }, 70.0f, 3.0f, BLACK);
 		// draw text --------------------------------------------------------------------------------------------------
 		// draw lines -------------------------------------------------------------------------------------------------
+			DrawCircle(550, 2320, 10.0f, BLACK);
+			DrawLineEx(Vector2{ 550, 2320 }, Vector2{ 550, -120 }, 5.0f, BLACK);
 			draw_right_arrow(550, -120, 750, -120, BLACK);
 			draw_right_arrow(400, -70, 750, -70, BLACK);
 			draw_right_arrow(650, -20, 750, -20, BLACK);
-			DrawLineEx(Vector2{ 1335, 1570 }, Vector2{ 900, 1570 }, 5.0f, BLACK);
-			DrawLineEx(Vector2{ 900, 1570 }, Vector2{ 900, 220 }, 5.0f, BLACK);
+			
+			DrawLineEx(Vector2{ 1580, 1520 }, Vector2{ 1580, 1400 }, 5.0f, BLACK);
+			DrawLineEx(Vector2{ 1580, 1400 }, Vector2{ 900, 1400 }, 5.0f, BLACK);
+			DrawLineEx(Vector2{ 900, 1400 }, Vector2{ 900, 220 }, 5.0f, BLACK);
 			DrawLineEx(Vector2{ 900, 220 }, Vector2{ 800, 220 }, 5.0f, BLACK);
 			draw_up_arrow(800, 220, 800, 80, BLACK);
-			DrawCircle(550, 2320, 10.0f, BLACK);
-			DrawLineEx(Vector2{ 550, 2320 }, Vector2{ 550, -120 }, 5.0f, BLACK);
 		// draw lines -------------------------------------------------------------------------------------------------
 	// draw mux sector -----------------------------------------------------------------------------------------------
 
@@ -302,8 +307,11 @@ bool	render_execute(Info &info) {
 			draw_right_arrow(400, 535, 750, 535, BLACK);
 			DrawCircle(650, 585, 10.0f, BLACK);
 			draw_right_arrow(650, 585, 750, 585, BLACK);
-			DrawLineEx(Vector2{ 1300, 1636.6 }, Vector2{ 800, 1636.6 }, 5.0f, BLACK);
-			draw_up_arrow(800, 1636.6, 800, 685, BLACK);
+
+			DrawLineEx(Vector2{ 1500, 1520 }, Vector2{ 1500, 1425 }, 5.0f, BLACK);
+			DrawLineEx(Vector2{ 1500, 1425 }, Vector2{ 800, 1425 }, 5.0f, BLACK);
+			draw_up_arrow(800, 1425, 800, 685, BLACK);
+
 			DrawCircle(2300, 235, 10.0f, BLACK);
 			DrawLineEx(Vector2{ 2300, 235 }, Vector2{ 2300, 2010 }, 5.0f, BLACK);
 			DrawLineEx(Vector2{ 2300, 2010 }, Vector2{ 650, 2010 }, 5.0f, BLACK);
@@ -458,3 +466,7 @@ bool	render_write_back(Info &info) {
 	(void) info;
 	return (true);
 }
+
+//
+// 1636.6
+// 1703.2

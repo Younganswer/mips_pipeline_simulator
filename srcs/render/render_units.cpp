@@ -31,6 +31,14 @@ bool	render_hazard_unit(Info &info) {
 			DrawTextEx(GetFontDefault(), "Hazard", Vector2{ -1460, -1660 }, 70.0f, 3.0f, RED);
 			DrawTextEx(GetFontDefault(), "detection", Vector2{ -1495, -1580 }, 70.0f, 3.0f, RED);
 			DrawTextEx(GetFontDefault(), "unit", Vector2{ -1410, -1500 }, 70.0f, 3.0f, RED);
+
+			DrawCircle(475, 1160, 10.0f, RED);
+			DrawLineEx(Vector2{ 475, 1160 }, Vector2{ 475, 1600 }, 5.0f, RED);
+			DrawLineEx(Vector2{ 475, 1600 }, Vector2{ -1500, 1600 }, 5.0f, RED);
+			draw_up_arrow(-1500, 1600, -1500, -1400, RED);
+
+			DrawCircle(-1400, -1125, 10.0f, RED);
+			draw_up_arrow(-1400, -1125, -1400, -1400, RED);
 		// draw text --------------------------------------------------------------------------------------------------
 	// draw hazard unit sector ------------------------------------------------------------------------------------
 	(void) info;
@@ -64,18 +72,37 @@ bool	render_forwarding_unit(Info &info) {
 		// draw text --------------------------------------------------------------------------------------------------
 		// draw lines -------------------------------------------------------------------------------------------------
 			DrawLineEx(Vector2{ 400, 1400 }, Vector2{ 725, 1400 }, 5.0f, GOLD);
-			DrawLineEx(Vector2{ 725, 1400 }, Vector2{ 725, 1770 }, 5.0f, GOLD);
-			draw_right_arrow(725, 1770, 1335, 1770, GOLD);
+			DrawLineEx(Vector2{ 725, 1400 }, Vector2{ 725, 1450 }, 5.0f, GOLD);
+			DrawLineEx(Vector2{ 725, 1450 }, Vector2{ 1420, 1450 }, 5.0f, GOLD);
+			draw_down_arrow(1420, 1450, 1420, 1520, GOLD);
+
 			DrawCircle(1450, 1160, 10.0f, GOLD);
-			draw_down_arrow(1450, 1160, 1450, 1520, GOLD);
+			DrawLineEx(Vector2{ 1450, 1160 }, Vector2{ 1450, 1375 }, 5.0f, GOLD);
+			DrawLineEx(Vector2{ 1450, 1375 }, Vector2{ 1660, 1375 }, 5.0f, GOLD);
+			draw_down_arrow(1660, 1375, 1660, 1520, GOLD);
+
 			draw_left_arrow(1870, 1590, 1760, 1590, GOLD);
 			draw_left_arrow(1870, 1750, 1760, 1750, GOLD);
+
 			DrawCircle(2200, 1220, 10, GOLD);
 			DrawLineEx(Vector2{ 2200, 1220 }, Vector2{ 2200, 1910 }, 5.0f, GOLD);
 			DrawLineEx(Vector2{ 2200, 1910 }, Vector2{ 1660, 1910 }, 5.0f, GOLD);
 			draw_up_arrow(1660, 1910, 1660, 1820, GOLD);
+			
 			DrawCircle(1580, 2110, 10, GOLD);
 			draw_up_arrow(1580, 2110, 1580, 1820, GOLD);
+
+			DrawCircle(-1810, 1160, 10, GOLD);
+			DrawLineEx(Vector2{ -1810, 1160 }, Vector2{ -1810, 1636.6 }, 5.0f, GOLD);
+			draw_right_arrow(-1810, 1636.6, 1302, 1636.6, GOLD);
+
+			DrawCircle(-1930, 1400, 10, GOLD);
+			DrawLineEx(Vector2{ -1930, 1400 }, Vector2{ -1930, 1703.2 }, 5.0f, GOLD);
+			draw_right_arrow(-1930, 1703.2, 1302, 1703.2, GOLD);
+
+			DrawCircleSector(Vector2{ -2050, 1400 }, 10.0f, 45.0f, -135.0f, 0, GOLD);
+			DrawLineEx(Vector2{ -2050, 1400 }, Vector2{ -2050, 1769.8 }, 5.0f, GOLD);
+			draw_right_arrow(-2050, 1769.8, 1333, 1769.8, GOLD);
 		// draw lines -------------------------------------------------------------------------------------------------
 		// draw EX/MEM RegWrite sector -------------------------------------------------------------------------------
 			DrawRectangleLinesEx(Rectangle{ 1870, 1515, 250, 150 }, 5.0f, BLUE);

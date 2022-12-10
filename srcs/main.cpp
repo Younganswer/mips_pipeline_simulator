@@ -50,9 +50,7 @@ int	main(int argc, char **argv) {
 	return (0);
 }
 
-// TODO: immediate 작동하게 만들기
 // TODO: data segment 페이지 넘기게 하기 왼, 오 []
-// TODO: hazard unit execute단계에서 사용하는 rt선 연결해주기
-// TODO: IF flush 선 그리기
-// TODO: Register Equal signal 선 그리기
 // TODO: forwarding C, D 로직 구현
+// TODO: IF flush 선 그리기
+// TODO: immediate 작동하게 만들기
