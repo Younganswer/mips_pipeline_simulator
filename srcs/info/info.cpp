@@ -22,6 +22,9 @@ Info::Info(const char *textSegment, const char *dataSegment) {
 		instructions.push_back(Instruction(asmLine));
 	}
 	asmFile.close();
+	Instruction	instruction;
+	instruction.set_pc((instructions.end() - 1)->get_pc() + 4);
+	instructions.push_back(instruction); // End of instructions
 
 	(void) dataSegment;
 	// Initialize data

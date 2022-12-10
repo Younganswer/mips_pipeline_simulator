@@ -6,7 +6,7 @@ bool	fetch(Info &info) {
 	info.pcMuxInput[0] = 1;
 
 	// End of instructions
-	if (info.instructionIndex == info.instructions.size()) {
+	if (info.instructionIndex == info.instructions.size() + 1) {
 		info.ifid.set_instruction(Instruction());
 		info.ifid.set_pc(0);
 		info.ifid.set_instruction_hex(0);
