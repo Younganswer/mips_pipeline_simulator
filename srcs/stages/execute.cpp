@@ -4,65 +4,80 @@
 ui	calc_alu_control(ui aluOp, ui funct);
 
 bool	execute(Info &info) {
+	Instruction	instruction = info.idex.get_instruction();
+	instruction.set_status(EX);
+	info.exmem.set_instruction(instruction);
+
 	// set control signal in EX/MEM pipeline register -------------------------------------------------------------
 		info.exmem.set_mem_read(info.idex.get_mem_read());
 		info.exmem.set_mem_write(info.idex.get_mem_write());
 		info.exmem.set_mem_to_reg(info.idex.get_mem_to_reg());
 		info.exmem.set_reg_write(info.idex.get_reg_write());
 	// set control signal in EX/MEM pipeline register -------------------------------------------------------------
-	// check forwarding ------------------------------------------------------------------------------------------
-		// set forwarding values in EX/MEM pipeline register -------------------------------------------------------
-		info.forward.set_wb_rd(info.memwb.get_instruction().get_rd());
-		info.forward.set_wb_rw(info.memwb.get_reg_write());
-		info.forward.set_mem_rd(info.exmem.get_instruction().get_rd());
-		info.forward.set_ex_rs(info.idex.get_instruction().get_rs());
-		info.forward.set_ex_rt(info.idex.get_instruction().get_rt());
-		// set forwarding values in EX/MEM pipeline register -------------------------------------------------------
 
-	// TODO: select read data 2 value in mux - is it forwarded or not? -----------------------------------------------------
-	ui	aluInputa = 0;
-	if (info.forward.forward_a() == 0) {
-		aluInputa = info.idex.get_read_data1();
-	} else if (info.forward.forward_a() == 1) {
-		aluInputa = info.exmem.get_alu_result();
-	} else if (info.forward.forward_a() == 2) {
-		aluInputa = info.memwb.get_alu_result();
-	}
-	ui	aluInputb = 0;
-	if (info.forward.forward_b() == 0) {
-		aluInputb = info.idex.get_read_data2();
-	} else if (info.forward.forward_b() == 1) {
-		aluInputb = info.exmem.get_alu_result();
-	} else if (info.forward.forward_b() == 2) {
-		aluInputb = info.memwb.get_alu_result();
-	}
-	// calculate alu control
-	ui	aluControl = calc_alu_control(info.idex.get_alu_op(), info.idex.get_instruction().get_funct());
+	// set forwarding unit ------------------------------------------------------------------------------------------
+		info.forward.set_ex_rs(info.idex.get_rs());
+		info.forward.set_ex_rt(info.idex.get_rt());
+	// set forwarding unit ------------------------------------------------------------------------------------------
+
+	// select read data value from mux ------------------------------------------------------------------------
+		ui	readData1 = 0;
+		if (info.forward.forward_a() == 0b00) {
+			readData1 = info.idex.get_read_data1();
+		} else if (info.forward.forward_a() == 0b10) {
+			readData1 = info.exmem.get_alu_result();
+		} else if (info.forward.forward_a() == 0b01) {
+			readData1 = info.memwb.get_alu_result();
+		}
+		ui	readData2 = 0;
+		if (info.forward.forward_b() == 0b00) {
+			readData2 = info.idex.get_read_data2();
+		} else if (info.forward.forward_b() == 0b10) {
+			readData2 = info.exmem.get_alu_result();
+		} else if (info.forward.forward_b() == 0b01) {
+			readData2 = info.memwb.get_alu_result();
+		}
+	// select read data value from mux ------------------------------------------------------------------------
+
+	// set ALU src -------------------------------------------------------------------------------------------
+		ui	aluInputA = readData1;
+		ui	aluInputB = (info.idex.get_alu_src()) ? info.idex.get_extend_imm() : readData2;
+	// set ALU src -------------------------------------------------------------------------------------------
+
+	// get alu control -------------------------------------------------------------------------------------------
+		ui	aluControl = calc_alu_control(info.idex.get_alu_op(), info.idex.get_instruction().get_funct());
+	// get alu control -------------------------------------------------------------------------------------------
+
 	// calculate ALU result by ALU control signal ----------------------------------------------------------------
-	ui	aluResult = 0;
-	if (aluControl == 0b0010) { // ADD
-		aluResult = aluInputa + aluInputb;
-	} else if (aluControl == 0b0110) { // SUB
-		aluResult = aluInputa - aluInputb;
-	} else if (aluControl == 0b0000) { // AND
-		aluResult = aluInputa & aluInputb;
-	} else if (aluControl == 0b0001) { // OR
-		aluResult = aluInputa | aluInputb;
-	} else if (aluControl == 0b0111) { // SLT
-		aluResult = aluInputa < aluInputb;
-	}
-	(void)aluResult;
+		ui	aluResult = 0;
+		if (aluControl == 0b0010) { // ADD
+			aluResult = aluInputA + aluInputB;
+		} else if (aluControl == 0b0110) { // SUB
+			aluResult = aluInputA - aluInputB;
+		} else if (aluControl == 0b0000) { // AND
+			aluResult = aluInputA & aluInputB;
+		} else if (aluControl == 0b0001) { // OR
+			aluResult = aluInputA | aluInputB;
+		} else if (aluControl == 0b0111) { // SLT
+			aluResult = aluInputA < aluInputB;
+		}
 	// calculate ALU result by ALU control signal ----------------------------------------------------------------
-	// TODO: select rt value in mux - is it forwarded or not? -----------------------------------------------------
-	// TODO: select ALU Source value in mux - is it rt value or immediated value? ---------------------------------
-	// TODO: Calculate ALU result ---------------------------------------------------------------------------------
-	// TODO: select register destination - is it rd or rt? --------------------------------------------------------
-	ui	regDst = 0;
-	if (info.idex.get_reg_dst() == 0)
-		regDst = info.idex.get_rt();
-	else if (info.idex.get_reg_dst() == 1)
-		regDst = info.idex.get_rd();
-	(void) regDst;
+
+	// set register destination -----------------------------------------------------------------------------------
+		ui	regDst = 0;
+		if (info.idex.get_reg_dst() == 0) {
+			regDst = info.idex.get_rt();
+		} else if (info.idex.get_reg_dst() == 1) {
+			regDst = info.idex.get_rd();
+		}
+	// set register destination -----------------------------------------------------------------------------------
+
+	// set EX/MEM pipeline register values ------------------------------------------------------------------
+		info.exmem.set_alu_result(aluResult);
+		info.exmem.set_write_data(readData2);
+		info.exmem.set_write_register(regDst);
+	// set EX/MEM pipeline register values ------------------------------------------------------------------
+
 	// TODO: set EX/MEM pipeline register values ------------------------------------------------------------------
 	(void) info;
 	return (true);

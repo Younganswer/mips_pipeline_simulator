@@ -160,7 +160,7 @@ bool	render_instruction_decode(Info &info) {
 			// write register -----------------------------------------------------------------------------------------
 				DrawTextEx(GetFontDefault(), "WriteReg", Vector2{ -810, 580 }, 50.0f, 3.0f, BLACK);
 				DrawTextEx(GetFontDefault(), "=>", Vector2{ -800, 640 }, 50.0f, 3.0f, BLACK);
-				string	writeReg = string("$") + to_string(info.ifid.get_instruction().get_rd());
+				string	writeReg = string("$") + to_string(info.memwb.get_write_register());
 				DrawTextEx(GetFontDefault(), writeReg.c_str(), Vector2{ -750, 640 }, 50.0f, 3.0f, BLACK);
 			// write register -----------------------------------------------------------------------------------------
 			// read data 1 -------------------------------------------------------------------------------------------

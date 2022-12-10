@@ -30,19 +30,19 @@ void	Forward::set_wb_rw(bool wbRw) { this->wbRw = wbRw; }
 // Utils
 
 int		Forward::forward_a(void) const {
-	if (this->exRs == this->wbRd && this->wbRw) {
-		return (2);
-	} else if (this->exRs == this->memRd && this->memRw) {
-		return (1);
+	if (this->exRs == this->memRd && this->memRw) {
+		return (0b10);
+	} else if (this->exRs == this->wbRd && this->wbRw) {
+		return (0b01);
 	}
-	return (0);
+	return (0b00);
 }
 
 int		Forward::forward_b(void) const {
-	if (this->exRt == this->wbRd && this->wbRw) {
-		return (2);
-	} else if (this->exRt == this->memRd && this->memRw) {
-		return (1);
+	if (this->exRt == this->memRd && this->memRw) {
+		return (0b10);
+	} else if (this->exRt == this->wbRd && this->wbRw) {
+		return (0b01);
 	}
 	return (0);
 }

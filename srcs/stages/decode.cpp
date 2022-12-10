@@ -32,7 +32,7 @@ bool	decode(Info &info) {
 	if (instruction.get_format() == R) {
 		// set signal values -------------------------------------------------------------------------------------------
 			info.idex.set_alu_op(calc_alu_op(instruction.get_opcode()));
-			info.idex.set_alu_src(0); // mux flag 0: ReadData2 is source of alu
+			info.idex.set_alu_src(1); // mux flag 1: ReadData2 is source of alu
 			info.idex.set_reg_dst(1); // mux flag 1: rd is destination
 			info.idex.set_mem_read(0); // False: R format doesn't use memory
 			info.idex.set_mem_write(0); // False: R format doesn't use memory
@@ -51,7 +51,7 @@ bool	decode(Info &info) {
 	} else if (instruction.get_format() == I) {
 		// set signal values -------------------------------------------------------------------------------------------
 			info.idex.set_alu_op(calc_alu_op(instruction.get_opcode()));
-			info.idex.set_alu_src(1); // mux flag 1: imm is source of alu
+			info.idex.set_alu_src(0); // mux flag 0: imm is source of alu
 			info.idex.set_reg_dst(0); // mux flag 0: rt is destination
 			if (instruction.get_opcode() == 0x23) { // lw
 				info.idex.set_mem_read(1); // True: lw reads memory
@@ -103,7 +103,7 @@ bool	decode(Info &info) {
 		// set register values -----------------------------------------------------------------------------------------
 	}
 	// calculate jump offset
-	ui	jumpResult = 0xf0000000; // 0b 1111 0000 0000 0000 0000 0000 0000 0000
+	ui	jumpResult = 0xf0000000;
 	jumpResult &= info.ifid.get_pc(); 
 	jumpResult |= (info.ifid.get_instruction().get_id() & 0x03ffffff) << 2;
 	info.pcMuxInput[1] = (jumpResult - info.ifid.get_pc()) / 4 + 1;
@@ -124,11 +124,11 @@ ui	extend_sign(ui imm) {
 ui	calc_alu_op(ui opcode) {
 	ui	ret = -1;
 
-	if (opcode == 0x23 || opcode == 0x2b) {
+	if (opcode == 0x23 || opcode == 0x2b) { // lw, sw
 		ret = 0b00;
-	} else if (opcode == 0x04) {
+	} else if (opcode == 0x04) { // beq
 		ret = 0b01;
-	} else if (opcode == 0) {
+	} else if (opcode == 0) { // r format
 		ret = 0b10;
 	}
 	return (ret);

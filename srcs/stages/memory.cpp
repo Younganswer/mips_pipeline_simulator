@@ -27,7 +27,6 @@ bool	memory(Info &info) {
 	// set mem/wb signal ------------------------------------------------------------------------------------
 
 	// set mem/wb values ------------------------------------------------------------------------------------
-		// TODO: What should I do if memRead is false?
 		info.memwb.set_data_read(0);
 		if (info.exmem.get_mem_read() == true) {
 			info.memwb.set_data_read(get_data_from_memory(info));
@@ -41,11 +40,18 @@ bool	memory(Info &info) {
 			Memory	mem;
 			mem.address = info.exmem.get_alu_result();
 			mem.value = info.exmem.get_write_data();
-			info.mem.push_back(mem);
-			sort(info.mem.begin(), info.mem.end(), cmp);
+			auto	it = find_if(info.mem.begin(), info.mem.end(), [mem](const Memory &mem2) {
+				return (mem.address == mem2.address);
+			});
+			if (it == info.mem.end()) {
+				info.mem.push_back(mem);
+				sort(info.mem.begin(), info.mem.end(), cmp);
+			} else {
+				it->value = mem.value;
+			}
 		}
 	// write data to memory ---------------------------------------------------------------------------------
-	
+
 	// TODO: set forwarding unit ----------------------------------------------------------------------------------
 		// info.forwarding_unit.set_reg_write(info.exmem.get_reg_write());
 	(void) info;
@@ -54,15 +60,17 @@ bool	memory(Info &info) {
 
 ui	get_data_from_memory(Info &info) {
 	ui	ret = 0;
-	ui	address = info.memwb.get_alu_result();
+	ui	address = info.exmem.get_alu_result();
 
-	find_if(info.mem.begin(), info.mem.end(), [&ret, address](const Memory &mem) {
-		if (mem.address == address) {
-			ret = mem.value;
-			return (ret);
-		}
-		return (ret);
+	auto	it = find_if(info.mem.begin(), info.mem.end(), [address](const Memory &mem) {
+		return (mem.address == address);
 	});
+
+	cout << address << '\n';
+	cout << it->address << " " << it->value << '\n';
+	if (it != info.mem.end()) {
+		ret = it->value;
+	}
 	return (ret);
 }
 
