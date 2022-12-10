@@ -27,21 +27,24 @@ bool	execute(Info &info) {
 		} else if (info.forward.forward_a() == 0b10) {
 			readData1 = info.exmem.get_alu_result();
 		} else if (info.forward.forward_a() == 0b01) {
-			readData1 = info.memwb.get_alu_result();
+			readData1 = (info.memwb.get_mem_to_reg() == true) ? info.memwb.get_data_read() : info.memwb.get_alu_result();
 		}
 		ui	readData2 = 0;
 		if (info.forward.forward_b() == 0b00) {
+			cout << "0b00" << '\n';
 			readData2 = info.idex.get_read_data2();
 		} else if (info.forward.forward_b() == 0b10) {
+			cout << "0b10" << '\n';
 			readData2 = info.exmem.get_alu_result();
 		} else if (info.forward.forward_b() == 0b01) {
-			readData2 = info.memwb.get_alu_result();
+			cout << "0b01" << '\n';
+			readData2 = (info.memwb.get_mem_to_reg() == true) ? info.memwb.get_data_read() : info.memwb.get_alu_result();
 		}
 	// select read data value from mux ------------------------------------------------------------------------
 
 	// set ALU src -------------------------------------------------------------------------------------------
 		ui	aluInputA = readData1;
-		ui	aluInputB = (info.idex.get_alu_src()) ? info.idex.get_extend_imm() : readData2;
+		ui	aluInputB = (info.idex.get_alu_src() == 0) ? info.idex.get_extend_imm() : readData2;
 	// set ALU src -------------------------------------------------------------------------------------------
 
 	// get alu control -------------------------------------------------------------------------------------------

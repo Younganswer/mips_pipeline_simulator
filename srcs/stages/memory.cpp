@@ -52,8 +52,12 @@ bool	memory(Info &info) {
 		}
 	// write data to memory ---------------------------------------------------------------------------------
 
-	// TODO: set forwarding unit ----------------------------------------------------------------------------------
-		// info.forwarding_unit.set_reg_write(info.exmem.get_reg_write());
+	// set forwarding unit ----------------------------------------------------------------------------------
+		info.forward.set_mem_rd(info.memwb.get_write_register());
+		info.forward.set_mem_rw(info.memwb.get_reg_write());
+	// set forwarding unit ----------------------------------------------------------------------------------
+
+
 	(void) info;
 	return (true);
 }
@@ -66,8 +70,6 @@ ui	get_data_from_memory(Info &info) {
 		return (mem.address == address);
 	});
 
-	cout << address << '\n';
-	cout << it->address << " " << it->value << '\n';
 	if (it != info.mem.end()) {
 		ret = it->value;
 	}

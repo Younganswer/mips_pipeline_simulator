@@ -1,4 +1,7 @@
 #include "../../incs/forward.hpp"
+#include <iostream>
+
+using namespace std;
 
 Forward::Forward(void) {
 	this->exRs = 0;
@@ -39,10 +42,11 @@ int		Forward::forward_a(void) const {
 }
 
 int		Forward::forward_b(void) const {
+	cout << "exRt: " << this->exRt << ", memRd: " << this->memRd << ", memRw: " << this->memRw << ", wbRd: " << this->wbRd << ", wbRw: " << this->wbRw << endl;
 	if (this->exRt == this->memRd && this->memRw) {
 		return (0b10);
 	} else if (this->exRt == this->wbRd && this->wbRw) {
 		return (0b01);
 	}
-	return (0);
+	return (0b00);
 }

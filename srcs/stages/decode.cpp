@@ -11,6 +11,7 @@ bool	decode(Info &info) {
 	instruction.set_status(ID);
 	info.idex.set_instruction(instruction);
 	info.pcMuxSelect = 0;
+
 	// IF/ID pipe is empty
 	if (instruction.get_pc() == 0) {
 		// set all values to 0
@@ -30,6 +31,9 @@ bool	decode(Info &info) {
 		return (true);
 	}
 
+	// set_mem_read ---------------------------------------------------------------------------------------------------------
+		info.hazard.set_mem_read(info.idex.get_mem_read());
+	// set_mem_read ---------------------------------------------------------------------------------------------------------
 	if (instruction.get_format() == R) {
 		// set signal values -------------------------------------------------------------------------------------------
 			info.idex.set_alu_op(calc_alu_op(instruction.get_opcode()));
@@ -117,7 +121,6 @@ bool	decode(Info &info) {
 	// calculate branch offset --------------------------------------------------------------------------------------
 
 	// set hazard unit -------------------------------------------------------------------------------------------
-		info.hazard.set_mem_read(info.idex.get_mem_read());
 		info.hazard.set_id_rs(info.ifid.get_instruction().get_rs());
 		info.hazard.set_id_rt(info.ifid.get_instruction().get_rt());
 		info.hazard.set_is_jumped(info.pcMuxSelect == 1);

@@ -14,10 +14,7 @@ Hazard::Hazard(void) {
 Hazard::~Hazard(void) {}
 
 bool	Hazard::lw_data_hazard(void) const {
-	bool	ret = this->memRead && (this->idRs == this->exRt || this->idRt == this->exRt);
-	cout << "memRead: " << this->memRead << ", idRs: " << this->idRs << ", idRt: " << this->idRt << ", exRt: " << this->exRt << '\n';
-	cout << "LW data hazard: " << ((ret) ? "True" : "False") << '\n';
-	return (ret);
+	return (this->memRead && (this->idRs == this->exRt || this->idRt == this->exRt));
 }
 
 // Getters

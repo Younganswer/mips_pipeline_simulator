@@ -10,7 +10,12 @@ bool	writeback(Info &info) {
 			info.registerValues[dst] = src;
 		}
 	// write back data -------------------------------------------------------------------------------------------------------------
+
 	// forward data ----------------------------------------------------------------------------------------------------------------
+		info.forward.set_wb_rd(info.memwb.get_write_register());
+		info.forward.set_wb_rw(info.memwb.get_reg_write());
+	// forward data ----------------------------------------------------------------------------------------------------------------
+
 	// TODO : 끝났을 때 사이클 수 안늘어나게 처리하기.
 	(void) info;
 	return (true);
