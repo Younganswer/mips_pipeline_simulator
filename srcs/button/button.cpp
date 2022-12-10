@@ -47,8 +47,10 @@ bool	Button::set_state(void) {
 bool	Button::set_pos(void) {
 	if (this->state == MOUSE_HOVER || this->state == PRESSED) {
 		this->btnBounds.x = (float)screenWidth - (this->texture.width+20);
+		this->btnBounds.width = (float)this->texture.width + 20;
 	} else {
 		this->btnBounds.x = (float)screenWidth - (this->texture.width-20);
+		this->btnBounds.width = (float)this->texture.width - 20;
 	}
 	return (true);
 }

@@ -28,6 +28,7 @@ main:
 	lw		$t1, 4($gp)
 	beq		$t0, $t1, foo
 	add		$t2, $t0, $t1
+	addi	$t3, $0, 10
 
 foo:
 	jr		$ra
