@@ -3,10 +3,23 @@
 
 bool	render_register(Info &info);
 bool	render_user_data_segment(Info &info);
+bool	render_user_data_segment_page(Info &info);
+
+static int	curPage = 0;
 
 bool	render_data(Info &info) {
+	static bool	activeUserDataSegmentPage = false;
+	if (IsKeyPressed(KEY_D)) {
+		activeUserDataSegmentPage = !activeUserDataSegmentPage;
+	}
+
 	render_register(info);
 	render_user_data_segment(info);
+	if (activeUserDataSegmentPage) {
+		render_user_data_segment_page(info);
+	} else {
+		curPage = 0;
+	}
 	return (true);
 }
 
@@ -52,5 +65,45 @@ bool	render_user_data_segment(Info &info) {
 			DrawTextEx(GetFontDefault(), value.c_str(), (Vector2){ screenWidth-200+100, (float)465+(i*15) }, 10.0f, 1.0f, BLACK);
 		}
 	// draw data segment contents ------------------------------------------------------------------------------------------------------------
+	return (true);
+}
+
+bool	render_user_data_segment_page(Info &info) {
+	const size_t	numOfDataInARow = 11+(SIZE_FACTOR-7)*7;
+	if (IsKeyPressed(KEY_LEFT_BRACKET)) {
+		curPage--;
+		if (curPage < 0) {
+			curPage = 0;
+		}
+	} else if (IsKeyPressed(KEY_RIGHT_BRACKET)) {
+		curPage++;
+		if (info.mem.size() < (curPage+1)*numOfDataInARow) {
+			curPage--;
+		}
+	}
+
+	// draw user data segment sector ---------------------------------------------------------------------------------------------------------
+		DrawRectangle(10, 165, screenWidth-250, screenHeight-175, Fade(RAYWHITE, 0.9f));
+		DrawRectangleLines(10, 165, screenWidth-250, screenHeight-175, BLACK);
+	// draw user data segment sector ---------------------------------------------------------------------------------------------------------
+
+	// draw text ------------------------------------------------------------------------------------------------------------------------------
+		DrawTextEx(GetFontDefault(), "User data segment", (Vector2){ 30, 180.0f }, 40.0f, 1.0f, BLACK);
+	// draw text ------------------------------------------------------------------------------------------------------------------------------
+
+	// draw user data segment -----------------------------------------------------------------------------------------------------------------
+		for (size_t i=0; i<numOfDataInARow&&i+curPage*numOfDataInARow<info.mem.size(); i++) {
+			string	address = string("[") + n2hexstr(info.mem[i+curPage*numOfDataInARow].address) + string("]");
+			string	value = n2hexstr(info.mem[i+curPage*numOfDataInARow].value);
+			DrawTextEx(GetFontDefault(), address.c_str(), (Vector2){ 30, (float)240+(i*45) }, 30.0f, 1.0f, BLACK);
+			DrawTextEx(GetFontDefault(), value.c_str(), (Vector2){ 240, (float)240+(i*45) }, 30.0f, 1.0f, BLACK);
+		}
+		for (size_t i=numOfDataInARow; i<2*numOfDataInARow&&i+curPage*numOfDataInARow<info.mem.size(); i++) {
+			string	address = string("[") + n2hexstr(info.mem[i+curPage*numOfDataInARow].address) + string("]");
+			string	value = n2hexstr(info.mem[i+curPage*numOfDataInARow].value);
+			DrawTextEx(GetFontDefault(), address.c_str(), (Vector2){ 500, (float)240+((i-numOfDataInARow)*45) }, 30.0f, 1.0f, BLACK);
+			DrawTextEx(GetFontDefault(), value.c_str(), (Vector2){ 710, (float)240+((i-numOfDataInARow)*45) }, 30.0f, 1.0f, BLACK);
+		}
+	(void) info;
 	return (true);
 }
