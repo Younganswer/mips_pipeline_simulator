@@ -12,6 +12,12 @@ bool	decode(Info &info) {
 	info.idex.set_instruction(instruction);
 	info.pcMuxSelect = 0;
 
+	// setting forward opcode -------------------------------------------------------------------------------------------
+		info.forward.set_id_opcode(info.idex.get_instruction().get_opcode());
+		info.forward.set_de_rs(info.idex.get_instruction().get_rs());
+		info.forward.set_de_rt(info.idex.get_instruction().get_rt());
+	// setting forward opcode -------------------------------------------------------------------------------------------
+
 	// IF/ID pipe is empty
 	if (instruction.get_pc() == 0) {
 		// set all values to 0
@@ -73,17 +79,29 @@ bool	decode(Info &info) {
 				info.idex.set_mem_write(0);
 				info.idex.set_mem_to_reg(0);
 				info.idex.set_reg_write(1);
-				info.pcMuxSelect = 2;
 			}
 		// set signal values -------------------------------------------------------------------------------------------
 
 		// set register values -----------------------------------------------------------------------------------------
-			info.idex.set_read_data_1(info.registerValues[instruction.get_rs()]);
-			info.idex.set_read_data_2(info.registerValues[instruction.get_rt()]);
+			// check forward c
+			if (info.forward.forward_c() == true)
+				info.idex.set_read_data_1(info.memwb.get_data_read());
+			else
+				info.idex.set_read_data_1(info.registerValues[instruction.get_rs()]);
+			// check forward d
+			if (info.forward.forward_d() == true)
+				info.idex.set_read_data_2(info.memwb.get_data_read());
+			else
+				info.idex.set_read_data_2(info.registerValues[instruction.get_rt()]);
 			info.idex.set_extend_imm(extend_sign(instruction.get_imm()));
 			info.idex.set_rs(instruction.get_rs());
 			info.idex.set_rt(instruction.get_rt());
 			info.idex.set_rd(instruction.get_rd());
+			if (instruction.get_opcode() == 0x04) // beq
+			{
+				if (info.idex.get_read_data1() == info.idex.get_read_data2())
+					info.pcMuxSelect = 2;
+			}
 		// set register values -----------------------------------------------------------------------------------------
 	} else if (info.ifid.get_instruction().get_format() == J) {
 		// set pcMuxSelect ---------------------------------------------------------------------------------------------
@@ -136,6 +154,8 @@ bool	decode(Info &info) {
 			info.idex.set_mem_write(0);
 			info.idex.set_mem_to_reg(0);
 			info.idex.set_reg_write(0);
+			info.hazard.set_is_jumped(false);
+			info.hazard.set_is_branched(false);
 		}
 	// set signal hazard detected -------------------------------------------------------------------------------------------
 	(void) info;

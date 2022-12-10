@@ -1,6 +1,6 @@
 .data 0x10008000
 var1:	.word 0x12345678
-var2:	.word 0x9abcdef0
+var2:	.word 0x12345678
 var3:	.word 3
 var4:	.word 4
 var5:	.word 5
@@ -26,8 +26,8 @@ var18:	.word 18
 main:
 	lw		$t0, 0($gp)
 	lw		$t1, 4($gp)
+	beq		$t0, $t1, foo
 	add		$t2, $t0, $t1
-	beq		$0, $0, foo
 
 foo:
 	jr		$ra
