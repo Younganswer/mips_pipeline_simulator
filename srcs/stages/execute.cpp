@@ -31,13 +31,10 @@ bool	execute(Info &info) {
 		}
 		ui	readData2 = 0;
 		if (info.forward.forward_b() == 0b00) {
-			cout << "0b00" << '\n';
 			readData2 = info.idex.get_read_data2();
 		} else if (info.forward.forward_b() == 0b10) {
-			cout << "0b10" << '\n';
 			readData2 = info.exmem.get_alu_result();
 		} else if (info.forward.forward_b() == 0b01) {
-			cout << "0b01" << '\n';
 			readData2 = (info.memwb.get_mem_to_reg() == true) ? info.memwb.get_data_read() : info.memwb.get_alu_result();
 		}
 	// select read data value from mux ------------------------------------------------------------------------

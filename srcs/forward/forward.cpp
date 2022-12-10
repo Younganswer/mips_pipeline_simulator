@@ -50,7 +50,6 @@ int		Forward::forward_a(void) const {
 }
 
 int		Forward::forward_b(void) const {
-	cout << "exRt: " << this->exRt << ", memRd: " << this->memRd << ", memRw: " << this->memRw << ", wbRd: " << this->wbRd << ", wbRw: " << this->wbRw << endl;
 	if (this->exRt == this->memRd && this->memRw) {
 		return (0b10);
 	} else if (this->exRt == this->wbRd && this->wbRw) {
@@ -67,7 +66,6 @@ bool	Forward::forward_c(void) const {
 }
 
 bool	Forward::forward_d(void) const {
-	cout << "deRt: " << this->deRt << ", memRd: " << this->memRd << ", memRw: " << this->memRw << ", wbRd: " << this->wbRd << ", wbRw: " << this->wbRw << "\n";
 	if (this->deRt == this->memRd && this->memRw && this->idOpcode == 0x04) {
 		return (true);
 	} else
