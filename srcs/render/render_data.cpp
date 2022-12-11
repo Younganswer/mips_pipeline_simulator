@@ -15,7 +15,7 @@ bool	render_data(Info &info) {
 
 	render_register(info);
 	render_user_data_segment(info);
-	if (activeUserDataSegmentPage) {
+	if (activeUserDataSegmentPage == true) {
 		render_user_data_segment_page(info);
 	} else {
 		curPage = 0;
@@ -69,7 +69,7 @@ bool	render_user_data_segment(Info &info) {
 }
 
 bool	render_user_data_segment_page(Info &info) {
-	const size_t	numOfDataInARow = 11+(SIZE_FACTOR-7)*7;
+	const size_t	numOfDataInARow = 11+(SIZE_FACTOR-7)*2.5;
 	if (IsKeyPressed(KEY_LEFT_BRACKET)) {
 		curPage--;
 		if (curPage < 0) {
