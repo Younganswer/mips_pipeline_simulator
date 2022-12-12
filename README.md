@@ -15,19 +15,22 @@
 
 ## Requirement
 ### Raylib
-#### OSX
-	$ brew install raylib
-#### Linux
+[Link to raylib](https://github.com/raysan5/raylib)
 * checkout following link to install raylib
-	* https://github.com/raysan5/raylib/wiki/Working-on-GNU-Linux
+	* You can find a few ways to install raylib
+#### OSX
+https://github.com/raysan5/raylib/wiki/Working-on-macOS
+#### Linux
+https://github.com/raysan5/raylib/wiki/Working-on-GNU-Linux
 <br/><br/><br/>
 
 ### Spim
+[Link to spim](https://sourceforge.net/p/spimsimulator/code/HEAD/tree/)
+* You need to install flex and bison before installing spim
 #### OSX
-* You can just install with make
+	$ brew install flex bison
 #### Linux
     $ sudo apt-get -y install flex bison
-* You need to install flex and bison before installing spim
 <br/><br/><br/>
 
 ## Install
