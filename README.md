@@ -90,9 +90,9 @@ https://github.com/raysan5/raylib/wiki/Working-on-GNU-Linux
 <br/><br/><br/>
 
 ## Description of source code
-[About srcs (in Markdown)](./srcs/README.md)
+[In Markdown](./srcs/README.md)
 
-[About srcs (in Youtube)]()
+[Link to Youtube]()
 <br/><br/><br/>
 
 ## Contact
