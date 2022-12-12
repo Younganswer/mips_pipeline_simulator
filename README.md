@@ -15,9 +15,9 @@
 
 ## Requirement
 ### Raylib
-[Link to raylib](https://github.com/raysan5/raylib)
+[Link to raylib (Github)](https://github.com/raysan5/raylib)
 * checkout following link to install raylib
-	* You can find a few ways to install raylib
+* You can find a few ways to install raylib
 #### OSX
 https://github.com/raysan5/raylib/wiki/Working-on-macOS
 #### Linux
@@ -25,7 +25,7 @@ https://github.com/raysan5/raylib/wiki/Working-on-GNU-Linux
 <br/><br/><br/>
 
 ### Spim
-[Link to spim](https://sourceforge.net/p/spimsimulator/code/HEAD/tree/)
+[Link to spim (Sourceforge)](https://sourceforge.net/p/spimsimulator/code/HEAD/tree/)
 * You need to install flex and bison before installing spim
 #### OSX
 	$ brew install flex bison
@@ -66,18 +66,17 @@ https://github.com/raysan5/raylib/wiki/Working-on-GNU-Linux
 
 ## Usage
 ### Keyboard Interaction
-| Key                         | Action                         |
-| --------------------------- | ------------------------------ |
-| `←`                         | Move camera to left            |
-| `→`                         | Move camera to right           |
-| `↑`                         | Move camera to up              |
-| `↓`                         | Move camera to down            |
-| `i`                         | Zoom in                        |
-| `o`                         | Zoom out                       |
-| `r`                         | Reset camera                   |
-| `d`                         | Open/Close User Data Segment   |
-| `[/] (in Data Segment Page)`| Move to prev/next page         |
-| `ESC ⎋`                     | Exit program                   |
+| Key                         | Action                            |
+| --------------------------- | --------------------------------- |
+| `←`                         | Move camera to left               |
+| `→`                         | Move camera to right              |
+| `↑`                         | Move camera to up                 |
+| `↓`                         | Move camera to down               |
+| `i/o`                       | Zoom in / Zoom out                |
+| `r`                         | Reset camera                      |
+| `d`                         | Open/Close User Data Segment Page |
+| `[/] (in Data Segment Page)`| Move to prev/next page            |
+| `ESC ⎋`                     | Exit program                      |
 
 ### Mouse Interaction
 | Mouse                       | Action                         |
