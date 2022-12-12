@@ -19,9 +19,9 @@
 * checkout following link to install raylib
 * You can find a few ways to install raylib
 #### OSX
-	https://github.com/raysan5/raylib/wiki/Working-on-macOS
+https://github.com/raysan5/raylib/wiki/Working-on-macOS
 #### Linux
-	https://github.com/raysan5/raylib/wiki/Working-on-GNU-Linux
+https://github.com/raysan5/raylib/wiki/Working-on-GNU-Linux
 <br/><br/><br/>
 
 ### Spim
