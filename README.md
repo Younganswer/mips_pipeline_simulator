@@ -72,6 +72,8 @@
 | `i`                         | Zoom in                        |
 | `o`                         | Zoom out                       |
 | `r`                         | Reset camera                   |
+| `d`                         | Open/Close User Data Segment   |
+| `[/] (in Data Segment Page)`| Move to prev/next page         |
 | `ESC ⎋`                     | Exit program                   |
 
 ### Mouse Interaction
