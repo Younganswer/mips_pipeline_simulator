@@ -87,8 +87,9 @@
 #### 결과 이미지 스크린샷, 동영상
 <br/><br/><br/>
 
-## Explain about the source files
-[./srcs/README.md](./srcs/README.md)
+## Description of source code
+[About srcs](./srcs/README.md)
+<br/><br/><br/>
 
 ## Contact
 ### younganswer@kookmin.ac.kr
