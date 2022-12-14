@@ -41,8 +41,6 @@ SRCS =	main.cpp \
 		shape/draw_arrow.cpp \
 		shape/draw_circle_lines_ex.cpp \
 		shape/draw_circle_sector_lines_ex.cpp \
-		shape/draw_dot.cpp \
-		shape/draw_mux.cpp \
 		shape/draw_trapezoid.cpp \
 		stages/fetch.cpp \
 		stages/decode.cpp \
