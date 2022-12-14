@@ -78,11 +78,9 @@ int		Forward::forward_b(void) const { // mem-forward
 }
 
 bool	Forward::forward_c(void) const {
-	cout << "forward_c - deRs: " << this->deRs << ", memRd: " << this->memRd << ", memRw: " << this->memRw << ", idOpcode: " << this->idOpcode << endl;
 	return (this->deRs == this->memRd && this->memRw && this->idOpcode == 0x04);
 }
 
 bool	Forward::forward_d(void) const {
-	cout << "forward_d - deRs: " << this->deRs << ", memRd: " << this->memRd << ", memRw: " << this->memRw << ", idOpcode: " << this->idOpcode << endl;
 	return (this->deRt == this->memRd && this->memRw && this->idOpcode == 0x04);
 }

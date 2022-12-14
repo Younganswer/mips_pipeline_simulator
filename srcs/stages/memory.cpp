@@ -35,6 +35,11 @@ bool	memory(Info &info) {
 	// set forwarding unit ----------------------------------------------------------------------------------
 		info.forward.set_mem_rw(info.exmem.get_reg_write());
 		info.forward.set_mem_rd(info.exmem.get_write_register());
+		if (info.exmem.get_mem_to_reg() == true) {
+			info.forward.set_data_from_mem(get_data_from_memory(info));
+		} else {
+			info.forward.set_data_from_mem(info.exmem.get_alu_result());
+		}
 		info.forward.set_data_from_mem(info.exmem.get_alu_result());
 	// set forwarding unit ----------------------------------------------------------------------------------
 	
