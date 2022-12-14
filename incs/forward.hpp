@@ -5,15 +5,17 @@
 
 class Forward {
 	private:
+		ui		idOpcode;
 		int		exRs;
 		int		exRt;
-		int		memRd;
-		int		wbRd;
 		int		deRs;
 		int		deRt;
-		ui		idOpcode;
+		int		memRd;
 		bool	memRw;
+		int		wbRd;
 		bool	wbRw;
+		ui		dataFromMem;
+		ui		dataFromWb;
 
 	public:
 		Forward(void);
@@ -29,6 +31,8 @@ class Forward {
 		ui		get_id_opcode(void) const;
 		bool	get_mem_rw(void) const;
 		bool	get_wb_rw(void) const;
+		ui		get_data_from_mem(void) const;
+		ui		get_data_from_wb(void) const;
 
 		// Setter
 		void	set_ex_rs(int exRs);
@@ -40,6 +44,8 @@ class Forward {
 		void	set_id_opcode(ui idOpcode);
 		void	set_mem_rw(bool memRw);
 		void	set_wb_rw(bool wbRw);
+		void	set_data_from_mem(ui dataFromMem);
+		void	set_data_from_wb(ui dataFromWb);
 
 		// Utils
 		int		forward_a(void) const;

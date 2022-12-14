@@ -55,7 +55,7 @@ bool	memory(Info &info) {
 	// set forwarding unit ----------------------------------------------------------------------------------
 		info.forward.set_mem_rd(info.memwb.get_write_register());
 		info.forward.set_mem_rw(info.memwb.get_reg_write());
-		cout << "memRw: " << info.forward.get_mem_rw() << '\n';
+		info.forward.set_data_from_mem(info.memwb.get_alu_result());
 	// set forwarding unit ----------------------------------------------------------------------------------
 
 

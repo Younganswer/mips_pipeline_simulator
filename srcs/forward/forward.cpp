@@ -26,6 +26,8 @@ int		Forward::get_mem_rd(void) const { return this->memRd; }
 bool	Forward::get_mem_rw(void) const { return this->memRw; }
 int		Forward::get_wb_rd(void) const { return this->wbRd; }
 bool	Forward::get_wb_rw(void) const { return this->wbRw; }
+ui		Forward::get_data_from_mem(void) const { return this->dataFromMem; }
+ui		Forward::get_data_from_wb(void) const { return this->dataFromWb; }
 
 // Setter
 void	Forward::set_id_opcode(ui idOpcode) { this->idOpcode = idOpcode; }
@@ -37,28 +39,28 @@ void	Forward::set_mem_rd(int memRd) { this->memRd = memRd; }
 void	Forward::set_mem_rw(bool memRw) { this->memRw = memRw; }
 void	Forward::set_wb_rd(int wbRd) { this->wbRd = wbRd; }
 void	Forward::set_wb_rw(bool wbRw) { this->wbRw = wbRw; }
+void	Forward::set_data_from_mem(ui dataFromMem) { this->dataFromMem = dataFromMem; }
+void	Forward::set_data_from_wb(ui dataFromWb) { this->dataFromWb = dataFromWb; }
 
 // Utils
 
 int		Forward::forward_a(void) const {
 	int	ret = 0b00;
-	if (this->exRs == this->memRd && this->memRw) { // mem-forward
+	if ((this->exRs == this->memRd) && this->memRw) { // mem-forward
 		ret = 0b10;
-	} else if (this->exRs == this->wbRd && this->wbRw) { // wb-forward
+	} else if ((this->exRs == this->wbRd) && this->wbRw) { // wb-forward
 		ret = 0b01;
 	}
-	cout << "forward_a: " << ret << '\n';
 	return (ret);
 }
 
 int		Forward::forward_b(void) const { // mem-forward
 	int	ret = 0b00;
-	if (this->exRt == this->memRd && this->memRw) { // mem-forward
+	if ((this->exRt == this->memRd) && this->memRw) { // mem-forward
 		ret = 0b10;
-	} else if (this->exRt == this->wbRd && this->wbRw) { // wb-forward
+	} else if ((this->exRt == this->wbRd) && this->wbRw) { // wb-forward
 		ret = 0b01;
 	}
-	cout << "forward_b: " << ret << '\n';
 	return (ret);
 }
 
