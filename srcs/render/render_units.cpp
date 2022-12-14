@@ -128,6 +128,8 @@ bool	render_forwarding_unit(Info &info) {
 			DrawCircleSector(Vector2{ -2050, 1400 }, 10.0f, 45.0f, -135.0f, 0, GOLD);
 			DrawLineEx(Vector2{ -2050, 1400 }, Vector2{ -2050, 1769.8 }, 5.0f, GOLD);
 			draw_right_arrow(-2050, 1769.8, 1333, 1769.8, GOLD);
+
+			draw_left_arrow(2945, 1675, 1780, 1675, GOLD);
 		// draw lines -------------------------------------------------------------------------------------------------
 		// draw EX/MEM RegWrite sector -------------------------------------------------------------------------------
 			DrawRectangleLinesEx(Rectangle{ 1870, 1515, 250, 150 }, 5.0f, BLUE);
