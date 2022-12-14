@@ -99,10 +99,15 @@ bool	decode(Info &info) {
 			info.idex.set_rs(instruction.get_rs());
 			info.idex.set_rt(instruction.get_rt());
 			info.idex.set_rd(instruction.get_rd());
-			if ((instruction.get_opcode() == 0x04) && 
-				(info.idex.get_read_data1() == info.idex.get_read_data2())) { // beq
-				info.pcMuxSelect = 2;
-			}
+			// TODO: hazard.branch_stall() == true {
+				// false -> pc_write();
+				// false -> instruction_fetch();
+			// } else {
+				if ((instruction.get_opcode() == 0x04) && 
+					(info.idex.get_read_data1() == info.idex.get_read_data2())) { // beq
+					info.pcMuxSelect = 2;
+				}
+			// }
 		// set register values -----------------------------------------------------------------------------------------
 	} else if (info.ifid.get_instruction().get_format() == J) {
 		// set pcMuxSelect ---------------------------------------------------------------------------------------------

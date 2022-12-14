@@ -1,6 +1,6 @@
 .data 0x10008000
 var1:	.word 0x11111111
-var2:	.word 0x22222222
+var2:	.word 0x11111111
 var3:	.word 3
 var4:	.word 4
 var5:	.word 5
@@ -24,6 +24,11 @@ var18:	.word 18
 .text 0x00400024
 .globl main
 
+foo:
+	nop
+	nop
+	add		$t2, $t0, $0
+	nop
+
 main:
 	lw		$t0, 0($gp)
-	add		$t1, $t0, $t0
