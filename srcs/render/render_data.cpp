@@ -29,7 +29,7 @@ bool	render_register(Info &info) {
 	// draw text -------------------------------------------------------------------------------------------------------------------------------
 
 	// draw register sector --------------------------------------------------------------------------------------------------------------------
-		DrawRectangle(screenWidth-200, 80, 177, 340, Fade(LIGHTGRAY, 0.5f));
+		DrawRectangle(screenWidth-200, 80, 177, 340, Fade(GRAY, 0.5f));
 		DrawRectangleLines(screenWidth-200, 80, 177, 340, GRAY);
 	// draw register sector --------------------------------------------------------------------------------------------------------------------
 
@@ -53,7 +53,7 @@ bool	render_user_data_segment(Info &info) {
 
 	// draw data segment sector ---------------------------------------------------------------------------------------------------------------
 		float	btnHeight = info.button.get_btn_bounds().y;
-		DrawRectangle(screenWidth-200, 455, 177, btnHeight-495, Fade(LIGHTGRAY, 0.5f));
+		DrawRectangle(screenWidth-200, 455, 177, btnHeight-495, Fade(GRAY, 0.5f));
 		DrawRectangleLines(screenWidth-200, 455, 177, btnHeight-495, GRAY);
 	// draw data segment sector ---------------------------------------------------------------------------------------------------------------
 
