@@ -78,11 +78,11 @@ bool	decode(Info &info) {
 				info.idex.set_mem_write(1); // True: sw writes memory
 				info.idex.set_mem_to_reg(0); // False: input comes from ALU result
 				info.idex.set_reg_write(0); // False: sw doesn't write register
-			} else { // TODO: set values in slt, beq
-				info.idex.set_mem_read(0);
-				info.idex.set_mem_write(0);
-				info.idex.set_mem_to_reg(0);
-				info.idex.set_reg_write(1);
+			} else if (instruction.get_opcode() == 0x04) { // beq
+				info.idex.set_mem_read(0); // False: beq doesn't read memory
+				info.idex.set_mem_write(0); // False: beq doesn't write memory
+				info.idex.set_mem_to_reg(0); // False: input comes from ALU result
+				info.idex.set_reg_write(0); // False: beq doesn't write register
 			}
 		// set signal values -------------------------------------------------------------------------------------------
 
@@ -160,10 +160,10 @@ bool	decode(Info &info) {
 			info.idex.set_alu_op(0);
 			info.idex.set_alu_src(0);
 			info.idex.set_reg_dst(0);
-			info.idex.set_mem_read(0);
-			info.idex.set_mem_write(0);
-			info.idex.set_mem_to_reg(0);
-			info.idex.set_reg_write(0);
+			info.idex.set_mem_read(false);
+			info.idex.set_mem_write(false);
+			info.idex.set_mem_to_reg(false);
+			info.idex.set_reg_write(false);
 			info.hazard.set_is_jumped(false);
 			info.hazard.set_is_branched(false);
 		}
