@@ -15,22 +15,59 @@
 * button texture is in `assets` directory
 ```
 GetMousePosition(void)
-=> Get mouse position
-
 CheckCollisionPointRec(Vector2 pointer, Rectangle rec)
-=> Check collision between mouse and button
-
 IsMouseButtonPressed(int button)
-=> Check mouse button is pressed
-
 IsMouseButtonReleased(int button)
-=> Check mouse button is released
 ```
 <br/>
 
 #### Camera
-* `camera.hpp`: Camera class header
-* `camera.cpp`: Camera class
+* `camera.hpp`: Camera header
+* `camera.cpp`: Camera
+```
+IsKeyDown(int key)
+IsKeyPressed(int key)
+BeginMode2D(Camera2D camera)
+EndMode2D(void)
+=> Sources between BeginMode2D and EndMode2D, don't follow camera
+```
+
+#### Render
+**Rendering all of the contents of Mips-pipeline-simulator**
+* `render.hpp`: Render header
+* `render.cpp`: Render
+	* `render_camera.cpp`: Render camera
+	* `render_content.cpp`: Render whole content
+	* `render_data.cpp`: Render register, user data segment
+	* `render_stages.cpp`: Render stages
+	* `render_pipeline.cpp`: Render pipeline
+	* `render_units.cpp`: Render hazard unit, forwarding unit, control unit, jump unit
+```
+DrawTextEx(Font font, const char *text, Vector2 position, float fontSize, float spacing, Color tint)
+DrawLineEx(Vector2 startPos, Vector2 endPos, float thick, Color color)
+DrawRectangleLinesEx(Rectangle rec, int lineThick, Color color)
+DrawRectangle(int posX, int posY, int width, int height, Color color)
+DrawCircle(int posX, int posY, int radius, Color color)
+```
+
+#### Shape
+**Frequently used shapes**
+* `shape.hpp`: Shape header
+* `shape.cpp`: Shape
+	* `draw_arrow.cpp`: Draw arrow
+	* `draw_circle_lines_ex.cpp`: Draw circle lines
+	* `draw_circle_sector_ex.cpp`: Draw circle sector
+	* `draw_trapazoid.cpp`: Draw trapazoid
+```
+draw_left_arrow(float startPosX, float startPosY, float endPosX, float endPosY, Color color);
+draw_right_arrow(float startPosX, float startPosY, float endPosX, float endPosY, Color color);
+draw_up_arrow(float startPosX, float startPosY, float endPosX, float endPosY, Color color);
+draw_down_arrow(float startPosX, float startPosY, float endPosX, float endPosY, Color color);
+draw_circle_lines_ex(float centerX, float centerY, float radius, float thick, Color color);
+draw_circle_sector_lines_ex(float centerX, float centerY, float radius, float startAngle, float endAngle, int segments, float thick, Color color);
+draw_trapezoid(float posX, float posY, float size);
+
+```
 
 <br/><br/><br/>
 
