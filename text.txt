@@ -1,0 +1,41 @@
+동영상 대본
+
+- 동작 원리
+spim open source에서 spim의 make를 통해서 assembly input file을 컴파일 하면,
+assembly input file이 text.asm과 data.asm으로 나누어진다.
+
+main.cpp에서는 text.asm과 data.asm을 읽어, Info 클래스의 생성자 호출 시에 
+text.asm과 data.asm을 각각의 vector에 저장한다.
+
+Pipelines에서는 5 Stage에 해당하는 4개의 Pipeline Register 클래스를 가지고 있습니다.
+해당 클래스는 각각의 파이프라인에 해당하는 멤버변수들과, getter / setter들을 가지고 있습니다.
+
+각 Stage들의 동작은 해당 동작에 맞는 함수로 구성되어있습니다.
+
+Fetch 함수는 hazard unit으로부터 PC write와 instruction fetch의 값을 확인하고, 해당 값에 따른
+PC에 해당하는 instruction을 instruction memory(Instruction vector)에서 읽고 fetch합니다.
+PC 값은 mux를 통해 mux 값이 0이면 PC + 4, 1이면 branch target address, 2이면 jump target address로 설정됩니다.
+만일, IF.Flush가 enable이면, instruction field를 NOP로 설정합니다.
+
+Decode 함수는 instruction을 decode하며, 해당 instruction을 실행하기 위한 정보들을 저장합니다.
+또한 해당 instruction에 해당하는 Control Signal을 생성합니다.
+만약 execute stage에서 lw instruction과 현재 decode에 있는 instruction의 data dependency가
+있으면, hazard unit을 통해 PC write와 instruction fetch를 disable 상태로 바꿔줍니다.
+또한 해당 instruction이 branch instruction일 때, execute 혹은 memory stage의 명령어와 data dependency가 있을 경우,
+dependency를 확인한 후, execute와 memory에 해당하는 명령어에 맞게 stall한 뒤, forwarding unit으로부터 값을 받아옵니다.
+만일 jump 혹은 branch를 할 경우, hazard unit을 통해 IF.Flush를 enable 상태로 바꿔줍니다.
+
+
+Execute 함수는 해당 instruction을 실행합니다.
+Control unit으로부터 alu op와 instruction의 funct field를 확인하여 alu Control을 생성하고, 해당하는 alu Control을 통해
+계산을 수행합니다. 이 때, memory와 write back 단계에 있는 data와 data dependency가 생기면, forwarding unit을 통해 
+forwarding 값을 받아옵니다.
+
+Memory 함수는 해당 instruction을 memory에 저장하거나, memory에서 값을 읽어옵니다.
+만일 해당 instruction이 lw instruction이면, memory에서 값을 읽어옵니다.
+만일 해당 instruction이 sw instruction이면, memory에 값을 저장합니다.
+그 후 sw instruction의 data가 Info class의 data vector에 address에 맞게 정렬되어 저장됩니다.
+
+Write Back 함수는 해당 instruction의 결과를 register file에 저장합니다.
+만일 해당 instruction이 lw instruction이면, memory에서 읽어온 값을 register에 저장합니다.
+해당 instruction이 lw가 아닌 경우, execute에서 계산한 값 RegWrite Signal을 확인하여 register에 저장합니다.
