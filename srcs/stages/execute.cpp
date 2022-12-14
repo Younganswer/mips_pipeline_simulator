@@ -2,12 +2,24 @@
 #include <iostream>
 
 ui	calc_alu_control(ui aluOp, ui funct);
-static bool	is_stalled(Info &info);
 
 bool	execute(Info &info) {
 	Instruction	instruction = info.idex.get_instruction();
 	instruction.set_status(EX);
 	info.exmem.set_instruction(instruction);
+
+	// set hazard unit ------------------------------------------------------------------------------------------
+		info.hazard.set_ex_format(info.idex.get_instruction().get_format());
+		info.hazard.set_ex_mem_read(info.idex.get_mem_read());
+		info.hazard.set_ex_reg_write(info.idex.get_reg_write());
+		info.hazard.set_ex_rd(info.idex.get_rd());
+		info.hazard.set_ex_rt(info.idex.get_rt());
+	// set hazard unit ------------------------------------------------------------------------------------------
+
+	// set forwarding unit ------------------------------------------------------------------------------------------
+		info.forward.set_ex_rs(info.idex.get_rs());
+		info.forward.set_ex_rt(info.idex.get_rt());
+	// set forwarding unit ------------------------------------------------------------------------------------------
 
 	// set control signal in EX/MEM pipeline register -------------------------------------------------------------
 		info.exmem.set_mem_read(info.idex.get_mem_read());
@@ -16,10 +28,6 @@ bool	execute(Info &info) {
 		info.exmem.set_reg_write(info.idex.get_reg_write());
 	// set control signal in EX/MEM pipeline register -------------------------------------------------------------
 
-	// set forwarding unit ------------------------------------------------------------------------------------------
-		info.forward.set_ex_rs(info.idex.get_rs());
-		info.forward.set_ex_rt(info.idex.get_rt());
-	// set forwarding unit ------------------------------------------------------------------------------------------
 
 	// select read data value from mux ------------------------------------------------------------------------
 		ui	readData1 = 0;
@@ -81,18 +89,6 @@ bool	execute(Info &info) {
 	// set EX/MEM pipeline register values ------------------------------------------------------------------
 
 	// TODO: set EX/MEM pipeline register values ------------------------------------------------------------------
-	// set hazard unit ------------------------------------------------------------------------------------------
-		info.hazard.set_ex_format(info.idex.get_instruction().get_format());
-		info.hazard.set_ex_reg_write(info.idex.get_reg_write());
-		if (is_stalled(info)) {
-			info.hazard.set_ex_rd(-1);
-			info.hazard.set_ex_rt(-1);
-		}
-		else {
-			info.hazard.set_ex_rd(info.idex.get_rd());
-			info.hazard.set_ex_rt(info.idex.get_rt());
-		}
-	// set hazard unit ------------------------------------------------------------------------------------------
 	(void) info;
 	return (true);
 }
@@ -128,19 +124,4 @@ ui	calc_alu_control(ui alu_op, ui funct) {
 	// 	ret = 0b0001; // OR
 	// } else if (alu_op == 7) {
 	// }
-}
-
-bool	is_stalled(Info &info) {
-	// check all control bit is 0
-	if ((info.idex.get_alu_op() ||
-		info.idex.get_alu_src() ||
-		info.idex.get_reg_dst() ||
-		info.idex.get_reg_write() ||
-		info.idex.get_mem_read() ||
-		info.idex.get_mem_write() ||
-		info.idex.get_mem_to_reg() ||
-		info.idex.get_reg_write())) {
-		return (false);
-	}
-	return (true);
 }

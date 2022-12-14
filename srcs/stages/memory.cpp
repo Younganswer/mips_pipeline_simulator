@@ -5,7 +5,6 @@
 bool	memory(Info &info);
 ui		get_data_from_memory(Info &info);
 bool	cmp(const Memory &mem1, const Memory &mem2);
-static bool	is_stalled(Info &info);
 
 bool	memory(Info &info) {
 	Instruction	instruction = info.exmem.get_instruction();
@@ -28,18 +27,17 @@ bool	memory(Info &info) {
 	// set mem/wb signal ------------------------------------------------------------------------------------
 
 	// set hazard unit --------------------------------------------------------------------------------------
-		if (is_stalled(info) == true) {
-			info.hazard.set_mem_opcode(0);
-			info.hazard.set_mem_reg_write(false);
-			info.hazard.set_mem_rt(-2);
-		}
-		else {
-			info.hazard.set_mem_opcode(info.exmem.get_instruction().get_opcode());
-			info.hazard.set_mem_reg_write(info.exmem.get_reg_write());
-			info.hazard.set_mem_rt(info.exmem.get_write_register());
-		}
+		info.hazard.set_mem_mem_read(info.exmem.get_mem_read());
+		info.hazard.set_mem_reg_write(info.exmem.get_reg_write());
+		info.hazard.set_mem_rt(info.exmem.get_write_register());
 	// set hazard unit --------------------------------------------------------------------------------------	
-
+	
+	// set forwarding unit ----------------------------------------------------------------------------------
+		info.forward.set_mem_rw(info.exmem.get_reg_write());
+		info.forward.set_mem_rd(info.exmem.get_write_register());
+		info.forward.set_data_from_mem(info.exmem.get_alu_result());
+	// set forwarding unit ----------------------------------------------------------------------------------
+	
 	// set mem/wb values ------------------------------------------------------------------------------------
 		info.memwb.set_data_read(0);
 		if (info.exmem.get_mem_read() == true) {
@@ -65,15 +63,6 @@ bool	memory(Info &info) {
 			}
 		}
 	// write data to memory ---------------------------------------------------------------------------------
-
-	// set forwarding unit ----------------------------------------------------------------------------------
-		info.forward.set_mem_rd(info.memwb.get_write_register());
-		info.forward.set_mem_rw(info.memwb.get_reg_write());
-		info.forward.set_data_from_mem(info.memwb.get_alu_result());
-	// set forwarding unit ----------------------------------------------------------------------------------
-
-
-	(void) info;
 	return (true);
 }
 
@@ -93,14 +82,4 @@ ui	get_data_from_memory(Info &info) {
 
 bool	cmp(const Memory &mem1, const Memory &mem2) {
 	return (mem1.address < mem2.address);
-}
-
-bool	is_stalled(Info &info) {
-	if (info.exmem.get_mem_read() ||
-		info.exmem.get_mem_write() ||
-		info.exmem.get_mem_to_reg() ||
-		info.exmem.get_reg_write()) {
-		return (false);
-	}
-	return (true);
 }

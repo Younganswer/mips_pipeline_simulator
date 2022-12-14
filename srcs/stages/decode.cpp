@@ -12,11 +12,6 @@ bool	decode(Info &info) {
 	info.idex.set_instruction(instruction);
 
 	info.pcMuxSelect = 0;
-	// setting forward opcode -------------------------------------------------------------------------------------------
-		info.forward.set_id_opcode(info.idex.get_instruction().get_opcode());
-		info.forward.set_de_rs(info.idex.get_instruction().get_rs());
-		info.forward.set_de_rt(info.idex.get_instruction().get_rt());
-	// setting forward opcode -------------------------------------------------------------------------------------------
 
 	// IF/ID pipe is empty
 	if (instruction.get_pc() == 0) {
@@ -37,10 +32,18 @@ bool	decode(Info &info) {
 		return (true);
 	}
 
-	// set_hazard ---------------------------------------------------------------------------------------------------------
-		info.hazard.set_mem_read(info.idex.get_mem_read());
+	// setting forward -------------------------------------------------------------------------------------------
+		info.forward.set_id_opcode(info.ifid.get_instruction().get_opcode());
+		info.forward.set_de_rs(info.ifid.get_instruction().get_rs());
+		info.forward.set_de_rt(info.ifid.get_instruction().get_rt());
+	// setting forward -------------------------------------------------------------------------------------------
+
+	// set hazard -----------------------------------------------------------------------------------------------
 		info.hazard.set_id_opcode(info.ifid.get_instruction().get_opcode());
-	// set_hazard ---------------------------------------------------------------------------------------------------------
+		info.hazard.set_id_rs(info.ifid.get_instruction().get_rs());
+		info.hazard.set_id_rt(info.ifid.get_instruction().get_rt());
+	// set hazard -----------------------------------------------------------------------------------------------
+
 	if (instruction.get_format() == R) {
 		// set signal values -------------------------------------------------------------------------------------------
 			info.idex.set_alu_op(calc_alu_op(instruction.get_opcode()));
@@ -84,42 +87,38 @@ bool	decode(Info &info) {
 		// set signal values -------------------------------------------------------------------------------------------
 
 		// set register values -----------------------------------------------------------------------------------------
-			// check forward c
-			if (info.forward.forward_c() == true) {
-				if (info.memwb.get_instruction().get_opcode() == 0x23)
-					info.idex.set_read_data_1(info.memwb.get_data_read());
-				else
-					info.idex.set_read_data_1(info.memwb.get_alu_result());
-			} else {
-				info.idex.set_read_data_1(info.registerValues[instruction.get_rs()]);
-			}
-			// check forward d
-			if (info.forward.forward_d() == true) {
-				if (info.memwb.get_instruction().get_opcode() == 0x23)
-					info.idex.set_read_data_2(info.memwb.get_data_read());
-				else
-					info.idex.set_read_data_2(info.memwb.get_alu_result());
-			} else {
-				info.idex.set_read_data_2(info.registerValues[instruction.get_rt()]);
-			}
+			// check forward c -----------------------------------------------------------------------------------------
+				if (info.forward.forward_c() == true) {
+					info.idex.set_read_data_1(info.forward.get_data_from_mem());
+				} else {
+					info.idex.set_read_data_1(info.registerValues[instruction.get_rs()]);
+				}
+			// check forward c -----------------------------------------------------------------------------------------
+
+			// check forward d -----------------------------------------------------------------------------------------
+				if (info.forward.forward_d() == true) {
+					info.idex.set_read_data_2(info.forward.get_data_from_mem());
+				} else {
+					info.idex.set_read_data_2(info.registerValues[instruction.get_rt()]);
+				}
+			// check forward d -----------------------------------------------------------------------------------------
+
 			info.idex.set_extend_imm(extend_sign(instruction.get_imm()));
 			info.idex.set_rs(instruction.get_rs());
 			info.idex.set_rt(instruction.get_rt());
 			info.idex.set_rd(instruction.get_rd());
-			info.hazard.set_id_rs(info.ifid.get_instruction().get_rs());
-			info.hazard.set_id_rt(info.ifid.get_instruction().get_rt());
+
 			if ((info.hazard.branch_stall() == false) &&
 				(instruction.get_opcode() == 0x04) && 
 				(info.idex.get_read_data1() == info.idex.get_read_data2())) { // beq
 				info.pcMuxSelect = 2;
 			}
-			// cout << "branch stall: " << info.hazard.branch_stall() << endl;
-			// cout << "pcmuxselect: " << info.pcMuxSelect << endl;
 		// set register values -----------------------------------------------------------------------------------------
 	} else if (info.ifid.get_instruction().get_format() == J) {
 		// set pcMuxSelect ---------------------------------------------------------------------------------------------
 			info.pcMuxSelect = 1;
 		// set pcMuxSelect ---------------------------------------------------------------------------------------------
+		
 		// set signal values -------------------------------------------------------------------------------------------
 			info.idex.set_alu_op(0);
 			info.idex.set_alu_src(0);
@@ -140,6 +139,11 @@ bool	decode(Info &info) {
 		// set register values -----------------------------------------------------------------------------------------
 	}
 
+	// set hazard unit -------------------------------------------------------------------------------------------
+		info.hazard.set_is_jumped(info.pcMuxSelect == 1);
+		info.hazard.set_is_branched(info.pcMuxSelect == 2);
+	// set hazard unit -------------------------------------------------------------------------------------------
+	
 	// calculate jump offset ----------------------------------------------------------------------------------------
 		ui	jumpResult = 0xf0000000;
 		jumpResult &= info.ifid.get_pc(); 
@@ -150,11 +154,6 @@ bool	decode(Info &info) {
 	// calculate branch offset --------------------------------------------------------------------------------------
 		info.pcMuxInput[2] = extend_sign(info.ifid.get_instruction().get_imm()) - 1;
 	// calculate branch offset --------------------------------------------------------------------------------------
-
-	// set hazard unit -------------------------------------------------------------------------------------------
-		info.hazard.set_is_jumped(info.pcMuxSelect == 1);
-		info.hazard.set_is_branched(info.pcMuxSelect == 2);
-	// set hazard unit -------------------------------------------------------------------------------------------
 
 	// set signal hazard detected -------------------------------------------------------------------------------------------
 		if (info.hazard.control_mux_select_bit() == 1) {
@@ -169,7 +168,6 @@ bool	decode(Info &info) {
 			info.hazard.set_is_branched(false);
 		}
 	// set signal hazard detected -------------------------------------------------------------------------------------------
-	(void) info;
 	return (true);
 }
 
