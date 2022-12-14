@@ -37,9 +37,10 @@ bool	decode(Info &info) {
 		return (true);
 	}
 
-	// set_mem_read ---------------------------------------------------------------------------------------------------------
+	// set_hazard ---------------------------------------------------------------------------------------------------------
 		info.hazard.set_mem_read(info.idex.get_mem_read());
-	// set_mem_read ---------------------------------------------------------------------------------------------------------
+		info.hazard.set_id_opcode(info.ifid.get_instruction().get_opcode());
+	// set_hazard ---------------------------------------------------------------------------------------------------------
 	if (instruction.get_format() == R) {
 		// set signal values -------------------------------------------------------------------------------------------
 			info.idex.set_alu_op(calc_alu_op(instruction.get_opcode()));
@@ -48,7 +49,7 @@ bool	decode(Info &info) {
 			info.idex.set_mem_read(0); // False: R format doesn't use memory
 			info.idex.set_mem_write(0); // False: R format doesn't use memory
 			info.idex.set_mem_to_reg(0); // False: input comes from ALU result -> 1
-			info.idex.set_reg_write(1); // True: rd is destination
+			info.idex.set_reg_write(!(instruction.get_funct() == 0x00)); // True: rd is destination
 		// set signal values -------------------------------------------------------------------------------------------
 
 		// set register values -----------------------------------------------------------------------------------------
@@ -85,13 +86,19 @@ bool	decode(Info &info) {
 		// set register values -----------------------------------------------------------------------------------------
 			// check forward c
 			if (info.forward.forward_c() == true) {
-				info.idex.set_read_data_1(info.memwb.get_data_read());
+				if (info.memwb.get_instruction().get_opcode() == 0x23)
+					info.idex.set_read_data_1(info.memwb.get_data_read());
+				else
+					info.idex.set_read_data_1(info.memwb.get_alu_result());
 			} else {
 				info.idex.set_read_data_1(info.registerValues[instruction.get_rs()]);
 			}
 			// check forward d
 			if (info.forward.forward_d() == true) {
-				info.idex.set_read_data_2(info.memwb.get_data_read());
+				if (info.memwb.get_instruction().get_opcode() == 0x23)
+					info.idex.set_read_data_2(info.memwb.get_data_read());
+				else
+					info.idex.set_read_data_2(info.memwb.get_alu_result());
 			} else {
 				info.idex.set_read_data_2(info.registerValues[instruction.get_rt()]);
 			}
@@ -99,20 +106,19 @@ bool	decode(Info &info) {
 			info.idex.set_rs(instruction.get_rs());
 			info.idex.set_rt(instruction.get_rt());
 			info.idex.set_rd(instruction.get_rd());
-			// TODO: hazard.branch_stall() == true {
-				// false -> pc_write();
-				// false -> instruction_fetch();
-			// } else {
-				if ((instruction.get_opcode() == 0x04) && 
-					(info.idex.get_read_data1() == info.idex.get_read_data2())) { // beq
-					info.pcMuxSelect = 2;
-				}
-			// }
+			info.hazard.set_id_rs(info.ifid.get_instruction().get_rs());
+			info.hazard.set_id_rt(info.ifid.get_instruction().get_rt());
+			if ((info.hazard.branch_stall() == false) &&
+				(instruction.get_opcode() == 0x04) && 
+				(info.idex.get_read_data1() == info.idex.get_read_data2())) { // beq
+				info.pcMuxSelect = 2;
+			}
+			// cout << "branch stall: " << info.hazard.branch_stall() << endl;
+			// cout << "pcmuxselect: " << info.pcMuxSelect << endl;
 		// set register values -----------------------------------------------------------------------------------------
 	} else if (info.ifid.get_instruction().get_format() == J) {
 		// set pcMuxSelect ---------------------------------------------------------------------------------------------
 			info.pcMuxSelect = 1;
-			std::cout << "hello world!\n";
 		// set pcMuxSelect ---------------------------------------------------------------------------------------------
 		// set signal values -------------------------------------------------------------------------------------------
 			info.idex.set_alu_op(0);
@@ -146,8 +152,6 @@ bool	decode(Info &info) {
 	// calculate branch offset --------------------------------------------------------------------------------------
 
 	// set hazard unit -------------------------------------------------------------------------------------------
-		info.hazard.set_id_rs(info.ifid.get_instruction().get_rs());
-		info.hazard.set_id_rt(info.ifid.get_instruction().get_rt());
 		info.hazard.set_is_jumped(info.pcMuxSelect == 1);
 		info.hazard.set_is_branched(info.pcMuxSelect == 2);
 	// set hazard unit -------------------------------------------------------------------------------------------
@@ -196,8 +200,6 @@ ui	calc_alu_op(ui opcode) {
 	// 	ret = 6;
 	return (ret);
 }
-
-
 
 // TODO: Create control unit and initialize branch signal
 // branch in control unit
