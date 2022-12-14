@@ -72,3 +72,85 @@ draw_trapezoid(float posX, float posY, float size);
 <br/><br/><br/>
 
 ## Background
+
+### Sources are in follwing directory.
+* `srcs/info`
+* `srcs/instruction`
+* `srcs/pipelines`
+* `srcs/stages`
+* `srcs/forward`
+* `srcs/hazard`
+* `srcs/update`
+
+#### Info
+* `info.hpp`: Info header
+* `info.cpp`: Includes all values for operating this program
+  * Instructions
+  * Hazard Unit
+  * Forward Unit
+  * IF/ID pipeline
+  * ID/EX pipeline
+  * EX/MEM pipeline
+  * MEM/WB pipeline
+  * Register values
+  * Data segment values
+
+#### Instruction
+* `instruction.hpp`: Instruction header
+* `instruction.cpp`: Get instruction and split by field
+  * opcode
+  * rd
+  * rs
+  * rt
+  * function
+  * shift amount
+  * immediate
+
+* `pipelines.hpp`: Pipelines header
+* `pipelines.cpp`: Pipelines
+  * IF/ID pipeline
+  * ID/EX pipeline
+  * EX/MEM pipeline
+  * MEM/WB pipeline
+
+* `stages.hpp`: Stages header
+* `stages.cpp`: Stages
+  * IF stage
+  * ID stage
+  * EX stage
+  * MEM stage
+  * WB stage
+
+* `forward.hpp`: Forwarding unit header
+* `forward.cpp`: Forwarding unit
+  * Forward A
+  * Forward B
+  * Forward C
+  * Forward D
+
+* `hazard.hpp`: Hazard unit header
+* `hazard.cpp`: Hazard unit
+  * IF flush
+  * lw hazard
+  * branch hazard
+
+* `update.cpp`: Update stages
+  * Update WB stage
+    * check control signal
+    * send data to decode stage if needed
+  * Update MEM stage
+    * check control signal
+    * get memory data from data segment if MemRead is true
+    * write data segment if MemWrite is true 
+  * Update EX stage
+    * check control signal
+    * get data 1 from ID/EX pipeline and forwarding unit
+    * get data 2 from ID/EX pipeline and forwarding unit
+    * operate data 1 and data 2 with ALU control
+  * Update ID stage
+    * get instruction from IFID Pipeline
+    * get data from execute stage and memory stage if hazard is detected
+    * set control signal
+    * detect lw hazard and branch hazard
+  * Update IF stage
+    * get instruction from instruction memory
