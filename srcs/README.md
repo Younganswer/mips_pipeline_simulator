@@ -13,13 +13,17 @@
 * `button.cpp`: Button class
 * button texture is in `assets` directory
 ```
-GetMousePosition(): Get mouse position
+GetMousePosition(void)
+=> Get mouse position
 
-CheckCollisionPointRec(Vector2 pointer, Rectangle rec): Check collision between mouse and button
+CheckCollisionPointRec(Vector2 pointer, Rectangle rec)
+=> Check collision between mouse and button
 
-IsMouseButtonPressed(int button): Check mouse button is pressed
+IsMouseButtonPressed(int button)
+=> Check mouse button is pressed
 
-IsMouseButtonReleased(int button): Check mouse button is released
+IsMouseButtonReleased(int button)
+=> Check mouse button is released
 ```
 <br/>
 
