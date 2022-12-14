@@ -32,3 +32,5 @@ foo:
 
 main:
 	lw		$t0, 0($gp)
+	add		$t1, $t0, $0
+	beq		$t0, $t1, foo

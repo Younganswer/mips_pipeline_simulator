@@ -5,6 +5,7 @@
 bool	memory(Info &info);
 ui		get_data_from_memory(Info &info);
 bool	cmp(const Memory &mem1, const Memory &mem2);
+static bool	is_stalled(Info &info);
 
 bool	memory(Info &info) {
 	Instruction	instruction = info.exmem.get_instruction();
@@ -25,6 +26,19 @@ bool	memory(Info &info) {
 		info.memwb.set_mem_to_reg(info.exmem.get_mem_to_reg());
 		info.memwb.set_reg_write(info.exmem.get_reg_write());
 	// set mem/wb signal ------------------------------------------------------------------------------------
+
+	// set hazard unit --------------------------------------------------------------------------------------
+		if (is_stalled(info) == true) {
+			info.hazard.set_mem_opcode(0);
+			info.hazard.set_mem_reg_write(false);
+			info.hazard.set_mem_rt(-2);
+		}
+		else {
+			info.hazard.set_mem_opcode(info.exmem.get_instruction().get_opcode());
+			info.hazard.set_mem_reg_write(info.exmem.get_reg_write());
+			info.hazard.set_mem_rt(info.exmem.get_write_register());
+		}
+	// set hazard unit --------------------------------------------------------------------------------------	
 
 	// set mem/wb values ------------------------------------------------------------------------------------
 		info.memwb.set_data_read(0);
@@ -79,4 +93,14 @@ ui	get_data_from_memory(Info &info) {
 
 bool	cmp(const Memory &mem1, const Memory &mem2) {
 	return (mem1.address < mem2.address);
+}
+
+bool	is_stalled(Info &info) {
+	if (info.exmem.get_mem_read() ||
+		info.exmem.get_mem_write() ||
+		info.exmem.get_mem_to_reg() ||
+		info.exmem.get_reg_write()) {
+		return (false);
+	}
+	return (true);
 }
