@@ -41,7 +41,7 @@ bool	Hazard::branch_stall(void) const {
 	// execute check ----------------------------
 
 	// memory check ----------------------------
-	if (this->memMemRead == 0x23 && this->memRegWrite == true && (this->idRs == this->memWriteRegister || this->idRt == this->memWriteRegister)) {
+	if (this->memMemRead == true && this->memRegWrite == true && (this->idRs == this->memWriteRegister || this->idRt == this->memWriteRegister)) {
 		memRet = true;
 	}
 	// memory check ----------------------------
