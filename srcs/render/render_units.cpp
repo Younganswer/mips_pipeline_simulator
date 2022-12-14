@@ -20,25 +20,50 @@ bool	render_hazard_unit(Info &info) {
 		DrawRectangleRoundedLines(Rectangle{ -1600, -1700, 500, 300 }, 0.5f, 0, 5.0f, RED);
 		DrawRectangleRounded(Rectangle{ -1600, -1700, 500, 300 }, 0.5f, 0, Fade(RED, 0.2f));
 		// draw lines -------------------------------------------------------------------------------------------
-		DrawCircleSector(Vector2{ -2050, -850 }, 10.0f, 135.0f, 315.0f, 0, RED);
+			DrawCircleSector(Vector2{ -2050, -850 }, 10.0f, 135.0f, 315.0f, 0, RED);
 			DrawLineEx(Vector2{ -2050, -850 }, Vector2{ -2050, -1500 }, 5.0f, RED);
 			draw_right_arrow(-2050, -1500, -1600, -1500, RED);
+
 			DrawCircle(600, -985, 10.0f, RED);
 			DrawLineEx(Vector2{ 600, -985 }, Vector2{ 600, -1550 }, 5.0f, RED);
 			draw_left_arrow(600, -1550, -1100, -1550, RED);
+
+			DrawCircle(650, -580, 10.0f, RED);
+			DrawLineEx(Vector2{ 650, -580 }, Vector2{ 650, -1600 }, 5.0f, RED);
+			draw_left_arrow(650, -1600, -1100, -1600, RED);
+
+			DrawCircle(2200, -580, 10.0f, RED);
+			DrawLineEx(Vector2{ 2200, -580 }, Vector2{ 2200, -1650 }, 5.0f, RED);
+			draw_left_arrow(2200, -1650, -1100, -1650, RED);
+
+			DrawCircle(425, 1160, 10.0f, RED);
+			DrawLineEx(Vector2{ 425, 1160 }, Vector2{ 425, 1525 }, 5.0f, RED);
+			DrawLineEx(Vector2{ 425, 1525 }, Vector2{ -1500, 1525 }, 5.0f, RED);
+			DrawLineEx(Vector2{ -1500, 1525 }, Vector2{ -1500, -700 }, 5.0f, RED);
+			DrawLineEx(Vector2{ -1500, -700 }, Vector2{ -1300, -700 }, 5.0f, RED);
+			draw_up_arrow(-1300, -700, -1300, -1400, RED);
+
+			DrawCircle(450, 1280, 10.0f, RED);
+			DrawLineEx(Vector2{ 450, 1280 }, Vector2{ 450, 1600 }, 5.0f, RED);
+			DrawLineEx(Vector2{ 450, 1600 }, Vector2{ -1525, 1600 }, 5.0f, RED);
+			DrawLineEx(Vector2{ -1525, 1600 }, Vector2{ -1525, -725 }, 5.0f, RED);
+			DrawLineEx(Vector2{ -1525, -725 }, Vector2{ -1400, -725 }, 5.0f, RED);
+			draw_up_arrow(-1400, -725, -1400, -1400, RED);
+
+			DrawCircle(2400, 1220, 10.0f, RED);
+			DrawLineEx(Vector2{ 2400, 1220 }, Vector2{ 2400, 2450 }, 5.0f, RED);
+			DrawLineEx(Vector2{ 2400, 2450 }, Vector2{ -1550, 2450 }, 5.0f, RED);
+			DrawLineEx(Vector2{ -1550, 2450 }, Vector2{ -1550, -750 }, 5.0f, RED);
+			DrawLineEx(Vector2{ -1550, -750 }, Vector2{ -1500, -750 }, 5.0f, RED);
+			draw_up_arrow(-1500, -750, -1500, -1400, RED);
+
+			DrawCircle(-1200, -1125, 10.0f, RED);
+			draw_up_arrow(-1200, -1125, -1200, -1400, RED);
 		// draw lines -------------------------------------------------------------------------------------------
 		// draw text --------------------------------------------------------------------------------------------------
 			DrawTextEx(GetFontDefault(), "Hazard", Vector2{ -1460, -1660 }, 70.0f, 3.0f, RED);
 			DrawTextEx(GetFontDefault(), "detection", Vector2{ -1495, -1580 }, 70.0f, 3.0f, RED);
 			DrawTextEx(GetFontDefault(), "unit", Vector2{ -1410, -1500 }, 70.0f, 3.0f, RED);
-
-			DrawCircle(475, 1160, 10.0f, RED);
-			DrawLineEx(Vector2{ 475, 1160 }, Vector2{ 475, 1600 }, 5.0f, RED);
-			DrawLineEx(Vector2{ 475, 1600 }, Vector2{ -1500, 1600 }, 5.0f, RED);
-			draw_up_arrow(-1500, 1600, -1500, -1400, RED);
-
-			DrawCircle(-1400, -1125, 10.0f, RED);
-			draw_up_arrow(-1400, -1125, -1400, -1400, RED);
 		// draw text --------------------------------------------------------------------------------------------------
 	// draw hazard unit sector ------------------------------------------------------------------------------------
 	(void) info;
