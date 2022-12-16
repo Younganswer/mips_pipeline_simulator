@@ -9,7 +9,6 @@ RAYLIB_PATH		= raylib
 INCLUDE_PATH	= -I. -I${LIBS_DIR}/${RAYLIB_PATH}/src -I${LIBS_DIR}/${RAYLIB_PATH}/src/external -I${LIBS_DIR}/${RAYLIB_PATH}/src/extras
 LDLIBS_SRC		= ${LIBS_DIR}/${RAYLIB_PATH}/src/.ldlibs
 LIBRAYLIB		= ${LIBS_DIR}/${RAYLIB_PATH}/src/libraylib.a
-LDLIBS			=
 
 ASSEMBLER_PATH	= assembler
 SPIM			= ${LIBS_DIR}/${ASSEMBLER_PATH}/spim/spim
