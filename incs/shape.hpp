@@ -17,6 +17,7 @@ bool	draw_circle_lines_ex(float centerX, float centerY, float radius, float thic
 
 // draw_circle_sector_lines_ex.cpp
 bool	draw_circle_sector_lines_ex(float centerX, float centerY, float radius, float startAngle, float endAngle, int segments, float thick, Color color);
+
 // draw_trapezoid.cpp
 bool	draw_trapezoid(float posX, float posY, float size);
 
