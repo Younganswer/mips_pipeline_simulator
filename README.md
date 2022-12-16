@@ -2,6 +2,17 @@
 ### It shows how the "MIPS 5-staged pipeline" works.
 <br/><br/><br/>
 
+## Contents
+* [Summary](#summary)
+* [Platform](#platform)
+* [Requirement](#requirement)
+* [Install](#install)
+* [How to run](#how-to-run)
+* [Usage](#usage)
+* [Result](#result)
+* [Description of source code](#description-of-source-code)
+* [Contact](#contact)
+
 ## Summary
 * This program is made for showing how the "MIPS 5-staged pipeline" works.
 * Your assembly.s code will be converted to assembly.asm code and then executed.
