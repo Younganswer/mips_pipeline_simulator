@@ -25,13 +25,6 @@ var18:	.word 18
 .globl main
 
 main:
-	lw		$t0, 0($gp)
-	lw		$t1, 4($gp)
-	beq		$t0, $t1, bar
-	add		$t2, $t0, $t0
-	beq		$t2, $t1, bar
-	j		bar
-	add		$t3, $t2, $t1
-
-bar:
-	add		$t4, $t3, $t2
+	lw	$t0, 0($gp)
+	lw	$t1, 4($gp)
+	add	$t2, $t0, $t1
