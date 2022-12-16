@@ -4,7 +4,7 @@
 
 ## Summary
 * This program is made for showing how the "MIPS 5-staged pipeline" works.
-* Your assembly code will be converted to machine code and then executed.
+* Your assembly.s code will be converted to assembly.asm code and then executed.
 * You can see the process of execution in the data path of the window.
 * This program supports the following instructions
 	* R-type
@@ -23,7 +23,7 @@
 ## Requirement
 ### Raylib
 [Link to raylib (Github)](https://github.com/raysan5/raylib)
-* checkout following link to install raylib
+* Checkout following link
 * You can find a few ways to install raylib
 #### OSX
 https://github.com/raysan5/raylib/wiki/Working-on-macOS
