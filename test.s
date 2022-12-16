@@ -20,6 +20,23 @@ var15:	.word 15
 var16:	.word 16
 var17:	.word 17
 var18:	.word 18
+var19:	.word 19
+var20:	.word 20
+var21:	.word 21
+var22:	.word 22
+var23:	.word 23
+var24:	.word 24
+var25:	.word 25
+var26:	.word 26
+var27:	.word 27
+var28:	.word 28
+var29:	.word 29
+var30:	.word 30
+var31:	.word 31
+var32:	.word 32
+var33:	.word 33
+var34:	.word 34
+var35:	.word 35
 
 .text 0x00400024
 .globl main
