@@ -94,6 +94,7 @@ draw_trapezoid(float posX, float posY, float size);
   * MEM/WB pipeline
   * Register values
   * Data segment values
+  
 #### Instruction
 * `instruction.hpp`: Instruction header
 * `instruction.cpp`: Get instruction and split by field
