@@ -86,7 +86,8 @@ https://github.com/raysan5/raylib/wiki/Working-on-GNU-Linux
 <br/><br/><br/>
 
 ## Result
-#### 결과 이미지 스크린샷, 동영상
+https://user-images.githubusercontent.com/55086725/208013442-c2919d94-6647-498c-b3a8-877e4b3be5f4.mp4
+
 <br/><br/><br/>
 
 ## Description of source code
