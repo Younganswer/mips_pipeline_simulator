@@ -12,7 +12,6 @@
 * [Result](#result)
 * [Description of source code](#description-of-source-code)
 * [Contact](#contact)
-<br/><br/><br/>
 
 ## Summary
 * This program is made for showing how the "MIPS 5-staged pipeline" works.
