@@ -44,3 +44,4 @@ var35:	.word 35
 main:
 	lw	$t0, 0($gp)
 	lw	$t1, 4($gp)
+	add	$t2, $t0, $t1
